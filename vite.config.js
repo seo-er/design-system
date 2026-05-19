@@ -2,11 +2,12 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// GitHub Pages: 저장소 이름이 다르면 base 경로를 맞춰 주세요 (예: '/my-repo/')
-const repoName = 'design-system-app'
+// GitHub Pages project site: https://<user>.github.io/<repo>/
+// CI sets GITHUB_REPOSITORY to "owner/repo" — base must match the repo segment.
+const repoSegment =
+  process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'design-system'
 
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS ? `/${repoName}/` : '/',
+  base: process.env.GITHUB_ACTIONS ? `/${repoSegment}/` : '/',
   plugins: [react(), tailwindcss()],
-  base: '/design-system-core/',
 })
