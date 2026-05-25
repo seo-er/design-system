@@ -214,16 +214,6 @@ function MenuItem({ children, active, onClick }) {
   );
 }
 
-function SectionTitle({ title }) {
-  return (
-    <div className="mb-8 mt-16 first:mt-0">
-      <h2 className="text-[28px] font-bold tracking-tight">
-        {title}
-      </h2>
-    </div>
-  );
-}
-
 function TokenPage() {
   return (
     <div>
@@ -298,6 +288,16 @@ function TokenPage() {
       <SectionTitle title="Radius" />
 
       <RadiusCard />
+    </div>
+  );
+}
+
+function SectionTitle({ title }) {
+  return (
+    <div className="mb-8 mt-16 first:mt-0">
+      <h2 className="text-[28px] font-bold tracking-tight">
+        {title}
+      </h2>
     </div>
   );
 }
@@ -414,6 +414,7 @@ function OpacityCard() {
           </p>
         </div>
 
+        {/* LIGHT */}
         <div
           style={{
             width: "120px",
@@ -438,6 +439,7 @@ function OpacityCard() {
           Opacity40
         </div>
 
+        {/* DARK */}
         <div
           style={{
             width: "120px",
@@ -494,161 +496,169 @@ function RadiusCard() {
 }
 
 function TypographyPage() {
-  return <div className="text-[40px] font-bold">Typography</div>;
+  const rows = [
+    ["font.heading.xxlarge", "Bold", "2rem / 32px", "2.25rem / 36px"],
+    ["font.heading.xlarge", "Bold", "1.75rem / 28px", "2rem / 32px"],
+    ["font.heading.large", "Bold", "1.5rem / 24px", "1.75rem / 28px"],
+    ["font.heading.medium", "Bold", "1.25rem / 20px", "1.5rem / 24px"],
+  ];
+
+  return (
+    <div>
+      <h1 className="text-[40px] font-bold tracking-tight mb-10">
+        Typography
+      </h1>
+
+      <div className="bg-white rounded-[28px] border border-[#E5E8EB] overflow-hidden">
+        <div className="grid grid-cols-5 px-6 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
+          <span>Preview</span>
+          <span>Token</span>
+          <span>Weight</span>
+          <span>Size</span>
+          <span>Line height</span>
+        </div>
+
+        {rows.map((r) => {
+          const size = r[2].split("/")[0].trim();
+          const lineHeight = r[3].split("/")[0].trim();
+
+          return (
+            <div
+              key={r[0]}
+              className="grid grid-cols-5 px-6 py-5 border-b border-[#F2F4F6] items-center"
+            >
+              <span
+                className="font-bold"
+                style={{ fontSize: size, lineHeight }}
+              >
+                Aa
+              </span>
+
+              <span>{r[0]}</span>
+              <span>{r[1]}</span>
+              <span>{r[2]}</span>
+              <span>{r[3]}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 function SpacingPage() {
-  return <div className="text-[40px] font-bold">Spacing</div>;
-}
-
-function GridPage() {
-  return <div className="text-[40px] font-bold">Grid</div>;
-}
-
-function PalettePage() {
-  const lightPalettes = [
-    {
-      name: "Orange",
-      colors: [
-        { step: 50, hex: "#FFF7ED" },
-        { step: 100, hex: "#FFEDD5" },
-        { step: 200, hex: "#FED7AA" },
-        { step: 300, hex: "#FDBA74" },
-        { step: 400, hex: "#FB923C" },
-        { step: 500, hex: "#F97316" },
-      ],
-    },
-    {
-      name: "Yellow",
-      colors: [
-        { step: 100, hex: "#FFF8E3" },
-        { step: 200, hex: "#FFECB8" },
-        { step: 300, hex: "#FFE08C" },
-        { step: 400, hex: "#FFD560" },
-        { step: 500, hex: "#FFB700" },
-      ],
-    },
-    {
-      name: "Gray",
-      colors: [
-        { step: 200, hex: "#F4F4F4" },
-        { step: 300, hex: "#E5E5E5" },
-        { step: 400, hex: "#D5D5D5" },
-        { step: 500, hex: "#AAAAAA" },
-        { step: 600, hex: "#888888" },
-        { step: 700, hex: "#666666" },
-        { step: 800, hex: "#222222" },
-        { step: 900, hex: "#191F28" },
-      ],
-    },
+  const rows = [
+    ["space.025", "0.25×", "0.125rem", "2px"],
+    ["space.050", "0.5×", "0.25rem", "4px"],
+    ["space.100", "1×", "0.5rem", "8px"],
+    ["space.200", "2×", "1rem", "16px"],
   ];
 
-  const darkPalettes = [
-    {
-      name: "Orange",
-      colors: [
-        { step: 50, hex: "#4A1F0A" },
-        { step: 100, hex: "#5C2A0D" },
-        { step: 200, hex: "#7A3A12" },
-        { step: 300, hex: "#9A4E18" },
-        { step: 400, hex: "#C2641F" },
-        { step: 500, hex: "#F97316" },
-      ],
-    },
-    {
-      name: "Yellow",
-      colors: [
-        { step: 100, hex: "#4A3B00" },
-        { step: 200, hex: "#665200" },
-        { step: 300, hex: "#806600" },
-        { step: 400, hex: "#A37F00" },
-        { step: 500, hex: "#FFB700" },
-      ],
-    },
-    {
-      name: "Gray",
-      colors: [
-        { step: 200, hex: "#2A2A2A" },
-        { step: 300, hex: "#3A3A3A" },
-        { step: 400, hex: "#4A4A4A" },
-        { step: 500, hex: "#7A7A7A" },
-        { step: 600, hex: "#9A9A9A" },
-        { step: 700, hex: "#B5B5B5" },
-        { step: 800, hex: "#D1D1D1" },
-        { step: 900, hex: "#EDEDED" },
-      ],
-    },
-  ];
-
-  const PaletteColumn = ({ palette, dark = false }) => (
+  return (
     <div>
-      <h3 className="text-[18px] font-semibold mb-4">
-        {palette.name}
-      </h3>
+      <h1 className="text-[40px] font-bold tracking-tight mb-10">
+        Spacing
+      </h1>
 
-      <div className="bg-white rounded-[24px] border border-[#E5E8EB] overflow-hidden">
-        {palette.colors.map((c) => (
+      <div className="bg-white rounded-[28px] border border-[#E5E8EB] overflow-hidden">
+        <div className="grid grid-cols-5 px-6 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
+          <span>Token</span>
+          <span>Multiplier</span>
+          <span>REM</span>
+          <span>Pixels</span>
+          <span>Visual</span>
+        </div>
+
+        {rows.map((r) => (
           <div
-            key={c.step}
-            onClick={() => navigator.clipboard.writeText(c.hex)}
-            className="
-              h-[52px]
-              flex items-center justify-between
-              px-4
-              text-sm
-              cursor-pointer
-              transition-opacity
-              hover:opacity-80
-            "
-            style={{ backgroundColor: c.hex }}
+            key={r[0]}
+            className="grid grid-cols-5 px-6 py-5 border-b border-[#F2F4F6] items-center"
           >
-            <span className={dark ? "text-white" : "text-black"}>
-              {c.step}
-            </span>
+            <span>{r[0]}</span>
+            <span>{r[1]}</span>
+            <span>{r[2]}</span>
+            <span>{r[3]}</span>
 
-            <span className={dark ? "text-gray-200" : "text-[#4E5968]"}>
-              {c.hex}
-            </span>
+            <div
+              className="bg-black rounded-full"
+              style={{
+                width: r[3],
+                height: "8px",
+              }}
+            />
           </div>
         ))}
       </div>
     </div>
   );
+}
+
+function GridPage() {
+  return (
+    <div>
+      <h1 className="text-[40px] font-bold tracking-tight mb-10">
+        Grid
+      </h1>
+
+      <div className="bg-white rounded-[28px] border border-[#E5E8EB] overflow-hidden">
+        <div className="grid grid-cols-5 px-6 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
+          <span>Breakpoint</span>
+          <span>Viewport</span>
+          <span>Columns</span>
+          <span>Gutters</span>
+          <span>Margins</span>
+        </div>
+
+        {gridData.map((g) => (
+          <div
+            key={g.bp}
+            className="grid grid-cols-5 px-6 py-5 border-b border-[#F2F4F6]"
+          >
+            <span>{g.bp}</span>
+            <span>{g.viewport}</span>
+            <span>{g.columns}</span>
+            <span>{g.gutters}</span>
+            <span>{g.margins}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PalettePage() {
+  const palettes = [
+    ["Orange", "#F97316"],
+    ["Yellow", "#FFB700"],
+    ["Gray", "#666666"],
+  ];
 
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Foundations
-        </p>
+      <h1 className="text-[40px] font-bold tracking-tight mb-10">
+        Color Palette
+      </h1>
 
-        <h1 className="text-[32px] md:text-[44px] leading-[1.1] font-bold tracking-tight">
-          Color Palette
-        </h1>
-      </div>
+      <div className="grid md:grid-cols-3 gap-6">
+        {palettes.map((p) => (
+          <div
+            key={p[0]}
+            className="bg-white rounded-[28px] border border-[#E5E8EB] p-6"
+          >
+            <div
+              className="h-32 rounded-2xl mb-4"
+              style={{ background: p[1] }}
+            />
 
-      <div className="mb-20">
-        <h2 className="text-[28px] font-bold tracking-tight mb-8">
-          Light Mode
-        </h2>
+            <h2 className="text-[18px] font-semibold">
+              {p[0]}
+            </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {lightPalettes.map((p) => (
-            <PaletteColumn key={p.name} palette={p} />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h2 className="text-[28px] font-bold tracking-tight mb-8">
-          Dark Mode
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {darkPalettes.map((p) => (
-            <PaletteColumn key={p.name} palette={p} dark />
-          ))}
-        </div>
+            <p className="text-sm text-[#8B95A1] mt-1">
+              {p[1]}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
