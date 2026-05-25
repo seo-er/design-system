@@ -1,218 +1,196 @@
-import React, { useState } from "react";
-import DesignTokens from "./DesignTokens";
+import React from "react";
 
-export default function App() {
-  const [menu, setMenu] = useState("tokens");
+function hexToRgba(hex, opacity) {
+  const cleanHex = hex.replace("#", "");
+  const bigint = parseInt(cleanHex, 16);
 
-  return (
-    <div className="flex h-screen bg-[#F9FAFB] text-[#191F28]">
-      {/* SIDEBAR */}
-      <aside
-        className="
-          hidden lg:flex
-          w-[280px]
-          bg-white
-          border-r border-[#E5E8EB]
-          flex-col
-          sticky top-0 h-screen
-        "
-      >
-        {/* LOGO */}
-        <div className="px-6 pt-7 pb-6 border-b border-[#F2F4F6]">
-          <h1 className="text-[24px] font-bold tracking-tight">
-            flow
-          </h1>
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
 
-          <p className="text-sm text-[#8B95A1] mt-1">
-            Design System
-          </p>
-        </div>
-
-        {/* SEARCH */}
-        <div className="px-6 pt-6">
-          <div
-            className="
-              h-11
-              rounded-xl
-              bg-[#F2F4F6]
-              flex items-center
-              px-4
-              text-sm text-[#8B95A1]
-            "
-          >
-            Search...
-          </div>
-        </div>
-
-        {/* NAV */}
-        <div className="flex-1 overflow-auto px-4 py-6">
-          {/* FOUNDATIONS */}
-          <div className="mb-8">
-            <div className="text-xs font-semibold text-[#8B95A1] uppercase mb-3 px-2">
-              Foundations
-            </div>
-
-            <div className="space-y-1">
-              <MenuItem
-                active={menu === "tokens"}
-                onClick={() => setMenu("tokens")}
-              >
-                Color
-              </MenuItem>
-
-              <MenuItem
-                active={menu === "typography"}
-                onClick={() => setMenu("typography")}
-              >
-                Typography
-              </MenuItem>
-
-              <MenuItem
-                active={menu === "spacing"}
-                onClick={() => setMenu("spacing")}
-              >
-                Spacing
-              </MenuItem>
-
-              <MenuItem
-                active={menu === "grid"}
-                onClick={() => setMenu("grid")}
-              >
-                Grid
-              </MenuItem>
-            </div>
-          </div>
-
-          {/* COMPONENTS */}
-          <div>
-            <div className="text-xs font-semibold text-[#8B95A1] uppercase mb-3 px-2">
-              Components
-            </div>
-
-            <div className="space-y-1">
-              <MenuItem>Button</MenuItem>
-              <MenuItem>Input</MenuItem>
-              <MenuItem>Modal</MenuItem>
-            </div>
-          </div>
-        </div>
-
-        {/* FOOTER */}
-        <div className="border-t border-[#F2F4F6] px-6 py-5">
-          <p className="text-xs text-[#8B95A1]">
-            © 2026 Flow Design System
-          </p>
-        </div>
-      </aside>
-
-      {/* CONTENT */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* HEADER */}
-        <header
-          className="
-            h-16
-            bg-white
-            border-b border-[#E5E8EB]
-            flex items-center
-            justify-between
-            px-6 lg:px-10
-            sticky top-0 z-20
-          "
-        >
-          {/* LEFT */}
-          <div className="flex items-center gap-4">
-            {/* MOBILE */}
-            <button
-              className="
-                lg:hidden
-                w-10 h-10
-                rounded-lg
-                hover:bg-[#F2F4F6]
-              "
-            >
-              ☰
-            </button>
-
-            <div>
-              <p className="text-xs text-[#8B95A1]">
-                Foundations
-              </p>
-
-              <h2 className="text-[15px] font-semibold tracking-tight">
-                Design Tokens
-              </h2>
-            </div>
-          </div>
-
-          {/* SEARCH */}
-          <div
-            className="
-              hidden md:flex
-              w-[280px]
-              h-10
-              bg-[#F2F4F6]
-              rounded-xl
-              px-4
-              items-center
-              text-sm text-[#8B95A1]
-            "
-          >
-            Search...
-          </div>
-        </header>
-
-        {/* MAIN */}
-        <main className="flex-1 overflow-auto">
-          <div
-            className="
-              max-w-[1200px]
-              mx-auto
-              px-5 md:px-10
-              py-10
-            "
-          >
-            {menu === "tokens" && <DesignTokens />}
-          </div>
-        </main>
-
-        {/* FOOTER */}
-        <footer
-          className="
-            bg-white
-            border-t border-[#E5E8EB]
-            px-6 lg:px-10
-            py-4
-          "
-        >
-          <p className="text-sm text-[#8B95A1]">
-            Built with Flow Design System
-          </p>
-        </footer>
-      </div>
-    </div>
-  );
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
-function MenuItem({ children, active, onClick }) {
+export default function DesignTokens() {
   return (
-    <button
-      onClick={onClick}
-      className={`
-        w-full
-        flex items-center
-        px-3 py-[11px]
-        rounded-xl
-        text-[15px]
-        font-medium
-        transition-all
-        ${
-          active
-            ? "bg-[#EEF2FF] text-[#4F46E5]"
-            : "text-[#4B5563] hover:bg-gray-50"
-        }
-      `}
-    >
-      {children}
-    </button>
+    <div className="text-[#191F28]">
+      <h1 className="text-[40px] leading-[1.2] font-bold tracking-tight mb-12">
+        Color
+      </h1>
+
+      {/* COLOR */}
+      <div className="mb-16">
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">
+          Color
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6 bg-white rounded-2xl border border-gray-200 p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+          <div>
+            <code className="bg-[#F2F4F6] text-[#4E5968] px-2.5 py-1 rounded-md text-[13px] font-medium">
+              color.text.accent.lime
+            </code>
+
+            <p className="text-[15px] text-[#4E5968] mt-4 leading-7">
+              Use for lime text.
+            </p>
+          </div>
+
+          <div className="p-4 border border-gray-200 rounded-xl bg-white">
+            <div
+              className="h-10 rounded-lg mb-3"
+              style={{ background: "#4C6B1F" }}
+            />
+
+            <span className="text-[14px] text-[#4E5968]">
+              Lime800
+            </span>
+          </div>
+
+          <div className="p-4 border border-gray-200 rounded-xl bg-[#191F28]">
+            <div
+              className="h-10 rounded-lg mb-3"
+              style={{ background: "#B3DF72" }}
+            />
+
+            <span className="text-[14px] text-gray-300">
+              Lime300
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* BORDER */}
+      <div className="mb-20">
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">
+          Border
+        </h2>
+
+        <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div className="grid grid-cols-2 px-6 py-4 border-b border-gray-100 text-sm text-[#6B7684]">
+            <span>Token and description</span>
+            <span>Value</span>
+          </div>
+
+          {[
+            {
+              token: "border.width",
+              value: "1px",
+              desc: "The default width for all standard component borders and dividers.",
+            },
+            {
+              token: "border.width.selected",
+              value: "2px",
+              desc: "The width used to indicate a selected element.",
+            },
+          ].map((item) => (
+            <div
+              key={item.token}
+              className="grid grid-cols-2 px-6 py-6 border-b border-gray-100"
+            >
+              <div>
+                <code className="bg-[#F2F4F6] text-[#4E5968] px-2.5 py-1 rounded-md text-[13px] font-medium">
+                  {item.token}
+                </code>
+
+                <p className="text-[15px] text-[#4E5968] mt-4">
+                  {item.desc}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-[120px] h-10 border border-gray-200 rounded-lg flex items-center px-3">
+                  <div
+                    style={{
+                      width: "100%",
+                      borderTop: `${item.value} solid black`,
+                    }}
+                  />
+                </div>
+
+                <span>{item.value}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* OPACITY */}
+      <div>
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">
+          Opacity
+        </h2>
+
+        <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div className="grid grid-cols-3 px-6 py-4 border-b border-gray-100 text-sm text-[#6B7684]">
+            <span>Token and description</span>
+            <span>Light value</span>
+            <span>Dark value</span>
+          </div>
+
+          <div className="grid grid-cols-3 px-6 py-6 items-center">
+            <div>
+              <code className="bg-[#F2F4F6] text-[#4E5968] px-2.5 py-1 rounded-md text-[13px] font-medium">
+                opacity.disabled
+              </code>
+
+              <p className="text-[15px] text-[#4E5968] mt-4">
+                Apply to images when in a disabled state.
+              </p>
+            </div>
+
+            <div
+              style={{
+                width: "120px",
+                height: "64px",
+                borderRadius: "8px",
+                border: "1px solid #E5E7EB",
+                backgroundColor: hexToRgba("#292A2E", 0.4),
+                backgroundImage: `
+                  linear-gradient(45deg, #eee 25%, transparent 25%),
+                  linear-gradient(-45deg, #eee 25%, transparent 25%),
+                  linear-gradient(45deg, transparent 75%, #eee 75%),
+                  linear-gradient(-45deg, transparent 75%, #eee 75%)
+                `,
+                backgroundSize: "12px 12px",
+                backgroundPosition:
+                  "0 0, 0 6px, 6px -6px, -6px 0px",
+                display: "flex",
+                alignItems: "flex-end",
+                padding: "8px",
+                fontSize: "12px",
+              }}
+            >
+              Opacity40
+            </div>
+
+            <div
+              style={{
+                width: "120px",
+                height: "64px",
+                borderRadius: "8px",
+                border: "1px solid #333",
+                backgroundColor: hexToRgba("#111111", 0.4),
+                backgroundImage: `
+                  linear-gradient(45deg, #444 25%, transparent 25%),
+                  linear-gradient(-45deg, #444 25%, transparent 25%),
+                  linear-gradient(45deg, transparent 75%, #444 75%),
+                  linear-gradient(-45deg, transparent 75%, #444 75%)
+                `,
+                backgroundSize: "12px 12px",
+                backgroundPosition:
+                  "0 0, 0 6px, 6px -6px, -6px 0px",
+                display: "flex",
+                alignItems: "flex-end",
+                padding: "8px",
+                fontSize: "12px",
+                color: "#fff",
+              }}
+            >
+              Opacity40
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
