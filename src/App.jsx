@@ -540,6 +540,7 @@ return (
 }
 
 function PalettePage() {
+  
 const lightPalettes = [
 {
 name: "Orange",
@@ -614,6 +615,67 @@ colors: [
   { step: 900, hex: "#EDEDED" },
 ],
 },
+];
+const accessibilityGood = [
+  {
+    title: "일반 사용자가 보는 색상",
+    colors: [
+      ["Black", "#000000"],
+      ["Orange", "#E69F00"],
+      ["Sky blue", "#56B4E9"],
+      ["Bluish green", "#009E73"],
+      ["Yellow", "#F0E442"],
+      ["Blue", "#0072B2"],
+      ["Vermilion", "#D55E00"],
+      ["Reddish purple", "#CC79A7"],
+    ],
+  },
+  {
+    title: "적록색약자가 보는 색상",
+    colors: [
+      ["Black", "#000000"],
+      ["Orange", "#C0AB00"],
+      ["Sky blue", "#7B95D8"],
+      ["Bluish green", "#9D9570"],
+      ["Yellow", "#F0E442"],
+      ["Blue", "#5B7BBB"],
+      ["Vermilion", "#8F8100"],
+      ["Reddish purple", "#7F89A8"],
+    ],
+  },
+];
+
+const accessibilityBad = [
+  {
+    title: "일반 사용자가 보는 색상",
+    colors: [
+      ["", "#F5003D"],
+      ["", "#006B21"],
+      ["", "#946300"],
+      ["", "#006B21"],
+      ["", "#E4DA3D"],
+      ["", "#6BC679"],
+      ["", "#1476AD"],
+      ["", "#C154A7"],
+      ["", "#284B9B"],
+      ["", "#56389E"],
+    ],
+  },
+  {
+    title: "적록색약자가 보는 색상",
+    colors: [
+      ["", "#706642"],
+      ["", "#6F6513"],
+      ["", "#776A00"],
+      ["", "#70661B"],
+      ["", "#CCBE74"],
+      ["", "#E1C900"],
+      ["", "#5978B8"],
+      ["", "#6279B2"],
+      ["", "#0D4F97"],
+      ["", "#0F4D96"],
+    ],
+  },
 ];
 
 const PaletteColumn = ({ palette, dark = false }) => (
@@ -690,6 +752,104 @@ return (
 
 {/* DARK */}
 <div>
+  {/* 접근성 컬러 */}
+<div className="mt-24">
+  <h2 className="text-[32px] font-bold tracking-tight mb-8">
+    색각이상자가 명확히 구분할 수 있는 색상
+  </h2>
+
+  <div className="bg-[#F2F4F6] rounded-[28px] p-10">
+    {accessibilityGood.map((section) => (
+      <div key={section.title} className="mb-10 last:mb-0">
+        <h3 className="text-[22px] font-semibold mb-6">
+          {section.title}
+        </h3>
+
+        <div className="flex flex-wrap overflow-hidden rounded-2xl">
+          {section.colors.map(([label, color]) => (
+            <div
+              key={color}
+              className="w-[105px] h-[116px] px-3 py-4 flex flex-col justify-between"
+              style={{ background: color }}
+            >
+              <span
+                className="text-[14px] font-medium"
+                style={{
+                  color:
+                    color === "#000000" ||
+                    color === "#0072B2" ||
+                    color === "#009E73" ||
+                    color === "#D55E00"
+                      ? "#fff"
+                      : "#191F28",
+                }}
+              >
+                {label}
+              </span>
+
+              <span
+                className="text-[14px]"
+                style={{
+                  color:
+                    color === "#000000" ||
+                    color === "#0072B2" ||
+                    color === "#009E73" ||
+                    color === "#D55E00"
+                      ? "#fff"
+                      : "#191F28",
+                }}
+              >
+                {color}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+{/* 어려운 조합 */}
+<div className="mt-24">
+  <h2 className="text-[32px] font-bold tracking-tight mb-8">
+    색각이상자가 구분하기 어려운 조합
+  </h2>
+
+  <div className="bg-[#F2F4F6] rounded-[28px] p-10">
+    {accessibilityBad.map((section) => (
+      <div key={section.title} className="mb-10 last:mb-0">
+        <h3 className="text-[22px] font-semibold mb-6">
+          {section.title}
+        </h3>
+
+        <div className="flex flex-wrap gap-4">
+          {Array.from({ length: section.colors.length / 2 }).map((_, i) => (
+            <div
+              key={i}
+              className="flex overflow-hidden rounded-xl"
+            >
+              <div
+                className="w-[78px] h-[52px]"
+                style={{
+                  background:
+                    section.colors[i * 2][1],
+                }}
+              />
+
+              <div
+                className="w-[78px] h-[52px]"
+                style={{
+                  background:
+                    section.colors[i * 2 + 1][1],
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
   <h2 className="text-[28px] font-bold tracking-tight mb-8">
     Dark Mode
   </h2>
