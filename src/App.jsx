@@ -503,6 +503,58 @@ return (
     </div>
   </div>
 </Card>
+<div className="mt-24">
+  <h2 className="text-[36px] font-bold tracking-tight mb-10">
+    글자 색상
+  </h2>
+
+  <p className="text-[18px] leading-[1.8] text-[#191F28] max-w-[980px] mb-14">
+    글자 색상은 가독성과 접근성을 고려해 사용한다.
+    본문에서는 주로 그레이 계열을 유지하며, 주요 동작에는
+    primary, secondary, point, system 색상을 사용할 수 있다.
+    이때 명도 대비를 준수하여 시각적 접근성을 확보한다
+  </p>
+
+  <div className="grid md:grid-cols-2 gap-8">
+
+    {/* AAA */}
+    <div className="bg-[#F3F4F6] rounded-[28px] p-10">
+
+      <h3 className="text-[20px] font-bold text-[#2B2F36] mb-8">
+        AAA 등급
+      </h3>
+
+      <div className="bg-white rounded-[20px] px-12 py-12">
+        <div className="text-[24px] font-bold text-[#2B2F36] mb-6">
+          큰 텍스트 4.5:1(매직넘버 50)
+        </div>
+
+        <div className="text-[18px] text-[#333D4B]">
+          일반 텍스트 7:1(매직넘버 70)
+        </div>
+      </div>
+    </div>
+
+    {/* AA */}
+    <div className="bg-[#F3F4F6] rounded-[28px] p-10">
+
+      <h3 className="text-[20px] font-bold text-[#2B2F36] mb-8">
+        AA 등급
+      </h3>
+
+      <div className="bg-white rounded-[20px] px-12 py-12">
+        <div className="text-[24px] font-bold text-[#2B2F36] mb-6">
+          큰 텍스트 3:1(매직넘버 40)
+        </div>
+
+        <div className="text-[18px] text-[#333D4B]">
+          일반 텍스트 4.5:1(매직넘버 50)
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 <div className="mt-16">
   <h2 className="text-[36px] font-bold tracking-tight mb-10">
     줄 간격
