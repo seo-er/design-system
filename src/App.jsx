@@ -633,16 +633,16 @@ const accessibilityGood = [
     title: "적록색약자가 보는 색상",
     colorBlind: true,
     colors: [
-      ["Black", "#000000"],
-      ["Orange", "#E69F00"],
-      ["Sky blue", "#56B4E9"],
-      ["Bluish green", "#009E73"],
-      ["Yellow", "#F0E442"],
-      ["Blue", "#0072B2"],
-      ["Vermilion", "#D55E00"],
-      ["Reddish purple", "#CC79A7"],
+      ["Black", "#000000", "#000000"],
+      ["Orange", "#E69F00", "#B7A400"],
+      ["Sky blue", "#56B4E9", "#7E97D8"],
+      ["Bluish green", "#009E73", "#A39B79"],
+      ["Yellow", "#F0E442", "#F0E442"],
+      ["Blue", "#0072B2", "#5978B8"],
+      ["Vermilion", "#D55E00", "#8A7B00"],
+      ["Reddish purple", "#CC79A7", "#7F89A9"],
     ],
-  },
+  }
 ];
 
 const accessibilityBad = [
@@ -757,24 +757,35 @@ function PalettePage() {
             <div key={section.title} className="mb-10 last:mb-0">
               <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
               <div className="space-y-4">
+              <div className="flex overflow-hidden rounded-2xl">
+              {section.colors.map(([label, color, displayColor]) => (
+    <div
+      key={label}
+      className="flex-1 h-[124px] px-3 py-4 flex flex-col justify-between"
+      style={{
+        backgroundColor: displayColor || color,
+        color:
+          color === "#000000" || color === "#0072B2"
+            ? "#fff"
+            : "#191F28",
+      }}
+    >
+      <div className="text-[15px] font-medium">
+        {label}
+      </div>
 
-{/* 팔레트 바 */}
-<div className="flex overflow-hidden rounded-2xl">
-  <div className="flex-1 h-[120px] bg-[#000000]" />
-  <div className="flex-1 h-[120px] bg-[#E69F00]" />
-  <div className="flex-1 h-[120px] bg-[#56B4E9]" />
-  <div className="flex-1 h-[120px] bg-[#009E73]" />
-  <div className="flex-1 h-[120px] bg-[#F0E442]" />
-  <div className="flex-1 h-[120px] bg-[#0072B2]" />
-  <div className="flex-1 h-[120px] bg-[#D55E00]" />
-  <div className="flex-1 h-[120px] bg-[#CC79A7]" />
+      <div className="text-[14px] font-medium">
+        {color}
+      </div>
+    </div>
+  ))}
 </div>
 {/* 텍스트 카드 */}
 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
   {section.colors.map(([label, color]) => (
     <div
       key={label}
-      className="bg-white rounded-2xl border border-[#E5E8EB] px-4 py-4"
+      className="bg-white rounded-[10px] border border-[#E5E8EB] px-4 py-4"
     >
       <div className="text-[15px] font-semibold text-[#191F28] mb-1">
         {label}
