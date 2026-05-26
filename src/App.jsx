@@ -503,6 +503,82 @@ return (
     </div>
   </div>
 </Card>
+<div className="mt-16">
+  <h2 className="text-[36px] font-bold tracking-tight mb-10">
+    줄 간격
+  </h2>
+
+  <p className="text-[18px] leading-[1.8] text-[#191F28] max-w-[920px] mb-12">
+    줄 간격이 좁을수록 시각적 피로를 느끼게 하며 정보 전달의
+    효율성이 떨어지므로 150% 이상으로 설정한다.
+  </p>
+
+  <div className="grid md:grid-cols-2 gap-8">
+
+    {/* GOOD */}
+    <div className="rounded-[24px] border border-[#16A34A] overflow-hidden bg-[#EEF6EF]">
+
+      <div className="flex items-center gap-4 px-6 py-6 bg-white">
+        <div className="w-10 h-10 rounded-full bg-[#04951F] flex items-center justify-center text-white text-[24px] font-bold">
+          ✓
+        </div>
+
+        <h3 className="text-[20px] font-bold text-[#191F28]">
+          모범 사례
+        </h3>
+      </div>
+
+      <div className="p-8">
+        <div className="bg-white rounded-[20px] p-8">
+          <h4 className="text-[22px] font-bold leading-[1.5] mb-6">
+            줄 간격은 가독성을 위해 최소 150% 이상으로 설정한다.
+          </h4>
+
+          <p className="text-[18px] leading-[1.7] text-[#4E5968] mb-8">
+            줄 간격이 좁을 경우, 줄 간의 분리가 잘 되지 않아
+            사용자가 다음 줄로 이동할 때 시각적 피로를 느낄 수 있다.
+          </p>
+
+          <div className="h-[40px] rounded-[10px] bg-[#F2F4F6] flex items-center justify-center text-[18px] text-[#333D4B]">
+            Line height 150%
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* BAD */}
+    <div className="rounded-[24px] border border-[#FF5A36] overflow-hidden bg-[#FAEEEE]">
+
+      <div className="flex items-center gap-4 px-6 py-6 bg-white">
+        <div className="w-10 h-10 rounded-full bg-[#F1003C] flex items-center justify-center text-white text-[24px] font-bold">
+          ×
+        </div>
+
+        <h3 className="text-[20px] font-bold text-[#191F28]">
+          피해야 할 사례
+        </h3>
+      </div>
+
+      <div className="p-8">
+        <div className="bg-white rounded-[20px] p-8">
+          <h4 className="text-[22px] font-bold leading-[1.25] mb-4">
+            줄 간격은 가독성을 위해 최소 150% 이상으로 설정한다.
+          </h4>
+
+          <p className="text-[18px] leading-[1.25] text-[#4E5968] mb-8">
+            줄 간격이 좁을 경우, 줄 간의 분리가 잘 되지 않아 사용자가
+            다음 줄로 이동할 때 시각적 피로를 느낄 수 있다.
+          </p>
+
+          <div className="h-[40px] rounded-[10px] bg-[#F2F4F6] flex items-center justify-center text-[18px] text-[#333D4B]">
+            Line height 125%
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 </div>
 );
 }
