@@ -768,15 +768,7 @@ function PalettePage() {
         style={{
           background: color,
 
-          // 색각 이상 시뮬레이션
-          filter: section.colorBlind
-            ? `
-              saturate(72%)
-              contrast(92%)
-              brightness(96%)
-              hue-rotate(-6deg)
-            `
-            : "none",
+        
         }}
       />
 
