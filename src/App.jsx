@@ -758,22 +758,26 @@ function PalettePage() {
               <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
   {section.colors.map(([label, color]) => (
-    <div
-      key={color + label}
-      className="rounded-2xl overflow-hidden bg-white border border-[#E5E8EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
-    >
-      {/* COLOR */}
+  <div className="space-y-4">
+
+  {/* 팔레트 바 */}
+  <div className="flex overflow-hidden rounded-xl">
+    {section.colors.map(([label, color]) => (
       <div
-        className="h-[92px] transition-all"
-        style={{
-          background: color,
-
-        
-        }}
+        key={color}
+        className="flex-1 h-[120px]"
+        style={{ background: color }}
       />
+    ))}
+  </div>
 
-      {/* INFO */}
-      <div className="px-4 py-3 bg-white">
+  {/* 하얀 텍스트 카드 */}
+  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+    {section.colors.map(([label, color]) => (
+      <div
+        key={label}
+        className="bg-white rounded-xl px-4 py-4 border border-[#E5E8EB]"
+      >
         <div className="text-[15px] font-semibold text-[#191F28] mb-1">
           {label}
         </div>
@@ -782,7 +786,10 @@ function PalettePage() {
           {color}
         </div>
       </div>
-    </div>
+    ))}
+  </div>
+
+</div>
   ))}
 </div>
             </div>
