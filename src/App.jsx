@@ -91,6 +91,9 @@ export default function App() {
               <MenuItem active={menu === "palette"} onClick={() => setMenu("palette")}>
                 Palette
               </MenuItem>
+              <MenuItem active={menu === "button"} onClick={() => setMenu("button")}>
+  Button
+</MenuItem>
             </div>
           </div>
         </div>
@@ -124,6 +127,7 @@ export default function App() {
             {menu === "spacing" && <SpacingPage />}
             {menu === "grid" && <GridPage />}
             {menu === "palette" && <PalettePage />}
+            {menu === "button" && <ButtonPage />}
           </div>
         </main>
 
@@ -1035,6 +1039,92 @@ function PalettePage() {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+function ButtonPage() {
+  return (
+    <div>
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Components
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight flex items-center gap-3">
+          <span className="text-[#2563EB]">🔗</span>
+          Default
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.7] mt-8 max-w-[980px]">
+          A button that triggers a link rather than an action.
+          This will render an {"<a>"} tag instead of a {"<button>"}.
+          It accepts anchor tag HTML attributes, including href.
+        </p>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.7] mt-6 max-w-[980px]">
+          The default appearance is for secondary actions or general
+          actions that aren't the most important in the area.
+        </p>
+      </div>
+
+      <Card>
+        {/* preview */}
+        <div className="p-8 border-b border-[#E5E8EB] bg-[#FAFBFC]">
+
+          <button
+            className="
+              h-[44px]
+              px-5
+              rounded-[10px]
+              border border-[#D0D7DE]
+              bg-white
+              text-[16px]
+              font-medium
+              text-[#3B3F45]
+              hover:bg-[#F6F8FA]
+              transition
+            "
+          >
+            Default Link button
+          </button>
+        </div>
+
+        {/* toolbar */}
+        <div className="grid grid-cols-3 border-b border-[#E5E8EB] bg-[#F8F9FB]">
+
+          <div className="px-6 py-4 text-[16px] text-[#4B5563] border-r border-[#E5E8EB]">
+            ⚙ Styles
+          </div>
+
+          <div className="px-6 py-4 text-[16px] text-center text-[#4B5563] border-r border-[#E5E8EB]">
+            Copy code
+          </div>
+
+          <div className="px-6 py-4 text-[16px] text-center text-[#4B5563]">
+            Edit in code sandbox
+          </div>
+        </div>
+
+        {/* code */}
+        <div className="bg-[#F7F8FA] p-8 overflow-auto">
+<pre className="text-[15px] leading-[1.8] text-[#1F2328] whitespace-pre-wrap">
+{`import React from 'react';
+
+import { LinkButton } from '@atlaskit/button/new';
+
+const LinkButtonDefaultExample = (): React.JSX.Element => {
+  return (
+    <LinkButton href="https://atlassian.com/">
+      Default Link button
+    </LinkButton>
+  );
+};
+
+export default LinkButtonDefaultExample;`}
+</pre>
+        </div>
+      </Card>
     </div>
   );
 }
