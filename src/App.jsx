@@ -1,5 +1,4 @@
-// ===== App.jsx (PART 1/2) =====
-import React, { useState } from "react";
+import { useState } from "react";
 
 function hexToRgba(hex, opacity) {
   const cleanHex = hex.replace("#", "");
@@ -539,83 +538,82 @@ return (
 );
 }
 
-function PalettePage() {
-  
 const lightPalettes = [
-{
-name: "Orange",
-colors: [
-  { step: 50, hex: "#FFF7ED" },
-  { step: 100, hex: "#FFEDD5" },
-  { step: 200, hex: "#FED7AA" },
-  { step: 300, hex: "#FDBA74" },
-  { step: 400, hex: "#FB923C" },
-  { step: 500, hex: "#F97316" },
-],
-},
-{
-name: "Yellow",
-colors: [
-  { step: 100, hex: "#FFF8E3" },
-  { step: 200, hex: "#FFECB8" },
-  { step: 300, hex: "#FFE08C" },
-  { step: 400, hex: "#FFD560" },
-  { step: 500, hex: "#FFB700" },
-],
-},
-{
-name: "Gray",
-colors: [
-  { step: 200, hex: "#F4F4F4" },
-  { step: 300, hex: "#E5E5E5" },
-  { step: 400, hex: "#D5D5D5" },
-  { step: 450, hex: "#C9C9C9" },
-  { step: 500, hex: "#AAAAAA" },
-  { step: 600, hex: "#888888" },
-  { step: 700, hex: "#666666" },
-  { step: 800, hex: "#222222" },
-  { step: 900, hex: "#252425" },
-],
-},
+  {
+    name: "Orange",
+    colors: [
+      { step: 50, hex: "#FFF7ED" },
+      { step: 100, hex: "#FFEDD5" },
+      { step: 200, hex: "#FED7AA" },
+      { step: 300, hex: "#FDBA74" },
+      { step: 400, hex: "#FB923C" },
+      { step: 500, hex: "#F97316" },
+    ],
+  },
+  {
+    name: "Yellow",
+    colors: [
+      { step: 100, hex: "#FFF8E3" },
+      { step: 200, hex: "#FFECB8" },
+      { step: 300, hex: "#FFE08C" },
+      { step: 400, hex: "#FFD560" },
+      { step: 500, hex: "#FFB700" },
+    ],
+  },
+  {
+    name: "Gray",
+    colors: [
+      { step: 200, hex: "#F4F4F4" },
+      { step: 300, hex: "#E5E5E5" },
+      { step: 400, hex: "#D5D5D5" },
+      { step: 450, hex: "#C9C9C9" },
+      { step: 500, hex: "#AAAAAA" },
+      { step: 600, hex: "#888888" },
+      { step: 700, hex: "#666666" },
+      { step: 800, hex: "#222222" },
+      { step: 900, hex: "#252425" },
+    ],
+  },
 ];
 
 const darkPalettes = [
-{
-name: "Orange",
-colors: [
-  { step: 50, hex: "#4A1F0A" },
-  { step: 100, hex: "#5C2A0D" },
-  { step: 200, hex: "#7A3A12" },
-  { step: 300, hex: "#9A4E18" },
-  { step: 400, hex: "#C2641F" },
-  { step: 500, hex: "#F97316" },
-],
-},
-{
-name: "Yellow",
-colors: [
-  { step: 100, hex: "#4A3B00" },
-  { step: 200, hex: "#665200" },
-  { step: 300, hex: "#806600" },
-  { step: 400, hex: "#A37F00" },
-  { step: 500, hex: "#FFB700" },
-],
-},
-{
-name: "Gray",
-colors: [
-  { step: 200, hex: "#2A2A2A" },
-  { step: 300, hex: "#3A3A3A" },
-  { step: 400, hex: "#4A4A4A" },
-  { step: 450, hex: "#5A5A5A" },
-  { step: 500, hex: "#7A7A7A" },
-  { step: 600, hex: "#9A9A9A" },
-  { step: 700, hex: "#B5B5B5" },
-  { step: 800, hex: "#D1D1D1" },
-  { step: 900, hex: "#EDEDED" },
-],
-},
+  {
+    name: "Orange",
+    colors: [
+      { step: 50, hex: "#4A1F0A" },
+      { step: 100, hex: "#5C2A0D" },
+      { step: 200, hex: "#7A3A12" },
+      { step: 300, hex: "#9A4E18" },
+      { step: 400, hex: "#C2641F" },
+      { step: 500, hex: "#F97316" },
+    ],
+  },
+  {
+    name: "Yellow",
+    colors: [
+      { step: 100, hex: "#4A3B00" },
+      { step: 200, hex: "#665200" },
+      { step: 300, hex: "#806600" },
+      { step: 400, hex: "#A37F00" },
+      { step: 500, hex: "#FFB700" },
+    ],
+  },
+  {
+    name: "Gray",
+    colors: [
+      { step: 200, hex: "#2A2A2A" },
+      { step: 300, hex: "#3A3A3A" },
+      { step: 400, hex: "#4A4A4A" },
+      { step: 450, hex: "#5A5A5A" },
+      { step: 500, hex: "#7A7A7A" },
+      { step: 600, hex: "#9A9A9A" },
+      { step: 700, hex: "#B5B5B5" },
+      { step: 800, hex: "#D1D1D1" },
+      { step: 900, hex: "#EDEDED" },
+    ],
+  },
 ];
+
 const accessibilityGood = [
   {
     title: "일반 사용자가 보는 색상",
@@ -634,13 +632,13 @@ const accessibilityGood = [
     title: "적록색약자가 보는 색상",
     colors: [
       ["Black", "#000000"],
-      ["Orange", "#C0AB00"],
-      ["Sky blue", "#7B95D8"],
-      ["Bluish green", "#9D9570"],
+      ["Orange", "#E69F00"],
+      ["Sky blue", "#56B4E9"],
+      ["Bluish green", "#009E73"],
       ["Yellow", "#F0E442"],
-      ["Blue", "#5B7BBB"],
-      ["Vermilion", "#8F8100"],
-      ["Reddish purple", "#7F89A8"],
+      ["Blue", "#0072B2"],
+      ["Vermilion", "#D55E00"],
+      ["Reddish purple", "#CC79A7"],
     ],
   },
 ];
@@ -678,188 +676,146 @@ const accessibilityBad = [
   },
 ];
 
-const PaletteColumn = ({ palette, dark = false }) => (
-<div>
-<h3 className="text-[18px] font-semibold mb-4">
-  {palette.name}
-</h3>
+function copyHex(hex) {
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(hex).catch(() => {});
+  }
+}
 
-<div className="bg-white rounded-[24px] border border-[#E5E8EB] overflow-hidden">
-  {palette.colors.map((c) => (
-    <div
-      key={c.step}
-      onClick={() => navigator.clipboard.writeText(c.hex)}
-      className="h-[52px] flex items-center justify-between px-4 text-sm cursor-pointer hover:opacity-80 transition"
-      style={{ backgroundColor: c.hex }}
-    >
-      <span className={dark ? "text-white" : "text-black"}>
-        {c.step}
-      </span>
+function PaletteColumn({ palette, dark = false }) {
+  return (
+    <div>
+      <h3 className="text-[18px] font-semibold mb-4">{palette.name}</h3>
 
-      <span className={dark ? "text-gray-200" : "text-[#4E5968]"}>
-        {c.hex}
-      </span>
-    </div>
-  ))}
-</div>
-</div>
-);
-
-return (
-<div>
-<div className="mb-14">
-  <p className="text-sm text-[#8B95A1] mb-3">
-    Foundations
-  </p>
-
-  <h1 className="text-[44px] font-bold tracking-tight">
-    Color Palette
-  </h1>
-
-  <p className="text-[#6B7684] text-[15px] leading-7 mt-5">
-    Palette colors are used across the system.
-  </p>
-</div>
-
-{/* LIGHT */}
-<div className="mb-20">
-  <h2 className="text-[28px] font-bold tracking-tight mb-8">
-    Light Mode
-  </h2>
-
-  <div className="grid md:grid-cols-2 gap-8 mb-12">
-    {lightPalettes
-      .filter((p) => p.name !== "Gray")
-      .map((p) => (
-        <PaletteColumn key={p.name} palette={p} />
-      ))}
-  </div>
-
-  <div>
-    <h2 className="text-[24px] font-bold tracking-tight mb-8">
-      Light mode neutrals
-    </h2>
-
-    <div className="grid md:grid-cols-1">
-      {lightPalettes
-        .filter((p) => p.name === "Gray")
-        .map((p) => (
-          <PaletteColumn key={p.name} palette={p} />
+      <div className="bg-white rounded-[24px] border border-[#E5E8EB] overflow-hidden">
+        {palette.colors.map((c) => (
+          <div
+            key={`${palette.name}-${c.step}`}
+            onClick={() => copyHex(c.hex)}
+            className="h-[52px] flex items-center justify-between px-4 text-sm cursor-pointer hover:opacity-80 transition"
+            style={{ backgroundColor: c.hex }}
+          >
+            <span className={dark ? "text-white" : "text-black"}>{c.step}</span>
+            <span className={dark ? "text-gray-200" : "text-[#4E5968]"}>{c.hex}</span>
+          </div>
         ))}
+      </div>
     </div>
-  </div>
-</div>
+  );
+}
 
-{/* DARK */}
-<div>
-  {/* 접근성 컬러 */}
-<div className="mt-24">
-  <h2 className="text-[32px] font-bold tracking-tight mb-8">
-    색각이상자가 명확히 구분할 수 있는 색상
-  </h2>
+function accessibleTextColor(color) {
+  return ["#000000", "#0072B2", "#009E73", "#D55E00"].includes(color)
+    ? "#fff"
+    : "#191F28";
+}
 
-  <div className="bg-[#F2F4F6] rounded-[28px] p-10">
-    {accessibilityGood.map((section) => (
-      <div key={section.title} className="mb-10 last:mb-0">
-        <h3 className="text-[22px] font-semibold mb-6">
-          {section.title}
-        </h3>
+function PalettePage() {
+  return (
+    <div>
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">Foundations</p>
+        <h1 className="text-[44px] font-bold tracking-tight">Color Palette</h1>
+        <p className="text-[#6B7684] text-[15px] leading-7 mt-5">
+          Palette colors are used across the system.
+        </p>
+      </div>
 
-        <div className="flex flex-wrap overflow-hidden rounded-2xl">
-          {section.colors.map(([label, color]) => (
-            <div
-              key={color}
-              className="w-[105px] h-[116px] px-3 py-4 flex flex-col justify-between"
-              style={{ background: color }}
-            >
-              <span
-                className="text-[14px] font-medium"
-                style={{
-                  color:
-                    color === "#000000" ||
-                    color === "#0072B2" ||
-                    color === "#009E73" ||
-                    color === "#D55E00"
-                      ? "#fff"
-                      : "#191F28",
-                }}
-              >
-                {label}
-              </span>
+      <div className="mb-20">
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">Light Mode</h2>
 
-              <span
-                className="text-[14px]"
-                style={{
-                  color:
-                    color === "#000000" ||
-                    color === "#0072B2" ||
-                    color === "#009E73" ||
-                    color === "#D55E00"
-                      ? "#fff"
-                      : "#191F28",
-                }}
-              >
-                {color}
-              </span>
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {lightPalettes
+            .filter((p) => p.name !== "Gray")
+            .map((p) => (
+              <PaletteColumn key={p.name} palette={p} />
+            ))}
+        </div>
+
+        <div>
+          <h2 className="text-[24px] font-bold tracking-tight mb-8">
+            Light mode neutrals
+          </h2>
+          <div className="grid md:grid-cols-1">
+            {lightPalettes
+              .filter((p) => p.name === "Gray")
+              .map((p) => (
+                <PaletteColumn key={p.name} palette={p} />
+              ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-24">
+        <h2 className="text-[32px] font-bold tracking-tight mb-8">
+          색각이상자가 명확히 구분할 수 있는 색상
+        </h2>
+        <div className="bg-[#F2F4F6] rounded-[28px] p-10">
+          {accessibilityGood.map((section) => (
+            <div key={section.title} className="mb-10 last:mb-0">
+              <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
+              <div className="flex flex-wrap overflow-hidden rounded-2xl">
+                {section.colors.map(([label, color]) => (
+                  <div
+                    key={`${section.title}-${color}`}
+                    className="w-[105px] h-[116px] px-3 py-4 flex flex-col justify-between"
+                    style={{ background: color }}
+                  >
+                    <span
+                      className="text-[14px] font-medium"
+                      style={{ color: accessibleTextColor(color) }}
+                    >
+                      {label}
+                    </span>
+                    <span
+                      className="text-[14px]"
+                      style={{ color: accessibleTextColor(color) }}
+                    >
+                      {color}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </div>
-    ))}
-  </div>
-</div>
 
-{/* 어려운 조합 */}
-<div className="mt-24">
-  <h2 className="text-[32px] font-bold tracking-tight mb-8">
-    색각이상자가 구분하기 어려운 조합
-  </h2>
-
-  <div className="bg-[#F2F4F6] rounded-[28px] p-10">
-    {accessibilityBad.map((section) => (
-      <div key={section.title} className="mb-10 last:mb-0">
-        <h3 className="text-[22px] font-semibold mb-6">
-          {section.title}
-        </h3>
-
-        <div className="flex flex-wrap gap-4">
-          {Array.from({ length: section.colors.length / 2 }).map((_, i) => (
-            <div
-              key={i}
-              className="flex overflow-hidden rounded-xl"
-            >
-              <div
-                className="w-[78px] h-[52px]"
-                style={{
-                  background:
-                    section.colors[i * 2][1],
-                }}
-              />
-
-              <div
-                className="w-[78px] h-[52px]"
-                style={{
-                  background:
-                    section.colors[i * 2 + 1][1],
-                }}
-              />
+      <div className="mt-24">
+        <h2 className="text-[32px] font-bold tracking-tight mb-8">
+          색각이상자가 구분하기 어려운 조합
+        </h2>
+        <div className="bg-[#F2F4F6] rounded-[28px] p-10">
+          {accessibilityBad.map((section) => (
+            <div key={section.title} className="mb-10 last:mb-0">
+              <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
+              <div className="flex flex-wrap gap-4">
+                {Array.from({ length: section.colors.length / 2 }).map((_, i) => (
+                  <div key={i} className="flex overflow-hidden rounded-xl">
+                    <div
+                      className="w-[78px] h-[52px]"
+                      style={{ background: section.colors[i * 2][1] }}
+                    />
+                    <div
+                      className="w-[78px] h-[52px]"
+                      style={{ background: section.colors[i * 2 + 1][1] }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </div>
-    ))}
-  </div>
-</div>
-  <h2 className="text-[28px] font-bold tracking-tight mb-8">
-    Dark Mode
-  </h2>
 
-  <div className="grid md:grid-cols-3 gap-8">
-    {darkPalettes.map((p) => (
-      <PaletteColumn key={p.name} palette={p} dark />
-    ))}
-  </div>
-</div>
-</div>
-);
+      <div className="mt-24">
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">Dark Mode</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {darkPalettes.map((p) => (
+            <PaletteColumn key={p.name} palette={p} dark />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
