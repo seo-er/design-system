@@ -760,15 +760,15 @@ function PalettePage() {
 
 {/* 팔레트 바 */}
 <div className="flex overflow-hidden rounded-2xl">
-  {section.colors.map(([_, color]) => (
-    <div
-      key={color}
-      className="flex-1 h-[120px]"
-      style={{ backgroundColor: color }}
-    />
-  ))}
+  <div className="flex-1 h-[120px] bg-[#000000]" />
+  <div className="flex-1 h-[120px] bg-[#E69F00]" />
+  <div className="flex-1 h-[120px] bg-[#56B4E9]" />
+  <div className="flex-1 h-[120px] bg-[#009E73]" />
+  <div className="flex-1 h-[120px] bg-[#F0E442]" />
+  <div className="flex-1 h-[120px] bg-[#0072B2]" />
+  <div className="flex-1 h-[120px] bg-[#D55E00]" />
+  <div className="flex-1 h-[120px] bg-[#CC79A7]" />
 </div>
-
 {/* 텍스트 카드 */}
 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
   {section.colors.map(([label, color]) => (
