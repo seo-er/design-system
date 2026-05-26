@@ -780,23 +780,6 @@ function PalettePage() {
     </div>
   ))}
 </div>
-{/* 텍스트 카드 */}
-<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-  {section.colors.map(([label, color]) => (
-    <div
-      key={label}
-      className="bg-white rounded-[10px] border border-[#E5E8EB] px-4 py-4"
-    >
-      <div className="text-[15px] font-semibold text-[#191F28] mb-1">
-        {label}
-      </div>
-
-      <div className="text-[13px] text-[#8B95A1] font-mono">
-        {color}
-      </div>
-    </div>
-  ))}
-</div>
 
 </div>
             </div>
