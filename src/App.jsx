@@ -414,6 +414,52 @@ function TokenPage() {
 }
 
 function TypographyPage() {
+  <Card>
+  <div className="grid grid-cols-4 bg-[#EEF1F4] border-b border-[#D9DEE3]">
+    <div className="px-6 py-5 text-[15px] font-semibold">등급</div>
+    <div className="px-6 py-5 text-[15px] font-semibold">큰 텍스트</div>
+    <div className="px-6 py-5 text-[15px] font-semibold">일반 텍스트</div>
+    <div className="px-6 py-5 text-[15px] font-semibold">대비율</div>
+  </div>
+
+  {/* AA */}
+  <div className="grid grid-cols-4 border-b border-[#E5E8EB]">
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      AA
+    </div>
+
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      3:1 (매직넘버: 40)
+    </div>
+
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      4.5:1 (매직넘버: 50)
+    </div>
+
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      최소
+    </div>
+  </div>
+
+  {/* AAA */}
+  <div className="grid grid-cols-4">
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      AAA
+    </div>
+
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      4.5:1 (매직넘버: 50)
+    </div>
+
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      7:1 (매직넘버: 70)
+    </div>
+
+    <div className="px-6 py-6 text-[18px] text-[#2F3A47]">
+      강화
+    </div>
+  </div>
+</Card>
 return (
 <div>
 <h1 className="text-[44px] font-bold tracking-tight mb-10">
