@@ -617,6 +617,7 @@ const darkPalettes = [
 const accessibilityGood = [
   {
     title: "일반 사용자가 보는 색상",
+    colorBlind: false,
     colors: [
       ["Black", "#000000"],
       ["Orange", "#E69F00"],
@@ -755,33 +756,43 @@ function PalettePage() {
           {accessibilityGood.map((section) => (
             <div key={section.title} className="mb-10 last:mb-0">
               <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
-              <div className="flex flex-wrap overflow-hidden rounded-2xl">
-                {section.colors.map(([label, color]) => (
-                  <div
-                    key={`${section.title}-${color}`}
-                    className="w-[105px] h-[116px] px-3 py-4 flex flex-col justify-between"
-                    style={{
-                      background: color,
-                      filter: section.colorBlind
-                        ? "saturate(70%) brightness(92%) hue-rotate(-8deg)"
-                        : "none",
-                    }}
-                  >
-                    <span
-                      className="text-[14px] font-medium"
-                      style={{ color: accessibleTextColor(color) }}
-                    >
-                      {label}
-                    </span>
-                    <span
-                      className="text-[14px]"
-                      style={{ color: accessibleTextColor(color) }}
-                    >
-                      {color}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+  {section.colors.map(([label, color]) => (
+    <div
+      key={color + label}
+      className="rounded-2xl overflow-hidden bg-white border border-[#E5E8EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+    >
+      {/* COLOR */}
+      <div
+        className="h-[92px] transition-all"
+        style={{
+          background: color,
+
+          // 색각 이상 시뮬레이션
+          filter: section.colorBlind
+            ? `
+              saturate(72%)
+              contrast(92%)
+              brightness(96%)
+              hue-rotate(-6deg)
+            `
+            : "none",
+        }}
+      />
+
+      {/* INFO */}
+      <div className="px-4 py-3 bg-white">
+        <div className="text-[15px] font-semibold text-[#191F28] mb-1">
+          {label}
+        </div>
+
+        <div className="text-[13px] text-[#8B95A1] font-mono">
+          {color}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
             </div>
           ))}
         </div>
