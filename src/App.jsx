@@ -414,7 +414,50 @@ function TokenPage() {
 }
 
 function TypographyPage() {
-  <Card>
+  
+return (
+<div>
+<h1 className="text-[44px] font-bold tracking-tight mb-10">
+  Typography
+</h1>
+
+<Card>
+  <div className="grid grid-cols-5 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
+    <span>Preview</span>
+    <span>Token</span>
+    <span>Font weight</span>
+    <span>Font size</span>
+    <span>Line height</span>
+  </div>
+
+  {typographyRows.map((r) => {
+    const size = r[2].split("/")[0].trim();
+    const lineHeight = r[3].split("/")[0].trim();
+
+    return (
+      <div
+        key={r[0]}
+        className="grid grid-cols-5 px-8 py-5 border-b border-[#F2F4F6] items-center hover:bg-[#FAFBFC] transition"
+      >
+        <span
+          className="font-bold"
+          style={{
+            fontSize: size,
+            lineHeight,
+          }}
+        >
+          Aa
+        </span>
+
+        <span>{r[0]}</span>
+        <span>{r[1]}</span>
+        <span>{r[2]}</span>
+        <span>{r[3]}</span>
+      </div>
+    );
+  })}
+</Card>
+<Card>
   <div className="grid grid-cols-4 bg-[#EEF1F4] border-b border-[#D9DEE3]">
     <div className="px-6 py-5 text-[15px] font-semibold">등급</div>
     <div className="px-6 py-5 text-[15px] font-semibold">큰 텍스트</div>
@@ -459,48 +502,6 @@ function TypographyPage() {
       강화
     </div>
   </div>
-</Card>
-return (
-<div>
-<h1 className="text-[44px] font-bold tracking-tight mb-10">
-  Typography
-</h1>
-
-<Card>
-  <div className="grid grid-cols-5 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
-    <span>Preview</span>
-    <span>Token</span>
-    <span>Font weight</span>
-    <span>Font size</span>
-    <span>Line height</span>
-  </div>
-
-  {typographyRows.map((r) => {
-    const size = r[2].split("/")[0].trim();
-    const lineHeight = r[3].split("/")[0].trim();
-
-    return (
-      <div
-        key={r[0]}
-        className="grid grid-cols-5 px-8 py-5 border-b border-[#F2F4F6] items-center hover:bg-[#FAFBFC] transition"
-      >
-        <span
-          className="font-bold"
-          style={{
-            fontSize: size,
-            lineHeight,
-          }}
-        >
-          Aa
-        </span>
-
-        <span>{r[0]}</span>
-        <span>{r[1]}</span>
-        <span>{r[2]}</span>
-        <span>{r[3]}</span>
-      </div>
-    );
-  })}
 </Card>
 </div>
 );
