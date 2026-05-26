@@ -555,6 +555,44 @@ return (
 
   </div>
 </div>
+<div className="mt-24">
+  <h2 className="text-[36px] font-bold tracking-tight mb-10">
+    선명한 화면 모드 명도 대비
+  </h2>
+
+  <p className="text-[18px] leading-[1.8] text-[#191F28] max-w-[980px] mb-10">
+    선명한 화면 모드에서는 본문의 가독성을 위해
+    15:1의 고대비 명도 대비를 준수한다.
+  </p>
+
+  <ul className="space-y-8 text-[20px] text-[#333D4B]">
+    <li className="flex items-center gap-5">
+      <span className="w-2.5 h-2.5 rounded-full bg-[#4B5563]" />
+
+      <span>
+        본문 텍스트: <strong>15:1</strong>
+      </span>
+    </li>
+
+    <li className="flex items-center gap-5">
+      <span className="w-2.5 h-2.5 rounded-full bg-[#4B5563]" />
+
+      <span>
+        헤딩, 레이블 등의 텍스트와 아이콘:
+        <strong> 7:1</strong>
+      </span>
+    </li>
+
+    <li className="flex items-center gap-5">
+      <span className="w-2.5 h-2.5 rounded-full bg-[#4B5563]" />
+
+      <span>
+        시각적 보조 수단:
+        <strong> 4.5:1</strong>
+      </span>
+    </li>
+  </ul>
+</div>
 <div className="mt-16">
   <h2 className="text-[36px] font-bold tracking-tight mb-10">
     줄 간격
