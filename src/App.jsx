@@ -630,15 +630,16 @@ const accessibilityGood = [
   },
   {
     title: "적록색약자가 보는 색상",
+    colorBlind: true,
     colors: [
       ["Black", "#000000"],
-      ["Orange", "#C0AB00"],
-      ["Sky blue", "#7B95D8"],
-      ["Bluish green", "#9D9570"],
+      ["Orange", "#E69F00"],
+      ["Sky blue", "#56B4E9"],
+      ["Bluish green", "#009E73"],
       ["Yellow", "#F0E442"],
-      ["Blue", "#5B7BBB"],
-      ["Vermilion", "#8F8100"],
-      ["Reddish purple", "#7F89A8"],
+      ["Blue", "#0072B2"],
+      ["Vermilion", "#D55E00"],
+      ["Reddish purple", "#CC79A7"],
     ],
   },
 ];
@@ -759,7 +760,12 @@ function PalettePage() {
                   <div
                     key={`${section.title}-${color}`}
                     className="w-[105px] h-[116px] px-3 py-4 flex flex-col justify-between"
-                    style={{ background: color }}
+                    style={{
+                      background: color,
+                      filter: section.colorBlind
+                        ? "saturate(70%) brightness(92%) hue-rotate(-8deg)"
+                        : "none",
+                    }}
                   >
                     <span
                       className="text-[14px] font-medium"
