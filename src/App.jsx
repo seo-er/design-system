@@ -756,42 +756,37 @@ function PalettePage() {
           {accessibilityGood.map((section) => (
             <div key={section.title} className="mb-10 last:mb-0">
               <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+              <div className="space-y-4">
+
+{/* 팔레트 바 */}
+<div className="flex overflow-hidden rounded-2xl">
+  {section.colors.map(([_, color]) => (
+    <div
+      key={color}
+      className="flex-1 h-[120px]"
+      style={{ backgroundColor: color }}
+    />
+  ))}
+</div>
+
+{/* 텍스트 카드 */}
+<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
   {section.colors.map(([label, color]) => (
     <div
-      key={color + label}
-      className="rounded-2xl overflow-hidden bg-white border border-[#E5E8EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+      key={label}
+      className="bg-white rounded-2xl border border-[#E5E8EB] px-4 py-4"
     >
-      {/* COLOR */}
-      <div
-        className="h-[92px] transition-all"
-        style={{
-          background: color,
+      <div className="text-[15px] font-semibold text-[#191F28] mb-1">
+        {label}
+      </div>
 
-          // 색각 이상 시뮬레이션
-          filter: section.colorBlind
-            ? `
-              saturate(72%)
-              contrast(92%)
-              brightness(96%)
-              hue-rotate(-6deg)
-            `
-            : "none",
-        }}
-      />
-
-      {/* INFO */}
-      <div className="px-4 py-3 bg-white">
-        <div className="text-[15px] font-semibold text-[#191F28] mb-1">
-          {label}
-        </div>
-
-        <div className="text-[13px] text-[#8B95A1] font-mono">
-          {color}
-        </div>
+      <div className="text-[13px] text-[#8B95A1] font-mono">
+        {color}
       </div>
     </div>
   ))}
+</div>
+
 </div>
             </div>
           ))}
