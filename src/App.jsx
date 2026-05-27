@@ -1269,6 +1269,89 @@ function ButtonPage() {
 </Card>
 
 </div>
+      {/* ICON BUTTON */}
+      <div className="mt-24">
+
+        <SectionTitle title="아이콘 버튼" />
+
+        <div className="mb-8">
+          <h3 className="text-[36px] font-bold tracking-tight mb-5">
+            Default
+          </h3>
+
+          <p className="text-[20px] leading-[1.8] text-[#4E5968] max-w-[980px]">
+            기본 아이콘 버튼은 대부분의 상황에서 사용할 수 있으며,
+            주요 액션을 강조해야 하는 경우에는 primary 버튼을 사용하는 것이 좋다.
+          </p>
+        </div>
+
+        <Card>
+
+          {/* preview */}
+          <div className="border-b border-[#E5E8EB] bg-[linear-gradient(45deg,#F8FAFC_25%,transparent_25%),linear-gradient(-45deg,#F8FAFC_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#F8FAFC_75%),linear-gradient(-45deg,transparent_75%,#F8FAFC_75%)] bg-[length:20px_20px] bg-[position:0_0,0_10px,10px_-10px,-10px_0px] h-[120px] flex items-center px-10">
+
+            <button className="w-[52px] h-[52px] rounded-[14px] border border-[#D1D5DB] bg-white flex items-center justify-center text-[24px] shadow-sm hover:bg-[#F8FAFC] transition">
+              ✎
+            </button>
+
+          </div>
+
+          {/* toolbar */}
+          <div className="h-[64px] border-b border-[#E5E8EB] flex items-center justify-between px-8 bg-white">
+
+            <div className="flex items-center gap-3 text-[18px] text-[#4B5563]">
+              <span>⚙</span>
+              <span>Styles</span>
+              <span>⌄</span>
+            </div>
+
+            <div className="flex items-center gap-10 text-[18px] text-[#4B5563]">
+
+              <button className="flex items-center gap-3 hover:text-black transition">
+                <span>Copy code</span>
+                <span>⧉</span>
+              </button>
+
+              <button className="flex items-center gap-3 hover:text-black transition">
+                <span>Edit in code sandbox</span>
+                <span>↗</span>
+              </button>
+
+            </div>
+
+          </div>
+
+          {/* code */}
+          <div className="bg-[#F8FAFC] px-10 py-10">
+
+<pre className="text-[18px] leading-[2.1] overflow-auto text-[#1F2937]">
+{`import React from 'react';
+
+import { IconButton } from '@atlaskit/button/new';
+import EditIcon from '@atlaskit/icon/core/edit';
+
+const IconButtonDefaultExample = (): React.JSX.Element => {
+  return (
+    <IconButton
+      icon={EditIcon}
+      label="Edit"
+    />
+  );
+};`}
+</pre>
+
+            <div className="mt-10 flex justify-center">
+              <button className="text-[16px] font-semibold text-[#4B5563] hover:text-black transition flex items-center gap-2">
+                SHOW MORE
+                <span>⌄</span>
+              </button>
+            </div>
+
+          </div>
+
+        </Card>
+
+      </div>
             {/* MARKUP GUIDE */}
             <div className="mt-24">
 
