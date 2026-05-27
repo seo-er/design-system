@@ -2492,7 +2492,7 @@ function MotionPage() {
 <img
   src={alertImage}
   alt="Alert interaction"
-  className="w-full rounded-[20px] border border-[#E5E8EB]"
+  className="w-[320px] rounded-[20px] border border-[#E5E8EB]"
 />
 
     </div>
