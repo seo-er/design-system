@@ -1016,25 +1016,118 @@ alert(`${hex} copied to clipboard`);
 }
 
 function PaletteColumn({ palette, dark = false }) {
-  return (
-    <div>
-      <h3 className="text-[18px] font-semibold mb-4">{palette.name}</h3>
 
-      <div className="bg-white rounded-[24px] border border-[#E5E8EB] overflow-hidden">
-        {palette.colors.map((c) => (
-          <div
-            key={`${palette.name}-${c.step}`}
-            onClick={() => copyHex(c.hex)}
-            className="h-[52px] flex items-center justify-between px-4 text-sm cursor-pointer hover:opacity-80 transition"
-            style={{ backgroundColor: c.hex }}
-          >
-            <span className={dark ? "text-white" : "text-black"}>
-  {palette.name.toLowerCase()}-{c.step}
-</span>
-            <span className={dark ? "text-gray-200" : "text-[#4E5968]"}>{c.hex}</span>
-          </div>
-        ))}
+  return (
+    <div className="bg-white border border-[#E5E8EB] rounded-[24px] overflow-hidden">
+
+      {/* header */}
+      <div className="px-6 py-5 border-b border-[#F2F4F6] bg-[#FAFBFC]">
+        <h3 className="text-[20px] font-semibold tracking-tight">
+          {palette.name}
+        </h3>
       </div>
+
+      {/* rows */}
+      <div>
+
+        {palette.colors.map((c) => {
+
+          const token =
+            `${palette.name.toLowerCase()}-${c.step}`;
+
+          return (
+            <div
+              key={token}
+              className="
+                grid
+                grid-cols-[72px_1fr_140px_180px]
+                items-center
+                gap-6
+                px-6
+                py-3
+                border-b
+                border-[#F2F4F6]
+                hover:bg-[#FAFBFC]
+                transition
+              "
+            >
+
+              {/* swatch */}
+              <button
+                onClick={() => copyHex(c.hex)}
+                className="
+                  w-12
+                  h-12
+                  rounded-xl
+                  border
+                  border-[#E5E8EB]
+                "
+                style={{
+                  backgroundColor: c.hex,
+                }}
+              />
+
+              {/* token */}
+              <button
+                onClick={() => copyHex(token)}
+                className={`
+                  text-left
+                  text-[15px]
+                  font-medium
+                  transition
+                  ${
+                    dark
+                      ? "text-[#191F28]"
+                      : "text-[#191F28]"
+                  }
+                  hover:text-[#2563EB]
+                `}
+              >
+                {token}
+              </button>
+
+              {/* hex */}
+              <button
+                onClick={() => copyHex(c.hex)}
+                className={`
+                  text-left
+                  font-mono
+                  text-[14px]
+                  transition
+                  ${
+                    dark
+                      ? "text-[#4E5968]"
+                      : "text-[#4E5968]"
+                  }
+                  hover:text-black
+                `}
+              >
+                {c.hex}
+              </button>
+
+              {/* css variable */}
+              <button
+                onClick={() =>
+                  copyHex(`var(--${token})`)
+                }
+                className="
+                  text-left
+                  font-mono
+                  text-[13px]
+                  text-[#8B95A1]
+                  hover:text-black
+                  transition
+                "
+              >
+                var(--{token})
+              </button>
+
+            </div>
+          );
+        })}
+
+      </div>
+
     </div>
   );
 }
@@ -1058,8 +1151,7 @@ function PalettePage() {
 
       <div className="mb-20">
         <h2 className="text-[28px] font-bold tracking-tight mb-8">Light Mode</h2>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid xl:grid-cols-2 gap-6 mb-12">
           {lightPalettes
             .filter((p) => p.name !== "Gray")
             .map((p) => (
@@ -1071,7 +1163,7 @@ function PalettePage() {
           <h2 className="text-[24px] font-bold tracking-tight mb-8">
             Light mode neutrals
           </h2>
-          <div className="grid md:grid-cols-1">
+          <div className="grid grid-cols-1">
             {lightPalettes
               .filter((p) => p.name === "Gray")
               .map((p) => (
@@ -1081,6 +1173,16 @@ function PalettePage() {
         </div>
       </div>
 
+
+
+      <div className="mt-24">
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">Dark Mode</h2>
+        <div className="grid xl:grid-cols-2 gap-6">
+          {darkPalettes.map((p) => (
+            <PaletteColumn key={p.name} palette={p} dark />
+          ))}
+        </div>
+      </div>
       <div className="mt-24">
         <h2 className="text-[32px] font-bold tracking-tight mb-8">
           색각이상자가 명확히 구분할 수 있는 색상
@@ -1232,15 +1334,6 @@ function PalettePage() {
 
   </div>
 </div>
-        </div>
-      </div>
-
-      <div className="mt-24">
-        <h2 className="text-[28px] font-bold tracking-tight mb-8">Dark Mode</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {darkPalettes.map((p) => (
-            <PaletteColumn key={p.name} palette={p} dark />
-          ))}
         </div>
       </div>
     </div>
