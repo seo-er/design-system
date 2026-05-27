@@ -2334,64 +2334,116 @@ function MotionPage() {
 
       </div>
       <Card>
+ {/* ALERT MOTION */}
+<Card>
   <div className="p-10">
 
-    <h3 className="text-[24px] font-bold mb-8">
-      Motion Preview
+    {/* title */}
+    <div className="mb-8">
+      <h2 className="text-[32px] font-bold tracking-tight">
+        Alert motion
+      </h2>
+
+      <p className="mt-3 text-[18px] leading-[1.8] text-[#4E5968]">
+        Overlay dissolve transition used for centered alerts and lightweight modal feedback.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+
+{/* LEFT : ANIMATION */}
+<Card>
+
+  <div className="p-8">
+
+    <h3 className="text-[32px] font-bold mb-4">
+      Alert motion
     </h3>
 
-    <div className="relative w-full h-[320px] rounded-[28px] border border-[#E5E8EB] bg-[#F8FAFC] overflow-hidden">
+    <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-8">
+      Overlay dissolve transition used for centered alerts and lightweight modal feedback.
+    </p>
 
-      {/* path */}
-      <svg
-        viewBox="0 0 800 320"
-        className="absolute inset-0 w-full h-full"
-      >
-        <path
-          d="M80 240 C 220 40, 520 40, 680 180"
-          fill="none"
-          stroke="#CBD5E1"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
+    <div className="
+      relative
+      h-[420px]
+      rounded-[28px]
+      bg-[#F8FAFC]
+      overflow-hidden
+      border
+      border-[#E5E8EB]
+    ">
 
-        <circle
-          id="motionBall"
-          cx="80"
-          cy="240"
-          r="16"
-          fill="#111827"
-        />
-      </svg>
+      {/* dim */}
+      <div
+        id="alertDim"
+        className="
+          absolute
+          inset-0
+          bg-black/0
+          transition-all
+          duration-300
+        "
+      />
 
-      {/* easing label */}
-      <div className="absolute top-6 left-6 text-[15px] text-[#6B7280]">
-        cubic-bezier(0.4,0,0,1)
-      </div>
+      {/* modal */}
+      <div
+        id="alertModal"
+        className="
+          absolute
+          left-1/2
+          top-1/2
+          w-[220px]
+          h-[280px]
+          rounded-[28px]
+          bg-white
+          border
+          border-[#E5E8EB]
+          shadow-2xl
+          opacity-0
+          scale-95
+          transition-all
+          duration-300
+        "
+        style={{
+          transform: "translate(-50%, -50%)",
+        }}
+      />
 
-      {/* play button */}
+      {/* play */}
       <button
         onClick={() => {
-          const ball =
-            document.getElementById("motionBall");
 
-          if (!ball) return;
+          const dim =
+            document.getElementById("alertDim");
 
-          ball.animate(
-            [
-              {
-                transform: "translate(0px,0px)",
-              },
-              {
-                transform: "translate(580px,-60px)",
-              },
-            ],
-            {
-              duration: 900,
-              easing: "cubic-bezier(0.4,0,0,1)",
-              fill: "forwards",
-            }
-          );
+          const modal =
+            document.getElementById("alertModal");
+
+          if (!dim || !modal) return;
+
+          dim.classList.remove("bg-black/0");
+          dim.classList.add("bg-black/25");
+
+          modal.classList.remove("opacity-0");
+          modal.classList.remove("scale-95");
+
+          modal.classList.add("opacity-100");
+          modal.classList.add("scale-100");
+
+          setTimeout(() => {
+
+            dim.classList.remove("bg-black/25");
+            dim.classList.add("bg-black/0");
+
+            modal.classList.remove("opacity-100");
+            modal.classList.remove("scale-100");
+
+            modal.classList.add("opacity-0");
+            modal.classList.add("scale-95");
+
+          }, 1200);
+
         }}
         className="
           absolute
@@ -2402,9 +2454,12 @@ function MotionPage() {
           rounded-[20px]
           bg-white
           border
-          border-[#E5E8EB]
+          border-[#D1D5DB]
           shadow-sm
           text-[24px]
+          flex
+          items-center
+          justify-center
         "
       >
         ▶
@@ -2413,6 +2468,42 @@ function MotionPage() {
     </div>
 
   </div>
+
+</Card>
+
+{/* RIGHT : FIGMA IMAGE */}
+<Card>
+
+  <div className="p-8">
+
+    <h3 className="text-[32px] font-bold mb-6">
+      Figma interaction
+    </h3>
+
+    <div className="
+      rounded-[24px]
+      overflow-hidden
+      border
+      border-[#E5E8EB]
+      bg-[#F8FAFC]
+    ">
+
+      <img
+        src="/mnt/data/621761bc-0bf2-42c9-a6b0-9d6a2b5423ae.png"
+        alt="Alert interaction"
+        className="w-full object-cover"
+      />
+
+    </div>
+
+  </div>
+
+</Card>
+
+</div>
+
+  </div>
+</Card>
 </Card>
       {/* easing */}
       <div className="mb-12">
