@@ -1243,34 +1243,6 @@ function IconPage() {
 
   return (
     <div>
-
-      <div className="mb-12">
-        <h1 className="text-[44px] font-bold tracking-tight mb-5">
-          Icon explorer
-        </h1>
-
-        <p className="text-[18px] text-[#4E5968] leading-[1.7] mb-3">
-          Search for icons, and select an icon to view usage and import details.
-        </p>
-
-        <p className="text-[18px] text-[#4E5968]">
-          For more on Atlassian icon design, see the iconography foundation.
-        </p>
-      </div>
-      {/* search */}
-      <div className="mb-12">
-
-        <div className="h-[56px] max-w-[720px] bg-white border border-[#C7CDD4] rounded-[12px] px-5 flex items-center text-[#6B7280] text-[18px]">
-          Search
-        </div>
-
-        <div className="mt-5">
-          <button className="h-[42px] px-4 rounded-[10px] border border-[#D1D5DB] bg-white text-[16px] text-[#374151]">
-            Filters 1
-          </button>
-        </div>
-
-      </div>
       {/* section title */}
       <div className="flex items-center gap-4 mb-10">
         <h2 className="text-[36px] font-bold tracking-tight">
