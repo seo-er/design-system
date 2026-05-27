@@ -1235,6 +1235,277 @@ function ButtonPage() {
         </div>
 
       </Card>
+            {/* MARKUP GUIDE */}
+            <div className="mt-24">
+
+<SectionTitle title="마크업 가이드" />
+
+<h3 className="text-[36px] font-bold tracking-tight mb-8">
+  CSS 선택자
+</h3>
+
+<div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
+
+  {/* HEADER */}
+  <div className="grid grid-cols-[180px_160px_1fr_220px] bg-[#EEF1F4] border-b border-[#D9DEE3]">
+
+    <div className="px-6 py-5 text-[20px] font-semibold">
+      필수
+    </div>
+
+    <div className="px-6 py-5 text-[20px] font-semibold">
+    </div>
+
+    <div className="px-6 py-5 text-[20px] font-semibold">
+      선택
+    </div>
+
+    <div className="px-6 py-5 text-[20px] font-semibold">
+    </div>
+
+  </div>
+
+  {/* BODY */}
+  <div className="grid grid-cols-[180px_160px_1fr_220px]">
+
+    {/* left fixed */}
+    <div className="px-6 py-10 border-r border-[#E5E8EB] text-[22px] text-[#2F3A47] flex items-center">
+      전체영역
+    </div>
+
+    <div className="px-6 py-10 border-r border-[#E5E8EB] text-[22px] text-[#2F3A47] flex items-center">
+      .krds-btn
+    </div>
+
+    {/* option table */}
+    <div className="col-span-2">
+
+      {/* 색상 */}
+      <div className="grid grid-cols-[1fr_220px] border-b border-[#E5E8EB]">
+
+        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB]">
+          색상
+        </div>
+
+        <div>
+          {[
+            ["primary", ".primary"],
+            ["secondary", ".secondary"],
+            ["tertiary", ".tertiary"],
+          ].map(([name, cls]) => (
+            <div
+              key={name}
+              className="grid grid-cols-2 border-b last:border-b-0 border-[#E5E8EB]"
+            >
+              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+                {name}
+              </div>
+
+              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+                {cls}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      {/* size */}
+      <div className="grid grid-cols-[1fr_220px] border-b border-[#E5E8EB]">
+
+        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB]">
+          사이즈
+        </div>
+
+        <div>
+          {[
+            ["더 작게", ".xsmall"],
+            ["작게", ".small"],
+            ["중간", ".medium"],
+            ["크게", ".large"],
+            ["더 크게", ".xlarge"],
+          ].map(([name, cls]) => (
+            <div
+              key={name}
+              className="grid grid-cols-2 border-b last:border-b-0 border-[#E5E8EB]"
+            >
+              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+                {name}
+              </div>
+
+              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+                {cls}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      {/* text */}
+      <div className="grid grid-cols-[1fr_220px] border-b border-[#E5E8EB]">
+
+        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB]">
+          텍스트형
+        </div>
+
+        <div className="grid grid-cols-2">
+          <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+          </div>
+
+          <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+            .text
+          </div>
+        </div>
+
+      </div>
+
+      {/* icon */}
+      <div className="grid grid-cols-[1fr_220px]">
+
+        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB] leading-[1.7]">
+          아이콘만 있는 버튼
+        </div>
+
+        <div>
+          {[
+            ["기본", ".icon"],
+            ["border 및 bg", ".icon.border"],
+          ].map(([name, cls]) => (
+            <div
+              key={name}
+              className="grid grid-cols-2 border-b last:border-b-0 border-[#E5E8EB]"
+            >
+              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+                {name}
+              </div>
+
+              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
+                {cls}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+            {/* ACCESSIBILITY */}
+            <div className="mt-24">
+
+<SectionTitle title="접근성" />
+
+{/* button role */}
+<Card>
+
+  <div className="p-10">
+
+    <h3 className="text-[32px] font-bold tracking-tight leading-[1.5] mb-8">
+      버튼으로 작동하는 모든 요소는
+      스크린 리더에서 버튼으로 인지될 수 있도록 한다.
+    </h3>
+
+    <p className="text-[20px] leading-[1.9] text-[#374151] max-w-[1050px]">
+      {"<button>"} 대신 불가피하게 다른 태그를 사용해야 하는 경우
+      <code className="mx-2 px-2 py-1 rounded bg-[#F3F4F6] text-[18px]">
+        role="button"
+      </code>
+      을 사용하여 스크린 리더에서 요소의 역할이 버튼으로
+      인식될 수 있도록 해야 한다.
+    </p>
+
+    <ul className="mt-10 space-y-4 text-[20px] text-[#4B5563]">
+      <li className="flex items-start gap-4">
+        <span>•</span>
+        <span>WCAG 2.1 Name, Role, Value (A)</span>
+      </li>
+    </ul>
+
+  </div>
+
+</Card>
+
+{/* target size */}
+<Card>
+
+  <div className="p-10">
+
+    <h3 className="text-[32px] font-bold tracking-tight leading-[1.5] mb-8">
+      버튼을 적합한 크기로 제공한다.
+    </h3>
+
+    <p className="text-[20px] leading-[1.9] text-[#374151] max-w-[1100px]">
+      클릭, 터치 영역을 정교하게 조작하기 어려운 사용자를 고려하여,
+      마우스 상호작용에 대해서는 17px × 17px,
+      터치 상호작용에 대해서는 44px × 44px 이상의 영역에서
+      반응할 수 있는 컨트롤 크기를 사용할 것을 권장한다.
+    </p>
+
+    <ul className="mt-10 space-y-4 text-[20px] text-[#4B5563]">
+      <li className="flex items-start gap-4">
+        <span>•</span>
+        <span>KWCAG 2.2 조작 가능</span>
+      </li>
+
+      <li className="flex items-start gap-4">
+        <span>•</span>
+        <span>WCAG 2.1 Target Size (AAA)</span>
+      </li>
+    </ul>
+
+  </div>
+
+</Card>
+
+{/* keyboard navigation */}
+<div className="mt-20">
+
+  <h3 className="text-[36px] font-bold tracking-tight mb-8">
+    탐색
+  </h3>
+
+  <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
+
+    {/* header */}
+    <div className="grid grid-cols-[180px_1fr] bg-[#EEF1F4] border-b border-[#D9DEE3]">
+
+      <div className="px-6 py-5 text-[20px] font-semibold">
+        구분
+      </div>
+
+      <div className="px-6 py-5 text-[20px] font-semibold">
+        설명
+      </div>
+
+    </div>
+
+    {/* row */}
+    <div className="grid grid-cols-[180px_1fr]">
+
+      <div className="px-6 py-8 border-r border-[#E5E8EB] text-[22px] leading-[1.8] text-[#2F3A47]">
+        Tab,
+        <br />
+        Shift + Tab
+      </div>
+
+      <div className="px-6 py-8 text-[22px] leading-[1.8] text-[#2F3A47]">
+        모든 버튼은 Tab, Shift + Tab 키를 눌렀을 때
+        접근할 수 있어야 한다.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
 
     </div>
   );
