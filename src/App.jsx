@@ -131,7 +131,7 @@ export default function App() {
             {menu === "grid" && <GridPage />}
             {menu === "palette" && <PalettePage />}
             {menu === "button" && <ButtonPage />}
-            {menu === "icons" && <IconsPage />}
+            {menu === "icons" && <IconPage />}
           </div>
         </main>
 
