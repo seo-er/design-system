@@ -1238,6 +1238,9 @@ export default LinkButtonDefaultExample;`}
 }
 
 function IconPage() {
+
+  const [selectedIcon, setSelectedIcon] = useState(null);
+
   return (
     <div>
 
@@ -1291,28 +1294,182 @@ function IconPage() {
         </span>
       </div>
 
-      {/* icon grid */}
-      <div className="grid grid-cols-5 gap-y-14">
+      <div className="grid grid-cols-[1fr_360px] gap-8 items-start">
 
-        {iconItems.map((item) => (
-          <div
-            key={item}
-            className="flex flex-col items-center text-center cursor-pointer hover:opacity-70 transition"
-          >
+{/* LEFT */}
+<div>
 
-            {/* icon */}
-            <div className="w-[56px] h-[56px] rounded-[14px] bg-white border border-[#E5E8EB] flex items-center justify-center text-[22px] mb-4">
-              ✦
+  {/* section title */}
+  <div className="flex items-center gap-4 mb-10">
+    <h2 className="text-[36px] font-bold tracking-tight">
+      Core
+    </h2>
+
+    <span className="text-[24px] text-[#6B7280]">
+      @atlaskit/icon/core
+    </span>
+  </div>
+
+  {/* icon grid */}
+  <div className="grid grid-cols-4 gap-y-14">
+
+    {iconItems.map((item) => (
+      <button
+        key={item}
+        onClick={() => setSelectedIcon(item)}
+        className={`
+          flex flex-col items-center text-center transition
+          hover:opacity-70
+          rounded-[18px]
+          p-3
+          ${
+            selectedIcon === item
+              ? "bg-[#EDEFF2]"
+              : ""
+          }
+        `}
+      >
+
+        {/* icon */}
+        <div className="w-[56px] h-[56px] rounded-[14px] bg-white border border-[#E5E8EB] flex items-center justify-center text-[22px] mb-4">
+          ✦
+        </div>
+
+        {/* text */}
+        <div className="text-[18px] text-[#374151] leading-[1.5]">
+          {item}
+        </div>
+
+      </button>
+    ))}
+
+  </div>
+</div>
+
+{/* RIGHT PANEL */}
+<div className="sticky top-8">
+
+  <div className="bg-white border border-[#E5E8EB] rounded-[20px] overflow-hidden">
+
+    {/* top preview */}
+    <div className="h-[120px] border-b border-[#E5E8EB] flex items-center justify-center text-[40px]">
+      {selectedIcon ? "✦" : "+"}
+    </div>
+
+    {selectedIcon ? (
+      <>
+
+        {/* content */}
+        <div className="p-8">
+
+          <div className="flex items-center gap-3 mb-5">
+            <h3 className="text-[28px] font-bold">
+              {selectedIcon}
+            </h3>
+
+            <span className="px-3 py-1 rounded-full border border-[#C084FC] text-[#6B21A8] text-[14px]">
+              Single purpose
+            </span>
+          </div>
+
+          <p className="text-[18px] leading-[1.7] text-[#4E5968] mb-8">
+            Reserved for creating and adding an object.
+          </p>
+
+          {/* tags */}
+          <div className="flex flex-wrap gap-2 mb-10">
+            {["add", "plus", "create", "icon"].map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 rounded-lg border border-[#D1D5DB] text-[14px] text-[#4B5563]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* maintained */}
+          <div className="mb-10">
+            <div className="text-[15px] font-semibold mb-2">
+              Maintained by
             </div>
 
-            {/* text */}
-            <div className="text-[18px] text-[#374151] leading-[1.5]">
-              {item}
+            <div className="text-[18px] text-[#4E5968]">
+              Design System Team
             </div>
           </div>
-        ))}
 
+        </div>
+
+        {/* react */}
+        <div className="border-t border-[#E5E8EB] p-8">
+
+          <div className="text-[15px] font-semibold mb-4">
+            React
+          </div>
+
+          <div className="bg-[#F4F5F7] rounded-[12px] p-5 text-[15px] leading-[1.7] text-[#4B5563] overflow-auto">
+{`import ${selectedIcon.replace(/\s/g, "")}Icon from
+'@atlaskit/icon/core/${selectedIcon.toLowerCase().replace(/\s/g, "-")}';`}
+          </div>
+
+        </div>
+
+        {/* sizes */}
+        <div className="border-t border-[#E5E8EB] p-8">
+
+          <div className="text-[15px] font-semibold mb-5">
+            Sizes
+          </div>
+
+          <div className="space-y-4">
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <span className="text-[22px]">+</span>
+
+                <span className="px-2 py-1 rounded bg-[#F3F4F6] text-[14px]">
+                  Small
+                </span>
+              </div>
+
+              <span>⧉</span>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <span className="text-[22px]">+</span>
+
+                <span className="px-2 py-1 rounded bg-[#F3F4F6] text-[14px]">
+                  Medium
+                </span>
+
+                <span className="px-2 py-1 rounded border border-[#9CA3AF] text-[12px]">
+                  RECOMMENDED
+                </span>
+              </div>
+
+              <span>⧉</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </>
+    ) : (
+
+      <div className="h-[240px] flex items-center justify-center text-[#6B7280] text-[18px]">
+        Select an icon for details
       </div>
+
+    )}
+
+  </div>
+
+</div>
+
+</div>
 
     </div>
   );
