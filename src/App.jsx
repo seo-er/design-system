@@ -1243,19 +1243,7 @@ function IconPage() {
 
   return (
     <div>
-      {/* section title */}
-      <div className="flex items-center gap-4 mb-10">
-        <h2 className="text-[36px] font-bold tracking-tight">
-          Core
-        </h2>
-
-        <span className="text-[24px] text-[#6B7280]">
-          @atlaskit/icon/core
-        </span>
-      </div>
-
       <div className="grid grid-cols-[1fr_360px] gap-8 items-start">
-
 {/* LEFT */}
 <div>
 
