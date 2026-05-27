@@ -2147,26 +2147,52 @@ function IconPage() {
 {/* play */}
 <button
   onClick={() => {
-    const circle =
-      document.querySelector(".motion-circle");
 
-    if (!circle) return;
+    const path =
+      document.getElementById("easeOutPath");
 
-    circle.animate(
-      [
-        {
-          transform: "translate(0px,0px)",
-        },
-        {
-          transform: "translate(220px,-140px)",
-        },
-      ],
-      {
-        duration: 300,
-        easing: "cubic-bezier(0.4,0,0,1)",
+    const ball =
+      document.getElementById("easeOutBall");
+
+    if (!path || !ball) return;
+
+    const pathLength =
+      path.getTotalLength();
+
+    const duration = 1200;
+
+    const startTime =
+      performance.now();
+
+    function animate(now) {
+
+      const elapsed =
+        now - startTime;
+
+      const progress =
+        Math.min(elapsed / duration, 1);
+
+      // ease-out
+      const eased =
+        1 - Math.pow(1 - progress, 3);
+
+      const point =
+        path.getPointAtLength(
+          pathLength * eased
+        );
+
+      ball.setAttribute("cx", point.x);
+      ball.setAttribute("cy", point.y);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
       }
-    );
+    }
+
+    requestAnimationFrame(animate);
+
   }}
+
   className="
     absolute
     right-5
@@ -2549,21 +2575,20 @@ function MotionPage() {
             viewBox="0 0 300 180"
             className="absolute inset-0 w-full h-full"
           >
-            <path
-              d="M40 140 C40 20, 220 20, 220 20"
-              stroke="#D1D5DB"
-              strokeWidth="2"
-              fill="none"
-            />
+           <path
+  id="easeOutPath"
+  d="M80 240 C 120 70, 320 40, 560 60"
+  fill="none"
+  stroke="#D1D5DB"
+  strokeWidth="5"
+  strokeLinecap="round"
+/>
 
-            <circle r="6" fill="#111827">
-              <animateMotion
-                dur="700ms"
-                begin={curve1 ? "0s" : "indefinite"}
-                fill="freeze"
-                path="M40 140 C40 20, 220 20, 220 20"
-              />
-            </circle>
+<circle
+  id="easeOutBall"
+  r="12"
+  fill="#0F172A"
+/>
           </svg>
 
             <button
