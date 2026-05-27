@@ -2110,7 +2110,7 @@ function IconPage() {
   <div className="p-8">
 
     <img
-      src="/images/motion/Alert.png"
+      src="/Alert.png"
       alt="Alert interaction spec"
       className="
         w-full
@@ -2119,7 +2119,74 @@ function IconPage() {
         border-[#E5E8EB]
       "
     />
+<div className="relative mt-6 h-[260px] rounded-[24px] bg-[#F8FAFC] overflow-hidden border border-[#E5E8EB]">
 
+{/* curve */}
+<svg
+  viewBox="0 0 320 220"
+  className="absolute inset-0 w-full h-full"
+>
+  <path
+    d="M40 180 C 60 60, 180 40, 260 40"
+    fill="none"
+    stroke="#D1D5DB"
+    strokeWidth="3"
+    strokeLinecap="round"
+  />
+
+  <circle
+    className="motion-circle"
+    cx="40"
+    cy="180"
+    r="10"
+    fill="#111827"
+  />
+</svg>
+
+{/* play */}
+<button
+  onClick={() => {
+    const circle =
+      document.querySelector(".motion-circle");
+
+    if (!circle) return;
+
+    circle.animate(
+      [
+        {
+          transform: "translate(0px,0px)",
+        },
+        {
+          transform: "translate(220px,-140px)",
+        },
+      ],
+      {
+        duration: 300,
+        easing: "cubic-bezier(0.4,0,0,1)",
+      }
+    );
+  }}
+  className="
+    absolute
+    right-5
+    bottom-5
+    w-[52px]
+    h-[52px]
+    rounded-[16px]
+    bg-white
+    border
+    border-[#D1D5DB]
+    shadow-sm
+    flex
+    items-center
+    justify-center
+    text-[20px]
+  "
+>
+  ▶
+</button>
+
+</div>
   </div>
 
 </div>
@@ -2266,7 +2333,87 @@ function MotionPage() {
         </div>
 
       </div>
+      <Card>
+  <div className="p-10">
 
+    <h3 className="text-[24px] font-bold mb-8">
+      Motion Preview
+    </h3>
+
+    <div className="relative w-full h-[320px] rounded-[28px] border border-[#E5E8EB] bg-[#F8FAFC] overflow-hidden">
+
+      {/* path */}
+      <svg
+        viewBox="0 0 800 320"
+        className="absolute inset-0 w-full h-full"
+      >
+        <path
+          d="M80 240 C 220 40, 520 40, 680 180"
+          fill="none"
+          stroke="#CBD5E1"
+          strokeWidth="6"
+          strokeLinecap="round"
+        />
+
+        <circle
+          id="motionBall"
+          cx="80"
+          cy="240"
+          r="16"
+          fill="#111827"
+        />
+      </svg>
+
+      {/* easing label */}
+      <div className="absolute top-6 left-6 text-[15px] text-[#6B7280]">
+        cubic-bezier(0.4,0,0,1)
+      </div>
+
+      {/* play button */}
+      <button
+        onClick={() => {
+          const ball =
+            document.getElementById("motionBall");
+
+          if (!ball) return;
+
+          ball.animate(
+            [
+              {
+                transform: "translate(0px,0px)",
+              },
+              {
+                transform: "translate(580px,-60px)",
+              },
+            ],
+            {
+              duration: 900,
+              easing: "cubic-bezier(0.4,0,0,1)",
+              fill: "forwards",
+            }
+          );
+        }}
+        className="
+          absolute
+          right-6
+          bottom-6
+          w-[64px]
+          h-[64px]
+          rounded-[20px]
+          bg-white
+          border
+          border-[#E5E8EB]
+          shadow-sm
+          text-[24px]
+        "
+      >
+        ▶
+      </button>
+
+    </div>
+
+  </div>
+</Card>
       {/* easing */}
       <div className="mb-12">
 
