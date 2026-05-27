@@ -48,7 +48,7 @@ const spacingRows = [
 ];
 
 export default function App() {
-  const [menu, setMenu] = useState("tokens");
+  const [menu, setMenu] = useState("palette");
 
   return (
     <div className="flex h-screen bg-[#F9FAFB] text-[#191F28]">
@@ -66,42 +66,143 @@ export default function App() {
         </div>
 
         <div className="flex-1 overflow-auto px-4 py-6">
-          <div className="mb-8">
-            <div className="text-xs font-semibold text-[#8B95A1] uppercase mb-3 px-2">
-              Foundations
-            </div>
+        <div className="space-y-8">
 
-            <div className="space-y-1">
-              <MenuItem active={menu === "tokens"} onClick={() => setMenu("tokens")}>
-                Design Tokens
-              </MenuItem>
+{/* FOUNDATION */}
+<div className="bg-[#F3F5F8] rounded-[24px] p-4">
 
-              <MenuItem active={menu === "typography"} onClick={() => setMenu("typography")}>
-                Typography
-              </MenuItem>
+  <div className="flex items-center justify-between mb-4 px-2">
+    <h3 className="text-[20px] font-semibold text-[#2563EB]">
+      Foundation
+    </h3>
 
-              <MenuItem active={menu === "spacing"} onClick={() => setMenu("spacing")}>
-                Spacing
-              </MenuItem>
+    <span className="text-[22px] text-[#6B7280]">
+      ⌄
+    </span>
+  </div>
 
-              <MenuItem active={menu === "grid"} onClick={() => setMenu("grid")}>
-                Grid
-              </MenuItem>
+  <div className="space-y-1">
 
-              <MenuItem active={menu === "palette"} onClick={() => setMenu("palette")}>
-                Palette
-              </MenuItem>
-              <MenuItem active={menu === "button"} onClick={() => setMenu("button")}>
-                Button
-              </MenuItem>
-              <MenuItem active={menu === "icons"} onClick={() => setMenu("icons")}>
-                Icons
-              </MenuItem>
-              <MenuItem active={menu === "motion"} onClick={() => setMenu("motion")}>
-              Motion
-            </MenuItem>
-            </div>
-          </div>
+    <MenuItem
+      active={menu === "palette"}
+      onClick={() => setMenu("palette")}
+    >
+      Colors
+    </MenuItem>
+
+    <MenuItem
+      active={menu === "icons"}
+      onClick={() => setMenu("icons")}
+    >
+      Icons
+    </MenuItem>
+
+    <MenuItem
+      active={menu === "typography"}
+      onClick={() => setMenu("typography")}
+    >
+      Typography
+    </MenuItem>
+
+    <MenuItem
+      active={menu === "spacing"}
+      onClick={() => setMenu("spacing")}
+    >
+      Spacing
+    </MenuItem>
+
+    <MenuItem
+      active={menu === "grid"}
+      onClick={() => setMenu("grid")}
+    >
+      Grid
+    </MenuItem>
+
+  </div>
+
+</div>
+
+{/* COMPONENTS */}
+<div className="bg-[#F3F5F8] rounded-[24px] p-4">
+
+  <div className="flex items-center justify-between mb-4 px-2">
+    <h3 className="text-[20px] font-semibold text-[#2563EB]">
+      Components
+    </h3>
+
+    <span className="text-[22px] text-[#6B7280]">
+      ⌄
+    </span>
+  </div>
+
+  <div className="space-y-1">
+
+    <MenuItem
+      active={menu === "button"}
+      onClick={() => setMenu("button")}
+    >
+      Button
+    </MenuItem>
+
+  </div>
+
+</div>
+
+{/* MOTION */}
+<div className="bg-[#F3F5F8] rounded-[24px] p-4">
+
+  <div className="flex items-center justify-between px-2">
+    <button
+      onClick={() => setMenu("motion")}
+      className={`
+        text-[20px]
+        font-semibold
+        transition
+        ${
+          menu === "motion"
+            ? "text-[#2563EB]"
+            : "text-[#374151]"
+        }
+      `}
+    >
+      Motion
+    </button>
+
+    <span className="text-[22px] text-[#6B7280]">
+      ⌄
+    </span>
+  </div>
+
+</div>
+
+{/* ADVERTISING */}
+<div className="bg-[#F3F5F8] rounded-[24px] p-4">
+
+  <div className="flex items-center justify-between px-2">
+    <button
+      onClick={() => setMenu("advertising")}
+      className={`
+        text-[20px]
+        font-semibold
+        transition
+        ${
+          menu === "advertising"
+            ? "text-[#2563EB]"
+            : "text-[#374151]"
+        }
+      `}
+    >
+      Advertising
+    </button>
+
+    <span className="text-[22px] text-[#6B7280]">
+      ⌄
+    </span>
+  </div>
+
+</div>
+
+</div>
         </div>
 
         <div className="border-t border-[#F2F4F6] px-6 py-5">
@@ -136,6 +237,7 @@ export default function App() {
             {menu === "button" && <ButtonPage />}
             {menu === "icons" && <IconPage />}
             {menu === "motion" && <MotionPage />}
+            {menu === "advertising" && <AdvertisingPage />}
           </div>
         </main>
 
@@ -1974,25 +2076,26 @@ function MotionPage() {
 
           <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
 
-            <svg
-              viewBox="0 0 300 180"
-              className="absolute inset-0 w-full h-full"
-            >
-              <path
-                d="M40 140 C40 20, 220 20, 220 20"
-                stroke="#D1D5DB"
-                strokeWidth="2"
-                fill="none"
-              />
+          <svg
+            viewBox="0 0 300 180"
+            className="absolute inset-0 w-full h-full"
+          >
+            <path
+              d="M40 140 C40 20, 220 20, 220 20"
+              stroke="#D1D5DB"
+              strokeWidth="2"
+              fill="none"
+            />
 
-              <circle
-                cx={curve1 ? "220" : "40"}
-                cy={curve1 ? "20" : "140"}
-                r="6"
-                fill="#111827"
-                className="transition-all duration-700"
+            <circle r="6" fill="#111827">
+              <animateMotion
+                dur="700ms"
+                begin={curve1 ? "0s" : "indefinite"}
+                fill="freeze"
+                path="M40 140 C40 20, 220 20, 220 20"
               />
-            </svg>
+            </circle>
+          </svg>
 
             <button
               onClick={() => replay(setCurve1)}
@@ -2027,25 +2130,26 @@ function MotionPage() {
 
           <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
 
-            <svg
-              viewBox="0 0 300 180"
-              className="absolute inset-0 w-full h-full"
-            >
-              <path
-                d="M40 140 C90 140, 90 20, 220 20"
-                stroke="#D1D5DB"
-                strokeWidth="2"
-                fill="none"
-              />
+          <svg
+            viewBox="0 0 300 180"
+            className="absolute inset-0 w-full h-full"
+          >
+            <path
+              d="M40 140 C90 140, 90 20, 220 20"
+              stroke="#D1D5DB"
+              strokeWidth="2"
+              fill="none"
+            />
 
-              <circle
-                cx={curve2 ? "220" : "40"}
-                cy={curve2 ? "20" : "140"}
-                r="6"
-                fill="#111827"
-                className="transition-all duration-1000"
+            <circle r="6" fill="#111827">
+              <animateMotion
+                dur="1000ms"
+                begin={curve2 ? "0s" : "indefinite"}
+                fill="freeze"
+                path="M40 140 C90 140, 90 20, 220 20"
               />
-            </svg>
+            </circle>
+          </svg>
 
             <button
               onClick={() => replay(setCurve2)}
@@ -2077,6 +2181,16 @@ function MotionPage() {
 
       </div>
 
+    </div>
+  );
+}
+
+function AdvertisingPage() {
+  return (
+    <div>
+      <h1 className="text-[44px] font-bold tracking-tight">
+        Advertising
+      </h1>
     </div>
   );
 }
