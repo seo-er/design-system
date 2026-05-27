@@ -1834,10 +1834,83 @@ const IconButtonDefaultExample = (): React.JSX.Element => {
 }
 function IconPage() {
 
-  const [selectedIcon, setSelectedIcon] = useState(null);
+  const [selectedIcon, setSelectedIcon] = useState("Accessibility");
+const [disabledPreview, setDisabledPreview] = useState(false);
 
   return (
     <div>
+      {/* ICON SIZE */}
+<div className="mb-20">
+
+<h2 className="text-[36px] font-bold tracking-tight mb-10">
+  아이콘 크기
+</h2>
+
+<div className="bg-white border border-[#E5E8EB] rounded-[28px] p-10">
+
+  {/* size preview */}
+  <div className="flex items-end gap-10 mb-12">
+
+    {[
+      { size: 16 },
+      { size: 20 },
+      { size: 24 },
+      { size: 32 },
+      { size: 40 },
+    ].map((item) => (
+
+      <div
+        key={item.size}
+        className="flex flex-col items-center"
+      >
+
+        <div
+          className="
+            border-[3px]
+            border-[#E9B8C4]
+            bg-[#FFF5F7]
+            rounded-sm
+          "
+          style={{
+            width: item.size,
+            height: item.size,
+          }}
+        />
+
+        <div className="mt-5 flex items-center gap-2 text-[#8B95A1]">
+
+          <div className="w-4 h-px bg-[#9CA3AF]" />
+
+          <span className="text-[18px]">
+            {item.size}
+          </span>
+
+          <div className="w-4 h-px bg-[#9CA3AF]" />
+
+        </div>
+
+      </div>
+
+    ))}
+
+  </div>
+
+  {/* guide */}
+  <div className="bg-[#F8FAFC] rounded-[14px] h-[52px] flex items-center justify-center gap-3 text-[#4B5563]">
+
+    <span className="w-5 h-5 rounded-full bg-[#4B5563] text-white flex items-center justify-center text-[12px]">
+      i
+    </span>
+
+    <span className="text-[16px]">
+      4 또는 8의 배수 사이즈를 권장함
+    </span>
+
+  </div>
+
+</div>
+
+</div>
       <div className="grid grid-cols-[1fr_360px] gap-8 items-start">
 {/* LEFT */}
 <div>
@@ -1894,10 +1967,84 @@ function IconPage() {
 
   <div className="bg-white border border-[#E5E8EB] rounded-[20px] overflow-hidden">
 
-    {/* top preview */}
-    <div className="h-[120px] border-b border-[#E5E8EB] flex items-center justify-center text-[40px]">
-      {selectedIcon ? "✦" : "+"}
-    </div>
+   {/* top preview */}
+<div className="border-b border-[#E5E8EB] bg-white p-10">
+
+{/* icon name */}
+<div className="flex items-center gap-4 mb-8">
+
+  <div className={`
+    text-[28px]
+    transition
+    ${
+      disabledPreview
+        ? "opacity-30"
+        : "opacity-100"
+    }
+  `}>
+    ◆
+  </div>
+
+  <div className={`
+    text-[22px]
+    font-medium
+    text-[#4F46E5]
+    transition
+    ${
+      disabledPreview
+        ? "opacity-40"
+        : ""
+    }
+  `}>
+    icon-26-up-fill
+  </div>
+
+</div>
+
+{/* true false toggle */}
+<div className="flex items-center gap-3">
+
+  <button
+    onClick={() => setDisabledPreview(false)}
+    className={`
+      px-4
+      py-1.5
+      rounded-lg
+      text-[16px]
+      font-medium
+      transition
+      ${
+        !disabledPreview
+          ? "bg-[#E5E7EB] text-black"
+          : "bg-[#F8FAFC] text-[#6B7280]"
+      }
+    `}
+  >
+    true
+  </button>
+
+  <button
+    onClick={() => setDisabledPreview(true)}
+    className={`
+      px-4
+      py-1.5
+      rounded-lg
+      text-[16px]
+      font-medium
+      transition
+      ${
+        disabledPreview
+          ? "bg-[#E5E7EB] text-black"
+          : "bg-[#F8FAFC] text-[#6B7280]"
+      }
+    `}
+  >
+    false
+  </button>
+
+</div>
+
+</div>
 
     {selectedIcon ? (
       <>
