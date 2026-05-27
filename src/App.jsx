@@ -1002,6 +1002,94 @@ function PalettePage() {
             </div>
           ))}
         </div>
+        {/* 색각이상 주의사항 */}
+<div className="mt-12 bg-white border border-[#E5E8EB] rounded-[24px] p-8">
+  <h3 className="text-[22px] font-bold tracking-tight text-[#191F28] mb-6">
+    색상 사용 시 주의사항
+  </h3>
+
+  <div className="space-y-10">
+
+    {/* RED */}
+    <div>
+      <p className="text-[17px] leading-[1.7] text-[#4E5968] mb-5">
+        <strong className="text-[#191F28]">빨간색</strong>은
+        초록색 또는 갈색과 혼동될 수 있으므로
+        주황 계열로 채도를 변경하는 것이 좋습니다.
+      </p>
+
+      <div className="flex items-center gap-6">
+
+        <div className="flex overflow-hidden rounded-2xl shadow-sm border border-[#E5E8EB]">
+          <div className="w-[220px] h-[92px] bg-[#FF0000] flex flex-col items-center justify-center">
+            <span className="text-[18px] font-semibold text-black">
+              Red
+            </span>
+
+            <span className="text-[16px] text-black mt-1">
+              #FF0000
+            </span>
+          </div>
+
+          <div className="w-[76px] h-[92px] bg-[#A3A3A3] flex items-center justify-center text-white text-[28px]">
+            →
+          </div>
+
+          <div className="w-[220px] h-[92px] bg-[#D55E00] flex flex-col items-center justify-center">
+            <span className="text-[18px] font-semibold text-white">
+              Vermilion
+            </span>
+
+            <span className="text-[16px] text-white mt-1">
+              #D55E00
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {/* GREEN */}
+    <div>
+      <p className="text-[17px] leading-[1.7] text-[#4E5968] mb-5">
+        <strong className="text-[#191F28]">초록색</strong>은
+        빨간색 또는 갈색과 혼동될 수 있으므로
+        청록 계열로 채도를 변경하는 것이 좋습니다.
+      </p>
+
+      <div className="flex items-center gap-6">
+
+        <div className="flex overflow-hidden rounded-2xl shadow-sm border border-[#E5E8EB]">
+          <div className="w-[220px] h-[92px] bg-[#00FF00] flex flex-col items-center justify-center">
+            <span className="text-[18px] font-semibold text-black">
+              Green
+            </span>
+
+            <span className="text-[16px] text-black mt-1">
+              #00FF00
+            </span>
+          </div>
+
+          <div className="w-[76px] h-[92px] bg-[#A3A3A3] flex items-center justify-center text-white text-[28px]">
+            →
+          </div>
+
+          <div className="w-[220px] h-[92px] bg-[#009E73] flex flex-col items-center justify-center">
+            <span className="text-[18px] font-semibold text-white">
+              Bluish Green
+            </span>
+
+            <span className="text-[16px] text-white mt-1">
+              #009E73
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
       </div>
 
       <div className="mt-24">
