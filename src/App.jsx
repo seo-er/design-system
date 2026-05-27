@@ -1002,7 +1002,33 @@ function PalettePage() {
             </div>
           ))}
         </div>
-        {/* 색각이상 주의사항 */}
+      </div>
+
+      <div className="mt-24">
+        <h2 className="text-[32px] font-bold tracking-tight mb-8">
+          색각이상자가 구분하기 어려운 조합
+        </h2>
+        <div className="bg-[#F2F4F6] rounded-[28px] p-10">
+          {accessibilityBad.map((section) => (
+            <div key={section.title} className="mb-10 last:mb-0">
+              <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
+              <div className="flex flex-wrap gap-4">
+                {Array.from({ length: section.colors.length / 2 }).map((_, i) => (
+                  <div key={i} className="flex overflow-hidden rounded-xl">
+                    <div
+                      className="w-[78px] h-[52px]"
+                      style={{ background: section.colors[i * 2][1] }}
+                    />
+                    <div
+                      className="w-[78px] h-[52px]"
+                      style={{ background: section.colors[i * 2 + 1][1] }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          {/* 색각이상 주의사항 */}
 <div className="mt-12 bg-white border border-[#E5E8EB] rounded-[24px] p-8">
   <h3 className="text-[22px] font-bold tracking-tight text-[#191F28] mb-6">
     색상 사용 시 주의사항
@@ -1090,32 +1116,6 @@ function PalettePage() {
 
   </div>
 </div>
-      </div>
-
-      <div className="mt-24">
-        <h2 className="text-[32px] font-bold tracking-tight mb-8">
-          색각이상자가 구분하기 어려운 조합
-        </h2>
-        <div className="bg-[#F2F4F6] rounded-[28px] p-10">
-          {accessibilityBad.map((section) => (
-            <div key={section.title} className="mb-10 last:mb-0">
-              <h3 className="text-[22px] font-semibold mb-6">{section.title}</h3>
-              <div className="flex flex-wrap gap-4">
-                {Array.from({ length: section.colors.length / 2 }).map((_, i) => (
-                  <div key={i} className="flex overflow-hidden rounded-xl">
-                    <div
-                      className="w-[78px] h-[52px]"
-                      style={{ background: section.colors[i * 2][1] }}
-                    />
-                    <div
-                      className="w-[78px] h-[52px]"
-                      style={{ background: section.colors[i * 2 + 1][1] }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
