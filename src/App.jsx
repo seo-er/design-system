@@ -1340,23 +1340,27 @@ function PalettePage() {
   );
 }
 const iconItems = [
-  "Accessibility",
-  "Add",
-  "Ai agent",
-  "Ai chat",
-  "Alert",
-  "Align image center",
-  "Align image left",
-  "Align image right",
-  "Align text center",
-  "Align text left",
-  "Align text right",
-  "Api",
-  "App",
-  "Apps",
-  "Archive box",
+  { label: "Accessibility", slug: "accessibility", hasFalse: true },
+  { label: "Add", slug: "add", hasFalse: true },
+  { label: "Ai agent", slug: "ai-agent", hasFalse: false },
+  { label: "Ai chat", slug: "ai-chat", hasFalse: false },
+  { label: "Alert", slug: "alert", hasFalse: true },
+  { label: "Align image center", slug: "align-image-center", hasFalse: true },
+  { label: "Align image left", slug: "align-image-left", hasFalse: true },
+  { label: "Align image right", slug: "align-image-right", hasFalse: true },
+  { label: "Align text center", slug: "align-text-center", hasFalse: true },
+  { label: "Align text left", slug: "align-text-left", hasFalse: true },
+  { label: "Align text right", slug: "align-text-right", hasFalse: true },
+  { label: "Api", slug: "api", hasFalse: false },
+  { label: "App", slug: "app", hasFalse: true },
+  { label: "Apps", slug: "apps", hasFalse: true },
+  { label: "Archive box", slug: "archive-box", hasFalse: true },
 ];
 function ButtonPage() {
+  const [sizeTab, setSizeTab] = useState("design");
+  const [hierarchyTab, setHierarchyTab] = useState("design");
+  const [emphasisButtonTab, setEmphasisButtonTab] = useState("design");
+  const [iconButtonTab, setIconButtonTab] = useState("design");
 
   return (
     <div>
@@ -1391,53 +1395,95 @@ function ButtonPage() {
       </p>
 
       <Card>
-
-        {/* PREVIEW */}
-        <div className="p-10 border-b border-[#E5E8EB] bg-[#FAFBFC]">
-
-          <div className="flex items-center gap-5 flex-wrap">
-
-            <button className="h-[46px] px-5 rounded-[14px] bg-[#3579F6] text-white text-[18px] font-semibold">
-              Small
+        <div className="p-4 border-b border-[#E5E8EB] bg-white">
+          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+            <button
+              onClick={() => setSizeTab("design")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+                sizeTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+              }`}
+            >
+              Design
             </button>
-
-            <button className="h-[54px] px-7 rounded-[16px] bg-[#3579F6] text-white text-[20px] font-semibold">
-              Medium
+            <button
+              onClick={() => setSizeTab("code")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+                sizeTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+              }`}
+            >
+              Code
             </button>
-
-            <button className="h-[64px] px-9 rounded-[18px] bg-[#3579F6] text-white text-[24px] font-semibold">
-              Large
-            </button>
-
-            <button className="h-[74px] px-11 rounded-[20px] bg-[#3579F6] text-white text-[28px] font-semibold">
-              XLarge
-            </button>
-
           </div>
-
         </div>
 
-        {/* CODE */}
-        <div className="bg-[#031B34] p-10 relative overflow-auto">
+        {sizeTab === "design" ? (
+          <div className="p-10 bg-[#FAFBFC]">
+           <div className="flex items-start gap-8 flex-wrap">
 
-          <div className="absolute top-6 right-6 w-11 h-11 rounded-xl bg-[#0A2747] flex items-center justify-center text-white text-[20px]">
-            ⧉
+{/* SMALL */}
+<div className="flex flex-col gap-3">
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-small
+  </div>
+
+  <button className="h-[46px] px-5 rounded-[14px] bg-[#3579F6] text-white text-[18px] font-semibold">
+    Small
+  </button>
+</div>
+
+{/* MEDIUM */}
+<div className="flex flex-col gap-3">
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-medium
+  </div>
+
+  <button className="h-[54px] px-7 rounded-[16px] bg-[#3579F6] text-white text-[20px] font-semibold">
+    Medium
+  </button>
+</div>
+
+{/* LARGE */}
+<div className="flex flex-col gap-3">
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-large
+  </div>
+
+  <button className="h-[64px] px-9 rounded-[18px] bg-[#3579F6] text-white text-[24px] font-semibold">
+    Large
+  </button>
+</div>
+
+{/* XLARGE */}
+<div className="flex flex-col gap-3">
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-xlarge
+  </div>
+
+  <button className="h-[74px] px-11 rounded-[20px] bg-[#3579F6] text-white text-[28px] font-semibold">
+    XLarge
+  </button>
+</div>
+
+</div>
           </div>
-
-          <div className="text-center text-[#7C8DA1] text-[15px] font-semibold mb-8">
-            EDITABLE EXAMPLE
-          </div>
-
-<pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap overflow-auto">
+        ) : (
+          <div className="bg-[#031B34] p-10 relative overflow-auto">
+            <div className="absolute top-6 right-6 w-11 h-11 rounded-xl bg-[#0A2747] flex items-center justify-center text-white text-[20px]">
+              ⧉
+            </div>
+            <div className="text-center text-[#7C8DA1] text-[15px] font-semibold mb-8">
+              EDITABLE EXAMPLE
+            </div>
+            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap overflow-auto">
 {`<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
   <Button size="small">Small</Button>
   <Button size="medium">Medium</Button>
   <Button size="large">Large</Button>
   <Button size="xlarge">XLarge</Button>
 </div>`}
-</pre>
-
-        </div>
+            </pre>
+          </div>
+        )}
 
       </Card>
 
@@ -1447,33 +1493,239 @@ function ButtonPage() {
 <SectionTitle title="계층" />
 
 <Card>
-
-  <div className="p-14 bg-[#FAFBFC]">
-
-    <div className="flex items-center gap-6 flex-wrap">
-
-      {/* primary */}
-      <button className="h-[68px] px-8 rounded-[16px] bg-[#256EF4] text-white text-[20px] font-semibold shadow-sm">
-        버튼 · primary
+  <div className="p-4 border-b border-[#E5E8EB] bg-white">
+    <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+      <button
+        onClick={() => setHierarchyTab("design")}
+        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+          hierarchyTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+        }`}
+      >
+        Design
       </button>
-
-      {/* secondary */}
-      <button className="h-[68px] px-8 rounded-[16px] border-2 border-[#256EF4] bg-white text-[#256EF4] text-[20px] font-semibold">
-        버튼 · secondary
+      <button
+        onClick={() => setHierarchyTab("code")}
+        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+          hierarchyTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+        }`}
+      >
+        Code
       </button>
+    </div>
+  </div>
 
-      {/* tertiary */}
-      <button className="h-[68px] px-8 rounded-[16px] border border-[#9CA3AF] bg-white text-[#191F28] text-[20px] font-medium">
-        버튼 · tertiary
-      </button>
+  {hierarchyTab === "design" ? (
+    <div className="p-14 bg-[#FAFBFC]">
+    <div className="flex items-start gap-8 flex-wrap">
 
+  {/* PRIMARY */}
+  <div className="flex flex-col gap-3">
+
+    <div className="text-[18px] font-semibold text-[#7C3AED]">
+      ◆btn-primary
     </div>
 
+    <button className="
+      h-[68px]
+      px-8
+      rounded-[16px]
+      bg-[#256EF4]
+      text-white
+      text-[20px]
+      font-semibold
+      shadow-sm
+    ">
+      버튼 · primary
+    </button>
+
   </div>
+
+  {/* SECONDARY */}
+  <div className="flex flex-col gap-3">
+
+    <div className="text-[18px] font-semibold text-[#7C3AED]">
+      ◆btn-secondary
+    </div>
+
+    <button className="
+      h-[68px]
+      px-8
+      rounded-[16px]
+      bg-[#DBEAFE]
+      text-[#2563EB]
+      text-[20px]
+      font-semibold
+    ">
+      ↓ secondary / large
+    </button>
+
+  </div>
+
+  {/* OUTLINE */}
+  <div className="flex flex-col gap-3">
+
+    <div className="text-[18px] font-semibold text-[#7C3AED]">
+      ◆btn-outline
+    </div>
+
+    <button className="
+      h-[68px]
+      px-8
+      rounded-[16px]
+      border-2
+      border-[#256EF4]
+      bg-white
+      text-[#256EF4]
+      text-[20px]
+      font-semibold
+    ">
+      버튼 · outline
+    </button>
+
+  </div>
+
+  {/* TERTIARY */}
+  <div className="flex flex-col gap-3">
+
+    <div className="text-[18px] font-semibold text-[#7C3AED]">
+      ◆btn-tertiary
+    </div>
+
+    <button className="
+      h-[68px]
+      px-8
+      rounded-[16px]
+      border
+      border-[#D1D5DB]
+      bg-[#F9FAFB]
+      text-[#374151]
+      text-[20px]
+      font-medium
+    ">
+      버튼 · tertiary
+    </button>
+
+  </div>
+
+</div>
+    </div>
+  ) : (
+    <div className="bg-[#031B34] px-10 py-9 overflow-auto">
+      <pre className="text-[16px] leading-[1.9] text-white whitespace-pre-wrap">
+{`<Button appearance="primary">버튼 · primary</Button>
+<Button appearance="secondary">버튼 · secondary</Button>
+<Button appearance="tertiary">버튼 · tertiary</Button>`}
+      </pre>
+    </div>
+  )}
 
 </Card>
 
 </div>
+      {/* EMPHASIS BUTTONS */}
+      <div className="mt-16">
+        <Card>
+          <div className="p-4 border-b border-[#E5E8EB] bg-white">
+            <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+              <button
+                onClick={() => setEmphasisButtonTab("design")}
+                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+                  emphasisButtonTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+                }`}
+              >
+                Design
+              </button>
+              <button
+                onClick={() => setEmphasisButtonTab("code")}
+                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+                  emphasisButtonTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+                }`}
+              >
+                Code
+              </button>
+            </div>
+          </div>
+
+          {emphasisButtonTab === "design" ? (
+            <div className="p-6 md:p-8 bg-[#F8FAFC]">
+           <div className="flex items-start gap-6 md:gap-8 flex-wrap">
+
+{/* CONFIRM */}
+<div className="flex flex-col gap-3">
+
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-confirm
+  </div>
+
+  <button className="h-[82px] px-10 rounded-[20px] bg-[#1675EE] text-white text-[42px] font-bold tracking-tight leading-none inline-flex items-center gap-4">
+    <span className="text-[36px]">♥</span>
+    확인
+  </button>
+
+</div>
+
+{/* SECONDARY */}
+<div className="flex flex-col gap-3">
+
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-secondary
+  </div>
+
+  <button className="h-[82px] px-10 rounded-[20px] border border-[#D5DAE1] bg-white text-[#1F2937] text-[42px] font-semibold tracking-tight leading-none">
+    다음에
+  </button>
+
+</div>
+
+{/* LOADING */}
+<div className="flex flex-col gap-3">
+
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-loading
+  </div>
+
+  <button
+    aria-label="loading"
+    className="h-[82px] w-[160px] rounded-[20px] bg-[#E7EBF0] text-[#1675EE] text-[52px] leading-none flex items-center justify-center"
+  >
+    ...
+  </button>
+
+</div>
+
+{/* DISABLED */}
+<div className="flex flex-col gap-3">
+
+  <div className="text-[18px] font-semibold text-[#7C3AED]">
+    ◆btn-disabled
+  </div>
+
+  <button
+    disabled
+    className="h-[82px] px-10 rounded-[20px] border border-[#D9DEE5] bg-[#EFF2F6] text-[#B3BCC9] text-[40px] font-semibold tracking-tight leading-none inline-flex items-center gap-4"
+  >
+    <span className="text-[42px]">↓</span>
+    비활성
+  </button>
+
+</div>
+
+</div>
+            </div>
+          ) : (
+            <div className="bg-[#031B34] px-10 py-9 overflow-auto">
+              <pre className="text-[16px] leading-[1.9] text-white whitespace-pre-wrap">
+{`<div className="flex items-center gap-4 flex-wrap">
+  <Button appearance="primary" iconLeft="heart">확인</Button>
+  <Button appearance="secondary">다음에</Button>
+  <Button loading />
+  <Button appearance="secondary" disabled iconLeft="arrow-down">비활성</Button>
+</div>`}
+              </pre>
+            </div>
+          )}
+        </Card>
+      </div>
       {/* ICON BUTTON */}
       <div className="mt-24">
 
@@ -1491,45 +1743,72 @@ function ButtonPage() {
         </div>
 
         <Card>
-
-          {/* preview */}
-          <div className="border-b border-[#E5E8EB] bg-[linear-gradient(45deg,#F8FAFC_25%,transparent_25%),linear-gradient(-45deg,#F8FAFC_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#F8FAFC_75%),linear-gradient(-45deg,transparent_75%,#F8FAFC_75%)] bg-[length:20px_20px] bg-[position:0_0,0_10px,10px_-10px,-10px_0px] h-[120px] flex items-center px-10">
-
-            <button className="w-[52px] h-[52px] rounded-[14px] border border-[#D1D5DB] bg-white flex items-center justify-center text-[24px] shadow-sm hover:bg-[#F8FAFC] transition">
-              ✎
-            </button>
-
+          <div className="p-4 border-b border-[#E5E8EB] bg-white">
+            <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+              <button
+                onClick={() => setIconButtonTab("design")}
+                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+                  iconButtonTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+                }`}
+              >
+                Design
+              </button>
+              <button
+                onClick={() => setIconButtonTab("code")}
+                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+                  iconButtonTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
+                }`}
+              >
+                Code
+              </button>
+            </div>
           </div>
 
-          {/* toolbar */}
-          <div className="h-[64px] border-b border-[#E5E8EB] flex items-center justify-between px-8 bg-white">
+          {iconButtonTab === "design" ? (
+  <div className="p-10 bg-[#FAFBFC]">
 
-            <div className="flex items-center gap-3 text-[18px] text-[#4B5563]">
-              <span>⚙</span>
-              <span>Styles</span>
-              <span>⌄</span>
-            </div>
+    <div className="flex flex-col gap-4">
 
-            <div className="flex items-center gap-10 text-[18px] text-[#4B5563]">
+      {/* TOKEN */}
+      <div className="text-[18px] font-semibold text-[#7C3AED]">
+        ◆btn-icon-edit
+      </div>
 
-              <button className="flex items-center gap-3 hover:text-black transition">
-                <span>Copy code</span>
-                <span>⧉</span>
-              </button>
+      {/* ICON BUTTON */}
+      <div className="
+        bg-[linear-gradient(45deg,#F8FAFC_25%,transparent_25%),linear-gradient(-45deg,#F8FAFC_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#F8FAFC_75%),linear-gradient(-45deg,transparent_75%,#F8FAFC_75%)]
+        bg-[length:20px_20px]
+        bg-[position:0_0,0_10px,10px_-10px,-10px_0px]
+        rounded-[20px]
+        p-8
+        inline-flex
+      ">
 
-              <button className="flex items-center gap-3 hover:text-black transition">
-                <span>Edit in code sandbox</span>
-                <span>↗</span>
-              </button>
+        <button className="
+          w-[56px]
+          h-[56px]
+          rounded-[16px]
+          border
+          border-[#D1D5DB]
+          bg-white
+          flex
+          items-center
+          justify-center
+          text-[22px]
+          shadow-sm
+          hover:bg-[#F8FAFC]
+          transition
+        ">
+          ✎
+        </button>
 
-            </div>
+      </div>
 
-          </div>
+    </div>
 
-          {/* code */}
-          <div className="bg-[#F8FAFC] px-10 py-10">
-
-<pre className="text-[18px] leading-[2.1] overflow-auto text-[#1F2937]">
+  </div>
+) : ( <div className="bg-[#F8FAFC] px-10 py-10">
+              <pre className="text-[18px] leading-[2.1] overflow-auto text-[#1F2937]">
 {`import React from 'react';
 
 import { IconButton } from '@atlaskit/button/new';
@@ -1543,181 +1822,14 @@ const IconButtonDefaultExample = (): React.JSX.Element => {
     />
   );
 };`}
-</pre>
-
-            <div className="mt-10 flex justify-center">
-              <button className="text-[16px] font-semibold text-[#4B5563] hover:text-black transition flex items-center gap-2">
-                SHOW MORE
-                <span>⌄</span>
-              </button>
+              </pre>
             </div>
-
-          </div>
+          )}
 
         </Card>
 
       </div>
-            {/* MARKUP GUIDE */}
-            <div className="mt-24">
-
-<SectionTitle title="마크업 가이드" />
-
-<h3 className="text-[36px] font-bold tracking-tight mb-8">
-  CSS 선택자
-</h3>
-
-<div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-
-  {/* HEADER */}
-  <div className="grid grid-cols-[180px_160px_1fr_220px] bg-[#EEF1F4] border-b border-[#D9DEE3]">
-
-    <div className="px-6 py-5 text-[20px] font-semibold">
-      필수
-    </div>
-
-    <div className="px-6 py-5 text-[20px] font-semibold">
-    </div>
-
-    <div className="px-6 py-5 text-[20px] font-semibold">
-      선택
-    </div>
-
-    <div className="px-6 py-5 text-[20px] font-semibold">
-    </div>
-
-  </div>
-
-  {/* BODY */}
-  <div className="grid grid-cols-[180px_160px_1fr_220px]">
-
-    {/* left fixed */}
-    <div className="px-6 py-10 border-r border-[#E5E8EB] text-[22px] text-[#2F3A47] flex items-center">
-      전체영역
-    </div>
-
-    <div className="px-6 py-10 border-r border-[#E5E8EB] text-[22px] text-[#2F3A47] flex items-center">
-      .krds-btn
-    </div>
-
-    {/* option table */}
-    <div className="col-span-2">
-
-      {/* 색상 */}
-      <div className="grid grid-cols-[1fr_220px] border-b border-[#E5E8EB]">
-
-        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB]">
-          색상
-        </div>
-
-        <div>
-          {[
-            ["primary", ".primary"],
-            ["secondary", ".secondary"],
-            ["tertiary", ".tertiary"],
-          ].map(([name, cls]) => (
-            <div
-              key={name}
-              className="grid grid-cols-2 border-b last:border-b-0 border-[#E5E8EB]"
-            >
-              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-                {name}
-              </div>
-
-              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-                {cls}
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* size */}
-      <div className="grid grid-cols-[1fr_220px] border-b border-[#E5E8EB]">
-
-        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB]">
-          사이즈
-        </div>
-
-        <div>
-          {[
-            ["더 작게", ".xsmall"],
-            ["작게", ".small"],
-            ["중간", ".medium"],
-            ["크게", ".large"],
-            ["더 크게", ".xlarge"],
-          ].map(([name, cls]) => (
-            <div
-              key={name}
-              className="grid grid-cols-2 border-b last:border-b-0 border-[#E5E8EB]"
-            >
-              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-                {name}
-              </div>
-
-              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-                {cls}
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* text */}
-      <div className="grid grid-cols-[1fr_220px] border-b border-[#E5E8EB]">
-
-        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB]">
-          텍스트형
-        </div>
-
-        <div className="grid grid-cols-2">
-          <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-          </div>
-
-          <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-            .text
-          </div>
-        </div>
-
-      </div>
-
-      {/* icon */}
-      <div className="grid grid-cols-[1fr_220px]">
-
-        <div className="px-6 py-6 text-[22px] text-[#2F3A47] border-r border-[#E5E8EB] leading-[1.7]">
-          아이콘만 있는 버튼
-        </div>
-
-        <div>
-          {[
-            ["기본", ".icon"],
-            ["border 및 bg", ".icon.border"],
-          ].map(([name, cls]) => (
-            <div
-              key={name}
-              className="grid grid-cols-2 border-b last:border-b-0 border-[#E5E8EB]"
-            >
-              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-                {name}
-              </div>
-
-              <div className="px-6 py-5 text-[20px] text-[#2F3A47]">
-                {cls}
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</div>
+           
             {/* ACCESSIBILITY */}
             <div className="mt-24">
 
@@ -1834,8 +1946,12 @@ const IconButtonDefaultExample = (): React.JSX.Element => {
 }
 function IconPage() {
 
-  const [selectedIcon, setSelectedIcon] = useState("Accessibility");
-const [disabledPreview, setDisabledPreview] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState(iconItems[0].label);
+  const [disabledPreview, setDisabledPreview] = useState(false);
+  const currentIcon = iconItems.find((item) => item.label === selectedIcon) ?? iconItems[0];
+  const iconTokenName = disabledPreview && currentIcon.hasFalse
+    ? `icon-26-${currentIcon.slug}`
+    : `icon-26-${currentIcon.slug}-fill`;
 
   return (
     <div>
@@ -1846,57 +1962,71 @@ const [disabledPreview, setDisabledPreview] = useState(false);
   아이콘 크기
 </h2>
 
-<div className="bg-white border border-[#E5E8EB] rounded-[28px] p-10">
+<div className="mb-10 max-w-[980px]">
+  <p className="text-[18px] leading-[1.8] text-[#4E5968]">
+    시스템 아이콘은 <span className="font-semibold text-[#111827]">24px</span>을 기준 사이즈로
+    정의하며, 주요 크기로 <span className="font-semibold text-[#111827]">16px, 20px, 24px, 32px, 40px</span>를 사용한다.
+  </p>
+  <p className="text-[18px] leading-[1.8] text-[#4E5968] mt-4">
+    24px은 대부분의 인터페이스에서 사용되는 기본 사이즈로, 일반적으로 일관된 시각 경험을 제공하기에 적합하다.
+    32px과 40px은 강조가 필요하거나 넓은 공간에서 사용할 때 적합하다.
+  </p>
+  <p className="text-[18px] leading-[1.8] text-[#4E5968] mt-4">
+    아이콘 사이즈는 4px 또는 8px 배수로 설정해 화면 간 시각적 통일성을 유지한다.
+  </p>
+</div>
+<div className="bg-[#F7F8FA] border border-[#E5E8EB] rounded-[28px] px-16 py-14">
+  
 
-  {/* size preview */}
-  <div className="flex items-end gap-10 mb-12">
+{/* size preview */}
+<div className="flex items-end justify-center gap-16">
 
-    {[
-      { size: 16 },
-      { size: 20 },
-      { size: 24 },
-      { size: 32 },
-      { size: 40 },
-    ].map((item) => (
+  {[
+    { size: 16, radius: 2 },
+    { size: 20, radius: 2 },
+    { size: 24, radius: 3 },
+    { size: 32, radius: 4 },
+    { size: 48, radius: 6 },
+  ].map((item) => (
 
+    <div
+      key={item.size}
+      className="flex flex-col items-center"
+    >
+
+      {/* box */}
       <div
-        key={item.size}
-        className="flex flex-col items-center"
-      >
+        className="
+          bg-[#AFC6F6]
+          border
+          border-[#C9D5EA]
+          mb-6
+        "
+        style={{
+          width: item.size,
+          height: item.size,
+          borderRadius: item.radius,
+        }}
+      />
 
-        <div
-          className="
-            border-[3px]
-            border-[#E9B8C4]
-            bg-[#FFF5F7]
-            rounded-sm
-          "
-          style={{
-            width: item.size,
-            height: item.size,
-          }}
-        />
-
-        <div className="mt-5 flex items-center gap-2 text-[#8B95A1]">
-
-          <div className="w-4 h-px bg-[#9CA3AF]" />
-
-          <span className="text-[18px]">
-            {item.size}
-          </span>
-
-          <div className="w-4 h-px bg-[#9CA3AF]" />
-
-        </div>
-
+      {/* size */}
+      <div className="text-[24px] font-medium tracking-tight text-[#374151]">
+        {item.size}×{item.size}
       </div>
 
-    ))}
+      {/* radius */}
+      <div className="mt-2 text-[16px] text-[#8B95A1]">
+        Radius {item.radius}
+      </div>
 
-  </div>
+    </div>
+
+  ))}
+
+</div>
 
   {/* guide */}
-  <div className="bg-[#F8FAFC] rounded-[14px] h-[52px] flex items-center justify-center gap-3 text-[#4B5563]">
+  <div className="mt-14 bg-white border border-[#E5E8EB] rounded-[14px] h-[52px] flex items-center justify-center gap-3 text-[#4B5563]">
 
     <span className="w-5 h-5 rounded-full bg-[#4B5563] text-white flex items-center justify-center text-[12px]">
       i
@@ -1931,29 +2061,35 @@ const [disabledPreview, setDisabledPreview] = useState(false);
 
     {iconItems.map((item) => (
       <button
-        key={item}
-        onClick={() => setSelectedIcon(item)}
+        key={item.label}
+        onClick={() => {
+          setSelectedIcon(item.label);
+          if (!item.hasFalse) {
+            setDisabledPreview(false);
+          }
+        }}
         className={`
           flex flex-col items-center text-center transition
           hover:opacity-70
           rounded-[18px]
           p-3
           ${
-            selectedIcon === item
+            selectedIcon === item.label
               ? "bg-[#EDEFF2]"
               : ""
           }
         `}
       >
 
+        {/* text */}
+        <div className="mb-3 text-[18px] text-[#5B46F5] leading-[1.5] flex items-center gap-2">
+          <span>◆</span>
+          <span>{`icon-26-${item.slug}-fill`}</span>
+        </div>
+
         {/* icon */}
         <div className="w-[56px] h-[56px] rounded-[14px] bg-white border border-[#E5E8EB] flex items-center justify-center text-[22px] mb-4">
           ✦
-        </div>
-
-        {/* text */}
-        <div className="text-[18px] text-[#374151] leading-[1.5]">
-          {item}
         </div>
 
       </button>
@@ -1962,198 +2098,27 @@ const [disabledPreview, setDisabledPreview] = useState(false);
   </div>
 </div>
 
-{/* RIGHT PANEL */}
-<div className="sticky top-8">
+{/* RIGHT : FIGMA PNG */}
+<div className="bg-white border border-[#E5E8EB] rounded-[28px] overflow-hidden">
 
-  <div className="bg-white border border-[#E5E8EB] rounded-[20px] overflow-hidden">
-
-   {/* top preview */}
-<div className="border-b border-[#E5E8EB] bg-white p-10">
-
-{/* icon name */}
-<div className="flex items-center gap-4 mb-8">
-
-  <div className={`
-    text-[28px]
-    transition
-    ${
-      disabledPreview
-        ? "opacity-30"
-        : "opacity-100"
-    }
-  `}>
-    ◆
+  <div className="px-8 py-7 border-b border-[#F2F4F6]">
+    <h3 className="text-[24px] font-bold tracking-tight">
+      Figma interaction
+    </h3>
   </div>
 
-  <div className={`
-    text-[22px]
-    font-medium
-    text-[#4F46E5]
-    transition
-    ${
-      disabledPreview
-        ? "opacity-40"
-        : ""
-    }
-  `}>
-    icon-26-up-fill
-  </div>
+  <div className="p-8">
 
-</div>
-
-{/* true false toggle */}
-<div className="flex items-center gap-3">
-
-  <button
-    onClick={() => setDisabledPreview(false)}
-    className={`
-      px-4
-      py-1.5
-      rounded-lg
-      text-[16px]
-      font-medium
-      transition
-      ${
-        !disabledPreview
-          ? "bg-[#E5E7EB] text-black"
-          : "bg-[#F8FAFC] text-[#6B7280]"
-      }
-    `}
-  >
-    true
-  </button>
-
-  <button
-    onClick={() => setDisabledPreview(true)}
-    className={`
-      px-4
-      py-1.5
-      rounded-lg
-      text-[16px]
-      font-medium
-      transition
-      ${
-        disabledPreview
-          ? "bg-[#E5E7EB] text-black"
-          : "bg-[#F8FAFC] text-[#6B7280]"
-      }
-    `}
-  >
-    false
-  </button>
-
-</div>
-
-</div>
-
-    {selectedIcon ? (
-      <>
-
-        {/* content */}
-        <div className="p-8">
-
-          <div className="flex items-center gap-3 mb-5">
-            <h3 className="text-[28px] font-bold">
-              {selectedIcon}
-            </h3>
-
-            <span className="px-3 py-1 rounded-full border border-[#C084FC] text-[#6B21A8] text-[14px]">
-              Single purpose
-            </span>
-          </div>
-
-          <p className="text-[18px] leading-[1.7] text-[#4E5968] mb-8">
-            Reserved for creating and adding an object.
-          </p>
-
-          {/* tags */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {["add", "plus", "create", "icon"].map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 rounded-lg border border-[#D1D5DB] text-[14px] text-[#4B5563]"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* maintained */}
-          <div className="mb-10">
-            <div className="text-[15px] font-semibold mb-2">
-              Maintained by
-            </div>
-
-            <div className="text-[18px] text-[#4E5968]">
-              Design System Team
-            </div>
-          </div>
-
-        </div>
-
-        {/* react */}
-        <div className="border-t border-[#E5E8EB] p-8">
-
-          <div className="text-[15px] font-semibold mb-4">
-            React
-          </div>
-
-          <div className="bg-[#F4F5F7] rounded-[12px] p-5 text-[15px] leading-[1.7] text-[#4B5563] overflow-auto">
-{`import ${selectedIcon.replace(/\s/g, "")}Icon from
-'@atlaskit/icon/core/${selectedIcon.toLowerCase().replace(/\s/g, "-")}';`}
-          </div>
-
-        </div>
-
-        {/* sizes */}
-        <div className="border-t border-[#E5E8EB] p-8">
-
-          <div className="text-[15px] font-semibold mb-5">
-            Sizes
-          </div>
-
-          <div className="space-y-4">
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <span className="text-[22px]">+</span>
-
-                <span className="px-2 py-1 rounded bg-[#F3F4F6] text-[14px]">
-                  Small
-                </span>
-              </div>
-
-              <span>⧉</span>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <span className="text-[22px]">+</span>
-
-                <span className="px-2 py-1 rounded bg-[#F3F4F6] text-[14px]">
-                  Medium
-                </span>
-
-                <span className="px-2 py-1 rounded border border-[#9CA3AF] text-[12px]">
-                  RECOMMENDED
-                </span>
-              </div>
-
-              <span>⧉</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </>
-    ) : (
-
-      <div className="h-[240px] flex items-center justify-center text-[#6B7280] text-[18px]">
-        Select an icon for details
-      </div>
-
-    )}
+    <img
+      src="/images/motion/Alert.png"
+      alt="Alert interaction spec"
+      className="
+        w-full
+        rounded-[20px]
+        border
+        border-[#E5E8EB]
+      "
+    />
 
   </div>
 
@@ -2171,6 +2136,7 @@ function MotionPage() {
   const [modalPlay, setModalPlay] = useState(false);
   const [curve1, setCurve1] = useState(false);
   const [curve2, setCurve2] = useState(false);
+  const [playAlert, setPlayAlert] = useState(false);
 
   const replay = (setter) => {
     setter(false);
