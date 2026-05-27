@@ -1,4 +1,5 @@
 import { useState } from "react";
+import alertImage from "./assets/Alert.png";
 
 function hexToRgba(hex, opacity) {
   const cleanHex = hex.replace("#", "");
@@ -2488,11 +2489,11 @@ function MotionPage() {
       bg-[#F8FAFC]
     ">
 
-      <img
-        src="./assets/Alert.png"
-        alt="Alert interaction"
-        className="w-full object-cover"
-      />
+<img
+  src={alertImage}
+  alt="Alert interaction"
+  className="w-full rounded-[20px] border border-[#E5E8EB]"
+/>
 
     </div>
 
