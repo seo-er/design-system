@@ -1235,6 +1235,40 @@ function ButtonPage() {
         </div>
 
       </Card>
+
+            {/* HIERARCHY */}
+            <div className="mt-24">
+
+<SectionTitle title="계층" />
+
+<Card>
+
+  <div className="p-14 bg-[#FAFBFC]">
+
+    <div className="flex items-center gap-6 flex-wrap">
+
+      {/* primary */}
+      <button className="h-[68px] px-8 rounded-[16px] bg-[#256EF4] text-white text-[20px] font-semibold shadow-sm">
+        버튼 · primary
+      </button>
+
+      {/* secondary */}
+      <button className="h-[68px] px-8 rounded-[16px] border-2 border-[#256EF4] bg-white text-[#256EF4] text-[20px] font-semibold">
+        버튼 · secondary
+      </button>
+
+      {/* tertiary */}
+      <button className="h-[68px] px-8 rounded-[16px] border border-[#9CA3AF] bg-white text-[#191F28] text-[20px] font-medium">
+        버튼 · tertiary
+      </button>
+
+    </div>
+
+  </div>
+
+</Card>
+
+</div>
             {/* MARKUP GUIDE */}
             <div className="mt-24">
 
