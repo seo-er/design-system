@@ -2489,7 +2489,7 @@ function MotionPage() {
     ">
 
       <img
-        src="/mnt/data/621761bc-0bf2-42c9-a6b0-9d6a2b5423ae.png"
+        src="/assets/Alert.png"
         alt="Alert interaction"
         className="w-full object-cover"
       />
