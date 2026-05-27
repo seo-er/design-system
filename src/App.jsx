@@ -867,7 +867,8 @@ return (
 
 const lightPalettes = [
   {
-    name: "Orange",
+      name: "Orange",
+      token: "orange",
     colors: [
       { step: 50, hex: "#FFF7ED" },
       { step: 100, hex: "#FFEDD5" },
@@ -879,6 +880,7 @@ const lightPalettes = [
   },
   {
     name: "Yellow",
+    token: "Yellow",
     colors: [
       { step: 100, hex: "#FFF8E3" },
       { step: 200, hex: "#FFECB8" },
@@ -889,6 +891,7 @@ const lightPalettes = [
   },
   {
     name: "Gray",
+    token: "Gray",
     colors: [
       { step: 200, hex: "#F4F4F4" },
       { step: 300, hex: "#E5E5E5" },
@@ -1007,7 +1010,8 @@ const accessibilityBad = [
 
 function copyHex(hex) {
   if (navigator.clipboard?.writeText) {
-    navigator.clipboard.writeText(hex).catch(() => {});
+    navigator.clipboard.writeText(hex);
+alert(`${hex} copied to clipboard`);
   }
 }
 
@@ -1024,7 +1028,9 @@ function PaletteColumn({ palette, dark = false }) {
             className="h-[52px] flex items-center justify-between px-4 text-sm cursor-pointer hover:opacity-80 transition"
             style={{ backgroundColor: c.hex }}
           >
-            <span className={dark ? "text-white" : "text-black"}>{c.step}</span>
+            <span className={dark ? "text-white" : "text-black"}>
+  {palette.name.toLowerCase()}-{c.step}
+</span>
             <span className={dark ? "text-gray-200" : "text-[#4E5968]"}>{c.hex}</span>
           </div>
         ))}
