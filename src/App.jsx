@@ -1257,32 +1257,20 @@ function IconPage() {
           For more on Atlassian icon design, see the iconography foundation.
         </p>
       </div>
+      {/* search */}
+      <div className="mb-12">
 
-      {/* top area */}
-      <div className="grid grid-cols-[1fr_400px] gap-6 mb-10">
-
-        {/* search */}
-        <div>
-          <div className="h-[56px] bg-white border border-[#C7CDD4] rounded-[12px] px-5 flex items-center text-[#6B7280] text-[18px]">
-            Search
-          </div>
-
-          <div className="mt-5">
-            <button className="h-[42px] px-4 rounded-[10px] border border-[#D1D5DB] bg-white text-[16px] text-[#374151]">
-              Filters 1
-            </button>
-          </div>
+        <div className="h-[56px] max-w-[720px] bg-white border border-[#C7CDD4] rounded-[12px] px-5 flex items-center text-[#6B7280] text-[18px]">
+          Search
         </div>
 
-        {/* preview */}
-        <div className="bg-[#F8FAFC] border border-[#DDE3EA] rounded-[14px] h-[140px] flex flex-col items-center justify-center text-[#6B7280]">
-          <div className="text-[28px] mb-2">🖼️</div>
-          <div className="text-[18px]">
-            Select an icon for details
-          </div>
+        <div className="mt-5">
+          <button className="h-[42px] px-4 rounded-[10px] border border-[#D1D5DB] bg-white text-[16px] text-[#374151]">
+            Filters 1
+          </button>
         </div>
+
       </div>
-
       {/* section title */}
       <div className="flex items-center gap-4 mb-10">
         <h2 className="text-[36px] font-bold tracking-tight">
