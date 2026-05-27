@@ -97,6 +97,9 @@ export default function App() {
               <MenuItem active={menu === "icons"} onClick={() => setMenu("icons")}>
                 Icons
               </MenuItem>
+              <MenuItem active={menu === "motion"} onClick={() => setMenu("motion")}>
+              Motion
+            </MenuItem>
             </div>
           </div>
         </div>
@@ -132,6 +135,7 @@ export default function App() {
             {menu === "palette" && <PalettePage />}
             {menu === "button" && <ButtonPage />}
             {menu === "icons" && <IconPage />}
+            {menu === "motion" && <MotionPage />}
           </div>
         </main>
 
@@ -1808,6 +1812,270 @@ function IconPage() {
 </div>
 
 </div>
+
+    </div>
+  );
+}
+
+function MotionPage() {
+
+  const [dropdownPlay, setDropdownPlay] = useState(false);
+  const [modalPlay, setModalPlay] = useState(false);
+  const [curve1, setCurve1] = useState(false);
+  const [curve2, setCurve2] = useState(false);
+
+  const replay = (setter) => {
+    setter(false);
+
+    setTimeout(() => {
+      setter(true);
+    }, 30);
+  };
+
+  return (
+    <div>
+
+      {/* HEADER */}
+      <div className="mb-16">
+
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Foundations
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Motion
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6 max-w-[980px]">
+          Motion helps communicate hierarchy, continuity, and feedback.
+          Use motion to guide attention and improve usability.
+        </p>
+
+      </div>
+
+      {/* TOP MOTION */}
+      <div className="grid md:grid-cols-2 gap-8 mb-20">
+
+        {/* dropdown */}
+        <div>
+
+          <h3 className="text-[28px] font-bold mb-6">
+            Dropdown entrance, 150ms
+          </h3>
+
+          <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
+
+            <div className="absolute inset-0 flex items-center justify-center">
+
+              <button
+                className={`
+                  h-[56px]
+                  px-7
+                  rounded-[16px]
+                  border
+                  border-[#D1D5DB]
+                  bg-white
+                  text-[22px]
+                  flex
+                  items-center
+                  gap-3
+                  shadow-sm
+                  transition-all
+                  duration-150
+                  ${dropdownPlay
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-6 opacity-0"}
+                `}
+              >
+                <span className="text-[26px]">＋</span>
+                Create
+              </button>
+
+            </div>
+
+            <button
+              onClick={() => replay(setDropdownPlay)}
+              className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6] transition"
+            >
+              ▶
+            </button>
+
+          </div>
+
+        </div>
+
+        {/* modal */}
+        <div>
+
+          <h3 className="text-[28px] font-bold mb-6">
+            Modal entrance, 250ms
+          </h3>
+
+          <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
+
+            <div className="absolute inset-0 flex items-center justify-center">
+
+              <button
+                className={`
+                  h-[56px]
+                  px-7
+                  rounded-[16px]
+                  border
+                  border-[#D1D5DB]
+                  bg-white
+                  text-[22px]
+                  flex
+                  items-center
+                  gap-3
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  ${modalPlay
+                    ? "scale-100 opacity-100"
+                    : "scale-75 opacity-0"}
+                `}
+              >
+                🔒 Share
+              </button>
+
+            </div>
+
+            <button
+              onClick={() => replay(setModalPlay)}
+              className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6] transition"
+            >
+              ▶
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* easing */}
+      <div className="mb-12">
+
+        <h2 className="text-[40px] font-bold tracking-tight mb-5">
+          Easing curves
+        </h2>
+
+        <p className="text-[20px] leading-[1.8] text-[#4E5968] max-w-[980px]">
+          Easing curves control the acceleration and deceleration of motion,
+          defining how a transition feels.
+        </p>
+
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8">
+
+        {/* curve1 */}
+        <div>
+
+          <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
+
+            <svg
+              viewBox="0 0 300 180"
+              className="absolute inset-0 w-full h-full"
+            >
+              <path
+                d="M40 140 C40 20, 220 20, 220 20"
+                stroke="#D1D5DB"
+                strokeWidth="2"
+                fill="none"
+              />
+
+              <circle
+                cx={curve1 ? "220" : "40"}
+                cy={curve1 ? "20" : "140"}
+                r="6"
+                fill="#111827"
+                className="transition-all duration-700"
+              />
+            </svg>
+
+            <button
+              onClick={() => replay(setCurve1)}
+              className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6]"
+            >
+              ▶
+            </button>
+
+          </div>
+
+          <div className="mt-6">
+
+            <h3 className="text-[30px] font-bold mb-4">
+              Ease-out bold
+            </h3>
+
+            <div className="inline-flex px-4 py-2 rounded-xl bg-[#F3F4F6] text-[18px] mb-5">
+              cubic-bezier(0, 0.4, 0, 1)
+            </div>
+
+            <p className="text-[20px] leading-[1.8] text-[#4E5968]">
+              Elements arrive quickly and decelerate to a stop.
+              Best for entering panels or dropdowns.
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* curve2 */}
+        <div>
+
+          <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
+
+            <svg
+              viewBox="0 0 300 180"
+              className="absolute inset-0 w-full h-full"
+            >
+              <path
+                d="M40 140 C90 140, 90 20, 220 20"
+                stroke="#D1D5DB"
+                strokeWidth="2"
+                fill="none"
+              />
+
+              <circle
+                cx={curve2 ? "220" : "40"}
+                cy={curve2 ? "20" : "140"}
+                r="6"
+                fill="#111827"
+                className="transition-all duration-1000"
+              />
+            </svg>
+
+            <button
+              onClick={() => replay(setCurve2)}
+              className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6]"
+            >
+              ▶
+            </button>
+
+          </div>
+
+          <div className="mt-6">
+
+            <h3 className="text-[30px] font-bold mb-4">
+              Ease-in-out bold
+            </h3>
+
+            <div className="inline-flex px-4 py-2 rounded-xl bg-[#F3F4F6] text-[18px] mb-5">
+              cubic-bezier(0.4, 0, 0, 1)
+            </div>
+
+            <p className="text-[20px] leading-[1.8] text-[#4E5968]">
+              Gentle start and soft settle.
+              Best for scaling modals or repositioning elements.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
   );
