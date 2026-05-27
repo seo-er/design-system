@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import alertImage from "./assets/Alert.png";
 
 function hexToRgba(hex, opacity) {
@@ -2203,9 +2203,27 @@ function MotionPage() {
   const [dropdownPlay, setDropdownPlay] = useState(false);
   const [modalPlay, setModalPlay] = useState(false);
   const [curve1, setCurve1] = useState(false);
-  const [curve2, setCurve2] = useState(false);
-  const [playAlert, setPlayAlert] = useState(false);
+  const [curve2, setCurve2] = useState(false);  
+  const [playAlert, setPlayAlert] = useState(false);    
 
+  useEffect(() => {
+
+    const path =
+      document.getElementById("easeOutPath");
+  
+    const ball =
+      document.getElementById("easeOutBall");
+  
+    if (!path || !ball) return;
+  
+    const start =
+      path.getPointAtLength(0);
+  
+    ball.setAttribute("cx", start.x);
+    ball.setAttribute("cy", start.y);
+  
+  }, []);
+  
   const replay = (setter) => {
     setter(false);
 
@@ -2492,7 +2510,7 @@ function MotionPage() {
 <img
   src={alertImage}
   alt="Alert interaction"
-  className="w-[320px] rounded-[20px] border border-[#E5E8EB]"
+  className="w-[227px] rounded-[20px] border border-[#E5E8EB]"
 />
 
     </div>
