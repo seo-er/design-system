@@ -92,8 +92,11 @@ export default function App() {
                 Palette
               </MenuItem>
               <MenuItem active={menu === "button"} onClick={() => setMenu("button")}>
-  Button
-</MenuItem>
+                Button
+              </MenuItem>
+              <MenuItem active={menu === "icons"} onClick={() => setMenu("icons")}>
+                Icons
+              </MenuItem>
             </div>
           </div>
         </div>
@@ -128,6 +131,7 @@ export default function App() {
             {menu === "grid" && <GridPage />}
             {menu === "palette" && <PalettePage />}
             {menu === "button" && <ButtonPage />}
+            {menu === "icons" && <IconsPage />}
           </div>
         </main>
 
@@ -1130,7 +1134,23 @@ function PalettePage() {
     </div>
   );
 }
-
+const iconItems = [
+  "Accessibility",
+  "Add",
+  "Ai agent",
+  "Ai chat",
+  "Alert",
+  "Align image center",
+  "Align image left",
+  "Align image right",
+  "Align text center",
+  "Align text left",
+  "Align text right",
+  "Api",
+  "App",
+  "Apps",
+  "Archive box",
+];
 function ButtonPage() {
   return (
     <div>
@@ -1213,6 +1233,87 @@ export default LinkButtonDefaultExample;`}
 </pre>
         </div>
       </Card>
+    </div>
+  );
+}
+
+function IconPage() {
+  return (
+    <div>
+
+      <div className="mb-12">
+        <h1 className="text-[44px] font-bold tracking-tight mb-5">
+          Icon explorer
+        </h1>
+
+        <p className="text-[18px] text-[#4E5968] leading-[1.7] mb-3">
+          Search for icons, and select an icon to view usage and import details.
+        </p>
+
+        <p className="text-[18px] text-[#4E5968]">
+          For more on Atlassian icon design, see the iconography foundation.
+        </p>
+      </div>
+
+      {/* top area */}
+      <div className="grid grid-cols-[1fr_400px] gap-6 mb-10">
+
+        {/* search */}
+        <div>
+          <div className="h-[56px] bg-white border border-[#C7CDD4] rounded-[12px] px-5 flex items-center text-[#6B7280] text-[18px]">
+            Search
+          </div>
+
+          <div className="mt-5">
+            <button className="h-[42px] px-4 rounded-[10px] border border-[#D1D5DB] bg-white text-[16px] text-[#374151]">
+              Filters 1
+            </button>
+          </div>
+        </div>
+
+        {/* preview */}
+        <div className="bg-[#F8FAFC] border border-[#DDE3EA] rounded-[14px] h-[140px] flex flex-col items-center justify-center text-[#6B7280]">
+          <div className="text-[28px] mb-2">🖼️</div>
+          <div className="text-[18px]">
+            Select an icon for details
+          </div>
+        </div>
+      </div>
+
+      {/* section title */}
+      <div className="flex items-center gap-4 mb-10">
+        <h2 className="text-[36px] font-bold tracking-tight">
+          Core
+        </h2>
+
+        <span className="text-[24px] text-[#6B7280]">
+          @atlaskit/icon/core
+        </span>
+      </div>
+
+      {/* icon grid */}
+      <div className="grid grid-cols-5 gap-y-14">
+
+        {iconItems.map((item) => (
+          <div
+            key={item}
+            className="flex flex-col items-center text-center cursor-pointer hover:opacity-70 transition"
+          >
+
+            {/* icon */}
+            <div className="w-[56px] h-[56px] rounded-[14px] bg-white border border-[#E5E8EB] flex items-center justify-center text-[22px] mb-4">
+              ✦
+            </div>
+
+            {/* text */}
+            <div className="text-[18px] text-[#374151] leading-[1.5]">
+              {item}
+            </div>
+          </div>
+        ))}
+
+      </div>
+
     </div>
   );
 }
