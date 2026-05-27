@@ -1152,91 +1152,93 @@ const iconItems = [
   "Archive box",
 ];
 function ButtonPage() {
+
   return (
     <div>
+
+      {/* HEADER */}
       <div className="mb-14">
+
         <p className="text-sm text-[#8B95A1] mb-3">
           Components
         </p>
 
-        <h1 className="text-[44px] font-bold tracking-tight flex items-center gap-3">
-          <span className="text-[#2563EB]">🔗</span>
-          Default
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Button
         </h1>
 
-        <p className="text-[#4E5968] text-[18px] leading-[1.7] mt-8 max-w-[980px]">
-          A button that triggers a link rather than an action.
-          This will render an {"<a>"} tag instead of a {"<button>"}.
-          It accepts anchor tag HTML attributes, including href.
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6 max-w-[920px]">
+          Buttons trigger actions and allow users to interact with the interface.
+          Use different sizes depending on hierarchy and layout density.
         </p>
 
-        <p className="text-[#4E5968] text-[18px] leading-[1.7] mt-6 max-w-[980px]">
-          The default appearance is for secondary actions or general
-          actions that aren't the most important in the area.
-        </p>
       </div>
 
+      {/* SIZE SECTION */}
+      <SectionTitle title="크기 조정하기" />
+
+      <p className="text-[18px] leading-[1.8] text-[#4E5968] mb-8 max-w-[920px]">
+        Button 컴포넌트의 크기를 변경하려면
+        <code className="mx-2 px-2 py-1 rounded bg-[#F3F4F6] text-[16px]">
+          size
+        </code>
+        속성을 사용하세요.
+      </p>
+
       <Card>
-        {/* preview */}
-        <div className="p-8 border-b border-[#E5E8EB] bg-[#FAFBFC]">
 
-          <button
-            className="
-              h-[44px]
-              px-5
-              rounded-[10px]
-              border border-[#D0D7DE]
-              bg-white
-              text-[16px]
-              font-medium
-              text-[#3B3F45]
-              hover:bg-[#F6F8FA]
-              transition
-            "
-          >
-            Default Link button
-          </button>
+        {/* PREVIEW */}
+        <div className="p-10 border-b border-[#E5E8EB] bg-[#FAFBFC]">
+
+          <div className="flex items-center gap-5 flex-wrap">
+
+            <button className="h-[46px] px-5 rounded-[14px] bg-[#3579F6] text-white text-[18px] font-semibold">
+              Small
+            </button>
+
+            <button className="h-[54px] px-7 rounded-[16px] bg-[#3579F6] text-white text-[20px] font-semibold">
+              Medium
+            </button>
+
+            <button className="h-[64px] px-9 rounded-[18px] bg-[#3579F6] text-white text-[24px] font-semibold">
+              Large
+            </button>
+
+            <button className="h-[74px] px-11 rounded-[20px] bg-[#3579F6] text-white text-[28px] font-semibold">
+              XLarge
+            </button>
+
+          </div>
+
         </div>
 
-        {/* toolbar */}
-        <div className="grid grid-cols-3 border-b border-[#E5E8EB] bg-[#F8F9FB]">
+        {/* CODE */}
+        <div className="bg-[#031B34] p-10 relative overflow-auto">
 
-          <div className="px-6 py-4 text-[16px] text-[#4B5563] border-r border-[#E5E8EB]">
-            ⚙ Styles
+          <div className="absolute top-6 right-6 w-11 h-11 rounded-xl bg-[#0A2747] flex items-center justify-center text-white text-[20px]">
+            ⧉
           </div>
 
-          <div className="px-6 py-4 text-[16px] text-center text-[#4B5563] border-r border-[#E5E8EB]">
-            Copy code
+          <div className="text-center text-[#7C8DA1] text-[15px] font-semibold mb-8">
+            EDITABLE EXAMPLE
           </div>
 
-          <div className="px-6 py-4 text-[16px] text-center text-[#4B5563]">
-            Edit in code sandbox
-          </div>
-        </div>
-
-        {/* code */}
-        <div className="bg-[#F7F8FA] p-8 overflow-auto">
-<pre className="text-[15px] leading-[1.8] text-[#1F2328] whitespace-pre-wrap">
-{`import React from 'react';
-
-import { LinkButton } from '@atlaskit/button/new';
-
-const LinkButtonDefaultExample = (): React.JSX.Element => {
-  return (
-    <LinkButton href="https://atlassian.com/">
-      Default Link button
-    </LinkButton>
-  );
-};
-
-export default LinkButtonDefaultExample;`}
+<pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap overflow-auto">
+{`<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+  <Button size="small">Small</Button>
+  <Button size="medium">Medium</Button>
+  <Button size="large">Large</Button>
+  <Button size="xlarge">XLarge</Button>
+</div>`}
 </pre>
+
         </div>
+
       </Card>
+
     </div>
   );
 }
-
 function IconPage() {
 
   const [selectedIcon, setSelectedIcon] = useState(null);
