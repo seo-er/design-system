@@ -2203,14 +2203,10 @@ function EasingCard({
   description,
   path,
 }) {
-  const [playing, setPlaying] = useState(false);
+  const [motionKey, setMotionKey] = useState(0);
 
   const handlePlay = () => {
-    setPlaying(false);
-  
-    setTimeout(() => {
-      setPlaying(true);
-    }, 10);
+    setMotionKey(prev => prev + 1);
   };
 
   return (
@@ -2239,19 +2235,15 @@ function EasingCard({
     viewBox="0 0 300 180"
     className="absolute inset-0 w-full h-full overflow-visible"
   >
-    <circle cx="40" cy="150" r="4" fill="#191F28">
-
-    {playing && (
+  <circle cx="40" cy="150" r="4" fill="#191F28">
   <animateMotion
-    key={Date.now()}
+    key={motionKey}
     dur="1400ms"
     repeatCount="1"
     fill="freeze"
     path={path}
   />
-)}
-
-    </circle>
+</circle>
   </svg>
 
 </div>
