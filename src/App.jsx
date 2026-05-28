@@ -850,11 +850,16 @@ function MobileGridSection() {
         <div className="rounded-[28px] overflow-hidden border border-[#E5E8EB]">
 
           <img
-            src="/mobile-grid.png"
+            src="./assets/Grid_img.png"
             alt="mobile grid"
             className="w-full"
           />
 
+<img
+            src="./assets/Grid.png"
+            alt="mobile grid"
+            className="w-full"
+          />
         </div>
 
         <div className="grid grid-cols-3 gap-6 mt-10">
