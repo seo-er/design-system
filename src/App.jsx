@@ -2204,8 +2204,7 @@ function MotionPage() {
   const [modalPlay, setModalPlay] = useState(false);
   const [curve1, setCurve1] = useState(false);
   const [curve2, setCurve2] = useState(false);
-  const [playAlert, setPlayAlert] = useState(false);
-zz
+
   const replay = (setter) => {
     setter(false);
 
@@ -2506,6 +2505,8 @@ zz
   </div>
 </Card>
 </Card>
+    
+    
     </div>
   );
 }
