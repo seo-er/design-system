@@ -2199,180 +2199,470 @@ function IconPage() {
 }
 
 function MotionPage() {
+
+  const [dropdownPlay, setDropdownPlay] = useState(false);
+  const [modalPlay, setModalPlay] = useState(false);
+  const [curve1, setCurve1] = useState(false);
+  const [curve2, setCurve2] = useState(false);
+  
+  const replay = (setter) => {
+    setter(false);
+
+    setTimeout(() => {
+      setter(true);
+    }, 30);
+  };
+
   return (
     <div>
 
       {/* HEADER */}
-      <div className="mb-14">
+      <div className="mb-16">
+
         <p className="text-sm text-[#8B95A1] mb-3">
-          Motion
+          Foundations
         </p>
 
         <h1 className="text-[44px] font-bold tracking-tight">
-          Easing curves
+          Motion
         </h1>
 
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6 max-w-[920px]">
-          Easing curves control the acceleration and deceleration of motion,
-          defining how a transition feels.
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6 max-w-[980px]">
+          Motion helps communicate hierarchy, continuity, and feedback.
+          Use motion to guide attention and improve usability.
         </p>
+
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      {/* TOP MOTION */}
+      <div className="grid md:grid-cols-2 gap-8 mb-20">
 
-        {/* CARD 1 */}
-        <div className="bg-[#F5F5F5] rounded-[28px] p-6">
+        {/* dropdown */}
+        <div>
 
-          <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
-
-            <svg
-              viewBox="0 0 320 180"
-              className="absolute inset-0 w-full h-full"
-            >
-              <path
-                d="M40 150 C40 40, 220 40, 220 20"
-                fill="none"
-                stroke="#D1D5DB"
-                strokeWidth="3"
-              />
-
-              <circle cx="40" cy="150" r="5" fill="#111827" />
-              <circle cx="220" cy="20" r="5" fill="#111827" />
-            </svg>
-
-            <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
-              ▶
-            </button>
-          </div>
-
-          <h3 className="text-[30px] font-bold mb-3">
-            Ease-out bold
+          <h3 className="text-[28px] font-bold mb-6">
+            Dropdown entrance, 150ms
           </h3>
 
-          <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-            cubic-bezier(0, 0.4, 0, 1)
-          </code>
+          <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
 
-          <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-            Elements arrive quickly and decelerate to a stop.
-          </p>
+            <div className="absolute inset-0 flex items-center justify-center">
+
+              <button
+                className={`
+                  h-[56px]
+                  px-7
+                  rounded-[16px]
+                  border
+                  border-[#D1D5DB]
+                  bg-white
+                  text-[22px]
+                  flex
+                  items-center
+                  gap-3
+                  shadow-sm
+                  transition-all
+                  duration-150
+                  ${dropdownPlay
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-6 opacity-0"}
+                `}
+              >
+                <span className="text-[26px]">＋</span>
+                Create
+              </button>
+
+            </div>
+
+            <button
+              onClick={() => replay(setDropdownPlay)}
+              className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6] transition"
+            >
+              ▶
+            </button>
+
+          </div>
+
         </div>
 
-        {/* CARD 2 */}
-        <div className="bg-[#F5F5F5] rounded-[28px] p-6">
+        {/* modal */}
+        <div>
 
-          <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
-
-            <svg
-              viewBox="0 0 320 180"
-              className="absolute inset-0 w-full h-full"
-            >
-              <path
-                d="M40 150 C120 150, 120 20, 220 20"
-                fill="none"
-                stroke="#D1D5DB"
-                strokeWidth="3"
-              />
-
-              <circle cx="40" cy="150" r="5" fill="#111827" />
-              <circle cx="220" cy="20" r="5" fill="#111827" />
-            </svg>
-
-            <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
-              ▶
-            </button>
-          </div>
-
-          <h3 className="text-[30px] font-bold mb-3">
-            Ease-in-out bold
+          <h3 className="text-[28px] font-bold mb-6">
+            Modal entrance, 250ms
           </h3>
 
-          <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-            cubic-bezier(0.4, 0, 0, 1)
-          </code>
+          <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
 
-          <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-            Gentle start and soft settle.
-          </p>
-        </div>
+            <div className="absolute inset-0 flex items-center justify-center">
 
-        {/* CARD 3 */}
-        <div className="bg-[#F5F5F5] rounded-[28px] p-6">
+              <button
+                className={`
+                  h-[56px]
+                  px-7
+                  rounded-[16px]
+                  border
+                  border-[#D1D5DB]
+                  bg-white
+                  text-[22px]
+                  flex
+                  items-center
+                  gap-3
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  ${modalPlay
+                    ? "scale-100 opacity-100"
+                    : "scale-75 opacity-0"}
+                `}
+              >
+                🔒 Share
+              </button>
 
-          <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
+            </div>
 
-            <svg
-              viewBox="0 0 320 180"
-              className="absolute inset-0 w-full h-full"
+            <button
+              onClick={() => replay(setModalPlay)}
+              className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6] transition"
             >
-              <path
-                d="M40 150 C120 150, 180 110, 220 20"
-                fill="none"
-                stroke="#D1D5DB"
-                strokeWidth="3"
-              />
-
-              <circle cx="40" cy="150" r="5" fill="#111827" />
-              <circle cx="220" cy="20" r="5" fill="#111827" />
-            </svg>
-
-            <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
               ▶
             </button>
+
           </div>
 
-          <h3 className="text-[30px] font-bold mb-3">
-            Ease-in practical
-          </h3>
-
-          <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-            cubic-bezier(0.6, 0, 0.8, 0.6)
-          </code>
-
-          <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-            Starts slowly and accelerates away.
-          </p>
-        </div>
-
-        {/* CARD 4 */}
-        <div className="bg-[#F5F5F5] rounded-[28px] p-6">
-
-          <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
-
-            <svg
-              viewBox="0 0 320 180"
-              className="absolute inset-0 w-full h-full"
-            >
-              <path
-                d="M40 150 C90 70, 120 20, 220 20"
-                fill="none"
-                stroke="#D1D5DB"
-                strokeWidth="3"
-              />
-
-              <circle cx="40" cy="150" r="5" fill="#111827" />
-              <circle cx="220" cy="20" r="5" fill="#111827" />
-            </svg>
-
-            <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
-              ▶
-            </button>
-          </div>
-
-          <h3 className="text-[30px] font-bold mb-3">
-            Ease-out practical
-          </h3>
-
-          <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-            cubic-bezier(0.4, 1, 0.6, 1)
-          </code>
-
-          <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-            Subtle, everyday entrance curve.
-          </p>
         </div>
 
       </div>
+      <Card>
+ {/* ALERT MOTION */}
+<Card>
+  <div className="p-10">
+
+    {/* title */}
+    <div className="mb-8">
+      <h2 className="text-[32px] font-bold tracking-tight">
+        Alert motion
+      </h2>
+
+      <p className="mt-3 text-[18px] leading-[1.8] text-[#4E5968]">
+        Overlay dissolve transition used for centered alerts and lightweight modal feedback.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+
+{/* LEFT : ANIMATION */}
+<Card>
+
+  <div className="p-8">
+
+    <h3 className="text-[32px] font-bold mb-4">
+      Alert motion
+    </h3>
+
+    <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-8">
+      Overlay dissolve transition used for centered alerts and lightweight modal feedback.
+    </p>
+
+    <div className="
+      relative
+      h-[420px]
+      rounded-[28px]
+      bg-[#F8FAFC]
+      overflow-hidden
+      border
+      border-[#E5E8EB]
+    ">
+
+      {/* dim */}
+      <div
+        id="alertDim"
+        className="
+          absolute
+          inset-0
+          bg-black/0
+          transition-all
+          duration-300
+        "
+      />
+
+      {/* modal */}
+      <div
+        id="alertModal"
+        className="
+          absolute
+          left-1/2
+          top-1/2
+          w-[220px]
+          h-[280px]
+          rounded-[28px]
+          bg-white
+          border
+          border-[#E5E8EB]
+          shadow-2xl
+          opacity-0
+          scale-95
+          transition-all
+          duration-300
+        "
+        style={{
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+
+      {/* play */}
+      <button
+        onClick={() => {
+
+          const dim =
+            document.getElementById("alertDim");
+
+          const modal =
+            document.getElementById("alertModal");
+
+          if (!dim || !modal) return;
+
+          dim.classList.remove("bg-black/0");
+          dim.classList.add("bg-black/25");
+
+          modal.classList.remove("opacity-0");
+          modal.classList.remove("scale-95");
+
+          modal.classList.add("opacity-100");
+          modal.classList.add("scale-100");
+
+          setTimeout(() => {
+
+            dim.classList.remove("bg-black/25");
+            dim.classList.add("bg-black/0");
+
+            modal.classList.remove("opacity-100");
+            modal.classList.remove("scale-100");
+
+            modal.classList.add("opacity-0");
+            modal.classList.add("scale-95");
+
+          }, 1200);
+
+        }}
+        className="
+          absolute
+          right-6
+          bottom-6
+          w-[64px]
+          h-[64px]
+          rounded-[20px]
+          bg-white
+          border
+          border-[#D1D5DB]
+          shadow-sm
+          text-[24px]
+          flex
+          items-center
+          justify-center
+        "
+      >
+        ▶
+      </button>
+
+    </div>
+
+  </div>
+
+</Card>
+
+{/* RIGHT : FIGMA IMAGE */}
+<Card>
+
+  <div className="p-8">
+
+    <h3 className="text-[32px] font-bold mb-6">
+      Figma interaction
+    </h3>
+
+    <div className="
+      rounded-[24px]
+      overflow-hidden
+      border
+      border-[#E5E8EB]
+      bg-[#F8FAFC]
+    ">
+
+<img
+  src={alertImage}
+  alt="Alert interaction"
+  className="w-[227px] rounded-[20px] border border-[#E5E8EB]"
+/>
+
+    </div>
+
+  </div>
+
+</Card>
+
+</div>
+
+  </div>
+</Card>
+</Card>
+<div className="grid md:grid-cols-2 gap-8">
+
+{/* CARD 1 */}
+<div className="bg-[#F5F5F5] rounded-[28px] p-6">
+
+  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
+
+    <svg
+      viewBox="0 0 320 180"
+      className="absolute inset-0 w-full h-full"
+    >
+      <path
+        d="M40 150 C40 40, 220 40, 220 20"
+        fill="none"
+        stroke="#D1D5DB"
+        strokeWidth="3"
+      />
+
+      <circle cx="40" cy="150" r="5" fill="#111827" />
+      <circle cx="220" cy="20" r="5" fill="#111827" />
+    </svg>
+
+    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
+      ▶
+    </button>
+  </div>
+
+  <h3 className="text-[30px] font-bold mb-3">
+    Ease-out bold
+  </h3>
+
+  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
+    cubic-bezier(0, 0.4, 0, 1)
+  </code>
+
+  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
+    Elements arrive quickly and decelerate to a stop.
+  </p>
+</div>
+
+{/* CARD 2 */}
+<div className="bg-[#F5F5F5] rounded-[28px] p-6">
+
+  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
+
+    <svg
+      viewBox="0 0 320 180"
+      className="absolute inset-0 w-full h-full"
+    >
+      <path
+        d="M40 150 C120 150, 120 20, 220 20"
+        fill="none"
+        stroke="#D1D5DB"
+        strokeWidth="3"
+      />
+
+      <circle cx="40" cy="150" r="5" fill="#111827" />
+      <circle cx="220" cy="20" r="5" fill="#111827" />
+    </svg>
+
+    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
+      ▶
+    </button>
+  </div>
+
+  <h3 className="text-[30px] font-bold mb-3">
+    Ease-in-out bold
+  </h3>
+
+  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
+    cubic-bezier(0.4, 0, 0, 1)
+  </code>
+
+  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
+    Gentle start and soft settle.
+  </p>
+</div>
+
+{/* CARD 3 */}
+<div className="bg-[#F5F5F5] rounded-[28px] p-6">
+
+  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
+
+    <svg
+      viewBox="0 0 320 180"
+      className="absolute inset-0 w-full h-full"
+    >
+      <path
+        d="M40 150 C120 150, 180 110, 220 20"
+        fill="none"
+        stroke="#D1D5DB"
+        strokeWidth="3"
+      />
+
+      <circle cx="40" cy="150" r="5" fill="#111827" />
+      <circle cx="220" cy="20" r="5" fill="#111827" />
+    </svg>
+
+    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
+      ▶
+    </button>
+  </div>
+
+  <h3 className="text-[30px] font-bold mb-3">
+    Ease-in practical
+  </h3>
+
+  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
+    cubic-bezier(0.6, 0, 0.8, 0.6)
+  </code>
+
+  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
+    Starts slowly and accelerates away.
+  </p>
+</div>
+
+{/* CARD 4 */}
+<div className="bg-[#F5F5F5] rounded-[28px] p-6">
+
+  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
+
+    <svg
+      viewBox="0 0 320 180"
+      className="absolute inset-0 w-full h-full"
+    >
+      <path
+        d="M40 150 C90 70, 120 20, 220 20"
+        fill="none"
+        stroke="#D1D5DB"
+        strokeWidth="3"
+      />
+
+      <circle cx="40" cy="150" r="5" fill="#111827" />
+      <circle cx="220" cy="20" r="5" fill="#111827" />
+    </svg>
+
+    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
+      ▶
+    </button>
+  </div>
+
+  <h3 className="text-[30px] font-bold mb-3">
+    Ease-out practical
+  </h3>
+
+  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
+    cubic-bezier(0.4, 1, 0.6, 1)
+  </code>
+
+  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
+    Subtle, everyday entrance curve.
+  </p>
+</div>
+
+</div>
+
+    
+
     </div>
   );
 }
