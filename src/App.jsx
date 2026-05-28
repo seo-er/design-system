@@ -2008,85 +2008,319 @@ function IconPage() {
 
       </div>
 
-      {/* RIGHT PANEL */}
-      <div className="
-        bg-white
-        border
-        border-[#E5E8EB]
-        rounded-[36px]
-        overflow-hidden
-        h-fit
-      ">
+     {/* RIGHT PANEL */}
+<div className="
+  bg-white
+  border
+  border-[#E5E8EB]
+  rounded-[32px]
+  overflow-hidden
+  h-fit
+">
 
-        <div className="px-10 py-10 border-b border-[#F2F4F6]">
-          <h2 className="text-[32px] font-bold tracking-tight">
-            Figma interaction
-          </h2>
-        </div>
+  {/* preview */}
+  <div className="
+    h-[150px]
+    border-b
+    border-[#E5E8EB]
+    flex
+    items-center
+    justify-center
+    text-[34px]
+  ">
+    ✦
+  </div>
 
-        <div className="p-10">
+  <div className="p-8">
 
-          <div className="
-            h-[44px]
-            rounded-full
-            border
-            border-[#D9DEE5]
-            px-5
-            flex
-            items-center
-            text-[16px]
-            text-[#4B5563]
-            mb-8
-          ">
-            Alert interaction spec
-          </div>
+    {/* title */}
+    <div className="mb-8">
 
-          <div className="
-            rounded-[32px]
-            border
-            border-[#E5E8EB]
-            h-[360px]
-            bg-[#F8FAFC]
-            relative
-            overflow-hidden
-          ">
+      <div className="flex items-center gap-3 mb-4">
 
-            <svg
-              className="absolute inset-0 w-full h-full"
-              viewBox="0 0 400 360"
-            >
-              <path
-                d="M60 280 C120 80 300 40 340 60"
-                stroke="#D1D5DB"
-                strokeWidth="4"
-                fill="none"
-                strokeLinecap="round"
-              />
+        <h2 className="text-[42px] font-bold tracking-tight leading-none">
+          {selectedIcon.label}
+        </h2>
 
-              <circle cx="60" cy="280" r="14" fill="#0F172A" />
-            </svg>
-
-            <button className="
-              absolute
-              right-8
-              bottom-8
-              w-[72px]
-              h-[72px]
-              rounded-[20px]
-              bg-white
-              border
-              border-[#D1D5DB]
-              shadow-sm
-              text-[28px]
-            ">
-              ▶
-            </button>
-
-          </div>
-
-        </div>
+        <span className="
+          px-3
+          py-1
+          rounded-[10px]
+          border
+          border-[#C084FC]
+          text-[#7C3AED]
+          text-[16px]
+          font-medium
+        ">
+          Single purpose
+        </span>
 
       </div>
+
+      {/* token */}
+      <div className="
+        text-[#7C3AED]
+        text-[22px]
+        font-semibold
+        mb-5
+      ">
+        ◆icon-26-{selectedIcon.slug}-fill
+      </div>
+
+      <p className="text-[18px] leading-[1.8] text-[#4B5563]">
+        Reserved for white label Rovo experiences.
+      </p>
+
+    </div>
+
+    {/* tags */}
+    <div className="flex flex-wrap gap-3 mb-10">
+
+      {[
+        selectedIcon.slug,
+        "icon",
+        "AI",
+        "chat agent",
+      ].map((tag) => (
+        <div
+          key={tag}
+          className="
+            px-3
+            py-1
+            rounded-[10px]
+            border
+            border-[#D1D5DB]
+            text-[16px]
+            text-[#374151]
+          "
+        >
+          {tag}
+        </div>
+      ))}
+
+    </div>
+
+    {/* maintained */}
+    <div className="mb-12">
+
+      <div className="text-[28px] font-bold mb-4">
+        Maintained by
+      </div>
+
+      <div className="text-[20px] text-[#4B5563]">
+        Central AI
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* REACT */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-6">
+      React
+    </div>
+
+    <div className="
+      bg-[#F3F4F6]
+      rounded-[16px]
+      p-6
+      text-[17px]
+      leading-[2]
+      font-mono
+      text-[#374151]
+      relative
+    ">
+
+{`import ${selectedIcon.label.replace(/\s/g, "")}Icon from
+'@atlaskit/icon/core/${selectedIcon.slug}';`}
+
+      <button
+        onClick={() =>
+          navigator.clipboard.writeText(
+`import ${selectedIcon.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIcon.slug}';`
+          )
+        }
+        className="
+          absolute
+          top-5
+          right-5
+          text-[22px]
+        "
+      >
+        ⧉
+      </button>
+
+    </div>
+
+    <a
+      href="#"
+      className="
+        inline-flex
+        items-center
+        gap-2
+        text-[#2563EB]
+        text-[18px]
+        underline
+        mt-6
+      "
+    >
+      Icon code examples ↗
+    </a>
+
+  </div>
+
+  {/* SIZES */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-8">
+      Sizes
+    </div>
+
+    <div className="space-y-6">
+
+      {/* SMALL */}
+      <div className="flex items-center justify-between">
+
+        <div className="flex items-center gap-5">
+
+          <div className="text-[20px]">
+            ✦
+          </div>
+
+          <div className="flex items-center gap-3">
+
+            <span className="
+              px-3
+              py-1
+              rounded-[8px]
+              bg-[#F3F4F6]
+              text-[16px]
+            ">
+              Small
+            </span>
+
+            {selectedIcon.hasFalse && (
+              <span className="
+                px-3
+                py-1
+                rounded-[8px]
+                bg-[#DCFCE7]
+                text-[#166534]
+                text-[15px]
+                font-medium
+              ">
+                true
+              </span>
+            )}
+
+          </div>
+
+        </div>
+
+        <button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `<Icon size="small" />`
+            )
+          }
+          className="text-[22px]"
+        >
+          ⧉
+        </button>
+
+      </div>
+
+      {/* MEDIUM */}
+      <div className="flex items-center justify-between">
+
+        <div className="flex items-center gap-5">
+
+          <div className="text-[28px]">
+            ✦
+          </div>
+
+          <div className="flex items-center gap-3">
+
+            <span className="
+              px-3
+              py-1
+              rounded-[8px]
+              bg-[#F3F4F6]
+              text-[16px]
+            ">
+              Medium
+            </span>
+
+            <span className="
+              px-3
+              py-1
+              rounded-[8px]
+              bg-[#E5E7EB]
+              text-[14px]
+              font-semibold
+            ">
+              RECOMMENDED
+            </span>
+
+            {selectedIcon.hasFalse && (
+              <span className="
+                px-3
+                py-1
+                rounded-[8px]
+                bg-[#FEE2E2]
+                text-[#991B1B]
+                text-[15px]
+                font-medium
+              ">
+                false
+              </span>
+            )}
+
+          </div>
+
+        </div>
+
+        <button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `<Icon size="medium" />`
+            )
+          }
+          className="text-[22px]"
+        >
+          ⧉
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* FIGMA */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-6">
+      Figma
+    </div>
+
+    <a
+      href="https://figma.com"
+      target="_blank"
+      className="
+        text-[#2563EB]
+        underline
+        text-[18px]
+      "
+    >
+      Atlassian icon library ↗
+    </a>
+
+  </div>
+
+</div>
 
     </div>
   );
