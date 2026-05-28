@@ -1946,253 +1946,147 @@ const IconButtonDefaultExample = (): React.JSX.Element => {
   );
 }
 function IconPage() {
-
-  const [selectedIcon, setSelectedIcon] = useState(iconItems[0].label);
-  const [disabledPreview, setDisabledPreview] = useState(false);
-  const currentIcon = iconItems.find((item) => item.label === selectedIcon) ?? iconItems[0];
-  const iconTokenName = disabledPreview && currentIcon.hasFalse
-    ? `icon-26-${currentIcon.slug}`
-    : `icon-26-${currentIcon.slug}-fill`;
+  const [selectedIcon, setSelectedIcon] = useState(iconItems[0]);
 
   return (
-    <div>
-      {/* ICON SIZE */}
-<div className="mb-20">
+    <div className="grid grid-cols-[1fr_380px] gap-10">
 
-<h2 className="text-[36px] font-bold tracking-tight mb-10">
-  아이콘 크기
-</h2>
+      {/* LEFT */}
+      <div>
 
-<div className="mb-10 max-w-[980px]">
-  <p className="text-[18px] leading-[1.8] text-[#4E5968]">
-    시스템 아이콘은 <span className="font-semibold text-[#111827]">24px</span>을 기준 사이즈로
-    정의하며, 주요 크기로 <span className="font-semibold text-[#111827]">16px, 20px, 24px, 32px, 40px</span>를 사용한다.
-  </p>
-  <p className="text-[18px] leading-[1.8] text-[#4E5968] mt-4">
-    24px은 대부분의 인터페이스에서 사용되는 기본 사이즈로, 일반적으로 일관된 시각 경험을 제공하기에 적합하다.
-    32px과 40px은 강조가 필요하거나 넓은 공간에서 사용할 때 적합하다.
-  </p>
-  <p className="text-[18px] leading-[1.8] text-[#4E5968] mt-4">
-    아이콘 사이즈는 4px 또는 8px 배수로 설정해 화면 간 시각적 통일성을 유지한다.
-  </p>
-</div>
-<div className="bg-[#F7F8FA] border border-[#E5E8EB] rounded-[28px] px-16 py-14">
-  
-
-{/* size preview */}
-<div className="flex items-end justify-center gap-16">
-
-  {[
-    { size: 16, radius: 2 },
-    { size: 20, radius: 2 },
-    { size: 24, radius: 3 },
-    { size: 32, radius: 4 },
-    { size: 48, radius: 6 },
-  ].map((item) => (
-
-    <div
-      key={item.size}
-      className="flex flex-col items-center"
-    >
-
-      {/* box */}
-      <div
-        className="
-          bg-[#AFC6F6]
-          border
-          border-[#C9D5EA]
-          mb-6
-        "
-        style={{
-          width: item.size,
-          height: item.size,
-          borderRadius: item.radius,
-        }}
-      />
-
-      {/* size */}
-      <div className="text-[24px] font-medium tracking-tight text-[#374151]">
-        {item.size}×{item.size}
-      </div>
-
-      {/* radius */}
-      <div className="mt-2 text-[16px] text-[#8B95A1]">
-        Radius {item.radius}
-      </div>
-
-    </div>
-
-  ))}
-
-</div>
-
-  {/* guide */}
-  <div className="mt-14 bg-white border border-[#E5E8EB] rounded-[14px] h-[52px] flex items-center justify-center gap-3 text-[#4B5563]">
-
-    <span className="w-5 h-5 rounded-full bg-[#4B5563] text-white flex items-center justify-center text-[12px]">
-      i
-    </span>
-
-    <span className="text-[16px]">
-      4 또는 8의 배수 사이즈를 권장함
-    </span>
-
-  </div>
-
-</div>
-
-</div>
-      <div className="grid grid-cols-[1fr_360px] gap-8 items-start">
-{/* LEFT */}
-<div>
-
-  {/* section title */}
-  <div className="flex items-center gap-4 mb-10">
-    <h2 className="text-[36px] font-bold tracking-tight">
-      Core
-    </h2>
-
-    <span className="text-[24px] text-[#6B7280]">
-      @atlaskit/icon/core
-    </span>
-  </div>
-
-  {/* icon grid */}
-  <div className="grid grid-cols-4 gap-y-14">
-
-    {iconItems.map((item) => (
-      <button
-        key={item.label}
-        onClick={() => {
-          setSelectedIcon(item.label);
-          if (!item.hasFalse) {
-            setDisabledPreview(false);
-          }
-        }}
-        className={`
-          flex flex-col items-center text-center transition
-          hover:opacity-70
-          rounded-[18px]
-          p-3
-          ${
-            selectedIcon === item.label
-              ? "bg-[#EDEFF2]"
-              : ""
-          }
-        `}
-      >
-
-        {/* text */}
-        <div className="mb-3 text-[18px] text-[#5B46F5] leading-[1.5] flex items-center gap-2">
-          <span>◆</span>
-          <span>{`icon-26-${item.slug}-fill`}</span>
+        <div className="mb-14">
+          <h1 className="text-[56px] font-bold tracking-tight">
+            Core
+            <span className="ml-4 text-[#6B7280] text-[28px] font-medium">
+              @atlaskit/icon/core
+            </span>
+          </h1>
         </div>
 
-        {/* icon */}
-        <div className="w-[56px] h-[56px] rounded-[14px] bg-white border border-[#E5E8EB] flex items-center justify-center text-[22px] mb-4">
-          ✦
+        <div className="grid grid-cols-4 gap-8">
+
+          {iconItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => setSelectedIcon(item)}
+              className={`
+                rounded-[28px]
+                p-6
+                transition
+                text-left
+                ${
+                  selectedIcon.label === item.label
+                    ? "bg-[#F3F4F6]"
+                    : "hover:bg-[#F8FAFC]"
+                }
+              `}
+            >
+
+              <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
+                icon-26-{item.slug}-fill
+              </div>
+
+              <div className="
+                w-[76px]
+                h-[76px]
+                rounded-[20px]
+                border
+                border-[#E5E8EB]
+                bg-white
+                flex
+                items-center
+                justify-center
+                text-[28px]
+              ">
+                ✦
+              </div>
+
+            </button>
+          ))}
+
         </div>
 
-      </button>
-    ))}
+      </div>
 
-  </div>
-</div>
-
-{/* RIGHT : FIGMA PNG */}
-<div className="bg-white border border-[#E5E8EB] rounded-[28px] overflow-hidden">
-
-  <div className="px-8 py-7 border-b border-[#F2F4F6]">
-    <h3 className="text-[24px] font-bold tracking-tight">
-      Figma interaction
-    </h3>
-  </div>
-
-  <div className="p-8">
-
-    <img
-      src="/Alert.png"
-      alt="Alert interaction spec"
-      className="
-        w-full
-        rounded-[20px]
+      {/* RIGHT PANEL */}
+      <div className="
+        bg-white
         border
         border-[#E5E8EB]
-      "
-    />
-<div className="relative mt-6 h-[260px] rounded-[24px] bg-[#F8FAFC] overflow-hidden border border-[#E5E8EB]">
+        rounded-[36px]
+        overflow-hidden
+        h-fit
+      ">
 
-{/* curve */}
-<svg
-  viewBox="0 0 320 220"
-  className="absolute inset-0 w-full h-full"
->
-  <path
-    d="M40 180 C 60 60, 180 40, 260 40"
-    fill="none"
-    stroke="#D1D5DB"
-    strokeWidth="3"
-    strokeLinecap="round"
-  />
+        <div className="px-10 py-10 border-b border-[#F2F4F6]">
+          <h2 className="text-[32px] font-bold tracking-tight">
+            Figma interaction
+          </h2>
+        </div>
 
-  <circle
-    className="motion-circle"
-    cx="40"
-    cy="180"
-    r="10"
-    fill="#111827"
-  />
-</svg>
+        <div className="p-10">
 
-{/* play */}
-<button
-  onClick={() => {
-    const circle =
-      document.querySelector(".motion-circle");
+          <div className="
+            h-[44px]
+            rounded-full
+            border
+            border-[#D9DEE5]
+            px-5
+            flex
+            items-center
+            text-[16px]
+            text-[#4B5563]
+            mb-8
+          ">
+            Alert interaction spec
+          </div>
 
-    if (!circle) return;
+          <div className="
+            rounded-[32px]
+            border
+            border-[#E5E8EB]
+            h-[360px]
+            bg-[#F8FAFC]
+            relative
+            overflow-hidden
+          ">
 
-    circle.animate(
-      [
-        {
-          transform: "translate(0px,0px)",
-        },
-        {
-          transform: "translate(220px,-140px)",
-        },
-      ],
-      {
-        duration: 300,
-        easing: "cubic-bezier(0.4,0,0,1)",
-      }
-    );
-  }}
-  className="
-    absolute
-    right-5
-    bottom-5
-    w-[52px]
-    h-[52px]
-    rounded-[16px]
-    bg-white
-    border
-    border-[#D1D5DB]
-    shadow-sm
-    flex
-    items-center
-    justify-center
-    text-[20px]
-  "
->
-  ▶
-</button>
+            <svg
+              className="absolute inset-0 w-full h-full"
+              viewBox="0 0 400 360"
+            >
+              <path
+                d="M60 280 C120 80 300 40 340 60"
+                stroke="#D1D5DB"
+                strokeWidth="4"
+                fill="none"
+                strokeLinecap="round"
+              />
 
-</div>
-  </div>
+              <circle cx="60" cy="280" r="14" fill="#0F172A" />
+            </svg>
 
-</div>
+            <button className="
+              absolute
+              right-8
+              bottom-8
+              w-[72px]
+              h-[72px]
+              rounded-[20px]
+              bg-white
+              border
+              border-[#D1D5DB]
+              shadow-sm
+              text-[28px]
+            ">
+              ▶
+            </button>
 
-</div>
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
   );
