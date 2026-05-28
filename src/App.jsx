@@ -11,6 +11,14 @@ const iconModules = import.meta.glob(
   }
 );
 
+function getIconSrc(slug) {
+  const icon =
+    iconModules[`./assets/icons/${slug}.png`] ||
+    iconModules[`./assets/icons/${slug}.svg`];
+
+  return icon || alertImage;
+}
+
 function hexToRgba(hex, opacity) {
   const cleanHex = hex.replace("#", "");
   const bigint = parseInt(cleanHex, 16);
@@ -1404,21 +1412,11 @@ function PalettePage() {
   );
 }
 const iconItems = [
-  { label: "Accessibility", slug: "accessibility", hasFalse: true },
-  { label: "Add", slug: "add", hasFalse: true },
-  { label: "Ai agent", slug: "ai-agent", hasFalse: false },
-  { label: "Ai chat", slug: "ai-chat", hasFalse: false },
-  { label: "Alert", slug: "alert", hasFalse: true },
-  { label: "Align image center", slug: "align-image-center", hasFalse: true },
-  { label: "Align image left", slug: "align-image-left", hasFalse: true },
-  { label: "Align image right", slug: "align-image-right", hasFalse: true },
-  { label: "Align text center", slug: "align-text-center", hasFalse: true },
-  { label: "Align text left", slug: "align-text-left", hasFalse: true },
-  { label: "Align text right", slug: "align-text-right", hasFalse: true },
-  { label: "Api", slug: "api", hasFalse: false },
-  { label: "App", slug: "app", hasFalse: true },
-  { label: "Apps", slug: "apps", hasFalse: true },
-  { label: "Archive box", slug: "archive-box", hasFalse: true },
+  { label: "Home", slug: "home" },
+  { label: "Category", slug: "category" },
+  { label: "My Page", slug: "mypage" },
+  { label: "Reservation", slug: "reservation" },
+  { label: "Wishlist", slug: "wishlist" },
 ];
 function ButtonPage() {
   const [sizeTab, setSizeTab] = useState("design");
