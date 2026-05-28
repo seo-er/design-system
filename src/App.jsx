@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import alertImage from "./assets/Alert.png";
 
 function hexToRgba(hex, opacity) {
@@ -2197,6 +2197,116 @@ function IconPage() {
     </div>
   );
 }
+function EasingCard({
+  title,
+  curve,
+  description,
+  path,
+  easing,
+}) {
+  const [animate, setAnimate] = useState(false);
+
+  const replay = () => {
+    setAnimate(false);
+
+    setTimeout(() => {
+      setAnimate(true);
+    }, 10);
+  };
+
+  return (
+    <div className="bg-[#F5F5F5] rounded-[28px] p-6">
+
+      {/* GRAPH */}
+      <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
+
+        {/* curve */}
+        <svg
+          viewBox="0 0 320 180"
+          className="absolute inset-0 w-full h-full"
+        >
+          <path
+            d={path}
+            fill="none"
+            stroke="#D1D5DB"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+
+          {/* start */}
+          <circle
+            cx="40"
+            cy="150"
+            r="5"
+            fill="#111827"
+          />
+
+          {/* end */}
+          <circle
+            cx="220"
+            cy="20"
+            r="5"
+            fill="#111827"
+          />
+        </svg>
+
+        {/* animated dot */}
+        <div
+          className={`
+            absolute
+            w-[14px]
+            h-[14px]
+            rounded-full
+            bg-[#2563EB]
+            left-[33px]
+            bottom-[23px]
+            ${animate ? "animate-dot" : ""}
+          `}
+          style={{
+            animationDuration: "1400ms",
+            animationTimingFunction: easing,
+            animationFillMode: "forwards",
+          }}
+        />
+
+        {/* play button */}
+        <button
+          onClick={replay}
+          className="
+            absolute
+            right-5
+            bottom-5
+            w-[44px]
+            h-[44px]
+            rounded-[12px]
+            border
+            border-[#D1D5DB]
+            bg-white
+            flex
+            items-center
+            justify-center
+            hover:bg-[#F8FAFC]
+            transition
+          "
+        >
+          ▶
+        </button>
+      </div>
+
+      <h3 className="text-[30px] font-bold mb-3">
+        {title}
+      </h3>
+
+      <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
+        {curve}
+      </code>
+
+      <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
+        {description}
+      </p>
+    </div>
+  );
+}
 
 function MotionPage() {
 
@@ -2505,159 +2615,40 @@ function MotionPage() {
   </div>
 </Card>
 </Card>
+
 <div className="grid md:grid-cols-2 gap-8">
 
-{/* CARD 1 */}
-<div className="bg-[#F5F5F5] rounded-[28px] p-6">
+  <EasingCard
+    title="Ease-out bold"
+    curve="cubic-bezier(0, 0.4, 0, 1)"
+    easing="cubic-bezier(0, 0.4, 0, 1)"
+    path="M40 150 C40 40, 220 40, 220 20"
+    description="Elements arrive quickly and decelerate to a stop."
+  />
 
-  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
+  <EasingCard
+    title="Ease-in-out bold"
+    curve="cubic-bezier(0.4, 0, 0, 1)"
+    easing="cubic-bezier(0.4, 0, 0, 1)"
+    path="M40 150 C120 150, 120 20, 220 20"
+    description="Gentle start and soft settle."
+  />
 
-    <svg
-      viewBox="0 0 320 180"
-      className="absolute inset-0 w-full h-full"
-    >
-      <path
-        d="M40 150 C40 40, 220 40, 220 20"
-        fill="none"
-        stroke="#D1D5DB"
-        strokeWidth="3"
-      />
+  <EasingCard
+    title="Ease-in practical"
+    curve="cubic-bezier(0.6, 0, 0.8, 0.6)"
+    easing="cubic-bezier(0.6, 0, 0.8, 0.6)"
+    path="M40 150 C120 150, 180 110, 220 20"
+    description="Starts slowly and accelerates away."
+  />
 
-      <circle cx="40" cy="150" r="5" fill="#111827" />
-      <circle cx="220" cy="20" r="5" fill="#111827" />
-    </svg>
-
-    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
-      ▶
-    </button>
-  </div>
-
-  <h3 className="text-[30px] font-bold mb-3">
-    Ease-out bold
-  </h3>
-
-  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-    cubic-bezier(0, 0.4, 0, 1)
-  </code>
-
-  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-    Elements arrive quickly and decelerate to a stop.
-  </p>
-</div>
-
-{/* CARD 2 */}
-<div className="bg-[#F5F5F5] rounded-[28px] p-6">
-
-  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
-
-    <svg
-      viewBox="0 0 320 180"
-      className="absolute inset-0 w-full h-full"
-    >
-      <path
-        d="M40 150 C120 150, 120 20, 220 20"
-        fill="none"
-        stroke="#D1D5DB"
-        strokeWidth="3"
-      />
-
-      <circle cx="40" cy="150" r="5" fill="#111827" />
-      <circle cx="220" cy="20" r="5" fill="#111827" />
-    </svg>
-
-    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
-      ▶
-    </button>
-  </div>
-
-  <h3 className="text-[30px] font-bold mb-3">
-    Ease-in-out bold
-  </h3>
-
-  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-    cubic-bezier(0.4, 0, 0, 1)
-  </code>
-
-  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-    Gentle start and soft settle.
-  </p>
-</div>
-
-{/* CARD 3 */}
-<div className="bg-[#F5F5F5] rounded-[28px] p-6">
-
-  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
-
-    <svg
-      viewBox="0 0 320 180"
-      className="absolute inset-0 w-full h-full"
-    >
-      <path
-        d="M40 150 C120 150, 180 110, 220 20"
-        fill="none"
-        stroke="#D1D5DB"
-        strokeWidth="3"
-      />
-
-      <circle cx="40" cy="150" r="5" fill="#111827" />
-      <circle cx="220" cy="20" r="5" fill="#111827" />
-    </svg>
-
-    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
-      ▶
-    </button>
-  </div>
-
-  <h3 className="text-[30px] font-bold mb-3">
-    Ease-in practical
-  </h3>
-
-  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-    cubic-bezier(0.6, 0, 0.8, 0.6)
-  </code>
-
-  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-    Starts slowly and accelerates away.
-  </p>
-</div>
-
-{/* CARD 4 */}
-<div className="bg-[#F5F5F5] rounded-[28px] p-6">
-
-  <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
-
-    <svg
-      viewBox="0 0 320 180"
-      className="absolute inset-0 w-full h-full"
-    >
-      <path
-        d="M40 150 C90 70, 120 20, 220 20"
-        fill="none"
-        stroke="#D1D5DB"
-        strokeWidth="3"
-      />
-
-      <circle cx="40" cy="150" r="5" fill="#111827" />
-      <circle cx="220" cy="20" r="5" fill="#111827" />
-    </svg>
-
-    <button className="absolute right-5 bottom-5 w-[44px] h-[44px] rounded-[12px] border border-[#D1D5DB] bg-white flex items-center justify-center">
-      ▶
-    </button>
-  </div>
-
-  <h3 className="text-[30px] font-bold mb-3">
-    Ease-out practical
-  </h3>
-
-  <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-    cubic-bezier(0.4, 1, 0.6, 1)
-  </code>
-
-  <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-    Subtle, everyday entrance curve.
-  </p>
-</div>
+  <EasingCard
+    title="Ease-out practical"
+    curve="cubic-bezier(0.4, 1, 0.6, 1)"
+    easing="cubic-bezier(0.4, 1, 0.6, 1)"
+    path="M40 150 C90 70, 120 20, 220 20"
+    description="Subtle, everyday entrance curve."
+  />
 
 </div>
 
