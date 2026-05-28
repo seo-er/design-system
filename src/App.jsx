@@ -2206,6 +2206,71 @@ function MotionPage() {
   const [curve2, setCurve2] = useState(false);
   const [playAlert, setPlayAlert] = useState(false);
 
+  function MotionCurveCard({
+    title,
+    curvePath,
+    easing = "cubic-bezier(0, 0.4, 0, 1)",
+  }) {
+    return (
+      <div className="bg-white rounded-[28px] border border-[#E5E8EB] overflow-hidden">
+        
+        {/* preview */}
+        <div className="relative h-[320px] bg-[#F8FAFC]">
+  
+          <svg
+            viewBox="0 0 600 260"
+            className="absolute inset-0 w-full h-full"
+          >
+            {/* curve */}
+            <path
+              d={curvePath}
+              fill="none"
+              stroke="#D1D5DB"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+  
+            {/* animated dot */}
+            <circle r="10" fill="#0F172A">
+              <animateMotion
+                dur="2.4s"
+                repeatCount="indefinite"
+                rotate="auto"
+                keySplines=".4 0 0 1"
+                keyTimes="0;1"
+                calcMode="spline"
+              >
+                <mpath href="#motionPath" />
+              </animateMotion>
+            </circle>
+  
+            {/* hidden motion path */}
+            <path
+              id="motionPath"
+              d={curvePath}
+              fill="none"
+            />
+          </svg>
+  
+          {/* play button */}
+          <button className="absolute right-6 bottom-6 w-[56px] h-[56px] rounded-[18px] border border-[#D8DEE5] bg-white flex items-center justify-center text-[22px] shadow-sm">
+            ▶
+          </button>
+        </div>
+  
+        {/* text */}
+        <div className="px-8 py-7">
+          <h3 className="text-[44px] font-bold tracking-tight">
+            {title}
+          </h3>
+  
+          <div className="mt-6 inline-flex px-5 py-3 rounded-[18px] bg-[#F3F4F6] text-[28px] text-[#374151]">
+            {easing}
+          </div>
+        </div>
+      </div>
+    );
+  }
   const replay = (setter) => {
     setter(false);
 
