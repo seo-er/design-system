@@ -1,7 +1,7 @@
 import { useState } from "react";
 import alertImage from "./assets/Alert.png";
 import gridImg from "./assets/Grid_img.png";
-import gridOverlay from "./assets/Grid.png";
+import gridOverlay from "./assets/Grid.jpg";
 
 function hexToRgba(hex, opacity) {
   const cleanHex = hex.replace("#", "");
