@@ -854,13 +854,13 @@ function MobileGridSection() {
         <img
         src={gridImg}
         alt="mobile grid"
-        className="w-full"
+        className="w-[227px]"
       />
 
       <img
         src={gridOverlay}
         alt="mobile grid"
-        className="w-full"
+        className="w-[227px]"
       />
         </div>
 
