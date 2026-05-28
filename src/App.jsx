@@ -2016,34 +2016,131 @@ function IconPage() {
       {/* LEFT */}
       <div>
   {/* ICON GUIDE */}
-  <div className="mb-16">
+{/* ICON GUIDE */}
+<div className="mt-20">
 
-<h2 className="text-[32px] font-bold tracking-tight mb-4">
-  아이콘 가이드
-</h2>
+  <div className="
+    bg-[#F8FAFC]
+    rounded-[32px]
+    border
+    border-[#E5E8EB]
+    p-12
+  ">
 
-<p className="text-[18px] leading-[1.7] text-[#6B7684] max-w-[760px] mb-10">
-  아이콘은 24×24 제작 그리드를 기준으로 정렬하며,
-  명확한 가독성을 위해 1.5~2px 두께를 권장한다.
-</p>
+    <div className="
+      grid
+      grid-cols-[1fr_280px]
+      gap-16
+      items-center
+    ">
 
-<div className="
-  bg-[#F8FAFC]
-  rounded-[28px]
-  p-10
-">
+      {/* LEFT */}
+      <div>
 
-  <img
-    src={iconGuide}
-    alt="icon guide"
-    className="
-      w-[20%]
-      min-w-[180px]
-      rounded-[20px]
-    "
-  />
+        <h2 className="text-[40px] font-bold tracking-tight mb-5">
+          아이콘 가이드
+        </h2>
 
-</div>
+        <p className="
+          text-[18px]
+          leading-[1.8]
+          text-[#6B7684]
+          mb-10
+          max-w-[620px]
+        ">
+          아이콘은 24×24 제작 그리드를 기준으로 정렬하며,
+          명확한 가독성과 시각적 균형을 위해
+          1.5~2px 두께를 권장한다.
+        </p>
+
+        {/* RULES */}
+        <div className="grid grid-cols-3 gap-5">
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Grid
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              24×24
+            </div>
+
+          </div>
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Stroke
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              1.5–2px
+            </div>
+
+          </div>
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Contrast
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              3:1+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* RIGHT */}
+      <div className="
+        bg-white
+        rounded-[28px]
+        border
+        border-[#E5E8EB]
+        p-10
+        flex
+        items-center
+        justify-center
+      ">
+
+        <img
+          src={iconGuide}
+          alt="icon guide"
+          className="
+            w-full
+            max-w-[180px]
+            object-contain
+          "
+        />
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
         <div className="grid grid-cols-4 gap-8">
