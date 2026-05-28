@@ -1,5 +1,6 @@
 import { useState } from "react";
 import alertImage from "./assets/Alert.png";
+import { motion } from "framer-motion";
 
 function hexToRgba(hex, opacity) {
   const cleanHex = hex.replace("#", "");
@@ -2204,14 +2205,13 @@ function MotionPage() {
   const [modalPlay, setModalPlay] = useState(false);
   const [curve1, setCurve1] = useState(false);
   const [curve2, setCurve2] = useState(false);
-  const [playAlert, setPlayAlert] = useState(false);
-
+  
   const replay = (setter) => {
     setter(false);
-
+  
     setTimeout(() => {
       setter(true);
-    }, 30);
+    }, 20);
   };
 
   return (
@@ -2577,58 +2577,78 @@ function MotionPage() {
         </div>
 
         {/* curve2 */}
-        <div>
+       {/* curve2 */}
+<div>
+  <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
 
-          <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
+    <svg
+      viewBox="0 0 300 180"
+      className="absolute inset-0 w-full h-full"
+    >
 
-          <svg
-            viewBox="0 0 300 180"
-            className="absolute inset-0 w-full h-full"
-          >
-            <path
-              d="M40 140 C90 140, 90 20, 220 20"
-              stroke="#D1D5DB"
-              strokeWidth="2"
-              fill="none"
-            />
+      {/* 회색 기준 곡선 */}
+      <path
+        d="M40 140 C90 140, 90 20, 220 20"
+        stroke="#D1D5DB"
+        strokeWidth="2"
+        fill="none"
+      />
 
-            <circle r="6" fill="#111827">
-              <animateMotion
-                dur="1000ms"
-                begin={curve2 ? "0s" : "indefinite"}
-                fill="freeze"
-                path="M40 140 C90 140, 90 20, 220 20"
-              />
-            </circle>
-          </svg>
+      {/* 빨간 곡선 */}
+      <path
+        id="redPath"
+        d="M40 140 C70 140, 100 40, 220 20"
+        stroke="#FF3B30"
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+      />
 
-            <button
-              onClick={() => replay(setCurve2)}
-              className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6]"
-            >
-              ▶
-            </button>
+      {/* 움직이는 동그라미 */}
+      <motion.circle
+        r="6"
+        fill="#111827"
+        initial={{ offsetDistance: "0%" }}
+        animate={{
+          offsetDistance: curve2 ? "100%" : "0%",
+        }}
+        transition={{
+          duration: 1,
+          ease: [0.4, 0, 0, 1],
+        }}
+        style={{
+          offsetPath:
+            'path("M40 140 C70 140, 100 40, 220 20")',
+        }}
+      />
+    </svg>
 
-          </div>
+    <button
+      onClick={() => replay(setCurve2)}
+      className="absolute bottom-5 right-5 w-[42px] h-[42px] rounded-xl border border-[#D1D5DB] bg-white flex items-center justify-center hover:bg-[#F3F4F6]"
+    >
+      ▶
+    </button>
 
-          <div className="mt-6">
+  </div>
 
-            <h3 className="text-[30px] font-bold mb-4">
-              Ease-in-out bold
-            </h3>
+  <div className="mt-6">
 
-            <div className="inline-flex px-4 py-2 rounded-xl bg-[#F3F4F6] text-[18px] mb-5">
-              cubic-bezier(0.4, 0, 0, 1)
-            </div>
+    <h3 className="text-[30px] font-bold mb-4">
+      Ease-in-out bold
+    </h3>
 
-            <p className="text-[20px] leading-[1.8] text-[#4E5968]">
-              Gentle start and soft settle.
-              Best for scaling modals or repositioning elements.
-            </p>
+    <div className="inline-flex px-4 py-2 rounded-xl bg-[#F3F4F6] text-[18px] mb-5">
+      cubic-bezier(0.4, 0, 0, 1)
+    </div>
 
-          </div>
+    <p className="text-[20px] leading-[1.8] text-[#4E5968]">
+      Gentle start and soft settle.
+      Best for scaling modals or repositioning elements.
+    </p>
 
-        </div>
+  </div>
+</div>
 
       </div>
 
