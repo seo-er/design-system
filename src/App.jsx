@@ -19,7 +19,6 @@ function getIconSrc(slug) {
 
   return icon || alertImage;
 }
-
 function hexToRgba(hex, opacity) {
   const cleanHex = hex.replace("#", "");
   const bigint = parseInt(cleanHex, 16);
@@ -1413,11 +1412,11 @@ function PalettePage() {
   );
 }
 const iconItems = [
-  { label: "Home", slug: "home" },
-  { label: "Category", slug: "category" },
-  { label: "My Page", slug: "mypage" },
-  { label: "Reservation", slug: "reservation" },
-  { label: "Wishlist", slug: "wishlist" },
+  { label: "홈", slug: "home" },
+  { label: "카테고리", slug: "category" },
+  { label: "찜", slug: "wishlist" },
+  { label: "예약", slug: "reservation" },
+  { label: "마이페이지", slug: "mypage" },
 ];
 function ButtonPage() {
   const [sizeTab, setSizeTab] = useState("design");
