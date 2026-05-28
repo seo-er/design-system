@@ -3,6 +3,14 @@ import alertImage from "./assets/Alert.png";
 import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
 
+const iconModules = import.meta.glob(
+  "./assets/icons/*.{png,svg,webp}",
+  {
+    eager: true,
+    import: "default",
+  }
+);
+
 function hexToRgba(hex, opacity) {
   const cleanHex = hex.replace("#", "");
   const bigint = parseInt(cleanHex, 16);
@@ -2032,7 +2040,8 @@ function IconPage() {
               ◆icon-26-{item.slug}-fill
               </div>
 
-              <div className="
+              <div
+              className="
                 w-[76px]
                 h-[76px]
                 rounded-[20px]
@@ -2042,10 +2051,16 @@ function IconPage() {
                 flex
                 items-center
                 justify-center
-                text-[28px]
-              ">
-                ✦
-              </div>
+              "
+            >
+
+              <img
+                src={getIconSrc(item.slug)}
+                alt={item.label}
+                className="w-[32px] h-[32px] object-contain"
+              />
+
+            </div>
 
             </button>
           ))}
