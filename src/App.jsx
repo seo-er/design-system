@@ -2205,13 +2205,15 @@ function MotionPage() {
   const [modalPlay, setModalPlay] = useState(false);
   const [curve1, setCurve1] = useState(false);
   const [curve2, setCurve2] = useState(false);
-  
+
   const replay = (setter) => {
     setter(false);
   
-    setTimeout(() => {
-      setter(true);
-    }, 20);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setter(true);
+      });
+    });
   };
 
   return (
@@ -2577,7 +2579,105 @@ function MotionPage() {
         </div>
 
         {/* curve2 */}
-       {/* curve2 */}
+      {/* curve2 */}
+<div>
+
+<div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
+
+  <svg
+    viewBox="0 0 300 180"
+    className="absolute inset-0 w-full h-full"
+  >
+
+    {/* gray reference */}
+    <path
+      d="M40 140 C90 140, 90 20, 220 20"
+      stroke="#D6D8DC"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+    />
+
+    {/* red animated curve */}
+    <motion.path
+      d="M40 140 C90 140, 90 20, 220 20"
+      stroke="#FF3B30"
+      strokeWidth="2.5"
+      fill="none"
+      strokeLinecap="round"
+      initial={{ pathLength: 0 }}
+      animate={{
+        pathLength: curve2 ? 1 : 0,
+      }}
+      transition={{
+        duration: 1,
+        ease: [0.4, 0, 0, 1],
+      }}
+    />
+
+    {/* moving dot */}
+    <motion.circle
+      r="5"
+      fill="#1F2937"
+      initial={{ offsetDistance: "0%" }}
+      animate={{
+        offsetDistance: curve2 ? "100%" : "0%",
+      }}
+      transition={{
+        duration: 1,
+        ease: [0.4, 0, 0, 1],
+      }}
+      style={{
+        offsetPath:
+          'path("M40 140 C90 140, 90 20, 220 20")',
+      }}
+    />
+
+  </svg>
+
+  {/* play button */}
+  <button
+    onClick={() => replay(setCurve2)}
+    className="
+      absolute
+      bottom-5
+      right-5
+      w-[42px]
+      h-[42px]
+      rounded-xl
+      border
+      border-[#D1D5DB]
+      bg-white
+      flex
+      items-center
+      justify-center
+      hover:bg-[#F3F4F6]
+      transition
+    "
+  >
+    ▶
+  </button>
+
+</div>
+
+<div className="mt-6">
+
+  <h3 className="text-[30px] font-bold mb-4">
+    Ease-in-out bold
+  </h3>
+
+  <div className="inline-flex px-4 py-2 rounded-xl bg-[#F3F4F6] text-[18px] mb-5 font-mono">
+    cubic-bezier(0.4, 0, 0, 1)
+  </div>
+
+  <p className="text-[20px] leading-[1.8] text-[#4E5968]">
+    Gentle start and soft settle.
+    Best for scaling Modals or repositioning elements.
+  </p>
+
+</div>
+
+</div>
 <div>
   <div className="relative h-[260px] rounded-[28px] bg-[#F7F8FA] overflow-hidden border border-[#E5E8EB]">
 
@@ -2655,6 +2755,7 @@ function MotionPage() {
     </div>
   );
 }
+
 
 function AdvertisingPage() {
   return (
