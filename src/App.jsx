@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import alertImage from "./assets/Alert.png";
 
 function hexToRgba(hex, opacity) {
@@ -2202,27 +2202,23 @@ function EasingCard({
   curve,
   description,
   path,
-  easing,
 }) {
-  const [animate, setAnimate] = useState(false);
+  const [playing, setPlaying] = useState(false);
 
-  const replay = () => {
-    setAnimate(false);
+  const handlePlay = () => {
+    setPlaying(false);
 
-    setTimeout(() => {
-      setAnimate(true);
-    }, 10);
+    requestAnimationFrame(() => {
+      setPlaying(true);
+    });
   };
 
   return (
-    <div className="bg-[#F5F5F5] rounded-[28px] p-6">
+    <div className="bg-white rounded-[28px] border border-[#E5E8EB] p-5">
+      <div className="relative h-[220px] rounded-[20px] bg-[#F7F8FA] overflow-hidden">
 
-      {/* GRAPH */}
-      <div className="relative h-[220px] rounded-[24px] bg-[#F1F1F1] mb-6 overflow-hidden">
-
-        {/* curve */}
         <svg
-          viewBox="0 0 320 180"
+          viewBox="0 0 300 180"
           className="absolute inset-0 w-full h-full"
         >
           <path
@@ -2232,82 +2228,79 @@ function EasingCard({
             strokeWidth="3"
             strokeLinecap="round"
           />
-
-          {/* start */}
-          <circle
-            cx="40"
-            cy="150"
-            r="5"
-            fill="#111827"
-          />
-
-          {/* end */}
-          <circle
-            cx="220"
-            cy="20"
-            r="5"
-            fill="#111827"
-          />
         </svg>
 
-        {/* animated dot */}
         <div
           className={`
             absolute
-            w-[14px]
-            h-[14px]
+            w-4
+            h-4
             rounded-full
-            bg-[#2563EB]
-            left-[33px]
-            bottom-[23px]
-            ${animate ? "animate-dot" : ""}
+            bg-[#191F28]
+            left-[40px]
+            bottom-[24px]
+            ${playing ? "animate-dot" : ""}
           `}
           style={{
             animationDuration: "1400ms",
-            animationTimingFunction: easing,
+            animationTimingFunction: curve,
             animationFillMode: "forwards",
           }}
         />
 
-        {/* play button */}
         <button
-          onClick={replay}
+          onClick={handlePlay}
           className="
             absolute
-            right-5
-            bottom-5
-            w-[44px]
-            h-[44px]
-            rounded-[12px]
+            right-4
+            bottom-4
+            w-10
+            h-10
+            rounded-xl
             border
             border-[#D1D5DB]
             bg-white
             flex
             items-center
             justify-center
-            hover:bg-[#F8FAFC]
-            transition
           "
         >
           ▶
         </button>
+
+        <style>{`
+          @keyframes moveDot {
+            from {
+              transform: translate(0px, 0px);
+            }
+
+            to {
+              transform: translate(180px, -140px);
+            }
+          }
+
+          .animate-dot {
+            animation-name: moveDot;
+          }
+        `}</style>
       </div>
 
-      <h3 className="text-[30px] font-bold mb-3">
-        {title}
-      </h3>
+      <div className="mt-5">
+        <h3 className="text-[28px] font-bold">
+          {title}
+        </h3>
 
-      <code className="inline-block bg-[#E5E7EB] px-3 py-2 rounded-lg text-[16px]">
-        {curve}
-      </code>
+        <code className="mt-3 inline-block bg-[#F2F4F6] px-3 py-1.5 rounded-lg text-sm">
+          {curve}
+        </code>
 
-      <p className="mt-5 text-[18px] leading-[1.7] text-[#4B5563]">
-        {description}
-      </p>
+        <p className="mt-4 text-[18px] text-[#4E5968]">
+          {description}
+        </p>
+      </div>
     </div>
   );
 }
-
 function MotionPage() {
 
   const [dropdownPlay, setDropdownPlay] = useState(false);
@@ -2615,39 +2608,34 @@ function MotionPage() {
   </div>
 </Card>
 </Card>
-
 <div className="grid md:grid-cols-2 gap-8">
 
   <EasingCard
     title="Ease-out bold"
     curve="cubic-bezier(0, 0.4, 0, 1)"
-    easing="cubic-bezier(0, 0.4, 0, 1)"
-    path="M40 150 C40 40, 220 40, 220 20"
-    description="Elements arrive quickly and decelerate to a stop."
+    description="Elements arrive quickly and decelerate."
+    path="M40 150 C40 40 180 20 220 20"
   />
 
   <EasingCard
     title="Ease-in-out bold"
     curve="cubic-bezier(0.4, 0, 0, 1)"
-    easing="cubic-bezier(0.4, 0, 0, 1)"
-    path="M40 150 C120 150, 120 20, 220 20"
     description="Gentle start and soft settle."
+    path="M40 150 C90 150 90 20 220 20"
   />
 
   <EasingCard
     title="Ease-in practical"
     curve="cubic-bezier(0.6, 0, 0.8, 0.6)"
-    easing="cubic-bezier(0.6, 0, 0.8, 0.6)"
-    path="M40 150 C120 150, 180 110, 220 20"
     description="Starts slowly and accelerates away."
+    path="M40 150 C120 150 170 80 220 20"
   />
 
   <EasingCard
     title="Ease-out practical"
     curve="cubic-bezier(0.4, 1, 0.6, 1)"
-    easing="cubic-bezier(0.4, 1, 0.6, 1)"
-    path="M40 150 C90 70, 120 20, 220 20"
-    description="Subtle, everyday entrance curve."
+    description="Subtle everyday entrance curve."
+    path="M40 150 C80 40 160 20 220 20"
   />
 
 </div>
