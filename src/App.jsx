@@ -1983,7 +1983,7 @@ function IconPage() {
             >
 
               <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
-                icon-26-{item.slug}-fill
+              ◆icon-26-{item.slug}-fill
               </div>
 
               <div className="
@@ -2038,79 +2038,13 @@ function IconPage() {
 
       <div className="flex items-center gap-3 mb-4">
 
-        <h2 className="text-[42px] font-bold tracking-tight leading-none">
-          {selectedIcon.label}
+        <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
+        ◆icon-26-{selectedIcon.slug}-fill
         </h2>
 
-        <span className="
-          px-3
-          py-1
-          rounded-[10px]
-          border
-          border-[#C084FC]
-          text-[#7C3AED]
-          text-[16px]
-          font-medium
-        ">
-          Single purpose
-        </span>
-
+      
       </div>
-
-      {/* token */}
-      <div className="
-        text-[#7C3AED]
-        text-[22px]
-        font-semibold
-        mb-5
-      ">
-        ◆icon-26-{selectedIcon.slug}-fill
-      </div>
-
-      <p className="text-[18px] leading-[1.8] text-[#4B5563]">
-        Reserved for white label Rovo experiences.
-      </p>
-
-    </div>
-
-    {/* tags */}
-    <div className="flex flex-wrap gap-3 mb-10">
-
-      {[
-        selectedIcon.slug,
-        "icon",
-        "AI",
-        "chat agent",
-      ].map((tag) => (
-        <div
-          key={tag}
-          className="
-            px-3
-            py-1
-            rounded-[10px]
-            border
-            border-[#D1D5DB]
-            text-[16px]
-            text-[#374151]
-          "
-        >
-          {tag}
-        </div>
-      ))}
-
-    </div>
-
-    {/* maintained */}
-    <div className="mb-12">
-
-      <div className="text-[28px] font-bold mb-4">
-        Maintained by
-      </div>
-
-      <div className="text-[20px] text-[#4B5563]">
-        Central AI
-      </div>
-
+   
     </div>
 
   </div>
@@ -2185,10 +2119,7 @@ function IconPage() {
 
         <div className="flex items-center gap-5">
 
-          <div className="text-[20px]">
-            ✦
-          </div>
-
+         
           <div className="flex items-center gap-3">
 
             <span className="
@@ -2201,19 +2132,7 @@ function IconPage() {
               Small
             </span>
 
-            {selectedIcon.hasFalse && (
-              <span className="
-                px-3
-                py-1
-                rounded-[8px]
-                bg-[#DCFCE7]
-                text-[#166534]
-                text-[15px]
-                font-medium
-              ">
-                true
-              </span>
-            )}
+         
 
           </div>
 
@@ -2253,30 +2172,7 @@ function IconPage() {
               Medium
             </span>
 
-            <span className="
-              px-3
-              py-1
-              rounded-[8px]
-              bg-[#E5E7EB]
-              text-[14px]
-              font-semibold
-            ">
-              RECOMMENDED
-            </span>
-
-            {selectedIcon.hasFalse && (
-              <span className="
-                px-3
-                py-1
-                rounded-[8px]
-                bg-[#FEE2E2]
-                text-[#991B1B]
-                text-[15px]
-                font-medium
-              ">
-                false
-              </span>
-            )}
+          
 
           </div>
 
@@ -2298,7 +2194,42 @@ function IconPage() {
     </div>
 
   </div>
+{/* STATUS */}
+<div className="border-t border-[#E5E8EB] p-8">
 
+  <div className="text-[34px] font-bold mb-8">
+    Status
+  </div>
+
+  <div className="flex gap-4">
+
+    <span className="
+      px-4
+      py-2
+      rounded-[10px]
+      bg-[#DCFCE7]
+      text-[#166534]
+      text-[16px]
+      font-medium
+    ">
+      true
+    </span>
+
+    <span className="
+      px-4
+      py-2
+      rounded-[10px]
+      bg-[#FEE2E2]
+      text-[#991B1B]
+      text-[16px]
+      font-medium
+    ">
+      false
+    </span>
+
+  </div>
+
+</div>
   {/* FIGMA */}
   <div className="border-t border-[#E5E8EB] p-8">
 
