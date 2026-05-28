@@ -2,6 +2,7 @@ import { useState } from "react";
 import alertImage from "./assets/Alert.png";
 import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
+import iconStroke from "./assets/icon_grid.png";
 
 const iconModules = import.meta.glob(
   "./assets/icons/*.{png,svg,webp}",
@@ -2010,11 +2011,105 @@ function IconPage() {
   const [selectedIcon, setSelectedIcon] = useState(iconItems[0]);
 
   return (
+    
     <div className="grid grid-cols-[1fr_380px] gap-10">
 
       {/* LEFT */}
       <div>
+{/* ICON GUIDE */}
+<div className="mt-24">
 
+  <h2 className="text-[32px] font-bold tracking-tight mb-4">
+    아이콘 가이드
+  </h2>
+
+  <p className="text-[18px] leading-[1.7] text-[#6B7684] max-w-[760px] mb-10">
+    아이콘은 24×24 제작 그리드를 기준으로 정렬하며,
+    명확한 가독성을 위해 1.5~2px 두께를 권장한다.
+  </p>
+
+  <div className="
+    bg-[#F8FAFC]
+    rounded-[28px]
+    p-10
+    flex
+    items-center
+    justify-between
+    gap-12
+    flex-wrap
+  ">
+
+    {/* IMAGE */}
+    <img
+      src={iconGrid}
+      alt="icon grid"
+      className="
+        w-[20%]
+        min-w-[180px]
+        rounded-[20px]
+      "
+    />
+
+    {/* RULES */}
+    <div className="flex-1 min-w-[320px]">
+
+      <div className="grid grid-cols-3 gap-6">
+
+        <div className="
+          bg-white
+          rounded-[20px]
+          border
+          border-[#E5E8EB]
+          p-6
+        ">
+          <div className="text-sm text-[#8B95A1] mb-2">
+            Grid
+          </div>
+
+          <div className="text-[28px] font-bold">
+            24×24
+          </div>
+        </div>
+
+        <div className="
+          bg-white
+          rounded-[20px]
+          border
+          border-[#E5E8EB]
+          p-6
+        ">
+          <div className="text-sm text-[#8B95A1] mb-2">
+            Stroke
+          </div>
+
+          <div className="text-[28px] font-bold">
+            1.5–2px
+          </div>
+        </div>
+
+        <div className="
+          bg-white
+          rounded-[20px]
+          border
+          border-[#E5E8EB]
+          p-6
+        ">
+          <div className="text-sm text-[#8B95A1] mb-2">
+            Contrast
+          </div>
+
+          <div className="text-[28px] font-bold">
+            3:1+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
         <div className="grid grid-cols-4 gap-8">
 
           {iconItems.map((item) => (
