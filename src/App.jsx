@@ -12,15 +12,6 @@ function hexToRgba(hex, opacity) {
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
-const gridData = [
-  { bp: "xxs", viewport: "320-479px", columns: 2, gutters: "12px", margins: "16px" },
-  { bp: "xs", viewport: "480-767px", columns: 6, gutters: "12px", margins: "16px" },
-  { bp: "s", viewport: "768-1023px", columns: 6, gutters: "12px", margins: "16px" },
-  { bp: "m", viewport: "1024-1439px", columns: 12, gutters: "16px", margins: "32px" },
-  { bp: "l", viewport: "1440-1767px", columns: 12, gutters: "16px", margins: "32px" },
-  { bp: "xl", viewport: "1768+px", columns: 12, gutters: "16px", margins: "32px" },
-];
-
 const typographyRows = [
   ["font.heading.xxlarge", "Bold", "2rem / 32px", "2.25rem / 36px"],
   ["font.heading.xlarge", "Bold", "1.75rem / 28px", "2rem / 32px"],
@@ -829,41 +820,98 @@ return (
 }
 
 function GridPage() {
-return (
-<div>
-<h1 className="text-[44px] font-bold tracking-tight mb-10">
-  Grid
-</h1>
+  return (
+    <div>
 
-<Card>
-  <div className="grid grid-cols-5 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
-    <span>Breakpoint</span>
-    <span>Viewport</span>
-    <span>Columns</span>
-    <span>Gutters</span>
-    <span>Margins</span>
-  </div>
+      <h1 className="text-[44px] font-bold tracking-tight mb-10">
+        Grid
+      </h1>
 
-  {gridData.map((g) => (
-    <div
-      key={g.bp}
-      className="grid grid-cols-5 px-8 py-5 border-b border-[#F2F4F6] items-center hover:bg-[#FAFBFC] transition"
-    >
-      <span>
-        <span className="bg-[#F2F4F6] px-2 py-1 rounded-lg text-xs">
-          {g.bp}
-        </span>
-      </span>
+      <MobileGridSection />
 
-      <span>{g.viewport}</span>
-      <span>{g.columns}</span>
-      <span>{g.gutters}</span>
-      <span>{g.margins}</span>
+      <WatchGridSection />
+
     </div>
-  ))}
-</Card>
-</div>
-);
+  );
+}
+function MobileGridSection() {
+  return (
+    <Card>
+      <div className="p-10">
+
+        <h2 className="text-[32px] font-bold mb-6">
+          Mobile Grid
+        </h2>
+
+        <p className="text-[#6B7684] mb-10">
+          Mobile layouts use a 4-column structure.
+        </p>
+
+        <div className="rounded-[28px] overflow-hidden border border-[#E5E8EB]">
+
+          <img
+            src="/mobile-grid.png"
+            alt="mobile grid"
+            className="w-full"
+          />
+
+        </div>
+
+        <div className="grid grid-cols-3 gap-6 mt-10">
+
+          <div className="bg-[#F8FAFC] rounded-[20px] p-6">
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Columns
+            </div>
+
+            <div className="text-[28px] font-bold">
+              4
+            </div>
+          </div>
+
+          <div className="bg-[#F8FAFC] rounded-[20px] p-6">
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Margin
+            </div>
+
+            <div className="text-[28px] font-bold">
+              16
+            </div>
+          </div>
+
+          <div className="bg-[#F8FAFC] rounded-[20px] p-6">
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Gutter
+            </div>
+
+            <div className="text-[28px] font-bold">
+              16
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </Card>
+  );
+}
+
+function WatchGridSection() {
+  return (
+    <Card>
+      <div className="p-10">
+
+        <h2 className="text-[32px] font-bold mb-6">
+          Smart Watch Grid
+        </h2>
+
+        <p className="text-[#6B7684] mb-10">
+          Smart watch layouts use a centered safe area.
+        </p>
+
+      </div>
+    </Card>
+  );
 }
 
 const lightPalettes = [
@@ -1954,15 +2002,6 @@ function IconPage() {
       {/* LEFT */}
       <div>
 
-        <div className="mb-14">
-          <h1 className="text-[56px] font-bold tracking-tight">
-            Core
-            <span className="ml-4 text-[#6B7280] text-[28px] font-medium">
-              @atlaskit/icon/core
-            </span>
-          </h1>
-        </div>
-
         <div className="grid grid-cols-4 gap-8">
 
           {iconItems.map((item) => (
@@ -2156,9 +2195,6 @@ function IconPage() {
 
         <div className="flex items-center gap-5">
 
-          <div className="text-[28px]">
-            ✦
-          </div>
 
           <div className="flex items-center gap-3">
 
@@ -2197,37 +2233,87 @@ function IconPage() {
 {/* STATUS */}
 <div className="border-t border-[#E5E8EB] p-8">
 
-  <div className="text-[34px] font-bold mb-8">
-    Status
+<div className="text-[34px] font-bold mb-8">
+Status
+</div>
+
+<div className="space-y-6">
+
+  {/* SMALL */}
+  <div className="flex items-center justify-between">
+
+    <div className="flex items-center gap-5">
+
+     
+      <div className="flex items-center gap-3">
+
+        <span className="
+          px-3
+          py-1
+          rounded-[8px]
+          bg-[#F3F4F6]
+          text-[16px]
+        ">
+          true
+        </span>
+
+     
+
+      </div>
+
+    </div>
+
+    <button
+      onClick={() =>
+        navigator.clipboard.writeText(
+          `<Icon size="small" />`
+        )
+      }
+      className="text-[22px]"
+    >
+      ⧉
+    </button>
+
   </div>
 
-  <div className="flex gap-4">
+  {/* MEDIUM */}
+  <div className="flex items-center justify-between">
 
-    <span className="
-      px-4
-      py-2
-      rounded-[10px]
-      bg-[#DCFCE7]
-      text-[#166534]
-      text-[16px]
-      font-medium
-    ">
-      true
-    </span>
+    <div className="flex items-center gap-5">
 
-    <span className="
-      px-4
-      py-2
-      rounded-[10px]
-      bg-[#FEE2E2]
-      text-[#991B1B]
-      text-[16px]
-      font-medium
-    ">
-      false
-    </span>
+
+      <div className="flex items-center gap-3">
+
+        <span className="
+          px-3
+          py-1
+          rounded-[8px]
+          bg-[#F3F4F6]
+          text-[16px]
+        ">
+          false
+        </span>
+
+      
+
+      </div>
+
+    </div>
+
+    <button
+      onClick={() =>
+        navigator.clipboard.writeText(
+          `<Icon size="medium" />`
+        )
+      }
+      className="text-[22px]"
+    >
+      ⧉
+    </button>
 
   </div>
+
+</div>
 
 </div>
   {/* FIGMA */}
