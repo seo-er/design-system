@@ -2207,10 +2207,10 @@ function EasingCard({
 
   const handlePlay = () => {
     setPlaying(false);
-
-    requestAnimationFrame(() => {
+  
+    setTimeout(() => {
       setPlaying(true);
-    });
+    }, 10);
   };
 
   return (
@@ -2241,14 +2241,15 @@ function EasingCard({
   >
     <circle cx="40" cy="150" r="4" fill="#191F28">
 
-      {playing && (
-        <animateMotion
-          dur="1400ms"
-          repeatCount="1"
-          fill="freeze"
-          path={path}
-        />
-      )}
+    {playing && (
+  <animateMotion
+    key={Date.now()}
+    dur="1400ms"
+    repeatCount="1"
+    fill="freeze"
+    path={path}
+  />
+)}
 
     </circle>
   </svg>
