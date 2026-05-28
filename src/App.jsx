@@ -2053,65 +2053,6 @@ function IconPage() {
           1.5~2px 두께를 권장한다.
         </p>
 
-        {/* RULES */}
-        <div className="grid grid-cols-3 gap-5">
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Grid
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              24×24
-            </div>
-
-          </div>
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Stroke
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              1.5–2px
-            </div>
-
-          </div>
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Contrast
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              3:1+
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
 
       {/* RIGHT */}
