@@ -1488,8 +1488,8 @@ function IllustrationPage() {
 
               <div
   className="
-    w-[80px]
-    h-[80px]
+    w-[100px]
+    h-[100px]
     rounded-[24px]
     border
     border-[#E5E8EB]
