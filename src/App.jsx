@@ -2320,8 +2320,16 @@ function ButtonPage() {
     ◆btn-confirm
   </div>
 
-  <button className="h-[82px] px-10 rounded-[20px] bg-[#1675EE] text-white text-[42px] font-bold tracking-tight leading-none inline-flex items-center gap-4">
-    <span className="text-[36px]">♥</span>
+  <button className="w-[168px]
+    h-[48px]
+    rounded-[8px]
+    bg-[#F97316]
+    text-white
+    text-[16px]
+    font-medium
+    hover:bg-[#EA6A10]
+    transition-colors tracking-tight leading-none inline-flex items-center gap-4">
+    <span className="text-[16px]">♥</span>
     확인
   </button>
 
@@ -2334,9 +2342,23 @@ function ButtonPage() {
     ◆btn-secondary
   </div>
 
-  <button className="h-[82px] px-10 rounded-[20px] border border-[#D5DAE1] bg-white text-[#1F2937] text-[42px] font-semibold tracking-tight leading-none">
-    다음에
-  </button>
+  <button
+  className="
+    w-[168px]
+    h-[48px]
+    rounded-[8px]
+    bg-white
+    border
+    border-[#E5E5E5]
+    text-[#222222]
+    text-[16px]
+    font-medium
+    hover:bg-[#F8F8F8]
+    transition-colors
+  "
+>
+ text
+</button>
 
 </div>
 
@@ -2347,10 +2369,19 @@ function ButtonPage() {
     ◆btn-loading
   </div>
 
-  <button
-    aria-label="loading"
-    className="h-[82px] w-[160px] rounded-[20px] bg-[#E7EBF0] text-[#1675EE] text-[52px] leading-none flex items-center justify-center"
-  >
+ 
+<button
+  className="
+    w-[168px]
+    h-[48px]
+    rounded-[8px]
+    bg-[#E5E5E5]
+    text-[#222222]
+    text-[16px]
+    font-medium
+    transition-colors
+  "
+>
     ...
   </button>
 
@@ -2375,7 +2406,7 @@ function ButtonPage() {
     transition-colors
   "
 >
- 비활성성
+ 비활성
 </button>
 
 </div>
