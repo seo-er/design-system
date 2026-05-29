@@ -46,23 +46,36 @@ function hexToRgba(hex, opacity) {
     ["font.caption.regular", "Regular", "12px", "18px", "-0.4%"],
   ];
 
-const spacingRows = [
-  ["space.0", "0×", "0rem", "0px"],
-  ["space.025", "0.25×", "0.125rem", "2px"],
-  ["space.050", "0.5×", "0.25rem", "4px"],
-  ["space.075", "0.75×", "0.375rem", "6px"],
-  ["space.100", "1×", "0.5rem", "8px"],
-  ["space.150", "1.5×", "0.75rem", "12px"],
-  ["space.200", "2×", "1rem", "16px"],
-  ["space.250", "2.5×", "1.25rem", "20px"],
-  ["space.300", "3×", "1.5rem", "24px"],
-  ["space.400", "4×", "2rem", "32px"],
-  ["space.500", "5×", "2.5rem", "40px"],
-  ["space.600", "6×", "3rem", "48px"],
-  ["space.800", "8×", "4rem", "64px"],
-  ["space.1000", "10×", "5rem", "80px"],
-];
+  <p className="text-[16px] text-[#6B7684] mb-8">
+  Spacing scale uses a 4px base unit.
+  Every spacing token is calculated as a multiple of 4px.
+</p>
 
+  const spacingRows = [
+    ["spacing-0", "0×", "0rem", "0px"],
+  
+    ["spacing-25", "0.25×", "0.0625rem", "1px"],
+    ["spacing-50", "0.5×", "0.125rem", "2px"],
+    ["spacing-75", "0.75×", "0.1875rem", "3px"],
+  
+    ["spacing-100", "1×", "0.25rem", "4px"],
+    ["spacing-150", "1.5×", "0.375rem", "6px"],
+    ["spacing-200", "2×", "0.5rem", "8px"],
+    ["spacing-250", "2.5×", "0.625rem", "10px"],
+    ["spacing-300", "3×", "0.75rem", "12px"],
+    ["spacing-350", "3.5×", "0.875rem", "14px"],
+    ["spacing-400", "4×", "1rem", "16px"],
+    ["spacing-450", "4.5×", "1.125rem", "18px"],
+    ["spacing-500", "5×", "1.25rem", "20px"],
+    ["spacing-550", "5.5×", "1.375rem", "22px"],
+    ["spacing-600", "6×", "1.5rem", "24px"],
+    ["spacing-650", "6.5×", "1.625rem", "26px"],
+    ["spacing-700", "7×", "1.75rem", "28px"],
+    ["spacing-750", "7.5×", "1.875rem", "30px"],
+    ["spacing-800", "8×", "2rem", "32px"],
+    ["spacing-900", "9×", "2.25rem", "36px"],
+    ["spacing-1000", "10×", "2.5rem", "40px"],
+  ];
 export default function App() {
   const [menu, setMenu] = useState("palette");
 
