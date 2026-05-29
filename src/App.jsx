@@ -1483,7 +1483,7 @@ function IllustrationPage() {
             >
 
               <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
-              ◆ic_{item.slug}
+              ◆ill_{item.slug}
               </div>
 
               <div
@@ -1503,7 +1503,7 @@ function IllustrationPage() {
 <img
     src={getIllustrationSrc(item.slug)}
     alt={item.label}
-   className="max-w-[220px] max-h-[220px] object-contain"
+   className="max-w-[160px] max-h-[160px] object-contain"
   />
 
             </div>
