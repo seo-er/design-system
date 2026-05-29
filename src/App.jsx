@@ -559,120 +559,42 @@ return (
 
 <Card>
 <div className="grid grid-cols-6 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
-  <span>Preview</span>
   <span>Token</span>
   <span>Font weight</span>
   <span>Font size</span>
   <span>Line height</span>
   <span>Letter spacing</span>
+  <span>Preview</span>
 </div>
 
-  {typographyRows.map((r) => {
-    const size = r[2].split("/")[0].trim();
-    const lineHeight = r[3].split("/")[0].trim();
+{typographyRows.map((r) => (
+  <div
+    key={r[0]}
+    className="grid grid-cols-6 px-8 py-5 border-b border-[#F2F4F6] items-center hover:bg-[#FAFBFC] transition"
+  >
+    <span>{r[0]}</span>
+    <span>{r[1]}</span>
+    <span>{r[2]}</span>
+    <span>{r[3]}</span>
+    <span>{r[4]}</span>
 
-    return (
-      <div
-        key={r[0]}
-        className="grid grid-cols-5 px-8 py-5 border-b border-[#F2F4F6] items-center hover:bg-[#FAFBFC] transition"
-      >
-        <span
-          className="font-bold"
-          style={{
-            fontSize: size,
-            lineHeight,
-          }}
-        >
-          Aa
-        </span>
-
-        <button
-  onClick={() => navigator.clipboard.writeText(r[0])}
-  className="
-    inline-flex
-    items-center
-    gap-2
-    w-fit
-    px-3
-    py-1.5
-    rounded-md
-    bg-[#F2F4F6]
-    hover:bg-[#E5E8EB]
-    transition
-    font-mono
-    text-[14px]
-    text-[#4E5968]
-  "
->
-  <span>{r[0]}</span>
-  <span className="text-[#8B95A1]">⧉</span>
-</button>
-<button
-  onClick={() => navigator.clipboard.writeText(r[0])}
-  className="
-    inline-flex
-    items-center
-    gap-2
-    w-fit
-    px-3
-    py-1.5
-    rounded-md
-    bg-[#F2F4F6]
-    hover:bg-[#E5E8EB]
-    transition
-    font-mono
-    text-[14px]
-    text-[#4E5968]
-  "
->
-  <span>{r[1]}</span>
-  <span className="text-[#8B95A1]">⧉</span>
-</button>
-<button
-  onClick={() => navigator.clipboard.writeText(r[0])}
-  className="
-    inline-flex
-    items-center
-    gap-2
-    w-fit
-    px-3
-    py-1.5
-    rounded-md
-    bg-[#F2F4F6]
-    hover:bg-[#E5E8EB]
-    transition
-    font-mono
-    text-[14px]
-    text-[#4E5968]
-  "
->
-  <span>{r[2]}</span>
-  <span className="text-[#8B95A1]">⧉</span>
-</button>
-<button
-  onClick={() => navigator.clipboard.writeText(r[0])}
-  className="
-    inline-flex
-    items-center
-    gap-2
-    w-fit
-    px-3
-    py-1.5
-    rounded-md
-    bg-[#F2F4F6]
-    hover:bg-[#E5E8EB]
-    transition
-    font-mono
-    text-[14px]
-    text-[#4E5968]
-  "
->
-  <span>{r[3]}</span>
-  <span className="text-[#8B95A1]">⧉</span>
-</button>
-      </div>
-    );
-  })}
+    <span
+      style={{
+        fontSize: r[2],
+        lineHeight: r[3],
+        letterSpacing: r[4],
+        fontWeight:
+          r[1] === "SemiBold"
+            ? 600
+            : r[1] === "Medium"
+            ? 500
+            : 400,
+      }}
+    >
+      망설임 없이 고르고 배우는 문화센터 서비스
+    </span>
+  </div>
+))}
 </Card>
 <Card>
   <div className="grid grid-cols-4 bg-[#EEF1F4] border-b border-[#D9DEE3]">
@@ -911,7 +833,27 @@ return (
       key={r[0]}
       className="grid grid-cols-5 px-8 py-5 border-b border-[#F2F4F6] items-center hover:bg-[#FAFBFC] transition"
     >
-      <span>{r[0]}</span>
+     <button
+  onClick={() => navigator.clipboard.writeText(r[0])}
+  className="
+    inline-flex
+    items-center
+    gap-2
+    w-fit
+    px-3
+    py-1.5
+    rounded-md
+    bg-[#F2F4F6]
+    hover:bg-[#E5E8EB]
+    transition
+    font-mono
+    text-[14px]
+    text-[#4E5968]
+  "
+>
+  <span>{r[0]}</span>
+  <span className="text-[#8B95A1]">⧉</span>
+</button>
       <span>{r[1]}</span>
       <span>{r[2]}</span>
       <span>{r[3]}</span>
