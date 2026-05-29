@@ -2177,18 +2177,21 @@ function ButtonPage() {
       ◆btn-primary
     </div>
 
-    <button className="
-      h-[68px]
-      px-8
-      rounded-[16px]
-      bg-[#256EF4]
-      text-white
-      text-[20px]
-      font-semibold
-      shadow-sm
-    ">
-      버튼 · primary
-    </button>
+    <button
+  className="
+    w-full
+    h-[44px]
+    rounded-[8px]
+    bg-[#F97316]
+    text-white
+    text-[15px]
+    font-medium
+    hover:bg-[#EA6A10]
+    transition-colors
+  "
+>
+  비교하러 가기
+</button>
 
   </div>
 
@@ -2199,17 +2202,21 @@ function ButtonPage() {
       ◆btn-secondary
     </div>
 
-    <button className="
-      h-[68px]
-      px-8
-      rounded-[16px]
-      bg-[#DBEAFE]
-      text-[#2563EB]
-      text-[20px]
-      font-semibold
-    ">
-      ↓ secondary / large
-    </button>
+    <button
+  className="
+    h-[68px]
+    px-8
+    rounded-[12px]
+    bg-[#F97316]
+    text-white
+    text-[24px]
+    font-semibold
+    hover:bg-[#EA6A10]
+    transition-colors
+  "
+>
+  다음
+</button>
 
   </div>
 
@@ -2243,19 +2250,23 @@ function ButtonPage() {
       ◆btn-tertiary
     </div>
 
-    <button className="
-      h-[68px]
-      px-8
-      rounded-[16px]
-      border
-      border-[#D1D5DB]
-      bg-[#F9FAFB]
-      text-[#374151]
-      text-[20px]
-      font-medium
-    ">
-      버튼 · tertiary
-    </button>
+    <button
+  className="
+    h-[68px]
+    px-8
+    rounded-[12px]
+    bg-[#F5F5F5]
+    border
+    border-[#D9D9D9]
+    text-[#333333]
+    text-[24px]
+    font-semibold
+    hover:bg-[#EEEEEE]
+    transition-colors
+  "
+>
+  취소
+</button>
 
   </div>
 
