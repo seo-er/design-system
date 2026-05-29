@@ -2226,49 +2226,26 @@ function ButtonPage() {
     <div className="text-[18px] font-semibold text-[#7C3AED]">
       ◆btn-outline
     </div>
-
-    <button className="
-      h-[68px]
-      px-8
-      rounded-[16px]
-      border-2
-      border-[#256EF4]
+  <button
+    className="
+      w-[168px]
+      h-[48px]
+      rounded-[8px] 
       bg-white
-      text-[#256EF4]
-      text-[20px]
-      font-semibold
-    ">
-      버튼 · outline
-    </button>
+      border
+      border-[#F97316]
+      text-[#F97316]
+      text-[16px]
+      font-medium
+      transition-colors
+    "
+  >
+  text
+  </button>
 
   </div>
 
-  {/* TERTIARY */}
-  <div className="flex flex-col gap-3">
-
-    <div className="text-[18px] font-semibold text-[#7C3AED]">
-      ◆btn-tertiary
-    </div>
-
-    <button
-  className="
-    h-[68px]
-    px-8
-    rounded-[12px]
-    bg-[#F5F5F5]
-    border
-    border-[#D9D9D9]
-    text-[#333333]
-    text-[24px]
-    font-semibold
-    hover:bg-[#EEEEEE]
-    transition-colors
-  "
->
-  취소
-</button>
-
-  </div>
+ 
 
 </div>
     </div>
@@ -2320,7 +2297,9 @@ function ButtonPage() {
     ◆btn-confirm
   </div>
 
-  <button className="w-[168px]
+  <button
+  className="
+    w-[168px]
     h-[48px]
     rounded-[8px]
     bg-[#F97316]
@@ -2328,10 +2307,17 @@ function ButtonPage() {
     text-[16px]
     font-medium
     hover:bg-[#EA6A10]
-    transition-colors tracking-tight leading-none inline-flex items-center gap-4">
-    <span className="text-[16px]">♥</span>
-    확인
-  </button>
+    transition-colors
+    tracking-tight
+    inline-flex
+    items-center
+    justify-center
+    gap-2
+  "
+>
+  <span className="text-[16px] leading-none">♥</span>
+  <span>확인</span>
+</button>
 
 </div>
 
@@ -2347,13 +2333,11 @@ function ButtonPage() {
     w-[168px]
     h-[48px]
     rounded-[8px]
-    bg-white
-    border
-    border-[#E5E5E5]
-    text-[#222222]
+    bg-[#FFD560]
+    text-white
     text-[16px]
     font-medium
-    hover:bg-[#F8F8F8]
+    hover:bg-[#EA6A10]
     transition-colors
   "
 >
@@ -2426,109 +2410,6 @@ function ButtonPage() {
             </div>
           )}
         </Card>
-      </div>
-      {/* ICON BUTTON */}
-      <div className="mt-24">
-
-        <SectionTitle title="아이콘 버튼" />
-
-        <div className="mb-8">
-          <h3 className="text-[36px] font-bold tracking-tight mb-5">
-            Default
-          </h3>
-
-          <p className="text-[20px] leading-[1.8] text-[#4E5968] max-w-[980px]">
-            기본 아이콘 버튼은 대부분의 상황에서 사용할 수 있으며,
-            주요 액션을 강조해야 하는 경우에는 primary 버튼을 사용하는 것이 좋다.
-          </p>
-        </div>
-
-        <Card>
-          <div className="p-4 border-b border-[#E5E8EB] bg-white">
-            <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-              <button
-                onClick={() => setIconButtonTab("design")}
-                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-                  iconButtonTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-                }`}
-              >
-                Design
-              </button>
-              <button
-                onClick={() => setIconButtonTab("code")}
-                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-                  iconButtonTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-                }`}
-              >
-                Code
-              </button>
-            </div>
-          </div>
-
-          {iconButtonTab === "design" ? (
-  <div className="p-10 bg-[#FAFBFC]">
-
-    <div className="flex flex-col gap-4">
-
-      {/* TOKEN */}
-      <div className="text-[18px] font-semibold text-[#7C3AED]">
-        ◆btn-icon-edit
-      </div>
-
-      {/* ICON BUTTON */}
-      <div className="
-        bg-[linear-gradient(45deg,#F8FAFC_25%,transparent_25%),linear-gradient(-45deg,#F8FAFC_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#F8FAFC_75%),linear-gradient(-45deg,transparent_75%,#F8FAFC_75%)]
-        bg-[length:20px_20px]
-        bg-[position:0_0,0_10px,10px_-10px,-10px_0px]
-        rounded-[20px]
-        p-8
-        inline-flex
-      ">
-
-        <button className="
-          w-[56px]
-          h-[56px]
-          rounded-[16px]
-          border
-          border-[#D1D5DB]
-          bg-white
-          flex
-          items-center
-          justify-center
-          text-[22px]
-          shadow-sm
-          hover:bg-[#F8FAFC]
-          transition
-        ">
-          ✎
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-) : ( <div className="bg-[#F8FAFC] px-10 py-10">
-              <pre className="text-[18px] leading-[2.1] overflow-auto text-[#1F2937]">
-{`import React from 'react';
-
-import { IconButton } from '@atlaskit/button/new';
-import EditIcon from '@atlaskit/icon/core/edit';
-
-const IconButtonDefaultExample = (): React.JSX.Element => {
-  return (
-    <IconButton
-      icon={EditIcon}
-      label="Edit"
-    />
-  );
-};`}
-              </pre>
-            </div>
-          )}
-
-        </Card>
-
       </div>
            
             {/* ACCESSIBILITY */}
