@@ -1459,69 +1459,77 @@ function IllustrationPage() {
   );
 
   return (
-    <div className="grid grid-cols-[1fr_380px] gap-10">
+    <div>
 
-      {/* LEFT */}
-      <div>
+      <h1 className="text-[44px] font-bold tracking-tight mb-4">
+        Illustrations
+      </h1>
 
-        <h1 className="text-[44px] font-bold tracking-tight mb-4">
-          Illustrations
-        </h1>
+      <p className="text-[#6B7684] mb-10">
+        Character and illustration assets used across the service.
+      </p>
 
-        <p className="text-[#6B7684] mb-10">
-          Character and illustration assets used across the service.
-        </p>
+      <div className="grid grid-cols-[1fr_360px] gap-8">
 
-        <div className="grid grid-cols-4 gap-6">
+        {/* LEFT */}
+        <Card>
+          <div className="p-8">
 
-          {illustrationItems.map((item) => (
-            <button
-              key={item.slug}
-              onClick={() => setSelected(item)}
-              className={`
-                bg-white
-                border
-                rounded-[24px]
-                p-6
-                transition
-                ${
-                  selected.slug === item.slug
-                    ? "border-[#2563EB]"
-                    : "border-[#E5E8EB]"
-                }
-              `}
-            >
-              <img
-                src={getIllustrationSrc(item.slug)}
-                alt={item.label}
-                className="w-20 h-20 object-contain mx-auto"
-              />
+            <div className="grid grid-cols-5 gap-6">
 
-              <div className="mt-4 text-sm font-medium">
-                {item.label}
-              </div>
-            </button>
-          ))}
+              {illustrationItems.map((item) => (
+                <button
+                  key={item.slug}
+                  onClick={() => setSelected(item)}
+                  className={`
+                    rounded-[20px]
+                    border
+                    p-4
+                    transition
+                    ${
+                      selected.slug === item.slug
+                        ? "border-[#2563EB]"
+                        : "border-[#E5E8EB]"
+                    }
+                  `}
+                >
+                  <img
+                    src={getIllustrationSrc(item.slug)}
+                    alt={item.label}
+                    className="w-20 h-20 mx-auto object-contain"
+                  />
 
-        </div>
-      </div>
+                  <div className="mt-3 text-sm font-medium">
+                    {item.label}
+                  </div>
+                </button>
+              ))}
 
-      {/* RIGHT */}
-      <div className="bg-white border border-[#E5E8EB] rounded-[28px] p-8 h-fit sticky top-8">
+            </div>
 
-        <img
-          src={getIllustrationSrc(selected.slug)}
-          alt={selected.label}
-          className="w-full aspect-square object-contain"
-        />
+          </div>
+        </Card>
 
-        <h3 className="mt-6 text-xl font-bold">
-          {selected.label}
-        </h3>
+        {/* RIGHT */}
+        <Card>
+          <div className="p-8">
 
-        <div className="mt-4 bg-[#F3F4F6] rounded-xl p-3 font-mono text-sm">
-          {selected.slug}.png
-        </div>
+            <img
+              src={getIllustrationSrc(selected.slug)}
+              alt={selected.label}
+              className="w-full aspect-square object-contain"
+            />
+
+            <h3 className="mt-6 text-xl font-bold">
+              {selected.label}
+            </h3>
+
+            <div className="mt-4 bg-[#F3F4F6] rounded-xl p-3 font-mono text-sm">
+              {selected.slug}.png
+            </div>
+
+          </div>
+        </Card>
 
       </div>
 
