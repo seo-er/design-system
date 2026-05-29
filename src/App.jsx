@@ -1468,53 +1468,29 @@ function IllustrationPage() {
         <div className="grid grid-cols-4 gap-8">
 
         {illustrationItems.map((item) => (
-  <button
-    key={item.slug}
-    onClick={() => setSelected(item)}
-  >
-              className={`
-                rounded-[28px]
-                p-6
-                transition
-                text-left
-                ${
-                  selectedIcon.label === item.label
-                    ? "bg-[#F3F4F6]"
-                    : "hover:bg-[#F8FAFC]"
-                }
-              `}
 
-              <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
-              ◆icon-26-{item.slug}-fill
-              </div>
+<button
+  key={item.slug}
+  onClick={() => setSelected(item)}
+  className={`
+    rounded-[28px]
+    p-6
+    transition
+    text-left
+    ${
+      selected?.label === item.label
+        ? "bg-[#F3F4F6]"
+        : "hover:bg-[#F8FAFC]"
+    }
+  `}
+>
+  내용
+</button>
 
-              <div
-              className="
-                w-[76px]
-                h-[76px]
-                rounded-[20px]
-                border
-                border-[#E5E8EB]
-                bg-white
-                flex
-                items-center
-                justify-center
-              "
-            >
+))}
+</div>
+</div>
 
-                <img src={getIllustrationSrc(selected.slug)}
-                alt={item.label}
-                className="w-[32px] h-[32px] object-contain"
-              />
-
-            </div>
-
-            </button>
-          ))}
-
-        </div>
-
-      </div>
 
      {/* RIGHT PANEL */}
 <div className="
@@ -1547,7 +1523,7 @@ function IllustrationPage() {
       <div className="flex items-center gap-3 mb-4">
 
         <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
-        ◆icon-26-{selectedIcon.slug}-fill
+        {`◆icon-26-${selected.slug}-fill`}
         </h2>
 
       
@@ -1575,14 +1551,14 @@ function IllustrationPage() {
       relative
     ">
 
-{`import ${selectedIcon.label.replace(/\s/g, "")}Icon from
-'@atlaskit/icon/core/${selectedIcon.slug}';`}
+{`import ${selected.label.replace(/\s/g, "")}Icon from
+'@atlaskit/icon/core/${selected.slug}';`}
 
       <button
         onClick={() =>
           navigator.clipboard.writeText(
-`import ${selectedIcon.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIcon.slug}';`
-          )
+            `import ${selected.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selected.slug}';`
+            )
         }
         className="
           absolute
@@ -2566,7 +2542,7 @@ function IconPage() {
                 transition
                 text-left
                 ${
-                  selectedIcon.label === item.label
+                  selected.label === item.label
                     ? "bg-[#F3F4F6]"
                     : "hover:bg-[#F8FAFC]"
                 }
@@ -2665,13 +2641,13 @@ function IconPage() {
       relative
     ">
 
-{`import ${selectedIcon.label.replace(/\s/g, "")}Icon from
+{`import ${selected.label.replace(/\s/g, "")}Icon from
 '@atlaskit/icon/core/${selectedIcon.slug}';`}
 
       <button
         onClick={() =>
           navigator.clipboard.writeText(
-`import ${selectedIcon.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIcon.slug}';`
+`import ${selected.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIcon.slug}';`
           )
         }
         className="
