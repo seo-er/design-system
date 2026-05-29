@@ -1454,125 +1454,493 @@ const illustrationItems = [
 ];
 
 function IllustrationPage() {
-  const [selected, setSelected] = useState(
-    illustrationItems[0]
-  );
+  const [selectedIcon, setSelectedIcon] = useState(iconItems[0]);
 
   return (
     <div className="grid grid-cols-[1fr_380px] gap-10">
 
       {/* LEFT */}
       <div>
+  {/* ICON GUIDE */}
 
-        <h1 className="text-[44px] font-bold tracking-tight mb-4">
-          Illustrations
-        </h1>
-
-        <p className="text-[#6B7684] mb-10">
-          Character and illustration assets used across the service.
-        </p>
-
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-4 gap-8">
 
           {illustrationItems.map((item) => (
             <button
-              key={item.slug}
-              onClick={() => setSelected(item)}
+              key={item.label}
+              onClick={() => setSelectedIcon(item)}
               className={`
-                bg-white
-                border
-                rounded-[24px]
+                rounded-[28px]
                 p-6
                 transition
+                text-left
                 ${
-                  selected.slug === item.slug
-                    ? "border-[#2563EB]"
-                    : "border-[#E5E8EB]"
+                  selectedIcon.label === item.label
+                    ? "bg-[#F3F4F6]"
+                    : "hover:bg-[#F8FAFC]"
                 }
               `}
             >
+
+              <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
+              ◆icon-26-{item.slug}-fill
+              </div>
+
+              <div
+              className="
+                w-[76px]
+                h-[76px]
+                rounded-[20px]
+                border
+                border-[#E5E8EB]
+                bg-white
+                flex
+                items-center
+                justify-center
+              "
+            >
+
               <img
                 src={getIllustrationSrc(item.slug)}
                 alt={item.label}
-                className="w-20 h-20 object-contain mx-auto"
+                className="w-[32px] h-[32px] object-contain"
               />
 
-              <div className="mt-4 text-sm font-medium">
-                {item.label}
-              </div>
+            </div>
+
             </button>
           ))}
 
         </div>
+
+      </div>
+
+     {/* RIGHT PANEL */}
+<div className="
+  bg-white
+  border
+  border-[#E5E8EB]
+  rounded-[32px]
+  overflow-hidden
+  h-fit
+">
+
+  {/* preview */}
+  <div className="
+    h-[150px]
+    border-b
+    border-[#E5E8EB]
+    flex
+    items-center
+    justify-center
+    text-[34px]
+  ">
+    ✦
+  </div>
+
+  <div className="p-8">
+
+    {/* title */}
+    <div className="mb-8">
+
+      <div className="flex items-center gap-3 mb-4">
+
+        <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
+        ◆icon-26-{selectedIcon.slug}-fill
+        </h2>
+
+      
+      </div>
+   
+    </div>
+
+  </div>
+
+  {/* REACT */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-6">
+      React
+    </div>
+
+    <div className="
+      bg-[#F3F4F6]
+      rounded-[16px]
+      p-6
+      text-[17px]
+      leading-[2]
+      font-mono
+      text-[#374151]
+      relative
+    ">
+
+{`import ${selectedIcon.label.replace(/\s/g, "")}Icon from
+'@atlaskit/icon/core/${selectedIcon.slug}';`}
+
+      <button
+        onClick={() =>
+          navigator.clipboard.writeText(
+`import ${selectedIcon.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIcon.slug}';`
+          )
+        }
+        className="
+          absolute
+          top-5
+          right-5
+          text-[22px]
+        "
+      >
+        ⧉
+      </button>
+
+    </div>
+
+    <a
+      href="#"
+      className="
+        inline-flex
+        items-center
+        gap-2
+        text-[#2563EB]
+        text-[18px]
+        underline
+        mt-6
+      "
+    >
+      Icon code examples ↗
+    </a>
+
+  </div>
+
+  {/* SIZES */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-8">
+      Sizes
+    </div>
+
+    <div className="space-y-6">
+
+      {/* SMALL */}
+      <div className="flex items-center justify-between">
+
+        <div className="flex items-center gap-5">
+
+         
+          <div className="flex items-center gap-3">
+
+            <span className="
+              px-3
+              py-1
+              rounded-[8px]
+              bg-[#F3F4F6]
+              text-[16px]
+            ">
+              Small
+            </span>
+
+         
+
+          </div>
+
+        </div>
+
+        <button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `<Icon size="small" />`
+            )
+          }
+          className="text-[22px]"
+        >
+          ⧉
+        </button>
+
+      </div>
+
+      {/* MEDIUM */}
+      <div className="flex items-center justify-between">
+
+        <div className="flex items-center gap-5">
+
+
+          <div className="flex items-center gap-3">
+
+            <span className="
+              px-3
+              py-1
+              rounded-[8px]
+              bg-[#F3F4F6]
+              text-[16px]
+            ">
+              Medium
+            </span>
+
+          
+
+          </div>
+
+        </div>
+
+        <button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `<Icon size="medium" />`
+            )
+          }
+          className="text-[22px]"
+        >
+          ⧉
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+{/* STATUS */}
+<div className="border-t border-[#E5E8EB] p-8">
+
+<div className="text-[34px] font-bold mb-8">
+Status
+</div>
+
+<div className="space-y-6">
+
+  {/* SMALL */}
+  <div className="flex items-center justify-between">
+
+    <div className="flex items-center gap-5">
+
+     
+      <div className="flex items-center gap-3">
+
+        <span className="
+          px-3
+          py-1
+          rounded-[8px]
+          bg-[#F3F4F6]
+          text-[16px]
+        ">
+          true
+        </span>
+
+     
+
+      </div>
+
+    </div>
+
+    <button
+      onClick={() =>
+        navigator.clipboard.writeText(
+          `<Icon size="small" />`
+        )
+      }
+      className="text-[22px]"
+    >
+      ⧉
+    </button>
+
+  </div>
+
+  {/* MEDIUM */}
+  <div className="flex items-center justify-between">
+
+    <div className="flex items-center gap-5">
+
+
+      <div className="flex items-center gap-3">
+
+        <span className="
+          px-3
+          py-1
+          rounded-[8px]
+          bg-[#F3F4F6]
+          text-[16px]
+        ">
+          false
+        </span>
+
+      
+
+      </div>
+
+    </div>
+
+    <button
+      onClick={() =>
+        navigator.clipboard.writeText(
+          `<Icon size="medium" />`
+        )
+      }
+      className="text-[22px]"
+    >
+      ⧉
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+  {/* FIGMA */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-6">
+      Figma
+    </div>
+
+    <a
+      href="https://figma.com"
+      target="_blank"
+      className="
+        text-[#2563EB]
+        underline
+        text-[18px]
+      "
+    >
+      Atlassian icon library ↗
+    </a>
+
+  </div>
+
+</div>
+
+{/* ICON GUIDE */}
+<div className="mt-20 w-full">
+
+  <div className="
+    w-full
+    bg-[#F8FAFC]
+    rounded-[32px]
+    border
+    border-[#E5E8EB]
+    p-12
+  ">
+
+    <div className="
+      grid
+      grid-cols-[1.2fr_0.8fr]
+      gap-20
+      items-center
+    ">
+
+      {/* LEFT */}
+      <div className="flex flex-col justify-between h-full">
+
+        <div>
+
+          <h2 className="text-[40px] font-bold tracking-tight mb-5">
+            아이콘 가이드
+          </h2>
+
+          <p className="
+            text-[18px]
+            leading-[1.8]
+            text-[#6B7684]
+            max-w-[620px]
+          ">
+            아이콘은 24×24 제작 그리드를 기준으로 정렬하며,
+            명확한 가독성과 시각적 균형을 위해
+            1.5~2px 두께를 권장한다.
+          </p>
+
+        </div>
+
+        {/* RULES */}
+        <div className="grid grid-cols-3 gap-5 mt-12">
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Grid
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              24×24
+            </div>
+
+          </div>
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Stroke
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              1.5–2px
+            </div>
+
+          </div>
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Contrast
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              3:1+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
       {/* RIGHT */}
-    {/* RIGHT */}
-<div className="bg-white border border-[#E5E8EB] rounded-[28px] overflow-hidden h-fit sticky top-8">
+      <div className="
+        h-full
+        bg-white
+        rounded-[28px]
+        border
+        border-[#E5E8EB]
+        p-12
+        flex
+        items-center
+        justify-center
+      ">
 
-{/* Preview */}
-<div className="h-[220px] flex items-center justify-center border-b border-[#E5E8EB]">
-  <img
-    src={getIllustrationSrc(selected.slug)}
-    alt={selected.label}
-    className="max-w-[180px] max-h-[180px] object-contain"
-  />
-</div>
+        <img
+          src={iconGuide}
+          alt="icon guide"
+          className="
+            w-full
+            max-w-[240px]
+            object-contain
+          "
+        />
 
-{/* Name */}
-<div className="p-6 border-b border-[#E5E8EB]">
-  <div className="text-[32px] font-bold leading-tight">
-    {selected.slug}
-  </div>
-</div>
-
-{/* React */}
-<div className="p-6 border-b border-[#E5E8EB]">
-  <h4 className="text-[28px] font-semibold mb-4">
-    React
-  </h4>
-
-  <div className="bg-[#F3F4F6] rounded-xl p-4 text-sm font-mono">
-{`import ${selected.slug} from
-'./assets/illustrations/${selected.slug}.png';`}
-  </div>
-</div>
-
-{/* Sizes */}
-<div className="p-6 border-b border-[#E5E8EB]">
-  <h4 className="text-[28px] font-semibold mb-4">
-    Sizes
-  </h4>
-
-  <div className="flex gap-2 flex-wrap">
-    <span className="px-3 py-1 rounded bg-[#F3F4F6]">
-      Small
-    </span>
-
-    <span className="px-3 py-1 rounded bg-[#F3F4F6]">
-      Medium
-    </span>
-
-    <span className="px-3 py-1 rounded bg-[#F3F4F6]">
-      Large
-    </span>
-  </div>
-</div>
-
-{/* Status */}
-<div className="p-6">
-  <h4 className="text-[28px] font-semibold mb-4">
-    Status
-  </h4>
-
-  <span className="px-3 py-1 rounded bg-[#F3F4F6]">
-    active
-  </span>
-</div>
-
-</div>
+      </div>
 
     </div>
+
+  </div>
+
+</div>
+    </div>
+    
   );
 }
 function getIllustrationSrc(slug) {
