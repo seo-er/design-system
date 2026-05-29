@@ -954,36 +954,6 @@ function IconGridSection() {
           />
         </div>
       </Card>
-
-      <div className="grid md:grid-cols-3 gap-6 mt-6">
-
-        <SpecCard
-          title="Live Area"
-          value="24 × 24"
-        />
-
-        <SpecCard
-          title="Padding"
-          value="2px"
-        />
-
-        <SpecCard
-          title="Keyline"
-          value="20px"
-        />
-
-      </div>
-
-      <div className="grid md:grid-cols-5 gap-4 mt-10">
-
-        <SizeCard size="16px" desc="Small" />
-        <SizeCard size="20px" desc="Default" />
-        <SizeCard size="24px" desc="Standard" />
-        <SizeCard size="32px" desc="Large" />
-        <SizeCard size="40px" desc="Display" />
-
-      </div>
-
     </div>
   );
 }
@@ -1007,9 +977,6 @@ function WatchGridSection() {
           />
         </div>
       </Card>
-
-      <SectionTitle title="Watch Layout Sizes" />
-
 <Card>
   <div className="overflow-x-auto">
     <table className="w-full">
