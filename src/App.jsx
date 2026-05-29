@@ -1413,11 +1413,23 @@ function PalettePage() {
   );
 }
 const iconItems = [
-  { label: "Home", slug: "home" },
-  { label: "Category", slug: "category" },
-  { label: "My Page", slug: "mypage" },
-  { label: "Reservation", slug: "reservation" },
-  { label: "Wishlist", slug: "wishlist" },
+  { label: "홈", slug: "home" },
+  { label: "카테고리", slug: "category" },
+  { label: "마이페이지", slug: "mypage" },
+  { label: "예약", slug: "reservation" },
+  { label: "찜", slug: "wishlist" },
+
+  { label: "검색", slug: "search" },
+  { label: "알림", slug: "notification" },
+  { label: "장바구니", slug: "cart" },
+  { label: "필터", slug: "filter" },
+  { label: "위치", slug: "location" },
+
+  { label: "추가", slug: "add" },
+  { label: "원형 추가", slug: "add_circle" },
+
+  { label: "왼쪽 화살표", slug: "arrow_left" },
+  { label: "오른쪽 화살표", slug: "arrow_right" },
 ];
 function ButtonPage() {
   const [sizeTab, setSizeTab] = useState("design");
