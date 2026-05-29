@@ -2179,18 +2179,18 @@ function ButtonPage() {
 
     <button
   className="
-    w-full
-    h-[44px]
+    w-[168px]
+    h-[48px]
     rounded-[8px]
     bg-[#F97316]
     text-white
-    text-[15px]
+    text-[16px]
     font-medium
     hover:bg-[#EA6A10]
     transition-colors
   "
 >
-  비교하러 가기
+ text
 </button>
 
   </div>
@@ -2364,12 +2364,19 @@ function ButtonPage() {
   </div>
 
   <button
-    disabled
-    className="h-[82px] px-10 rounded-[20px] border border-[#D9DEE5] bg-[#EFF2F6] text-[#B3BCC9] text-[40px] font-semibold tracking-tight leading-none inline-flex items-center gap-4"
-  >
-    <span className="text-[42px]">↓</span>
-    비활성
-  </button>
+  className="
+    w-[168px]
+    h-[48px]
+    rounded-[8px]
+    bg-[#E5E5E5]
+    text-[#888888]
+    text-[16px]
+    font-medium
+    transition-colors
+  "
+>
+ 비활성성
+</button>
 
 </div>
 
