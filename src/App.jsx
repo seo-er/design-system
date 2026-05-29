@@ -1487,23 +1487,27 @@ function IllustrationPage() {
               </div>
 
               <div
-              className="
-                w-[160px]
-                h-[160px]
-                rounded-[24px]
-                border
-                border-[#E5E8EB]
-                bg-white
-                flex
-                items-center
-                justify-center
-              "
-            >
+  className="
+    w-[140px]
+    h-[140px]
+    rounded-[24px]
+    border
+    border-[#E5E8EB]
+    bg-white
+    flex
+    items-center
+    justify-center
+  "
+>
 
 <img
     src={getIllustrationSrc(item.slug)}
     alt={item.label}
-   className="max-w-[160px] max-h-[160px] object-contain"
+    className="
+      max-w-[110px]
+      max-h-[110px]
+      object-contain
+    "
   />
 
             </div>
