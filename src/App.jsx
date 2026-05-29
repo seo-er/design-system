@@ -1483,7 +1483,7 @@ function IllustrationPage() {
             >
 
               <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
-              ◆icon-26-{item.slug}-fill
+              ◆ic_{item.slug}
               </div>
 
               <div
@@ -1546,7 +1546,7 @@ function IllustrationPage() {
       <div className="flex items-center gap-3 mb-4">
 
         <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
-        ◆icon-26-{selectedIcon.slug}-fill
+        ◆ill_{selectedIcon.slug}
         </h2>
 
       
@@ -2441,7 +2441,7 @@ function IconPage() {
             >
 
               <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
-              ◆icon-26-{item.slug}-fill
+              ◆ic_{item.slug}
               </div>
 
               <div
@@ -2504,7 +2504,7 @@ function IconPage() {
       <div className="flex items-center gap-3 mb-4">
 
         <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
-        ◆icon-26-{selectedIcon.slug}-fill
+        ◆ic_{selectedIcon.slug}
         </h2>
 
       
