@@ -1507,23 +1507,70 @@ function IllustrationPage() {
       </div>
 
       {/* RIGHT */}
-      <div className="bg-white border border-[#E5E8EB] rounded-[28px] p-8 h-fit sticky top-8">
+    {/* RIGHT */}
+<div className="bg-white border border-[#E5E8EB] rounded-[28px] overflow-hidden h-fit sticky top-8">
 
-        <img
-          src={getIllustrationSrc(selected.slug)}
-          alt={selected.label}
-          className="w-full aspect-square object-contain"
-        />
+{/* Preview */}
+<div className="h-[220px] flex items-center justify-center border-b border-[#E5E8EB]">
+  <img
+    src={getIllustrationSrc(selected.slug)}
+    alt={selected.label}
+    className="max-w-[180px] max-h-[180px] object-contain"
+  />
+</div>
 
-        <h3 className="mt-6 text-xl font-bold">
-          {selected.label}
-        </h3>
+{/* Name */}
+<div className="p-6 border-b border-[#E5E8EB]">
+  <div className="text-[32px] font-bold leading-tight">
+    {selected.slug}
+  </div>
+</div>
 
-        <div className="mt-4 bg-[#F3F4F6] rounded-xl p-3 font-mono text-sm">
-          {selected.slug}.png
-        </div>
+{/* React */}
+<div className="p-6 border-b border-[#E5E8EB]">
+  <h4 className="text-[28px] font-semibold mb-4">
+    React
+  </h4>
 
-      </div>
+  <div className="bg-[#F3F4F6] rounded-xl p-4 text-sm font-mono">
+{`import ${selected.slug} from
+'./assets/illustrations/${selected.slug}.png';`}
+  </div>
+</div>
+
+{/* Sizes */}
+<div className="p-6 border-b border-[#E5E8EB]">
+  <h4 className="text-[28px] font-semibold mb-4">
+    Sizes
+  </h4>
+
+  <div className="flex gap-2 flex-wrap">
+    <span className="px-3 py-1 rounded bg-[#F3F4F6]">
+      Small
+    </span>
+
+    <span className="px-3 py-1 rounded bg-[#F3F4F6]">
+      Medium
+    </span>
+
+    <span className="px-3 py-1 rounded bg-[#F3F4F6]">
+      Large
+    </span>
+  </div>
+</div>
+
+{/* Status */}
+<div className="p-6">
+  <h4 className="text-[28px] font-semibold mb-4">
+    Status
+  </h4>
+
+  <span className="px-3 py-1 rounded bg-[#F3F4F6]">
+    active
+  </span>
+</div>
+
+</div>
 
     </div>
   );
