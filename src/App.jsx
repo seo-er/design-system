@@ -2204,18 +2204,18 @@ function ButtonPage() {
 
     <button
   className="
-    h-[68px]
-    px-8
-    rounded-[12px]
-    bg-[#F97316]
+    w-[168px]
+    h-[48px]
+    rounded-[8px]
+    bg-[#FFD560]
     text-white
-    text-[24px]
-    font-semibold
+    text-[16px]
+    font-medium
     hover:bg-[#EA6A10]
     transition-colors
   "
 >
-  다음
+ text
 </button>
 
   </div>
@@ -2231,7 +2231,7 @@ function ButtonPage() {
       w-[168px]
       h-[48px]
       rounded-[8px] 
-      bg-white
+      bg-transparent
       border
       border-[#F97316]
       text-[#F97316]
@@ -2245,7 +2245,32 @@ function ButtonPage() {
 
   </div>
 
- 
+   {/* OUTLINE */}
+   <div className="flex flex-col gap-3">
+
+<div className="text-[18px] font-semibold text-[#7C3AED]">
+  ◆btn-outline
+</div>
+<button
+  className="
+    w-[168px]
+    h-[48px]
+    rounded-[8px]
+    bg-white
+    border
+    border-[#E5E5E5]
+    text-[#222222]
+    text-[16px]
+    font-medium
+    hover:bg-[#F5F5F5]
+    transition-colors
+  "
+>
+  text
+</button>
+
+</div>
+
 
 </div>
     </div>
@@ -2321,30 +2346,7 @@ function ButtonPage() {
 
 </div>
 
-{/* SECONDARY */}
-<div className="flex flex-col gap-3">
 
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn-secondary
-  </div>
-
-  <button
-  className="
-    w-[168px]
-    h-[48px]
-    rounded-[8px]
-    bg-[#FFD560]
-    text-white
-    text-[16px]
-    font-medium
-    hover:bg-[#EA6A10]
-    transition-colors
-  "
->
- text
-</button>
-
-</div>
 
 {/* LOADING */}
 <div className="flex flex-col gap-3">
