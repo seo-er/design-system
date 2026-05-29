@@ -1008,29 +1008,60 @@ function WatchGridSection() {
         </div>
       </Card>
 
-      <div className="grid md:grid-cols-4 gap-6 mt-6">
+      <SectionTitle title="Watch Layout Sizes" />
 
-        <SpecCard
-          title="Safe Area"
-          value="Center"
-        />
+<Card>
+  <div className="overflow-x-auto">
+    <table className="w-full">
+      <thead>
+        <tr className="border-b border-[#E5E8EB] bg-[#F8FAFC]">
+          <th className="px-6 py-4 text-left">Type</th>
+          <th className="px-6 py-4 text-left">Shape</th>
+          <th className="px-6 py-4 text-left">Size</th>
+          <th className="px-6 py-4 text-left">Description</th>
+        </tr>
+      </thead>
 
-        <SpecCard
-          title="Layout"
-          value="Circular"
-        />
+      <tbody>
+        <tr className="border-b border-[#F2F4F6]">
+          <td className="px-6 py-5">Small Round</td>
+          <td className="px-6 py-5">Circle</td>
+          <td className="px-6 py-5">192dp</td>
+          <td className="px-6 py-5">
+            Compact watch layout
+          </td>
+        </tr>
 
-        <SpecCard
-          title="Alignment"
-          value="Centered"
-        />
+        <tr className="border-b border-[#F2F4F6]">
+          <td className="px-6 py-5">Large Round</td>
+          <td className="px-6 py-5">Circle</td>
+          <td className="px-6 py-5">213dp</td>
+          <td className="px-6 py-5">
+            Large circular display
+          </td>
+        </tr>
 
-        <SpecCard
-          title="Touch Area"
-          value="44px+"
-        />
+        <tr className="border-b border-[#F2F4F6]">
+          <td className="px-6 py-5">Rectangle</td>
+          <td className="px-6 py-5">Rectangle</td>
+          <td className="px-6 py-5">180 × 220dp</td>
+          <td className="px-6 py-5">
+            Rectangular watch layout
+          </td>
+        </tr>
 
-      </div>
+        <tr>
+          <td className="px-6 py-5">Square</td>
+          <td className="px-6 py-5">Square</td>
+          <td className="px-6 py-5">180dp</td>
+          <td className="px-6 py-5">
+            Square display layout
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</Card>
 
     </div>
   );
