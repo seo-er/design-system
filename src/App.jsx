@@ -1459,83 +1459,493 @@ function IllustrationPage() {
   );
 
   return (
-    <div>
+    <div className="grid grid-cols-[1fr_380px] gap-10">
 
-      <h1 className="text-[44px] font-bold tracking-tight mb-4">
-        Illustrations
-      </h1>
+      {/* LEFT */}
+      <div>
+  {/* ICON GUIDE */}
 
-      <p className="text-[#6B7684] mb-10">
-        Character and illustration assets used across the service.
-      </p>
+        <div className="grid grid-cols-4 gap-8">
 
-      <div className="grid grid-cols-[1fr_360px] gap-8">
+          {iconItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => setSelectedIcon(item)}
+              className={`
+                rounded-[28px]
+                p-6
+                transition
+                text-left
+                ${
+                  selectedIcon.label === item.label
+                    ? "bg-[#F3F4F6]"
+                    : "hover:bg-[#F8FAFC]"
+                }
+              `}
+            >
 
-        {/* LEFT */}
-        <Card>
-          <div className="p-8">
+              <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
+              ◆icon-26-{item.slug}-fill
+              </div>
 
-            <div className="grid grid-cols-5 gap-6">
+              <div
+              className="
+                w-[76px]
+                h-[76px]
+                rounded-[20px]
+                border
+                border-[#E5E8EB]
+                bg-white
+                flex
+                items-center
+                justify-center
+              "
+            >
 
-              {illustrationItems.map((item) => (
-                <button
-                  key={item.slug}
-                  onClick={() => setSelected(item)}
-                  className={`
-                    rounded-[20px]
-                    border
-                    p-4
-                    transition
-                    ${
-                      selected.slug === item.slug
-                        ? "border-[#2563EB]"
-                        : "border-[#E5E8EB]"
-                    }
-                  `}
-                >
-                  <img
-                    src={getIllustrationSrc(item.slug)}
-                    alt={item.label}
-                    className="w-20 h-20 mx-auto object-contain"
-                  />
-
-                  <div className="mt-3 text-sm font-medium">
-                    {item.label}
-                  </div>
-                </button>
-              ))}
+              <img
+                src={getIconSrc(item.slug)}
+                alt={item.label}
+                className="w-[32px] h-[32px] object-contain"
+              />
 
             </div>
 
+            </button>
+          ))}
+
+        </div>
+
+      </div>
+
+     {/* RIGHT PANEL */}
+<div className="
+  bg-white
+  border
+  border-[#E5E8EB]
+  rounded-[32px]
+  overflow-hidden
+  h-fit
+">
+
+  {/* preview */}
+  <div className="
+    h-[150px]
+    border-b
+    border-[#E5E8EB]
+    flex
+    items-center
+    justify-center
+    text-[34px]
+  ">
+    ✦
+  </div>
+
+  <div className="p-8">
+
+    {/* title */}
+    <div className="mb-8">
+
+      <div className="flex items-center gap-3 mb-4">
+
+        <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
+        ◆icon-26-{selectedIcon.slug}-fill
+        </h2>
+
+      
+      </div>
+   
+    </div>
+
+  </div>
+
+  {/* REACT */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-6">
+      React
+    </div>
+
+    <div className="
+      bg-[#F3F4F6]
+      rounded-[16px]
+      p-6
+      text-[17px]
+      leading-[2]
+      font-mono
+      text-[#374151]
+      relative
+    ">
+
+{`import ${selectedIcon.label.replace(/\s/g, "")}Icon from
+'@atlaskit/icon/core/${selectedIcon.slug}';`}
+
+      <button
+        onClick={() =>
+          navigator.clipboard.writeText(
+`import ${selectedIcon.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIcon.slug}';`
+          )
+        }
+        className="
+          absolute
+          top-5
+          right-5
+          text-[22px]
+        "
+      >
+        ⧉
+      </button>
+
+    </div>
+
+    <a
+      href="#"
+      className="
+        inline-flex
+        items-center
+        gap-2
+        text-[#2563EB]
+        text-[18px]
+        underline
+        mt-6
+      "
+    >
+      Icon code examples ↗
+    </a>
+
+  </div>
+
+  {/* SIZES */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-8">
+      Sizes
+    </div>
+
+    <div className="space-y-6">
+
+      {/* SMALL */}
+      <div className="flex items-center justify-between">
+
+        <div className="flex items-center gap-5">
+
+         
+          <div className="flex items-center gap-3">
+
+            <span className="
+              px-3
+              py-1
+              rounded-[8px]
+              bg-[#F3F4F6]
+              text-[16px]
+            ">
+              Small
+            </span>
+
+         
+
           </div>
-        </Card>
 
-        {/* RIGHT */}
-        <Card>
-          <div className="p-8">
+        </div>
 
-            <img
-              src={getIllustrationSrc(selected.slug)}
-              alt={selected.label}
-              className="w-full aspect-square object-contain"
-            />
+        <button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `<Icon size="small" />`
+            )
+          }
+          className="text-[22px]"
+        >
+          ⧉
+        </button>
 
-            <h3 className="mt-6 text-xl font-bold">
-              {selected.label}
-            </h3>
+      </div>
 
-            <div className="mt-4 bg-[#F3F4F6] rounded-xl p-3 font-mono text-sm">
-              {selected.slug}.png
-            </div>
+      {/* MEDIUM */}
+      <div className="flex items-center justify-between">
+
+        <div className="flex items-center gap-5">
+
+
+          <div className="flex items-center gap-3">
+
+            <span className="
+              px-3
+              py-1
+              rounded-[8px]
+              bg-[#F3F4F6]
+              text-[16px]
+            ">
+              Medium
+            </span>
+
+          
 
           </div>
-        </Card>
+
+        </div>
+
+        <button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `<Icon size="medium" />`
+            )
+          }
+          className="text-[22px]"
+        >
+          ⧉
+        </button>
 
       </div>
 
     </div>
+
+  </div>
+{/* STATUS */}
+<div className="border-t border-[#E5E8EB] p-8">
+
+<div className="text-[34px] font-bold mb-8">
+Status
+</div>
+
+<div className="space-y-6">
+
+  {/* SMALL */}
+  <div className="flex items-center justify-between">
+
+    <div className="flex items-center gap-5">
+
+     
+      <div className="flex items-center gap-3">
+
+        <span className="
+          px-3
+          py-1
+          rounded-[8px]
+          bg-[#F3F4F6]
+          text-[16px]
+        ">
+          true
+        </span>
+
+     
+
+      </div>
+
+    </div>
+
+    <button
+      onClick={() =>
+        navigator.clipboard.writeText(
+          `<Icon size="small" />`
+        )
+      }
+      className="text-[22px]"
+    >
+      ⧉
+    </button>
+
+  </div>
+
+  {/* MEDIUM */}
+  <div className="flex items-center justify-between">
+
+    <div className="flex items-center gap-5">
+
+
+      <div className="flex items-center gap-3">
+
+        <span className="
+          px-3
+          py-1
+          rounded-[8px]
+          bg-[#F3F4F6]
+          text-[16px]
+        ">
+          false
+        </span>
+
+      
+
+      </div>
+
+    </div>
+
+    <button
+      onClick={() =>
+        navigator.clipboard.writeText(
+          `<Icon size="medium" />`
+        )
+      }
+      className="text-[22px]"
+    >
+      ⧉
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+  {/* FIGMA */}
+  <div className="border-t border-[#E5E8EB] p-8">
+
+    <div className="text-[34px] font-bold mb-6">
+      Figma
+    </div>
+
+    <a
+      href="https://figma.com"
+      target="_blank"
+      className="
+        text-[#2563EB]
+        underline
+        text-[18px]
+      "
+    >
+      Atlassian icon library ↗
+    </a>
+
+  </div>
+
+</div>
+
+{/* ICON GUIDE */}
+<div className="mt-20 w-full">
+
+  <div className="
+    w-full
+    bg-[#F8FAFC]
+    rounded-[32px]
+    border
+    border-[#E5E8EB]
+    p-12
+  ">
+
+    <div className="
+      grid
+      grid-cols-[1.2fr_0.8fr]
+      gap-20
+      items-center
+    ">
+
+      {/* LEFT */}
+      <div className="flex flex-col justify-between h-full">
+
+        <div>
+
+          <h2 className="text-[40px] font-bold tracking-tight mb-5">
+            아이콘 가이드
+          </h2>
+
+          <p className="
+            text-[18px]
+            leading-[1.8]
+            text-[#6B7684]
+            max-w-[620px]
+          ">
+            아이콘은 24×24 제작 그리드를 기준으로 정렬하며,
+            명확한 가독성과 시각적 균형을 위해
+            1.5~2px 두께를 권장한다.
+          </p>
+
+        </div>
+
+        {/* RULES */}
+        <div className="grid grid-cols-3 gap-5 mt-12">
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Grid
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              24×24
+            </div>
+
+          </div>
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Stroke
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              1.5–2px
+            </div>
+
+          </div>
+
+          <div className="
+            bg-white
+            rounded-[24px]
+            border
+            border-[#E5E8EB]
+            p-6
+          ">
+
+            <div className="text-sm text-[#8B95A1] mb-2">
+              Contrast
+            </div>
+
+            <div className="text-[28px] font-bold tracking-tight">
+              3:1+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* RIGHT */}
+      <div className="
+        h-full
+        bg-white
+        rounded-[28px]
+        border
+        border-[#E5E8EB]
+        p-12
+        flex
+        items-center
+        justify-center
+      ">
+
+        <img
+          src={iconGuide}
+          alt="icon guide"
+          className="
+            w-full
+            max-w-[240px]
+            object-contain
+          "
+        />
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+    </div>
+    
   );
 }
+
 function getIllustrationSrc(slug) {
   return (
     illustrationModules[
