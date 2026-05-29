@@ -107,7 +107,12 @@ export default function App() {
     >
       Icons
     </MenuItem>
-
+    <MenuItem
+  active={menu === "illustrations"}
+  onClick={() => setMenu("illustrations")}
+>
+  Illustrations
+</MenuItem>
     <MenuItem
       active={menu === "typography"}
       onClick={() => setMenu("typography")}
@@ -247,6 +252,7 @@ export default function App() {
             {menu === "palette" && <PalettePage />}
             {menu === "button" && <ButtonPage />}
             {menu === "icons" && <IconPage />}
+            {menu === "illustrations" && <IllustrationPage />}
             {menu === "motion" && <MotionPage />}
             {menu === "advertising" && <AdvertisingPage />}
           </div>
@@ -1431,6 +1437,108 @@ const iconItems = [
   { label: "왼쪽 화살표", slug: "arrow_left" },
   { label: "오른쪽 화살표", slug: "arrow_right" },
 ];
+
+const illustrationModules = import.meta.glob(
+  "./assets/illustrations/*.{png,svg,webp}",
+  {
+    eager: true,
+    import: "default",
+  }
+);
+const illustrationItems = [
+  { label: "내아이조회", slug: "my_child" },
+  { label: "0~24개월", slug: "age_0_24m" },
+  { label: "2~4세", slug: "age_2_4" },
+  { label: "5~7세", slug: "age_5_7" },
+  { label: "초등", slug: "elementary" },
+];
+
+function IllustrationPage() {
+  const [selected, setSelected] = useState(
+    illustrationItems[0]
+  );
+
+  return (
+    <div className="grid grid-cols-[1fr_380px] gap-10">
+
+      {/* LEFT */}
+      <div>
+
+        <h1 className="text-[44px] font-bold tracking-tight mb-4">
+          Illustrations
+        </h1>
+
+        <p className="text-[#6B7684] mb-10">
+          Character and illustration assets used across the service.
+        </p>
+
+        <div className="grid grid-cols-4 gap-6">
+
+          {illustrationItems.map((item) => (
+            <button
+              key={item.slug}
+              onClick={() => setSelected(item)}
+              className={`
+                bg-white
+                border
+                rounded-[24px]
+                p-6
+                transition
+                ${
+                  selected.slug === item.slug
+                    ? "border-[#2563EB]"
+                    : "border-[#E5E8EB]"
+                }
+              `}
+            >
+              <img
+                src={getIllustrationSrc(item.slug)}
+                alt={item.label}
+                className="w-20 h-20 object-contain mx-auto"
+              />
+
+              <div className="mt-4 text-sm font-medium">
+                {item.label}
+              </div>
+            </button>
+          ))}
+
+        </div>
+      </div>
+
+      {/* RIGHT */}
+      <div className="bg-white border border-[#E5E8EB] rounded-[28px] p-8 h-fit sticky top-8">
+
+        <img
+          src={getIllustrationSrc(selected.slug)}
+          alt={selected.label}
+          className="w-full aspect-square object-contain"
+        />
+
+        <h3 className="mt-6 text-xl font-bold">
+          {selected.label}
+        </h3>
+
+        <div className="mt-4 bg-[#F3F4F6] rounded-xl p-3 font-mono text-sm">
+          {selected.slug}.png
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
+function getIllustrationSrc(slug) {
+  return (
+    illustrationModules[
+      `./assets/illustrations/${slug}.png`
+    ] ||
+    illustrationModules[
+      `./assets/illustrations/${slug}.svg`
+    ] ||
+    alertImage
+  );
+}
 function ButtonPage() {
   const [sizeTab, setSizeTab] = useState("design");
   const [hierarchyTab, setHierarchyTab] = useState("design");
