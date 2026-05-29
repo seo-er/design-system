@@ -1447,14 +1447,23 @@ const illustrationModules = import.meta.glob(
 );
 const illustrationItems = [
   { label: "내아이조회", slug: "my_child" },
+
   { label: "0~24개월", slug: "age_0_24m" },
   { label: "2~4세", slug: "age_2_4" },
   { label: "5~7세", slug: "age_5_7" },
   { label: "초등", slug: "elementary" },
+
+  { label: "창의", slug: "creative" },
+  { label: "교육", slug: "education" },
+  { label: "전시", slug: "exhibition" },
+  { label: "음악·미술", slug: "music_art" },
+
+  { label: "신체", slug: "physical" },
+  { label: "감각", slug: "sensory" },
 ];
 
 function IllustrationPage() {
-  const [selectedIcon, setSelectedIcon] = useState(iconItems[0]);
+  const [selectedIllustration, setSelectedIllustration] = useState(illustrationItems[0]);
 
   return (
     <div className="grid grid-cols-[1fr_380px] gap-10">
@@ -1468,14 +1477,14 @@ function IllustrationPage() {
           {illustrationItems.map((item) => (
             <button
               key={item.label}
-              onClick={() => setSelectedIcon(item)}
+              onClick={() => setSelectedIllustration(item)}
               className={`
                 rounded-[28px]
                 p-6
                 transition
                 text-left
                 ${
-                  selectedIcon.label === item.label
+                  selectedIllustration.label === item.label
                     ? "bg-[#F3F4F6]"
                     : "hover:bg-[#F8FAFC]"
                 }
@@ -1550,7 +1559,7 @@ function IllustrationPage() {
       <div className="flex items-center gap-3 mb-4">
 
         <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
-        ◆ill_{selectedIcon.slug}
+        ◆ill_{selectedIllustration.slug}
         </h2>
 
       
@@ -1578,13 +1587,13 @@ function IllustrationPage() {
       relative
     ">
 
-{`import ${selectedIcon.label.replace(/\s/g, "")}Icon from
-'@atlaskit/icon/core/${selectedIcon.slug}';`}
+{`import ${selectedIllustration.label.replace(/\s/g, "")}Icon from
+'@atlaskit/icon/core/${selectedIllustration.slug}';`}
 
       <button
         onClick={() =>
           navigator.clipboard.writeText(
-`import ${selectedIcon.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIcon.slug}';`
+`import ${selectedIllustration.label.replace(/\s/g, "")}Icon from '@atlaskit/icon/core/${selectedIllustration.slug}';`
           )
         }
         className="
