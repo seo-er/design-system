@@ -1467,10 +1467,11 @@ function IllustrationPage() {
 
         <div className="grid grid-cols-4 gap-8">
 
-          {iconItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => setSelectedIcon(item)}
+        {illustrationItems.map((item) => (
+  <button
+    key={item.slug}
+    onClick={() => setSelected(item)}
+  >
               className={`
                 rounded-[28px]
                 p-6
@@ -1482,7 +1483,6 @@ function IllustrationPage() {
                     : "hover:bg-[#F8FAFC]"
                 }
               `}
-            >
 
               <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
               ◆icon-26-{item.slug}-fill
@@ -1502,8 +1502,7 @@ function IllustrationPage() {
               "
             >
 
-              <img
-                src={getIconSrc(item.slug)}
+                <img src={getIllustrationSrc(selected.slug)}
                 alt={item.label}
                 className="w-[32px] h-[32px] object-contain"
               />
