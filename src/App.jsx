@@ -1463,7 +1463,7 @@ function IllustrationPage() {
       <div>
   {/* ICON GUIDE */}
 
-        <div className="grid grid-cols-4 gap-8">
+  <div className="grid grid-cols-3 gap-10">
 
           {illustrationItems.map((item) => (
             <button
@@ -1488,9 +1488,9 @@ function IllustrationPage() {
 
               <div
               className="
-                w-[76px]
-                h-[76px]
-                rounded-[20px]
+                w-[160px]
+                h-[160px]
+                rounded-[24px]
                 border
                 border-[#E5E8EB]
                 bg-white
@@ -1500,11 +1500,11 @@ function IllustrationPage() {
               "
             >
 
-              <img
-                src={getIllustrationSrc(item.slug)}
-                alt={item.label}
-                className="w-[32px] h-[32px] object-contain"
-              />
+<img
+    src={getIllustrationSrc(item.slug)}
+    alt={item.label}
+   className="max-w-[220px] max-h-[220px] object-contain"
+  />
 
             </div>
 
@@ -1807,138 +1807,7 @@ Status
 
 </div>
 
-{/* ICON GUIDE */}
-<div className="mt-20 w-full">
 
-  <div className="
-    w-full
-    bg-[#F8FAFC]
-    rounded-[32px]
-    border
-    border-[#E5E8EB]
-    p-12
-  ">
-
-    <div className="
-      grid
-      grid-cols-[1.2fr_0.8fr]
-      gap-20
-      items-center
-    ">
-
-      {/* LEFT */}
-      <div className="flex flex-col justify-between h-full">
-
-        <div>
-
-          <h2 className="text-[40px] font-bold tracking-tight mb-5">
-            아이콘 가이드
-          </h2>
-
-          <p className="
-            text-[18px]
-            leading-[1.8]
-            text-[#6B7684]
-            max-w-[620px]
-          ">
-            아이콘은 24×24 제작 그리드를 기준으로 정렬하며,
-            명확한 가독성과 시각적 균형을 위해
-            1.5~2px 두께를 권장한다.
-          </p>
-
-        </div>
-
-        {/* RULES */}
-        <div className="grid grid-cols-3 gap-5 mt-12">
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Grid
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              24×24
-            </div>
-
-          </div>
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Stroke
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              1.5–2px
-            </div>
-
-          </div>
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Contrast
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              3:1+
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* RIGHT */}
-      <div className="
-        h-full
-        bg-white
-        rounded-[28px]
-        border
-        border-[#E5E8EB]
-        p-12
-        flex
-        items-center
-        justify-center
-      ">
-
-        <img
-          src={iconGuide}
-          alt="icon guide"
-          className="
-            w-full
-            max-w-[240px]
-            object-contain
-          "
-        />
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
     </div>
     
   );
