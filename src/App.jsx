@@ -1488,8 +1488,8 @@ function IllustrationPage() {
 
               <div
   className="
-    w-[140px]
-    h-[140px]
+    w-[80px]
+    h-[80px]
     rounded-[24px]
     border
     border-[#E5E8EB]
@@ -1504,8 +1504,8 @@ function IllustrationPage() {
     src={getIllustrationSrc(item.slug)}
     alt={item.label}
     className="
-      max-w-[110px]
-      max-h-[110px]
+      max-w-[80px]
+      max-h-[80px]
       object-contain
     "
   />
