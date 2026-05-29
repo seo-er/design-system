@@ -32,15 +32,19 @@ function hexToRgba(hex, opacity) {
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
-const typographyRows = [
-  ["font.heading.xxlarge", "Bold", "2rem / 32px", "2.25rem / 36px"],
-  ["font.heading.xlarge", "Bold", "1.75rem / 28px", "2rem / 32px"],
-  ["font.heading.large", "Bold", "1.5rem / 24px", "1.75rem / 28px"],
-  ["font.heading.medium", "Bold", "1.25rem / 20px", "1.5rem / 24px"],
-  ["font.heading.small", "Bold", "1rem / 16px", "1.25rem / 20px"],
-  ["font.heading.xsmall", "Bold", "0.875rem / 14px", "1.25rem / 20px"],
-  ["font.heading.xxsmall", "Bold", "0.75rem / 12px", "1rem / 16px"],
-];
+  const typographyRows = [
+    ["font.heading.large", "SemiBold", "20px", "26px", "-1%"],
+    ["font.heading.medium", "SemiBold", "18px", "24px", "-1%"],
+    ["font.heading.small", "Medium", "18px", "24px", "-1%"],
+  
+    ["font.title.large", "SemiBold", "16px", "22px", "-0.12%"],
+    ["font.title.medium", "Medium", "16px", "22px", "-0.12%"],
+  
+    ["font.subtitle.medium", "Medium", "14px", "20px", "-0.3%"],
+  
+    ["font.caption.medium", "Medium", "12px", "18px", "-0.4%"],
+    ["font.caption.regular", "Regular", "12px", "18px", "-0.4%"],
+  ];
 
 const spacingRows = [
   ["space.0", "0×", "0rem", "0px"],
@@ -554,13 +558,14 @@ return (
 </h1>
 
 <Card>
-  <div className="grid grid-cols-5 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
-    <span>Preview</span>
-    <span>Token</span>
-    <span>Font weight</span>
-    <span>Font size</span>
-    <span>Line height</span>
-  </div>
+<div className="grid grid-cols-6 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
+  <span>Preview</span>
+  <span>Token</span>
+  <span>Font weight</span>
+  <span>Font size</span>
+  <span>Line height</span>
+  <span>Letter spacing</span>
+</div>
 
   {typographyRows.map((r) => {
     const size = r[2].split("/")[0].trim();
