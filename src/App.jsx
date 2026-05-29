@@ -586,10 +586,90 @@ return (
           Aa
         </span>
 
-        <span>{r[0]}</span>
-        <span>{r[1]}</span>
-        <span>{r[2]}</span>
-        <span>{r[3]}</span>
+        <button
+  onClick={() => navigator.clipboard.writeText(r[0])}
+  className="
+    inline-flex
+    items-center
+    gap-2
+    w-fit
+    px-3
+    py-1.5
+    rounded-md
+    bg-[#F2F4F6]
+    hover:bg-[#E5E8EB]
+    transition
+    font-mono
+    text-[14px]
+    text-[#4E5968]
+  "
+>
+  <span>{r[0]}</span>
+  <span className="text-[#8B95A1]">⧉</span>
+</button>
+<button
+  onClick={() => navigator.clipboard.writeText(r[0])}
+  className="
+    inline-flex
+    items-center
+    gap-2
+    w-fit
+    px-3
+    py-1.5
+    rounded-md
+    bg-[#F2F4F6]
+    hover:bg-[#E5E8EB]
+    transition
+    font-mono
+    text-[14px]
+    text-[#4E5968]
+  "
+>
+  <span>{r[1]}</span>
+  <span className="text-[#8B95A1]">⧉</span>
+</button>
+<button
+  onClick={() => navigator.clipboard.writeText(r[0])}
+  className="
+    inline-flex
+    items-center
+    gap-2
+    w-fit
+    px-3
+    py-1.5
+    rounded-md
+    bg-[#F2F4F6]
+    hover:bg-[#E5E8EB]
+    transition
+    font-mono
+    text-[14px]
+    text-[#4E5968]
+  "
+>
+  <span>{r[2]}</span>
+  <span className="text-[#8B95A1]">⧉</span>
+</button>
+<button
+  onClick={() => navigator.clipboard.writeText(r[0])}
+  className="
+    inline-flex
+    items-center
+    gap-2
+    w-fit
+    px-3
+    py-1.5
+    rounded-md
+    bg-[#F2F4F6]
+    hover:bg-[#E5E8EB]
+    transition
+    font-mono
+    text-[14px]
+    text-[#4E5968]
+  "
+>
+  <span>{r[3]}</span>
+  <span className="text-[#8B95A1]">⧉</span>
+</button>
       </div>
     );
   })}
