@@ -1463,7 +1463,7 @@ function IllustrationPage() {
       <div>
   {/* ICON GUIDE */}
 
-  <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-4 gap-8">
 
           {illustrationItems.map((item) => (
             <button
