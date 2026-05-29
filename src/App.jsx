@@ -3,6 +3,7 @@ import alertImage from "./assets/Alert.png";
 import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
 import iconGuide from "./assets/icon_grid.png";
+import watchGrid from "./assets/watch_grid.png";
 
 const iconModules = import.meta.glob(
   "./assets/icons/*.{png,svg,webp}",
