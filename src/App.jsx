@@ -848,11 +848,25 @@ function GridPage() {
   return (
     <div>
 
-      <h1 className="text-[44px] font-bold tracking-tight mb-10">
-        Grid
-      </h1>
+      <div className="mb-16">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Foundations
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Grid
+        </h1>
+
+        <p className="text-[18px] text-[#4E5968] leading-[1.8] mt-5 max-w-[900px]">
+          Grid는 화면과 콘텐츠의 정렬 기준을 정의한다.
+          일관된 레이아웃과 시각적 균형을 위해
+          동일한 구조와 규칙을 사용한다.
+        </p>
+      </div>
 
       <MobileGridSection />
+
+      <IconGridSection />
 
       <WatchGridSection />
 
@@ -861,86 +875,198 @@ function GridPage() {
 }
 function MobileGridSection() {
   return (
-    <Card>
-      <div className="p-10">
+    <div className="mb-24">
 
-        <h2 className="text-[32px] font-bold mb-6">
-          Mobile Grid
-        </h2>
+      <SectionTitle title="Mobile Grid" />
 
-        <p className="text-[#6B7684] mb-10">
-          Mobile layouts use a 4-column structure.
-        </p>
+      <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-10">
+        모바일 화면은 4 Column Grid를 사용한다.
+        모든 콘텐츠는 Margin과 Gutter 기준으로 정렬한다.
+      </p>
 
-        <div className="rounded-[28px] overflow-hidden border border-[#E5E8EB]">
+      <Card>
+        <div className="p-10">
 
-        <img
-        src={gridImg}
-        alt="mobile grid"
-        className="w-[227px]"
-      />
+          <div className="flex gap-10 flex-wrap justify-center">
 
-      <img
-        src={gridOverlay}
-        alt="mobile grid"
-        className="w-[227px]"
-      />
-        </div>
+            <img
+              src={gridImg}
+              alt=""
+              className="w-[240px]"
+            />
 
-        <div className="grid grid-cols-3 gap-6 mt-10">
+            <img
+              src={gridOverlay}
+              alt=""
+              className="w-[240px]"
+            />
 
-          <div className="bg-[#F8FAFC] rounded-[20px] p-6">
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Columns
-            </div>
-
-            <div className="text-[28px] font-bold">
-              4
-            </div>
-          </div>
-
-          <div className="bg-[#F8FAFC] rounded-[20px] p-6">
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Margin
-            </div>
-
-            <div className="text-[28px] font-bold">
-              16
-            </div>
-          </div>
-
-          <div className="bg-[#F8FAFC] rounded-[20px] p-6">
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Gutter
-            </div>
-
-            <div className="text-[28px] font-bold">
-              16
-            </div>
           </div>
 
         </div>
+      </Card>
+
+      <div className="grid md:grid-cols-4 gap-6 mt-6">
+
+        <SpecCard
+          title="Columns"
+          value="4"
+        />
+
+        <SpecCard
+          title="Margin"
+          value="16px"
+        />
+
+        <SpecCard
+          title="Gutter"
+          value="16px"
+        />
+
+        <SpecCard
+          title="Layout"
+          value="Responsive"
+        />
 
       </div>
-    </Card>
+
+    </div>
   );
 }
-
-function WatchGridSection() {
+function IconGridSection() {
   return (
-    <Card>
-      <div className="p-10">
+    <div className="mb-24">
 
-        <h2 className="text-[32px] font-bold mb-6">
-          Smart Watch Grid
-        </h2>
+      <SectionTitle title="Icon Grid" />
 
-        <p className="text-[#6B7684] mb-10">
-          Smart watch layouts use a centered safe area.
-        </p>
+      <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-10">
+        모든 아이콘은 동일한 Grid 규칙을 사용하여
+        일관된 비율과 시각적 균형을 유지한다.
+      </p>
+
+      <Card>
+        <div className="p-10">
+          <img
+            src={iconGuide}
+            alt=""
+            className="w-full rounded-2xl"
+          />
+        </div>
+      </Card>
+
+      <div className="grid md:grid-cols-3 gap-6 mt-6">
+
+        <SpecCard
+          title="Live Area"
+          value="24 × 24"
+        />
+
+        <SpecCard
+          title="Padding"
+          value="2px"
+        />
+
+        <SpecCard
+          title="Keyline"
+          value="20px"
+        />
 
       </div>
-    </Card>
+
+      <div className="grid md:grid-cols-5 gap-4 mt-10">
+
+        <SizeCard size="16px" desc="Small" />
+        <SizeCard size="20px" desc="Default" />
+        <SizeCard size="24px" desc="Standard" />
+        <SizeCard size="32px" desc="Large" />
+        <SizeCard size="40px" desc="Display" />
+
+      </div>
+
+    </div>
+  );
+}
+function WatchGridSection() {
+  return (
+    <div>
+
+      <SectionTitle title="Watch Grid" />
+
+      <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-10">
+        원형 디스플레이 환경에서는 Safe Area를 기준으로
+        컴포넌트를 배치한다.
+      </p>
+
+      <Card>
+        <div className="p-10 flex justify-center">
+          <img
+            src={watchGrid}
+            alt=""
+            className="max-w-[720px] rounded-2xl"
+          />
+        </div>
+      </Card>
+
+      <div className="grid md:grid-cols-4 gap-6 mt-6">
+
+        <SpecCard
+          title="Safe Area"
+          value="Center"
+        />
+
+        <SpecCard
+          title="Layout"
+          value="Circular"
+        />
+
+        <SpecCard
+          title="Alignment"
+          value="Centered"
+        />
+
+        <SpecCard
+          title="Touch Area"
+          value="44px+"
+        />
+
+      </div>
+
+    </div>
+  );
+}
+function SpecCard({ title, value }) {
+  return (
+    <div className="bg-[#F8FAFC] rounded-[24px] p-6">
+
+      <div className="text-sm text-[#8B95A1] mb-2">
+        {title}
+      </div>
+
+      <div className="text-[28px] font-bold">
+        {value}
+      </div>
+
+    </div>
+  );
+}
+function SizeCard({ size, desc }) {
+  return (
+    <div className="
+      bg-white
+      border
+      border-[#E5E8EB]
+      rounded-[20px]
+      p-5
+      text-center
+    ">
+      <div className="text-[24px] font-bold">
+        {size}
+      </div>
+
+      <div className="text-sm text-[#8B95A1] mt-2">
+        {desc}
+      </div>
+    </div>
   );
 }
 
@@ -2778,138 +2904,7 @@ Status
 
 </div>
 
-{/* ICON GUIDE */}
-<div className="mt-20 w-full">
 
-  <div className="
-    w-full
-    bg-[#F8FAFC]
-    rounded-[32px]
-    border
-    border-[#E5E8EB]
-    p-12
-  ">
-
-    <div className="
-      grid
-      grid-cols-[1.2fr_0.8fr]
-      gap-20
-      items-center
-    ">
-
-      {/* LEFT */}
-      <div className="flex flex-col justify-between h-full">
-
-        <div>
-
-          <h2 className="text-[40px] font-bold tracking-tight mb-5">
-            아이콘 가이드
-          </h2>
-
-          <p className="
-            text-[18px]
-            leading-[1.8]
-            text-[#6B7684]
-            max-w-[620px]
-          ">
-            아이콘은 24×24 제작 그리드를 기준으로 정렬하며,
-            명확한 가독성과 시각적 균형을 위해
-            1.5~2px 두께를 권장한다.
-          </p>
-
-        </div>
-
-        {/* RULES */}
-        <div className="grid grid-cols-3 gap-5 mt-12">
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Grid
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              24×24
-            </div>
-
-          </div>
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Stroke
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              1.5–2px
-            </div>
-
-          </div>
-
-          <div className="
-            bg-white
-            rounded-[24px]
-            border
-            border-[#E5E8EB]
-            p-6
-          ">
-
-            <div className="text-sm text-[#8B95A1] mb-2">
-              Contrast
-            </div>
-
-            <div className="text-[28px] font-bold tracking-tight">
-              3:1+
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* RIGHT */}
-      <div className="
-        h-full
-        bg-white
-        rounded-[28px]
-        border
-        border-[#E5E8EB]
-        p-12
-        flex
-        items-center
-        justify-center
-      ">
-
-        <img
-          src={iconGuide}
-          alt="icon guide"
-          className="
-            w-full
-            max-w-[240px]
-            object-contain
-          "
-        />
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
     </div>
     
   );
