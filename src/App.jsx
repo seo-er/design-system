@@ -4385,7 +4385,7 @@ function FilterPage() {
               h-4
               shrink-0
               object-contain
-              invert opacity-40" />
+              opacity-40" />
               </button>
   
               <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white text-[#8B95A1] flex items-center gap-3">
@@ -4394,7 +4394,7 @@ function FilterPage() {
               h-4
               shrink-0
               object-contain
-              invert opacity-40" />
+              opacity-40" />
               </button>
   
             </div>
