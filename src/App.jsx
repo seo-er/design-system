@@ -3899,7 +3899,7 @@ const [iconOpenIndex, setIconOpenIndex] =
     </div>
   </div>
 ) : (
-  <div className="bg-[#031B34] p-10 overflow-auto">
+  <div className="bg-[#E5E5E5] p-10 overflow-auto">
     <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
 {`<AccordionWithIcon
   icon="location"
