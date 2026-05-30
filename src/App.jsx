@@ -177,7 +177,12 @@ export default function App() {
 >
   Accordion
 </MenuItem>
-
+<MenuItem
+  active={menu === "badge"}
+  onClick={() => setMenu("badge")}
+>
+Badge
+</MenuItem>
   </div>
 
 </div>
@@ -275,6 +280,7 @@ export default function App() {
             {menu === "advertising" && <AdvertisingPage />}
             {menu === "checkbox" && <CheckboxPage />}
             {menu === "accordion" && <AccordionPage />}
+            {menu === "badge" && <BadgePage />}
           </div>
         </main>
 
@@ -3822,7 +3828,7 @@ const [iconOpenIndex, setIconOpenIndex] =
                     w-12
                     h-12
                     rounded-[14px]
-                    bg-[#E5E5E5]
+                    bg-[#F4F4F4]
                     flex
                     items-center
                     justify-center
@@ -3913,6 +3919,194 @@ const [iconOpenIndex, setIconOpenIndex] =
 )}
 
 </Card>
+    </div>
+  );
+}
+
+function BadgePage() {
+  const [tab, setTab] = useState("design");
+
+  return (
+    <div>
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Components
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Badge
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+          상태 및 정보를 강조하기 위한 배지 컴포넌트입니다.
+        </p>
+      </div>
+
+      <SectionTitle title="배지" />
+
+      <Card>
+        <div className="p-4 border-b border-[#E5E8EB] bg-white">
+          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+            <button
+              onClick={() => setTab("design")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "design"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
+            >
+              Design
+            </button>
+
+            <button
+              onClick={() => setTab("code")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "code"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
+            >
+              Code
+            </button>
+          </div>
+        </div>
+
+        {tab === "design" ? (
+          <div className="p-10 bg-[#FAFBFC]">
+
+            {/* Badge Variants */}
+            <div className="mb-14">
+
+              <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+                ◆badge-variants
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+
+                <div className="px-4 py-2 rounded-[10px] bg-[#FFF4EB] text-[#FF7A00] font-semibold">
+                  추천
+                </div>
+
+                <div className="px-4 py-2 rounded-[10px] bg-[#EEF6FF] text-[#3182F6] font-semibold">
+                  NEW
+                </div>
+
+                <div className="px-4 py-2 rounded-[10px] bg-[#FFF1F1] text-[#F04452] font-semibold">
+                  HOT
+                </div>
+
+                <div className="px-4 py-2 rounded-[10px] bg-[#F5F3FF] text-[#7C3AED] font-semibold">
+                  BEST
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Badge Usage */}
+            <div>
+
+              <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+                ◆badge-usage
+              </div>
+
+              <div
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  rounded-[20px]
+                  border-2
+                  border-[#FF7A00]
+                  bg-white
+                  px-8
+                  py-6
+                "
+              >
+
+                <div className="flex items-center gap-5">
+
+                  <div
+                    className="
+                      w-10
+                      h-10
+                      rounded-[8px]
+                      bg-[#FF7A00]
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M20 6L9 17L4 12"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span className="text-[24px] font-medium text-[#9B9B9B]">
+                    강의+준비물
+                  </span>
+
+                </div>
+
+                <div className="flex items-center gap-8">
+
+                  <span className="text-[28px] font-bold text-[#191F28]">
+                    15,000원
+                  </span>
+
+                  <div
+                    className="
+                      px-4
+                      py-2
+                      rounded-[10px]
+                      bg-[#FFF4EB]
+                      text-[#FF7A00]
+                      text-[16px]
+                      font-semibold
+                    "
+                  >
+                    추천
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        ) : (
+          <div className="bg-[#031B34] p-10 overflow-auto">
+            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+{`<Badge variant="recommend">
+  추천
+</Badge>
+
+<Badge variant="new">
+  NEW
+</Badge>
+
+<ProductCard
+  checked
+  title="강의+준비물"
+  price="15,000원"
+  badge="추천"
+/>`}
+            </pre>
+          </div>
+        )}
+      </Card>
     </div>
   );
 }
