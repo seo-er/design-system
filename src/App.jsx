@@ -3584,8 +3584,6 @@ function AccordionPage() {
     text-[#6B7684]
   "
 >
-  {item.content}
-</div>
                         {item.content}
                       </div>
                     </div>
