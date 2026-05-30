@@ -4269,7 +4269,16 @@ function FilterPage() {
             </div>
   
             <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white flex items-center gap-3">
-              <img src={filterIcon} alt="" className="w-5 h-5" />
+            <img
+  src={filterIcon}
+  alt=""
+  className="
+    h-5
+    w-auto
+    object-contain
+    shrink-0
+  "
+/>
               <span className="text-[18px] text-[#8B95A1]">
                 필터
               </span>
