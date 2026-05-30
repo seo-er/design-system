@@ -4011,80 +4011,166 @@ function BadgePage() {
               </div>
 
               <div
-                className="
-                  flex
-                  items-center
-                  justify-between
-                  rounded-[20px]
-                  border-2
-                  border-[#FF7A00]
-                  bg-white
-                  px-8
-                  py-6
-                "
-              >
+  className="
+    flex
+    items-center
+    justify-between
+    rounded-[16px]
+    border-2
+    border-[#FF7A00]
+    bg-white
+    px-8
+    py-5
+  "
+>
 
-                <div className="flex items-center gap-5">
+  <div className="flex items-center gap-5">
 
-                  <div
-                    className="
-                      w-10
-                      h-10
-                      rounded-[8px]
-                      bg-[#FF7A00]
-                      flex
-                      items-center
-                      justify-center
-                    "
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M20 6L9 17L4 12"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
+    <div
+      className="
+        w-10
+        h-10
+        rounded-[6px]
+        bg-[#FF7A00]
+        flex
+        items-center
+        justify-center
+        shrink-0
+      "
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M20 6L9 17L4 12"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
 
-                  <span className="text-[24px] font-medium text-[#9B9B9B]">
-                    강의+준비물
-                  </span>
+    <span
+      className="
+        text-[18px]
+        font-medium
+        text-[#9B9B9B]
+      "
+    >
+      강의+준비물
+    </span>
 
-                </div>
+  </div>
 
-                <div className="flex items-center gap-8">
+  <div className="flex items-center gap-8">
 
-                  <span className="text-[28px] font-bold text-[#191F28]">
-                    15,000원
-                  </span>
+    <span
+      className="
+        text-[18px]
+        font-bold
+        text-[#191F28]
+      "
+    >
+      15,000원
+    </span>
 
-                  <div
-                    className="
-                      px-4
-                      py-2
-                      rounded-[10px]
-                      bg-[#FFF4EB]
-                      text-[#FF7A00]
-                      text-[16px]
-                      font-semibold
-                    "
-                  >
-                    추천
-                  </div>
+    <div
+      className="
+        px-3
+        py-1
+        rounded-[8px]
+        bg-[#FFF4EB]
+        text-[#FF7A00]
+        text-[14px]
+        font-semibold
+      "
+    >
+      추천
+    </div>
 
-                </div>
+  </div>
 
-              </div>
-
+</div>
             </div>
 
+            <div className="text-[18px] font-semibold text-[#7C3AED] mt-12 mb-6">
+  ◆badge-price-discount
+</div>
+
+<div
+  className="
+    flex
+    items-center
+    justify-between
+    rounded-[20px]
+    border
+    border-[#E5E8EB]
+    bg-white
+    px-8
+    py-6
+  "
+>
+
+  <span
+    className="
+      text-[18px]
+      text-[#8B8B8B]
+      line-through
+    "
+  >
+    140,000원
+  </span>
+
+  <div
+    className="
+      px-5
+      py-3
+      rounded-full
+      bg-[#BDBDBD]
+      text-white
+      text-[16px]
+      font-medium
+    "
+  >
+    가격 부담
+  </div>
+
+  <div className="text-right">
+
+    <div
+      className="
+        text-[18px]
+        font-bold
+        text-[#191F28]
+        mb-2
+      "
+    >
+      120,000원
+    </div>
+
+    <div
+      className="
+        inline-flex
+        px-3
+        py-2
+        rounded-[8px]
+        bg-[#FFF4EB]
+        text-[#FF7A00]
+        text-[14px]
+        font-semibold
+      "
+    >
+      부담이 적어요
+    </div>
+
+  </div>
+
+</div>
+            
           </div>
         ) : (
           <div className="bg-[#031B34] p-10 overflow-auto">
