@@ -2099,7 +2099,7 @@ function ButtonPage() {
   rounded-[8px]
     bg-[#F97316]
     text-white
-  h-[54px] px-7 text-[20px] font-semibold">
+  h-[54px] px-7 text-[20px] font-medium">
     Medium
   </button>
 </div>
@@ -2116,14 +2116,14 @@ function ButtonPage() {
     bg-[#F97316]
     text-white
     
-    h-[64px] px-9 text-[24px] font-semibold">
+    h-[64px] px-9 text-[24px] font-medium">
     Large
   </button>
 </div>
 
 {/* XLARGE */}
 <div className="flex flex-col gap-3">
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
+  <div className="text-[18px] font-medium text-[#7C3AED]">
     ◆btn-xlarge
   </div>
 
@@ -2133,7 +2133,7 @@ function ButtonPage() {
     bg-[#F97316]
     text-white
     
-    h-[74px] px-11 text-[28px] font-semibold">
+    h-[74px] px-11 text-[28px] font-medium">
     XLarge
   </button>
 </div>
