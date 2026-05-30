@@ -1615,6 +1615,8 @@ const iconItems = [
 
   { label: "왼쪽 화살표", slug: "arrow_left" },
   { label: "오른쪽 화살표", slug: "arrow_right" },
+  
+  { label: "확인", slug: "check" },
 ];
 
 const illustrationModules = import.meta.glob(
@@ -3269,66 +3271,63 @@ function CheckboxPage() {
       </div>
 
       <Card>
-        <div className="p-10">
-          <div className="flex flex-col gap-6">
-            {items.map((item) => (
-              <button
-                key={item.key}
-                onClick={() => toggleItem(item.key)}
-                className="flex items-center gap-8 text-left"
-              >
-                <div
-                  className={`
-                    w-[68px]
-                    h-[68px]
-                    rounded-[8px]
-                    flex
-                    items-center
-                    justify-center
-                    border
-                    transition
-                    ${
-                      checkedItems[item.key]
-                        ? "bg-[#FF7A00] border-[#FF7A00]"
-                        : "bg-white border-[#D1D6DB]"
-                    }
-                  `}
-                >
-                  {checkedItems[item.key] && (
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M20 6L9 17L4 12"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </div>
+      <div className="p-10 bg-[#FAFBFC]">
+  <div className="flex flex-col gap-8">
 
-                <span
-                  className={`
-                    text-[40px]
-                    font-medium
-                    ${
-                      checkedItems[item.key]
-                        ? "text-[#8C8C8C]"
-                        : "text-[#B8B8B8]"
-                    }
-                  `}
-                >
-                  {item.label}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
+    {/* Checked */}
+    <div className="flex items-center gap-5">
+      <div
+        className="
+          w-[44px]
+          h-[44px]
+          rounded-[8px]
+          bg-[#FF7A00]
+          flex
+          items-center
+          justify-center
+        "
+      >
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M20 6L9 17L4 12"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
+      <span className="text-[20px] text-[#8B8B8B]">
+        text
+      </span>
+    </div>
+
+    {/* Unchecked */}
+    <div className="flex items-center gap-5">
+      <div
+        className="
+          w-[44px]
+          h-[44px]
+          rounded-[8px]
+          border
+          border-[#D9D9D9]
+          bg-white
+        "
+      />
+
+      <span className="text-[20px] text-[#8B8B8B]">
+        text
+      </span>
+    </div>
+
+  </div>
+</div>
       </Card>
     </div>
   );
