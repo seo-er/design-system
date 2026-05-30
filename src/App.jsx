@@ -2381,27 +2381,50 @@ function ButtonPage() {
 
 {/* LOADING */}
 <div className="flex flex-col gap-3">
-
   <div className="text-[18px] font-semibold text-[#7C3AED]">
     ◆btn-loading
   </div>
 
- 
-<button
-  className="
-    w-[168px]
-    h-[48px]
-    rounded-[8px]
-    bg-[#E5E5E5]
-    text-[#222222]
-    text-[16px]
-    font-medium
-    transition-colors
-  "
->
-    ...
-  </button>
+  <button
+    disabled
+    className="
+      h-[54px]
+      px-7
+      rounded-[8px]
+      bg-[#F97316]
+      text-white
+      flex
+      items-center
+      gap-3
+      opacity-80
+    "
+  >
+    <svg
+      className="animate-spin"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        stroke="white"
+        strokeWidth="3"
+        fill="none"
+        strokeOpacity="0.3"
+      />
+      <path
+        d="M12 3a9 9 0 0 1 9 9"
+        stroke="white"
+        strokeWidth="3"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </svg>
 
+    로딩 중
+  </button>
 </div>
 
 {/* DISABLED */}
@@ -3233,6 +3256,7 @@ function MotionPage() {
 }
 
 function CheckboxPage() {
+  const [checkboxTab, setCheckboxTab] = useState("design");
   const [checkedItems, setCheckedItems] = useState({
     lecture: true,
     material: true,
