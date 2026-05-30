@@ -4,7 +4,6 @@ import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
 import iconGuide from "./assets/icon_grid.png";
 import watchGrid from "./assets/watch_grid.png";
-import accordionDown from "./assets/icons/accordion_down.png";
 import filterIcon from "./assets/icons/filter.png";
 import accordionDown from "./assets/icons/accordion_down.png";
 
