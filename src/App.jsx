@@ -3255,12 +3255,41 @@ function CheckboxPage() {
     review: false,
   });
 
-  const toggleItem = (key) => {
+<button
+  onClick={() =>
     setCheckedItems((prev) => ({
       ...prev,
-      [key]: !prev[key],
-    }));
-  };
+      lecture: !prev.lecture,
+    }))
+  }
+  className="flex items-center gap-4"
+>
+  <div
+    className={`
+      w-8 h-8 rounded-[8px]
+      flex items-center justify-center
+      ${
+        checkedItems.lecture
+          ? "bg-[#FF7A00]"
+          : "border border-[#D1D6DB] bg-white"
+      }
+    `}
+  >
+    {checkedItems.lecture && (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M20 6L9 17L4 12"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    )}
+  </div>
+
+  <span>강의</span>
+</button>
 
   const items = [
     { key: "lecture", label: "강의" },
