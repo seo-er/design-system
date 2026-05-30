@@ -4400,6 +4400,55 @@ function FilterPage() {
             </div>
           </div>
   
+  {/* Filter Sort */}
+<div className="mb-14">
+
+<div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+  ◆filter-sort
+</div>
+
+<button
+  className="
+    h-[56px]
+    px-8
+    rounded-full
+    border
+    border-[#E5E8EB]
+    bg-white
+    flex
+    items-center
+    gap-3
+    hover:bg-[#FAFBFC]
+    transition-colors
+  "
+>
+  <span
+    className="
+      text-[18px]
+      font-medium
+      text-[#4E5968]
+    "
+  >
+    추천순
+  </span>
+
+  <img
+    src={accordionDown}
+    alt=""
+    className="
+      w-4
+      h-4
+      object-contain
+      shrink-0
+      opacity-60
+    "
+  />
+</button>
+
+</div>
+<FilterSort>
+  추천순
+</FilterSort>
         </div>
   
       ) : (
