@@ -4340,8 +4340,7 @@ function FilterPage() {
               h-4
               shrink-0
               object-contain
-              transition-all
-            "
+              invert"
               />
   
             </button>
