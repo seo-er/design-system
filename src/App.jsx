@@ -4372,17 +4372,29 @@ function FilterPage() {
   
               <button className="h-[56px] px-8 rounded-full bg-[#191F28] text-white flex items-center gap-3">
                 수업 일정
-                <img src={accordionDown} alt="" className="w-4 h-4 invert" />
+                <img src={accordionDown} alt="" className=" w-4
+              h-4
+              shrink-0
+              object-contain
+              invert" />
               </button>
   
               <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white text-[#8B95A1] flex items-center gap-3">
                 수업 조건
-                <img src={accordionDown} alt="" className="w-4 h-4 opacity-40" />
+                <img src={accordionDown} alt="" className=" w-4
+              h-4
+              shrink-0
+              object-contain
+              invert opacity-40" />
               </button>
   
               <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white text-[#8B95A1] flex items-center gap-3">
                 지점
-                <img src={accordionDown} alt="" className="w-4 h-4 opacity-40" />
+                <img src={accordionDown} alt="" className=" w-4
+              h-4
+              shrink-0
+              object-contain
+              invert opacity-40" />
               </button>
   
             </div>
