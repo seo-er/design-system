@@ -4,7 +4,7 @@ import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
 import iconGuide from "./assets/icon_grid.png";
 import watchGrid from "./assets/watch_grid.png";
-import accordionDown from "./assets/accordion_down.png";
+import accordionDown from "./assets/icons/accordion_down.png";
 
 const iconModules = import.meta.glob(
   "./assets/icons/*.{png,svg,webp}",
@@ -1623,8 +1623,8 @@ const iconItems = [
 
   { label: "왼쪽 화살표", slug: "arrow_left" },
   { label: "오른쪽 화살표", slug: "arrow_right" },
-  
   { label: "확인", slug: "check" },
+  { label: "아코디언", slug: "accordion_down" },
 ];
 
 const illustrationModules = import.meta.glob(
@@ -3542,7 +3542,7 @@ function AccordionPage() {
         ) : (
           <div className="bg-[#031B34] p-10 overflow-auto">
             <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-{`<AccordionGroup>
+{ `<AccordionGroup>
 
   <Accordion
     title="이용 가능 지역"
