@@ -3246,6 +3246,7 @@ function MotionPage() {
 }
 
 function CheckboxPage() {
+  const [demoChecked, setDemoChecked] = useState(true);
   const [checkboxTab, setCheckboxTab] = useState("design");
   const [checkedItems, setCheckedItems] = useState({
     lecture: true,
@@ -3319,111 +3320,81 @@ function CheckboxPage() {
     {/* States */}
     <div className="mb-14">
 
-      <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-        ◆checkbox-states
-      </div>
+<button
+  onClick={() => setDemoChecked(!demoChecked)}
+  className="
+    text-[18px]
+    font-semibold
+    text-[#7C3AED]
+    mb-6
+    cursor-pointer
+  "
+>
+  ◆checkbox-states
+</button>
 
-      <div className="flex flex-col gap-6">
+<div className="flex flex-col gap-6">
 
-        {/* Selected */}
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-8 rounded-[8px] bg-[#FF7A00] flex items-center justify-center">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M20 6L9 17L4 12"
-                stroke="white"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-
-          <span className="text-[18px] text-[#4E5968] font-medium">
-            강의+준비물
-          </span>
-        </div>
-
-        {/* Unselected */}
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-8 rounded-[8px] border border-[#D1D6DB] bg-white" />
-
-          <span className="text-[18px] text-[#4E5968] font-medium">
-            강의+준비물
-          </span>
-        </div>
-
-        {/* Disabled Selected */}
-        <div className="flex items-center gap-4 opacity-50">
-          <div className="w-8 h-8 rounded-[8px] bg-[#B0B8C1] flex items-center justify-center">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M20 6L9 17L4 12"
-                stroke="white"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-
-          <span className="text-[18px] text-[#4E5968]">
-            Disabled
-          </span>
-        </div>
-
-        {/* Disabled Unselected */}
-        <div className="flex items-center gap-4 opacity-50">
-          <div className="w-8 h-8 rounded-[8px] border border-[#B0B8C1] bg-white" />
-
-          <span className="text-[18px] text-[#4E5968]">
-            Disabled
-          </span>
-        </div>
-
-      </div>
+  <button
+    onClick={() => setDemoChecked(!demoChecked)}
+    className="
+      flex
+      items-center
+      gap-4
+      w-fit
+    "
+  >
+    <div
+      className={`
+        w-8
+        h-8
+        rounded-[8px]
+        flex
+        items-center
+        justify-center
+        transition-all
+        duration-200
+        ${
+          demoChecked
+            ? "bg-[#FF7A00]"
+            : "border border-[#D1D6DB] bg-white"
+        }
+      `}
+    >
+      {demoChecked && (
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M20 6L9 17L4 12"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
     </div>
 
-    {/* Size */}
-    <div>
+    <span className="text-[18px] text-[#4E5968] font-medium">
+      text
+    </span>
+  </button>
 
-      <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-        ◆checkbox-size
-      </div>
+</div>
 
-      <div className="flex items-end gap-12">
+</div>
 
-        <div className="flex items-center gap-3">
-          <div className="w-5 h-5 rounded-md bg-[#FF7A00]" />
-          <span className="text-[16px] text-[#4E5968]">
-            Small
-          </span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-md bg-[#FF7A00]" />
-          <span className="text-[16px] text-[#4E5968]">
-            Medium
-          </span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-[#FF7A00]" />
-          <span className="text-[16px] text-[#4E5968]">
-            Large
-          </span>
-        </div>
-
-      </div>
-
-    </div>
 
   </div>
 ) : (
   <div className="bg-[#031B34] p-10">
     <pre className="text-white">
 {`<Checkbox checked>
-  강의+준비물
+ text
 </Checkbox>`}
     </pre>
   </div>
@@ -3576,22 +3547,18 @@ function AccordionPage() {
                       </span>
 
                       <img
-                        src={accordionDown}
-                        alt=""
-                        className={`
-                          w-[18px]
-                          h-[18px]
-                          opacity-70
-                          transition-all
-                          duration-300
-                          ease-out
-                          ${
-                            open
-                              ? "rotate-180 opacity-100"
-                              : ""
-                          }
-                        `}
-                      />
+  src={accordionDown}
+  alt=""
+  className={`
+    w-4
+    h-4
+    shrink-0
+    object-contain
+    transition-all
+    duration-300
+    ${open ? "rotate-180" : ""}
+  `}
+/>
                     </button>
 
                     <div
@@ -3607,15 +3574,18 @@ function AccordionPage() {
                         }
                       `}
                     >
-                      <div
-                        className="
-                          px-8
-                          pb-8
-                          text-[18px]
-                          leading-[1.8]
-                          text-[#6B7684]
-                        "
-                      >
+                     <div
+  className="
+    px-8
+    pt-3
+    pb-8
+    text-[18px]
+    leading-[1.8]
+    text-[#6B7684]
+  "
+>
+  {item.content}
+</div>
                         {item.content}
                       </div>
                     </div>
