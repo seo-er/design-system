@@ -3270,65 +3270,45 @@ function CheckboxPage() {
         </p>
       </div>
 
-      <Card>
-      <div className="p-10 bg-[#FAFBFC]">
-  <div className="flex flex-col gap-8">
+      <SectionTitle title="기본 체크박스" />
 
-    {/* Checked */}
-    <div className="flex items-center gap-5">
-      <div
-        className="
-          w-[44px]
-          h-[44px]
-          rounded-[8px]
-          bg-[#FF7A00]
-          flex
-          items-center
-          justify-center
-        "
+<Card>
+  <div className="p-4 border-b border-[#E5E8EB] bg-white">
+    <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+      <button
+        onClick={() => setCheckboxTab("design")}
+        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+          checkboxTab === "design"
+            ? "bg-white text-[#191F28] shadow-sm"
+            : "text-[#6B7280]"
+        }`}
       >
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M20 6L9 17L4 12"
-            stroke="white"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
+        Design
+      </button>
 
-      <span className="text-[20px] text-[#8B8B8B]">
-        text
-      </span>
+      <button
+        onClick={() => setCheckboxTab("code")}
+        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+          checkboxTab === "code"
+            ? "bg-white text-[#191F28] shadow-sm"
+            : "text-[#6B7280]"
+        }`}
+      >
+        Code
+      </button>
     </div>
-
-    {/* Unchecked */}
-    <div className="flex items-center gap-5">
-      <div
-        className="
-          w-[44px]
-          h-[44px]
-          rounded-[8px]
-          border
-          border-[#D9D9D9]
-          bg-white
-        "
-      />
-
-      <span className="text-[20px] text-[#8B8B8B]">
-        text
-      </span>
-    </div>
-
   </div>
-</div>
-      </Card>
+
+  {checkboxTab === "design" ? (
+    <div className="p-10 bg-[#FAFBFC]">
+      {/* 디자인 */}
+    </div>
+  ) : (
+    <div className="bg-[#031B34] p-10">
+      {/* 코드 */}
+    </div>
+  )}
+</Card>
     </div>
   );
 }
