@@ -2083,7 +2083,7 @@ function ButtonPage() {
     rounded-[8px]
     bg-[#F97316]
     text-white
-  h-[46px] px-5 text-[18px] font-semibold">
+  h-[46px] px-5 text-[18px] font-medium">
     Small
   </button>
 </div>
