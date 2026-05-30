@@ -4335,7 +4335,13 @@ function FilterPage() {
               <img
                 src={accordionDown}
                 alt=""
-                className="w-4 h-4 invert"
+                className="
+              w-4
+              h-4
+              shrink-0
+              object-contain
+              transition-all
+            "
               />
   
             </button>
