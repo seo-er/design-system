@@ -3740,6 +3740,7 @@ const [iconOpenIndex, setIconOpenIndex] =
       </Card>
 
 
+    
       <Card>
       <div className="p-4 border-b border-[#E5E8EB] bg-white">
   <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
@@ -3772,7 +3773,144 @@ const [iconOpenIndex, setIconOpenIndex] =
 
   </div>
 </div>
-      
+{iconAccordionTab === "design" ? (
+  <div className="p-10 bg-[#FAFBFC]">
+    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+      ◆accordion-with-icon
+    </div>
+
+    <div
+      className="
+        overflow-hidden
+        rounded-[24px]
+        border
+        border-[#E5E8EB]
+        bg-white
+      "
+    >
+      {iconItems.map((item, index) => {
+        const open = iconOpenIndex === index;
+
+        return (
+          <div
+            key={item.title}
+            className="
+              border-b
+              border-[#F2F4F6]
+              last:border-b-0
+            "
+          >
+            <button
+              onClick={() =>
+                setIconOpenIndex(
+                  open ? -1 : index
+                )
+              }
+              className="
+                w-full
+                flex
+                items-center
+                justify-between
+                px-8
+                py-6
+                text-left
+              "
+            >
+              <div className="flex items-center gap-4">
+                <div
+                  className="
+                    w-12
+                    h-12
+                    rounded-[14px]
+                    bg-[#FFF4EB]
+                    flex
+                    items-center
+                    justify-center
+                  "
+                >
+                  <img
+                    src={item.icon}
+                    alt=""
+                    className="
+                      w-6
+                      h-6
+                      object-contain
+                    "
+                  />
+                </div>
+
+                <span
+                  className="
+                    text-[20px]
+                    font-semibold
+                    text-[#191F28]
+                  "
+                >
+                  {item.title}
+                </span>
+              </div>
+
+              <img
+                src={accordionDown}
+                alt=""
+                className={`
+                  w-4
+                  h-4
+                  transition-all
+                  duration-300
+                  ${
+                    open
+                      ? "rotate-180"
+                      : ""
+                  }
+                `}
+              />
+            </button>
+
+            <div
+              className={`
+                overflow-hidden
+                transition-all
+                duration-300
+                ${
+                  open
+                    ? "max-h-[300px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }
+              `}
+            >
+              <div
+                className="
+                  pl-[96px]
+                  pr-8
+                  pt-5
+                  pb-8
+                  text-[18px]
+                  leading-[1.8]
+                  text-[#6B7684]
+                "
+              >
+                {item.content}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+) : (
+  <div className="bg-[#031B34] p-10 overflow-auto">
+    <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+{`<AccordionWithIcon
+  icon="location"
+  title="수강 가능 지역"
+>
+  서울, 경기, 인천 지역에서
+  이용 가능합니다.
+</AccordionWithIcon>`}
+    </pre>
+  </div>
+)}
 
 </Card>
     </div>
