@@ -3316,18 +3316,19 @@ function CheckboxPage() {
   {checkboxTab === "design" ? (
   <div className="p-10 bg-[#FAFBFC]">
 
-    <div className="flex flex-col gap-12">
+    {/* States */}
+    <div className="mb-14">
 
-      <div className="flex flex-col gap-4">
+      <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+        ◆checkbox-states
+      </div>
 
-        <div className="text-[18px] font-semibold text-[#7C3AED]">
-          ◆checkbox-selected
-        </div>
+      <div className="flex flex-col gap-6">
 
-        <div className="flex items-center gap-8">
-
-          <div className="w-[64px] h-[64px] rounded-[8px] bg-[#FF7A00] flex items-center justify-center">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        {/* Selected */}
+        <div className="flex items-center gap-4">
+          <div className="w-8 h-8 rounded-[8px] bg-[#FF7A00] flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path
                 d="M20 6L9 17L4 12"
                 stroke="white"
@@ -3338,11 +3339,81 @@ function CheckboxPage() {
             </svg>
           </div>
 
-          <span className="text-[36px] text-[#9B9B9B] font-medium">
+          <span className="text-[18px] text-[#4E5968] font-medium">
             강의+준비물
           </span>
-
         </div>
+
+        {/* Unselected */}
+        <div className="flex items-center gap-4">
+          <div className="w-8 h-8 rounded-[8px] border border-[#D1D6DB] bg-white" />
+
+          <span className="text-[18px] text-[#4E5968] font-medium">
+            강의+준비물
+          </span>
+        </div>
+
+        {/* Disabled Selected */}
+        <div className="flex items-center gap-4 opacity-50">
+          <div className="w-8 h-8 rounded-[8px] bg-[#B0B8C1] flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20 6L9 17L4 12"
+                stroke="white"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+
+          <span className="text-[18px] text-[#4E5968]">
+            Disabled
+          </span>
+        </div>
+
+        {/* Disabled Unselected */}
+        <div className="flex items-center gap-4 opacity-50">
+          <div className="w-8 h-8 rounded-[8px] border border-[#B0B8C1] bg-white" />
+
+          <span className="text-[18px] text-[#4E5968]">
+            Disabled
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Size */}
+    <div>
+
+      <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+        ◆checkbox-size
+      </div>
+
+      <div className="flex items-end gap-12">
+
+        <div className="flex items-center gap-3">
+          <div className="w-5 h-5 rounded-md bg-[#FF7A00]" />
+          <span className="text-[16px] text-[#4E5968]">
+            Small
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="w-7 h-7 rounded-md bg-[#FF7A00]" />
+          <span className="text-[16px] text-[#4E5968]">
+            Medium
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-[#FF7A00]" />
+          <span className="text-[16px] text-[#4E5968]">
+            Large
+          </span>
+        </div>
+
       </div>
 
     </div>
@@ -3352,7 +3423,7 @@ function CheckboxPage() {
   <div className="bg-[#031B34] p-10">
     <pre className="text-white">
 {`<Checkbox checked>
- text
+  강의+준비물
 </Checkbox>`}
     </pre>
   </div>
@@ -3379,17 +3450,17 @@ function AccordionPage() {
     {
       title: "이용 가능 지역",
       content:
-        "서울, 경기, 인천 지역에서 이용 가능합니다.",
+        "서울, 경기, 인천 지역에서 이용 가능합니다. 일부 지역은 서비스 운영 상황에 따라 제한될 수 있습니다.",
     },
     {
       title: "차량 옵션",
       content:
-        "네비게이션, 하이패스, 블랙박스를 제공합니다.",
+        "네비게이션, 하이패스, 블랙박스를 기본 제공합니다. 차량별 옵션은 상이할 수 있습니다.",
     },
     {
       title: "보험 선택",
       content:
-        "일반자차, 완전자차 중 선택할 수 있습니다.",
+        "일반자차, 완전자차 중 선택할 수 있으며 이용 중에도 변경 가능합니다.",
     },
   ];
 
@@ -3445,8 +3516,16 @@ function AccordionPage() {
               ◆accordion-group
             </div>
 
-            <div className="overflow-hidden rounded-[20px] border border-[#E5E8EB] bg-white">
-
+            <div
+              className="
+                overflow-hidden
+                rounded-[24px]
+                border
+                border-[#E5E8EB]
+                bg-white
+                shadow-[0_1px_3px_rgba(0,0,0,0.04)]
+              "
+            >
               {items.map((item, index) => {
                 const open = openIndex === index;
 
@@ -3461,17 +3540,15 @@ function AccordionPage() {
                   >
                     <button
                       onClick={() =>
-                        setOpenIndex(
-                          open ? -1 : index
-                        )
+                        setOpenIndex(open ? -1 : index)
                       }
                       className={`
                         w-full
                         flex
                         items-center
                         justify-between
-                        px-7
-                        py-6
+                        px-8
+                        py-7
                         text-left
                         transition-all
                         duration-300
@@ -3484,8 +3561,9 @@ function AccordionPage() {
                     >
                       <span
                         className={`
-                          text-[20px]
-                          font-medium
+                          text-[22px]
+                          font-semibold
+                          tracking-[-0.02em]
                           transition
                           ${
                             open
@@ -3501,14 +3579,15 @@ function AccordionPage() {
                         src={accordionDown}
                         alt=""
                         className={`
-                          w-5
-                          h-5
+                          w-[18px]
+                          h-[18px]
+                          opacity-70
                           transition-all
                           duration-300
                           ease-out
                           ${
                             open
-                              ? "rotate-180"
+                              ? "rotate-180 opacity-100"
                               : ""
                           }
                         `}
@@ -3523,48 +3602,44 @@ function AccordionPage() {
                         ease-out
                         ${
                           open
-                            ? "max-h-[220px] opacity-100"
+                            ? "max-h-[300px] opacity-100"
                             : "max-h-0 opacity-0"
                         }
                       `}
                     >
-                      <div className="px-7 pb-7 text-[17px] leading-[1.7] text-[#6B7280]">
+                      <div
+                        className="
+                          px-8
+                          pb-8
+                          text-[18px]
+                          leading-[1.8]
+                          text-[#6B7684]
+                        "
+                      >
                         {item.content}
                       </div>
                     </div>
                   </div>
                 );
               })}
-
             </div>
 
           </div>
         ) : (
           <div className="bg-[#031B34] p-10 overflow-auto">
             <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-{ `<AccordionGroup>
-
-  <Accordion
-    title="이용 가능 지역"
-  >
-    서울, 경기, 인천 지역에서
-    이용 가능합니다.
+{`<AccordionGroup>
+  <Accordion title="이용 가능 지역">
+    서울, 경기, 인천 지역에서 이용 가능합니다.
   </Accordion>
 
-  <Accordion
-    title="차량 옵션"
-  >
-    네비게이션, 하이패스,
-    블랙박스를 제공합니다.
+  <Accordion title="차량 옵션">
+    네비게이션, 하이패스, 블랙박스를 제공합니다.
   </Accordion>
 
-  <Accordion
-    title="보험 선택"
-  >
-    일반자차, 완전자차 중
-    선택할 수 있습니다.
+  <Accordion title="보험 선택">
+    일반자차, 완전자차 중 선택할 수 있습니다.
   </Accordion>
-
 </AccordionGroup>`}
             </pre>
           </div>
