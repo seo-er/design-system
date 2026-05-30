@@ -3822,7 +3822,7 @@ const [iconOpenIndex, setIconOpenIndex] =
                     w-12
                     h-12
                     rounded-[14px]
-                    bg-[#FFF4EB]
+                    bg-[#E5E5E5]
                     flex
                     items-center
                     justify-center
@@ -3899,7 +3899,7 @@ const [iconOpenIndex, setIconOpenIndex] =
     </div>
   </div>
 ) : (
-  <div className="bg-[#E5E5E5] p-10 overflow-auto">
+  <div className="bg-[#031B34] p-10 overflow-auto">
     <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
 {`<AccordionWithIcon
   icon="location"
