@@ -170,6 +170,12 @@ export default function App() {
 >
   Checkbox
 </MenuItem>
+<MenuItem
+  active={menu === "accordion"}
+  onClick={() => setMenu("accordion")}
+>
+  Accordion
+</MenuItem>
 
   </div>
 
@@ -267,6 +273,7 @@ export default function App() {
             {menu === "motion" && <MotionPage />}
             {menu === "advertising" && <AdvertisingPage />}
             {menu === "checkbox" && <CheckboxPage />}
+            {menu === "accordion" && <AccordionPage />}
           </div>
         </main>
 
@@ -3324,14 +3331,49 @@ function CheckboxPage() {
   </div>
 
   {checkboxTab === "design" ? (
-    <div className="p-10 bg-[#FAFBFC]">
-      {/* 디자인 */}
+  <div className="p-10 bg-[#FAFBFC]">
+
+    <div className="flex flex-col gap-12">
+
+      <div className="flex flex-col gap-4">
+
+        <div className="text-[18px] font-semibold text-[#7C3AED]">
+          ◆checkbox-selected
+        </div>
+
+        <div className="flex items-center gap-8">
+
+          <div className="w-[64px] h-[64px] rounded-[8px] bg-[#FF7A00] flex items-center justify-center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20 6L9 17L4 12"
+                stroke="white"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+
+          <span className="text-[36px] text-[#9B9B9B] font-medium">
+            강의+준비물
+          </span>
+
+        </div>
+      </div>
+
     </div>
-  ) : (
-    <div className="bg-[#031B34] p-10">
-      {/* 코드 */}
-    </div>
-  )}
+
+  </div>
+) : (
+  <div className="bg-[#031B34] p-10">
+    <pre className="text-white">
+{`<Checkbox checked>
+ text
+</Checkbox>`}
+    </pre>
+  </div>
+)}
 </Card>
     </div>
   );
@@ -3342,6 +3384,138 @@ function AdvertisingPage() {
       <h1 className="text-[44px] font-bold tracking-tight">
         Advertising
       </h1>
+    </div>
+  );
+}
+
+function AccordionPage() {
+  const [tab, setTab] = useState("design");
+  const [open, setOpen] = useState(true);
+
+  return (
+    <div>
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Components
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Accordion
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+          콘텐츠를 펼치고 접을 수 있는 컴포넌트입니다.
+        </p>
+      </div>
+
+      <SectionTitle title="기본 아코디언" />
+
+      <Card>
+
+        <div className="p-4 border-b border-[#E5E8EB] bg-white">
+          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+
+            <button
+              onClick={() => setTab("design")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "design"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
+            >
+              Design
+            </button>
+
+            <button
+              onClick={() => setTab("code")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "code"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
+            >
+              Code
+            </button>
+
+          </div>
+        </div>
+
+        {tab === "design" ? (
+          <div className="p-10 bg-[#FAFBFC]">
+
+            <div className="max-w-[800px]">
+
+              <div className="text-[18px] font-semibold text-[#7C3AED] mb-4">
+                ◆accordion-basic
+              </div>
+
+              <div className="bg-white border border-[#E5E8EB] rounded-[16px] overflow-hidden">
+
+                <button
+                  onClick={() => setOpen(!open)}
+                  className="
+                    w-full
+                    flex
+                    items-center
+                    justify-between
+                    px-6
+                    py-5
+                    text-left
+                  "
+                >
+                  <span className="text-[20px] font-semibold">
+                    강의 안내
+                  </span>
+
+                  <span
+                    className={`
+                      text-[24px]
+                      transition-transform
+                      duration-300
+                      ${open ? "rotate-180" : ""}
+                    `}
+                  >
+                    ⌄
+                  </span>
+                </button>
+
+                <div
+                  className={`
+                    overflow-hidden
+                    transition-all
+                    duration-300
+                    ${
+                      open
+                        ? "max-h-[200px] opacity-100"
+                        : "max-h-0 opacity-0"
+                    }
+                  `}
+                >
+                  <div className="px-6 pb-6 text-[#6B7280] text-[17px] leading-[1.7]">
+                    문화센터 강의에 대한 설명이 들어갑니다.
+                    수강신청 방법, 일정, 장소 등의 정보를
+                    포함할 수 있습니다.
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        ) : (
+          <div className="bg-[#031B34] p-10">
+            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+{`<Accordion
+  title="강의 안내"
+>
+  문화센터 강의에 대한 설명이 들어갑니다.
+</Accordion>`}
+            </pre>
+          </div>
+        )}
+
+      </Card>
     </div>
   );
 }
