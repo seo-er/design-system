@@ -2078,7 +2078,12 @@ function ButtonPage() {
     ◆btn-small
   </div>
 
-  <button className="h-[46px] px-5 rounded-[14px] bg-[#3579F6] text-white text-[18px] font-semibold">
+  <button className="
+  
+    rounded-[8px]
+    bg-[#F97316]
+    text-white
+  h-[46px] px-5 text-[18px] font-semibold">
     Small
   </button>
 </div>
@@ -2089,7 +2094,12 @@ function ButtonPage() {
     ◆btn-medium
   </div>
 
-  <button className="h-[54px] px-7 rounded-[16px] bg-[#3579F6] text-white text-[20px] font-semibold">
+  <button className="
+  
+  rounded-[8px]
+    bg-[#F97316]
+    text-white
+  h-[54px] px-7 text-[20px] font-semibold">
     Medium
   </button>
 </div>
@@ -2100,7 +2110,13 @@ function ButtonPage() {
     ◆btn-large
   </div>
 
-  <button className="h-[64px] px-9 rounded-[18px] bg-[#3579F6] text-white text-[24px] font-semibold">
+  <button className="
+  
+  rounded-[8px]
+    bg-[#F97316]
+    text-white
+    
+    h-[64px] px-9 text-[24px] font-semibold">
     Large
   </button>
 </div>
@@ -2111,7 +2127,13 @@ function ButtonPage() {
     ◆btn-xlarge
   </div>
 
-  <button className="h-[74px] px-11 rounded-[20px] bg-[#3579F6] text-white text-[28px] font-semibold">
+  <button className="
+  
+  rounded-[8px]
+    bg-[#F97316]
+    text-white
+    
+    h-[74px] px-11 text-[28px] font-semibold">
     XLarge
   </button>
 </div>
