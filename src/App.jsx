@@ -3458,61 +3458,26 @@ function CheckboxPage() {
                       w-8 h-8
                       rounded-[8px]
                       border-2
-                      border-[#FF7A00]
+                      border-[#AAAAAA]
                       flex
                       items-center
                       justify-center
                     "
                   >
                     {demo.outline && (
-                      <CheckIcon color="#FF7A00" />
+                      <CheckIcon color="#D5D5D5" />
                     )}
                   </div>
 
                   <span className="text-[18px]">
-                    Outline
+                    text
                   </span>
                 </button>
 
               </div>
             </div>
 
-            {/* SIZES */}
-            <div>
-
-              <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-                ◆checkbox-size
-              </div>
-
-              <div className="flex items-end gap-14">
-
-                <div className="flex flex-col gap-3">
-                  <span className="text-[15px] text-[#6B7280]">
-                    Small
-                  </span>
-
-                  <div className="w-5 h-5 rounded-md bg-[#FF7A00]" />
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <span className="text-[15px] text-[#6B7280]">
-                    Medium
-                  </span>
-
-                  <div className="w-8 h-8 rounded-[8px] bg-[#FF7A00]" />
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <span className="text-[15px] text-[#6B7280]">
-                    Large
-                  </span>
-
-                  <div className="w-10 h-10 rounded-[10px] bg-[#FF7A00]" />
-                </div>
-
-              </div>
-
-            </div>
+          
 
           </div>
         ) : (
@@ -3621,109 +3586,112 @@ function AccordionPage() {
             </div>
 
             <div
-              className="
-                overflow-hidden
-                rounded-[24px]
-                border
-                border-[#E5E8EB]
-                bg-white
-                shadow-[0_1px_3px_rgba(0,0,0,0.04)]
-              "
-            >
-              {items.map((item, index) => {
-                const open = openIndex === index;
-
-                return (
-                  <div
-                    key={item.title}
-                    className="
-                      border-b
-                      border-[#F2F4F6]
-                      last:border-b-0
-                    "
-                  >
-                    <button
-                      onClick={() =>
-                        setOpenIndex(open ? -1 : index)
-                      }
-                      className={`
-                        w-full
-                        flex
-                        items-center
-                        justify-between
-                        px-8
-                        py-7
-                        text-left
-                        transition-all
-                        duration-300
-                        ${
-                          open
-                            ? "bg-[#FAFBFC]"
-                            : "bg-white hover:bg-[#FAFBFC]"
-                        }
-                      `}
-                    >
-                      <span
-                        className={`
-                          text-[22px]
-                          font-semibold
-                          tracking-[-0.02em]
-                          transition
-                          ${
-                            open
-                              ? "text-[#191F28]"
-                              : "text-[#4E5968]"
-                          }
-                        `}
-                      >
-                        {item.title}
-                      </span>
-
-                      <img
-  src={accordionDown}
-  alt=""
-  className={`
-    w-4
-    h-4
-    shrink-0
-    object-contain
-    transition-all
-    duration-300
-    ${open ? "rotate-180" : ""}
-  `}
-/>
-                    </button>
-
-                    <div
-                      className={`
-                        overflow-hidden
-                        transition-all
-                        duration-300
-                        ease-out
-                        ${
-                          open
-                            ? "max-h-[300px] opacity-100"
-                            : "max-h-0 opacity-0"
-                        }
-                      `}
-                    >
-                     <div
   className="
-    px-8
-    pt-3
-    pb-8
-    text-[18px]
-    leading-[1.8]
-    text-[#6B7684]
+    overflow-hidden
+    rounded-[24px]
+    border
+    border-[#E5E8EB]
+    bg-white
+    shadow-[0_1px_3px_rgba(0,0,0,0.04)]
   "
 >
-                        {item.content}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+  {items.map((item, index) => {
+    const open = openIndex === index;
+
+    return (
+      <div
+        key={item.title}
+        className="
+          border-b
+          border-[#F2F4F6]
+          last:border-b-0
+        "
+      >
+        <button
+          onClick={() =>
+            setOpenIndex(open ? -1 : index)
+          }
+          className={`
+            w-full
+            flex
+            items-center
+            justify-between
+            px-8
+            py-6
+            text-left
+            transition-all
+            duration-300
+            ${
+              open
+                ? "bg-[#FAFBFC]"
+                : "bg-white hover:bg-[#FAFBFC]"
+            }
+          `}
+        >
+          <span
+            className={`
+              text-[20px]
+              leading-[26px]
+              font-semibold
+              tracking-[-0.01em]
+              transition
+              ${
+                open
+                  ? "text-[#191F28]"
+                  : "text-[#4E5968]"
+              }
+            `}
+          >
+            {item.title}
+          </span>
+
+          <img
+            src={accordionDown}
+            alt=""
+            className={`
+              w-4
+              h-4
+              shrink-0
+              object-contain
+              transition-all
+              duration-300
+              ${
+                open ? "rotate-180" : ""
+              }
+            `}
+          />
+        </button>
+
+        <div
+          className={`
+            overflow-hidden
+            transition-all
+            duration-300
+            ease-out
+            ${
+              open
+                ? "max-h-[300px] opacity-100"
+                : "max-h-0 opacity-0"
+            }
+          `}
+        >
+          <div
+            className="
+              px-8
+              pt-5
+              pb-8
+              text-[18px]
+              leading-[1.8]
+              text-[#6B7684]
+            "
+          >
+            {item.content}
+          </div>
+        </div>
+      </div>
+    );
+  })}
+</div>
 
           </div>
         ) : (
