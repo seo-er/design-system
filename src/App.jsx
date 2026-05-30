@@ -5,6 +5,8 @@ import gridOverlay from "./assets/Grid.jpg";
 import iconGuide from "./assets/icon_grid.png";
 import watchGrid from "./assets/watch_grid.png";
 import accordionDown from "./assets/icons/accordion_down.png";
+import filterIcon from "./assets/icons/filter.png";
+import accordionDown from "./assets/icons/accordion_down.png";
 
 const iconModules = import.meta.glob(
   "./assets/icons/*.{png,svg,webp}",
@@ -183,6 +185,12 @@ export default function App() {
 >
 Badge
 </MenuItem>
+<MenuItem
+      active={menu === "filter"}
+      onClick={() => setMenu("filter")}
+    >
+      filter
+    </MenuItem>
   </div>
 
 </div>
@@ -281,6 +289,7 @@ Badge
             {menu === "checkbox" && <CheckboxPage />}
             {menu === "accordion" && <AccordionPage />}
             {menu === "badge" && <BadgePage />}
+            {menu === "filter" && <FilterPage />}
           </div>
         </main>
 
@@ -4194,5 +4203,194 @@ function BadgePage() {
         )}
       </Card>
     </div>
+  );
+}
+
+
+function FilterPage() {
+  const [tab, setTab] = useState("design");
+
+  return (
+    <div>
+    <div className="mb-14">
+      <p className="text-sm text-[#8B95A1] mb-3">
+        Components
+      </p>
+  
+      <h1 className="text-[44px] font-bold tracking-tight">
+        Filter
+      </h1>
+  
+      <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+        검색 및 목록 필터링에 사용하는 컴포넌트입니다.
+      </p>
+    </div>
+  
+    <SectionTitle title="필터" />
+  
+    <Card>
+  
+      {/* 탭 */}
+      <div className="p-4 border-b border-[#E5E8EB] bg-white">
+        <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+  
+          <button
+            onClick={() => setTab("design")}
+            className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+              tab === "design"
+                ? "bg-white text-[#191F28] shadow-sm"
+                : "text-[#6B7280]"
+            }`}
+          >
+            Design
+          </button>
+  
+          <button
+            onClick={() => setTab("code")}
+            className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+              tab === "code"
+                ? "bg-white text-[#191F28] shadow-sm"
+                : "text-[#6B7280]"
+            }`}
+          >
+            Code
+          </button>
+  
+        </div>
+      </div>
+  
+      {tab === "design" ? (
+  
+        <div className="p-10 bg-[#FAFBFC] flex flex-col gap-14">
+  
+          {/* 기본 */}
+          <div>
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+              ◆filter-default
+            </div>
+  
+            <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white flex items-center gap-3">
+              <img src={filterIcon} alt="" className="w-5 h-5" />
+              <span className="text-[18px] text-[#8B95A1]">
+                필터
+              </span>
+            </button>
+          </div>
+  
+          {/* 숫자 없음 */}
+          <div>
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+              ◆filter-no-count
+            </div>
+  
+            <button className="h-[56px] px-8 rounded-full border-2 border-[#191F28] bg-white flex items-center gap-3">
+              <img src={filterIcon} alt="" className="w-5 h-5" />
+              <span className="text-[18px] font-semibold">
+                필터
+              </span>
+            </button>
+          </div>
+  
+          {/* 숫자 있음 */}
+          <div>
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+              ◆filter-count
+            </div>
+  
+            <button className="relative h-[56px] px-8 rounded-full border-2 border-[#191F28] bg-white flex items-center gap-3">
+  
+              <img src={filterIcon} alt="" className="w-5 h-5" />
+  
+              <span className="text-[18px] font-semibold">
+                필터
+              </span>
+  
+              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#191F28] text-white text-[14px] font-bold flex items-center justify-center">
+                1
+              </div>
+  
+            </button>
+          </div>
+  
+          {/* 활성 */}
+          <div>
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+              ◆filter-selected
+            </div>
+  
+            <button className="h-[56px] px-8 rounded-full bg-[#191F28] text-white flex items-center gap-3">
+  
+              <span className="text-[18px] font-semibold">
+                수업 일정
+              </span>
+  
+              <img
+                src={accordionDown}
+                alt=""
+                className="w-4 h-4 invert"
+              />
+  
+            </button>
+          </div>
+  
+          {/* 그룹 */}
+          <div>
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+              ◆filter-group
+            </div>
+  
+            <div className="flex items-center gap-4 flex-wrap">
+  
+              <button className="relative h-[56px] px-7 rounded-full border-2 border-[#191F28] bg-white flex items-center gap-3">
+  
+                <img src={filterIcon} alt="" className="w-5 h-5" />
+  
+                <span className="text-[18px] font-semibold">
+                  필터
+                </span>
+  
+                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#191F28] text-white text-[14px] font-bold flex items-center justify-center">
+                  1
+                </div>
+  
+              </button>
+  
+              <div className="w-px h-8 bg-[#E5E8EB]" />
+  
+              <button className="h-[56px] px-8 rounded-full bg-[#191F28] text-white flex items-center gap-3">
+                수업 일정
+                <img src={accordionDown} alt="" className="w-4 h-4 invert" />
+              </button>
+  
+              <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white text-[#8B95A1] flex items-center gap-3">
+                수업 조건
+                <img src={accordionDown} alt="" className="w-4 h-4 opacity-40" />
+              </button>
+  
+              <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white text-[#8B95A1] flex items-center gap-3">
+                지점
+                <img src={accordionDown} alt="" className="w-4 h-4 opacity-40" />
+              </button>
+  
+            </div>
+          </div>
+  
+        </div>
+  
+      ) : (
+  
+        <div className="bg-[#031B34] p-10 overflow-auto">
+          <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+  {`<FilterButton />
+  <FilterButton count={1} />
+  <FilterChip selected />
+  <FilterGroup />`}
+          </pre>
+        </div>
+  
+      )}
+  
+    </Card>
+  </div>
   );
 }
