@@ -3532,26 +3532,29 @@ function AccordionPage() {
         "일반자차, 완전자차 중 선택할 수 있으며 이용 중에도 변경 가능합니다.",
     },
   ];
-  const [iconOpenIndex, setIconOpenIndex] = useState(0);
+  const [iconAccordionTab, setIconAccordionTab] =
+  useState("design");
 
+const [iconOpenIndex, setIconOpenIndex] =
+  useState(0);
   const iconItems = [
     {
       icon: getIconSrc("location"),
-      title: "이용 가능 지역",
+      title: "수강 가능 지역",
       content:
         "서울, 경기, 인천 지역에서 이용 가능합니다. 일부 지역은 서비스 운영 상황에 따라 제한될 수 있습니다.",
     },
     {
       icon: getIconSrc("reservation"),
-      title: "예약 및 이용 안내",
+      title: "강좌 예약 안내",
       content:
-        "예약은 원하는 날짜와 시간 선택 후 진행할 수 있으며 예약 확정 시 알림이 제공됩니다.",
+        "원하는 날짜와 시간을 선택하여 예약할 수 있으며 예약 완료 시 알림을 제공합니다.",
     },
     {
       icon: getIconSrc("mypage"),
-      title: "내 정보 관리",
+      title: "회원 정보 관리",
       content:
-        "예약 내역, 관심 강좌, 자녀 정보 등 서비스를 이용하기 위한 정보를 확인하고 관리할 수 있습니다.",
+        "예약 내역, 관심 강좌, 자녀 정보를 확인하고 관리할 수 있습니다.",
     },
   ];
   return (
@@ -3735,138 +3738,41 @@ function AccordionPage() {
           </div>
         )}
       </Card>
+
+
       <Card>
+      <div className="p-4 border-b border-[#E5E8EB] bg-white">
+  <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
 
-  <div className="p-10 bg-[#FAFBFC]">
-
-    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-      ◆accordion_with_icon
-    </div>
-
-    <div
-      className="
-        overflow-hidden
-        rounded-[24px]
-        border
-        border-[#E5E8EB]
-        bg-white
-      "
+    <button
+      onClick={() =>
+        setIconAccordionTab("design")
+      }
+      className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+        iconAccordionTab === "design"
+          ? "bg-white text-[#191F28] shadow-sm"
+          : "text-[#6B7280]"
+      }`}
     >
+      Design
+    </button>
 
-      {iconItems.map((item, index) => {
-        const open = iconOpenIndex === index;
-
-        return (
-          <div
-            key={item.title}
-            className="
-              border-b
-              border-[#F2F4F6]
-              last:border-b-0
-            "
-          >
-            <button
-              onClick={() =>
-                setIconOpenIndex(
-                  open ? -1 : index
-                )
-              }
-              className="
-                w-full
-                flex
-                items-center
-                justify-between
-                px-8
-                py-6
-                text-left
-              "
-            >
-              <div className="flex items-center gap-4">
-
-              <div
-  className="
-    w-12
-    h-12
-    rounded-[14px]
-    bg-[#FFF4EB]
-    flex
-    items-center
-    justify-center
-    shrink-0
-  "
->
-  <img
-    src={item.icon}
-    alt=""
-    className="
-      w-6
-      h-6
-      object-contain
-    "
-  />
-</div>
-                <span
-                  className="
-                    text-[20px]
-                    font-semibold
-                  "
-                >
-                  {item.title}
-                </span>
-
-              </div>
-
-              <img
-                src={accordionDown}
-                alt=""
-                className={`
-                  w-4
-                  h-4
-                  transition-all
-                  duration-300
-                  ${
-                    open
-                      ? "rotate-180"
-                      : ""
-                  }
-                `}
-              />
-            </button>
-
-            <div
-              className={`
-                overflow-hidden
-                transition-all
-                duration-300
-                ${
-                  open
-                    ? "max-h-[300px]"
-                    : "max-h-0"
-                }
-              `}
-            >
-              <div
-                className="
-                  pl-[88px]
-                  pr-8
-                  pt-5
-                  pb-8
-                  text-[18px]
-                  leading-[1.8]
-                  text-[#6B7684]
-                "
-              >
-                {item.content}
-              </div>
-            </div>
-
-          </div>
-        );
-      })}
-
-    </div>
+    <button
+      onClick={() =>
+        setIconAccordionTab("code")
+      }
+      className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+        iconAccordionTab === "code"
+          ? "bg-white text-[#191F28] shadow-sm"
+          : "text-[#6B7280]"
+      }`}
+    >
+      Code
+    </button>
 
   </div>
+</div>
+      
 
 </Card>
     </div>
