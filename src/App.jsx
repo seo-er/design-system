@@ -4,6 +4,7 @@ import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
 import iconGuide from "./assets/icon_grid.png";
 import watchGrid from "./assets/watch_grid.png";
+import accordionDown from "./assets/accordion_down.png";
 
 const iconModules = import.meta.glob(
   "./assets/icons/*.{png,svg,webp}",
@@ -2393,45 +2394,27 @@ function ButtonPage() {
   </div>
 
   <button
-    disabled
-    className="
-      h-[54px]
-      px-7
-      rounded-[8px]
-      bg-[#F97316]
-      text-white
-      flex
-      items-center
-      gap-3
-      opacity-80
-    "
-  >
-    <svg
-      className="animate-spin"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-    >
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        stroke="white"
-        strokeWidth="3"
-        fill="none"
-        strokeOpacity="0.3"
-      />
-      <path
-        d="M12 3a9 9 0 0 1 9 9"
-        stroke="white"
-        strokeWidth="3"
-        strokeLinecap="round"
-        fill="none"
-      />
-    </svg>
-
-    로딩 중
-  </button>
+  className="
+    h-[54px]
+    w-[120px]
+    rounded-[8px]
+    bg-[#F97316]
+    flex
+    items-center
+    justify-center
+    gap-2
+  "
+>
+  <div className="w-2 h-2 rounded-full bg-white animate-bounce" />
+  <div
+    className="w-2 h-2 rounded-full bg-white animate-bounce"
+    style={{ animationDelay: "0.15s" }}
+  />
+  <div
+    className="w-2 h-2 rounded-full bg-white animate-bounce"
+    style={{ animationDelay: "0.3s" }}
+  />
+</button>
 </div>
 
 {/* DISABLED */}
@@ -3390,7 +3373,25 @@ function AdvertisingPage() {
 
 function AccordionPage() {
   const [tab, setTab] = useState("design");
-  const [open, setOpen] = useState(true);
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const items = [
+    {
+      title: "이용 가능 지역",
+      content:
+        "서울, 경기, 인천 지역에서 이용 가능합니다.",
+    },
+    {
+      title: "차량 옵션",
+      content:
+        "네비게이션, 하이패스, 블랙박스를 제공합니다.",
+    },
+    {
+      title: "보험 선택",
+      content:
+        "일반자차, 완전자차 중 선택할 수 있습니다.",
+    },
+  ];
 
   return (
     <div>
@@ -3411,10 +3412,8 @@ function AccordionPage() {
       <SectionTitle title="기본 아코디언" />
 
       <Card>
-
         <div className="p-4 border-b border-[#E5E8EB] bg-white">
           <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-
             <button
               onClick={() => setTab("design")}
               className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
@@ -3436,85 +3435,140 @@ function AccordionPage() {
             >
               Code
             </button>
-
           </div>
         </div>
 
         {tab === "design" ? (
           <div className="p-10 bg-[#FAFBFC]">
 
-            <div className="max-w-[800px]">
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+              ◆accordion-group
+            </div>
 
-              <div className="text-[18px] font-semibold text-[#7C3AED] mb-4">
-                ◆accordion-basic
-              </div>
+            <div className="overflow-hidden rounded-[20px] border border-[#E5E8EB] bg-white">
 
-              <div className="bg-white border border-[#E5E8EB] rounded-[16px] overflow-hidden">
+              {items.map((item, index) => {
+                const open = openIndex === index;
 
-                <button
-                  onClick={() => setOpen(!open)}
-                  className="
-                    w-full
-                    flex
-                    items-center
-                    justify-between
-                    px-6
-                    py-5
-                    text-left
-                  "
-                >
-                  <span className="text-[20px] font-semibold">
-                    강의 안내
-                  </span>
-
-                  <span
-                    className={`
-                      text-[24px]
-                      transition-transform
-                      duration-300
-                      ${open ? "rotate-180" : ""}
-                    `}
+                return (
+                  <div
+                    key={item.title}
+                    className="
+                      border-b
+                      border-[#F2F4F6]
+                      last:border-b-0
+                    "
                   >
-                    ⌄
-                  </span>
-                </button>
+                    <button
+                      onClick={() =>
+                        setOpenIndex(
+                          open ? -1 : index
+                        )
+                      }
+                      className={`
+                        w-full
+                        flex
+                        items-center
+                        justify-between
+                        px-7
+                        py-6
+                        text-left
+                        transition-all
+                        duration-300
+                        ${
+                          open
+                            ? "bg-[#FAFBFC]"
+                            : "bg-white hover:bg-[#FAFBFC]"
+                        }
+                      `}
+                    >
+                      <span
+                        className={`
+                          text-[20px]
+                          font-medium
+                          transition
+                          ${
+                            open
+                              ? "text-[#191F28]"
+                              : "text-[#4E5968]"
+                          }
+                        `}
+                      >
+                        {item.title}
+                      </span>
 
-                <div
-                  className={`
-                    overflow-hidden
-                    transition-all
-                    duration-300
-                    ${
-                      open
-                        ? "max-h-[200px] opacity-100"
-                        : "max-h-0 opacity-0"
-                    }
-                  `}
-                >
-                  <div className="px-6 pb-6 text-[#6B7280] text-[17px] leading-[1.7]">
-                    문화센터 강의에 대한 설명이 들어갑니다.
-                    수강신청 방법, 일정, 장소 등의 정보를
-                    포함할 수 있습니다.
+                      <img
+                        src={accordionDown}
+                        alt=""
+                        className={`
+                          w-5
+                          h-5
+                          transition-all
+                          duration-300
+                          ease-out
+                          ${
+                            open
+                              ? "rotate-180"
+                              : ""
+                          }
+                        `}
+                      />
+                    </button>
+
+                    <div
+                      className={`
+                        overflow-hidden
+                        transition-all
+                        duration-300
+                        ease-out
+                        ${
+                          open
+                            ? "max-h-[220px] opacity-100"
+                            : "max-h-0 opacity-0"
+                        }
+                      `}
+                    >
+                      <div className="px-7 pb-7 text-[17px] leading-[1.7] text-[#6B7280]">
+                        {item.content}
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-              </div>
+                );
+              })}
 
             </div>
 
           </div>
         ) : (
-          <div className="bg-[#031B34] p-10">
+          <div className="bg-[#031B34] p-10 overflow-auto">
             <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-{`<Accordion
-  title="강의 안내"
->
-  문화센터 강의에 대한 설명이 들어갑니다.
-</Accordion>`}
+{`<AccordionGroup>
+
+  <Accordion
+    title="이용 가능 지역"
+  >
+    서울, 경기, 인천 지역에서
+    이용 가능합니다.
+  </Accordion>
+
+  <Accordion
+    title="차량 옵션"
+  >
+    네비게이션, 하이패스,
+    블랙박스를 제공합니다.
+  </Accordion>
+
+  <Accordion
+    title="보험 선택"
+  >
+    일반자차, 완전자차 중
+    선택할 수 있습니다.
+  </Accordion>
+
+</AccordionGroup>`}
             </pre>
           </div>
         )}
-
       </Card>
     </div>
   );
