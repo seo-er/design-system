@@ -164,6 +164,12 @@ export default function App() {
     >
       Button
     </MenuItem>
+    <MenuItem
+  active={menu === "checkbox"}
+  onClick={() => setMenu("checkbox")}
+>
+  Checkbox
+</MenuItem>
 
   </div>
 
@@ -260,6 +266,7 @@ export default function App() {
             {menu === "illustrations" && <IllustrationPage />}
             {menu === "motion" && <MotionPage />}
             {menu === "advertising" && <AdvertisingPage />}
+            {menu === "checkbox" && <CheckboxPage />}
           </div>
         </main>
 
@@ -3223,6 +3230,109 @@ function MotionPage() {
   );
 }
 
+function CheckboxPage() {
+  const [checkedItems, setCheckedItems] = useState({
+    lecture: true,
+    material: true,
+    notice: false,
+    review: false,
+  });
+
+  const toggleItem = (key) => {
+    setCheckedItems((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  const items = [
+    { key: "lecture", label: "강의" },
+    { key: "material", label: "준비물" },
+    { key: "notice", label: "공지사항" },
+    { key: "review", label: "후기" },
+  ];
+
+  return (
+    <div>
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Components
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Checkbox
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+          여러 항목을 동시에 선택할 수 있는 체크박스 컴포넌트입니다.
+        </p>
+      </div>
+
+      <Card>
+        <div className="p-10">
+          <div className="flex flex-col gap-6">
+            {items.map((item) => (
+              <button
+                key={item.key}
+                onClick={() => toggleItem(item.key)}
+                className="flex items-center gap-8 text-left"
+              >
+                <div
+                  className={`
+                    w-[68px]
+                    h-[68px]
+                    rounded-[8px]
+                    flex
+                    items-center
+                    justify-center
+                    border
+                    transition
+                    ${
+                      checkedItems[item.key]
+                        ? "bg-[#FF7A00] border-[#FF7A00]"
+                        : "bg-white border-[#D1D6DB]"
+                    }
+                  `}
+                >
+                  {checkedItems[item.key] && (
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M20 6L9 17L4 12"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </div>
+
+                <span
+                  className={`
+                    text-[40px]
+                    font-medium
+                    ${
+                      checkedItems[item.key]
+                        ? "text-[#8C8C8C]"
+                        : "text-[#B8B8B8]"
+                    }
+                  `}
+                >
+                  {item.label}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </Card>
+    </div>
+  );
+}
 function AdvertisingPage() {
   return (
     <div>
