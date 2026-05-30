@@ -4435,16 +4435,16 @@ function FilterPage() {
       </span>
 
       <img
-        src={accordionDown}
-        alt=""
-        className="
-          w-4
-          h-4
-          shrink-0
-          object-contain
-          opacity-60
-        "
-      />
+    src={accordionDown}
+    alt=""
+    className="
+      w-4
+      h-4
+      opacity-60
+      object-contain
+    "
+  />
+
     </button>
 
     {/* 최신순 */}
