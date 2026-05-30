@@ -3320,54 +3320,36 @@ function CheckboxPage() {
     {/* States */}
     <div className="mb-14">
 
-<button
-  onClick={() => setDemoChecked(!demoChecked)}
-  className="
-    text-[18px]
-    font-semibold
-    text-[#7C3AED]
-    mb-6
-    cursor-pointer
-  "
->
+<div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
   ◆checkbox-states
-</button>
+</div>
 
-<div className="flex flex-col gap-6">
+<div className="grid grid-cols-2 gap-8">
 
+  {/* Default */}
   <button
-    onClick={() => setDemoChecked(!demoChecked)}
-    className="
-      flex
-      items-center
-      gap-4
-      w-fit
-    "
+    onClick={() =>
+      setCheckboxDemo(prev => ({
+        ...prev,
+        default: !prev.default,
+      }))
+    }
+    className="flex items-center gap-4 w-fit"
   >
     <div
       className={`
-        w-8
-        h-8
-        rounded-[8px]
-        flex
-        items-center
-        justify-center
-        transition-all
-        duration-200
+        w-8 h-8 rounded-[8px]
+        flex items-center justify-center
+        transition-all duration-200
         ${
-          demoChecked
+          checkboxDemo.default
             ? "bg-[#FF7A00]"
             : "border border-[#D1D6DB] bg-white"
         }
       `}
     >
-      {demoChecked && (
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
+      {checkboxDemo.default && (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
           <path
             d="M20 6L9 17L4 12"
             stroke="white"
@@ -3379,15 +3361,154 @@ function CheckboxPage() {
       )}
     </div>
 
-    <span className="text-[18px] text-[#4E5968] font-medium">
-      text
+    <span className="text-[18px] text-[#4E5968]">
+      Default
     </span>
   </button>
 
-</div>
+  {/* Checked */}
+  <button
+    onClick={() =>
+      setCheckboxDemo(prev => ({
+        ...prev,
+        checked: !prev.checked,
+      }))
+    }
+    className="flex items-center gap-4 w-fit"
+  >
+    <div
+      className={`
+        w-8 h-8 rounded-[8px]
+        flex items-center justify-center
+        transition-all duration-200
+        ${
+          checkboxDemo.checked
+            ? "bg-[#FF7A00]"
+            : "border border-[#D1D6DB] bg-white"
+        }
+      `}
+    >
+      {checkboxDemo.checked && (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M20 6L9 17L4 12"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
+    </div>
+
+    <span className="text-[18px] text-[#4E5968]">
+      Checked
+    </span>
+  </button>
+
+  {/* Disabled */}
+  <div className="flex items-center gap-4 opacity-50 cursor-not-allowed">
+    <div className="w-8 h-8 rounded-[8px] border border-[#B0B8C1] bg-white" />
+
+    <span className="text-[18px] text-[#4E5968]">
+      Disabled
+    </span>
+  </div>
+
+  {/* Disabled Checked */}
+  <div className="flex items-center gap-4 opacity-50 cursor-not-allowed">
+    <div className="w-8 h-8 rounded-[8px] bg-[#B0B8C1] flex items-center justify-center">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M20 6L9 17L4 12"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+
+    <span className="text-[18px] text-[#4E5968]">
+      Disabled Checked
+    </span>
+  </div>
 
 </div>
+</div>
+<div className="mb-14">
 
+  <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+    ◆checkbox-variants
+  </div>
+
+  <div className="flex gap-16">
+
+    {/* Filled */}
+    <button
+      onClick={() =>
+        setCheckboxDemo(prev => ({
+          ...prev,
+          checked: !prev.checked,
+        }))
+      }
+      className="flex items-center gap-4"
+    >
+      <div
+        className={`
+          w-8 h-8 rounded-[8px]
+          flex items-center justify-center
+          ${
+            checkboxDemo.checked
+              ? "bg-[#FF7A00]"
+              : "border border-[#D1D6DB]"
+          }
+        `}
+      >
+        {checkboxDemo.checked && (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path
+              d="M20 6L9 17L4 12"
+              stroke="white"
+              strokeWidth="3"
+              fill="none"
+            />
+          </svg>
+        )}
+      </div>
+
+      <span>Filled</span>
+    </button>
+
+    {/* Outline */}
+    <button
+      onClick={() =>
+        setCheckboxDemo(prev => ({
+          ...prev,
+          outline: !prev.outline,
+        }))
+      }
+      className="flex items-center gap-4"
+    >
+      <div className="w-8 h-8 rounded-[8px] border-2 border-[#FF7A00] flex items-center justify-center">
+        {checkboxDemo.outline && (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path
+              d="M20 6L9 17L4 12"
+              stroke="#FF7A00"
+              strokeWidth="3"
+              fill="none"
+            />
+          </svg>
+        )}
+      </div>
+
+      <span>Outline</span>
+    </button>
+
+  </div>
+
+</div>
 
   </div>
 ) : (
