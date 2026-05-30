@@ -3532,7 +3532,25 @@ function AccordionPage() {
         "일반자차, 완전자차 중 선택할 수 있으며 이용 중에도 변경 가능합니다.",
     },
   ];
+  const [iconOpenIndex, setIconOpenIndex] = useState(0);
 
+  const iconItems = [
+    {
+      icon: "📍",
+      title: "이용 가능 지역",
+      content: "서울, 경기, 인천 지역에서 이용 가능합니다.",
+    },
+    {
+      icon: "🚗",
+      title: "차량 옵션",
+      content: "네비게이션, 하이패스, 블랙박스를 제공합니다.",
+    },
+    {
+      icon: "🛡",
+      title: "보험 선택",
+      content: "일반자차, 완전자차 중 선택 가능합니다.",
+    },
+  ];
   return (
     <div>
       <div className="mb-14">
@@ -3582,7 +3600,7 @@ function AccordionPage() {
           <div className="p-10 bg-[#FAFBFC]">
 
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆accordion-group
+              ◆accordion_single
             </div>
 
             <div
@@ -3714,6 +3732,133 @@ function AccordionPage() {
           </div>
         )}
       </Card>
+      <Card>
+
+  <div className="p-10 bg-[#FAFBFC]">
+
+    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+      ◆accordion-with-icon
+    </div>
+
+    <div
+      className="
+        overflow-hidden
+        rounded-[24px]
+        border
+        border-[#E5E8EB]
+        bg-white
+      "
+    >
+
+      {iconItems.map((item, index) => {
+        const open = iconOpenIndex === index;
+
+        return (
+          <div
+            key={item.title}
+            className="
+              border-b
+              border-[#F2F4F6]
+              last:border-b-0
+            "
+          >
+            <button
+              onClick={() =>
+                setIconOpenIndex(
+                  open ? -1 : index
+                )
+              }
+              className="
+                w-full
+                flex
+                items-center
+                justify-between
+                px-8
+                py-6
+                text-left
+              "
+            >
+              <div className="flex items-center gap-4">
+
+                <div
+                  className="
+                    w-10
+                    h-10
+                    rounded-xl
+                    bg-[#FFF4EB]
+                    flex
+                    items-center
+                    justify-center
+                    text-[20px]
+                  "
+                >
+                  {item.icon}
+                </div>
+
+                <span
+                  className="
+                    text-[20px]
+                    font-semibold
+                  "
+                >
+                  {item.title}
+                </span>
+
+              </div>
+
+              <img
+                src={accordionDown}
+                alt=""
+                className={`
+                  w-4
+                  h-4
+                  transition-all
+                  duration-300
+                  ${
+                    open
+                      ? "rotate-180"
+                      : ""
+                  }
+                `}
+              />
+            </button>
+
+            <div
+              className={`
+                overflow-hidden
+                transition-all
+                duration-300
+                ${
+                  open
+                    ? "max-h-[300px]"
+                    : "max-h-0"
+                }
+              `}
+            >
+              <div
+                className="
+                  pl-[88px]
+                  pr-8
+                  pt-5
+                  pb-8
+                  text-[18px]
+                  leading-[1.8]
+                  text-[#6B7684]
+                "
+              >
+                {item.content}
+              </div>
+            </div>
+
+          </div>
+        );
+      })}
+
+    </div>
+
+  </div>
+
+</Card>
     </div>
   );
 }
