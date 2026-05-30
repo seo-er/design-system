@@ -4346,56 +4346,7 @@ function FilterPage() {
             </button>
           </div>
   
-    
-  {/* Filter Sort */}
-<div className="mb-14">
 
-<div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-  ◆filter-sort
-</div>
-
-<button
-  className="
-    h-[56px]
-    px-8
-    rounded-full
-    border
-    border-[#E5E8EB]
-    bg-white
-    flex
-    items-center
-    gap-3
-    hover:bg-[#FAFBFC]
-    transition-colors
-  "
->
-  <span
-    className="
-      text-[18px]
-      font-medium
-      text-[#4E5968]
-    "
-  >
-    추천순
-  </span>
-
-  <img
-    src={accordionDown}
-    alt=""
-    className="
-      w-4
-      h-4
-      object-contain
-      shrink-0
-      opacity-60
-    "
-  />
-</button>
-
-</div>
-<FilterSort>
-  추천순
-</FilterSort>
           {/* 그룹 */}
           <div>
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
@@ -4450,17 +4401,161 @@ function FilterPage() {
             </div>
           </div>
 
+{/* Filter Sort */}
+<div className="mt-14">
+
+  <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+    ◆filter-sort
+  </div>
+
+  <div className="flex items-center gap-4 flex-wrap">
+
+    {/* 추천순 */}
+    <button
+      className="
+        h-[56px]
+        px-7
+        rounded-full
+        border
+        border-[#E5E8EB]
+        bg-white
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span
+        className="
+          text-[18px]
+          font-medium
+          text-[#4E5968]
+        "
+      >
+        추천순
+      </span>
+
+      <img
+        src={accordionDown}
+        alt=""
+        className="
+          w-4
+          h-4
+          shrink-0
+          object-contain
+          opacity-60
+        "
+      />
+    </button>
+
+    {/* 최신순 */}
+    <button
+      className="
+        h-[56px]
+        px-7
+        rounded-full
+        border
+        border-[#E5E8EB]
+        bg-white
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span
+        className="
+          text-[18px]
+          font-medium
+          text-[#4E5968]
+        "
+      >
+        최신순
+      </span>
+
+      <img
+        src={accordionDown}
+        alt=""
+        className="
+          w-4
+          h-4
+          shrink-0
+          object-contain
+          opacity-60
+        "
+      />
+    </button>
+
+    {/* 낮은 가격순 */}
+    <button
+      className="
+        h-[56px]
+        px-7
+        rounded-full
+        bg-[#191F28]
+        text-white
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span
+        className="
+          text-[18px]
+          font-semibold
+        "
+      >
+        낮은 가격순
+      </span>
+
+      <img
+        src={accordionDown}
+        alt=""
+        className="
+          w-4
+          h-4
+          shrink-0
+          object-contain
+          invert
+        "
+      />
+    </button>
+
+  </div>
+
+</div>
         </div>
   
       ) : (
   
         <div className="bg-[#031B34] p-10 overflow-auto">
-          <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-  {`<FilterButton />
-  <FilterButton count={1} />
-  <FilterChip selected />
-  <FilterGroup />`}
-          </pre>
+         <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+{`<FilterButton>
+  필터
+</FilterButton>
+
+<FilterButton count={1}>
+  필터
+</FilterButton>
+
+<FilterChip selected>
+  수업 일정
+</FilterChip>
+
+<SortFilter>
+  추천순
+</SortFilter>
+
+<SortFilter>
+  최신순
+</SortFilter>
+
+<SortFilter selected>
+  낮은 가격순
+</SortFilter>
+
+<FilterGroup>
+  ...
+</FilterGroup>`}
+</pre>
         </div>
   
       )}
