@@ -3536,19 +3536,22 @@ function AccordionPage() {
 
   const iconItems = [
     {
-      icon: "📍",
+      icon: getIconSrc("location"),
       title: "이용 가능 지역",
-      content: "서울, 경기, 인천 지역에서 이용 가능합니다.",
+      content:
+        "서울, 경기, 인천 지역에서 이용 가능합니다. 일부 지역은 서비스 운영 상황에 따라 제한될 수 있습니다.",
     },
     {
-      icon: "🚗",
-      title: "차량 옵션",
-      content: "네비게이션, 하이패스, 블랙박스를 제공합니다.",
+      icon: getIconSrc("reservation"),
+      title: "예약 및 이용 안내",
+      content:
+        "예약은 원하는 날짜와 시간 선택 후 진행할 수 있으며 예약 확정 시 알림이 제공됩니다.",
     },
     {
-      icon: "🛡",
-      title: "보험 선택",
-      content: "일반자차, 완전자차 중 선택 가능합니다.",
+      icon: getIconSrc("mypage"),
+      title: "내 정보 관리",
+      content:
+        "예약 내역, 관심 강좌, 자녀 정보 등 서비스를 이용하기 위한 정보를 확인하고 관리할 수 있습니다.",
     },
   ];
   return (
@@ -3737,7 +3740,7 @@ function AccordionPage() {
   <div className="p-10 bg-[#FAFBFC]">
 
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-      ◆accordion-with-icon
+      ◆accordion_with_icon
     </div>
 
     <div
@@ -3780,21 +3783,28 @@ function AccordionPage() {
             >
               <div className="flex items-center gap-4">
 
-                <div
-                  className="
-                    w-10
-                    h-10
-                    rounded-xl
-                    bg-[#FFF4EB]
-                    flex
-                    items-center
-                    justify-center
-                    text-[20px]
-                  "
-                >
-                  {item.icon}
-                </div>
-
+              <div
+  className="
+    w-12
+    h-12
+    rounded-[14px]
+    bg-[#FFF4EB]
+    flex
+    items-center
+    justify-center
+    shrink-0
+  "
+>
+  <img
+    src={item.icon}
+    alt=""
+    className="
+      w-6
+      h-6
+      object-contain
+    "
+  />
+</div>
                 <span
                   className="
                     text-[20px]
