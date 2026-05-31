@@ -4600,6 +4600,270 @@ function TabPage() {
           콘텐츠 전환에 사용하는 탭 컴포넌트입니다.
         </p>
       </div>
+
+      <SectionTitle title="탭" />
+
+      <div className="flex flex-col gap-14">
+
+        {/* ==================== */}
+        {/* tab-default */}
+        {/* ==================== */}
+        <div>
+          <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+            ◆tab-default
+          </div>
+
+          <Card>
+
+            {/* Design / Code */}
+            <div className="p-4 border-b border-[#E5E8EB] bg-white">
+              <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+
+                <button
+                  onClick={() => setDefaultView("design")}
+                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                    defaultView === "design"
+                      ? "bg-white text-[#191F28] shadow-sm"
+                      : "text-[#6B7280]"
+                  }`}
+                >
+                  Design
+                </button>
+
+                <button
+                  onClick={() => setDefaultView("code")}
+                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                    defaultView === "code"
+                      ? "bg-white text-[#191F28] shadow-sm"
+                      : "text-[#6B7280]"
+                  }`}
+                >
+                  Code
+                </button>
+
+              </div>
+            </div>
+
+            {defaultView === "design" ? (
+              <div className="p-10 bg-[#FAFBFC]">
+
+                <div className="border-b border-[#E5E8EB]">
+                  <div className="flex">
+
+                    <button
+                      onClick={() => setActiveTab("info")}
+                      className="relative flex-1 h-[56px] flex items-center justify-center"
+                    >
+                      <span
+                        className={`text-[18px] font-semibold ${
+                          activeTab === "info"
+                            ? "text-[#191F28]"
+                            : "text-[#8B95A1]"
+                        }`}
+                      >
+                        정보
+                      </span>
+
+                      {activeTab === "info" && (
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setActiveTab("teacher")}
+                      className="relative flex-1 h-[56px] flex items-center justify-center"
+                    >
+                      <span
+                        className={`text-[18px] font-semibold ${
+                          activeTab === "teacher"
+                            ? "text-[#191F28]"
+                            : "text-[#8B95A1]"
+                        }`}
+                      >
+                        강사
+                      </span>
+
+                      {activeTab === "teacher" && (
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setActiveTab("review")}
+                      className="relative flex-1 h-[56px] flex items-center justify-center"
+                    >
+                      <span
+                        className={`text-[18px] font-semibold ${
+                          activeTab === "review"
+                            ? "text-[#191F28]"
+                            : "text-[#8B95A1]"
+                        }`}
+                      >
+                        후기
+                      </span>
+
+                      {activeTab === "review" && (
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
+                      )}
+                    </button>
+
+                  </div>
+                </div>
+
+                <div className="p-8 text-[#4E5968]">
+                  {activeTab === "info" && "정보 콘텐츠 영역"}
+                  {activeTab === "teacher" && "강사 콘텐츠 영역"}
+                  {activeTab === "review" && "후기 콘텐츠 영역"}
+                </div>
+
+              </div>
+            ) : (
+              <div className="bg-[#031B34] p-10 overflow-auto">
+                <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+{`<Tab>
+  <TabItem>정보</TabItem>
+  <TabItem>강사</TabItem>
+  <TabItem>후기</TabItem>
+</Tab>`}
+                </pre>
+              </div>
+            )}
+
+          </Card>
+        </div>
+
+        {/* ==================== */}
+        {/* tab-category */}
+        {/* ==================== */}
+        <div>
+          <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+            ◆tab-category
+          </div>
+
+          <Card>
+
+            {/* Design / Code */}
+            <div className="p-4 border-b border-[#E5E8EB] bg-white">
+              <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+
+                <button
+                  onClick={() => setCategoryView("design")}
+                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                    categoryView === "design"
+                      ? "bg-white text-[#191F28] shadow-sm"
+                      : "text-[#6B7280]"
+                  }`}
+                >
+                  Design
+                </button>
+
+                <button
+                  onClick={() => setCategoryView("code")}
+                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                    categoryView === "code"
+                      ? "bg-white text-[#191F28] shadow-sm"
+                      : "text-[#6B7280]"
+                  }`}
+                >
+                  Code
+                </button>
+
+              </div>
+            </div>
+
+            {categoryView === "design" ? (
+              <div className="p-10 bg-[#FAFBFC]">
+
+                <div className="border-b border-[#E5E8EB]">
+                  <div className="flex">
+
+                    <button
+                      onClick={() => setCategoryTab("move")}
+                      className="relative h-[48px] px-4 flex items-center gap-1"
+                    >
+                      <span className={categoryTab === "move" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                        이동
+                      </span>
+
+                      <span className="w-[6px] h-[6px] rounded-full bg-[#F04452]" />
+
+                      {categoryTab === "move" && (
+                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191F28]" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setCategoryTab("write")}
+                      className="relative h-[48px] px-4 flex items-center gap-1"
+                    >
+                      <span className={categoryTab === "write" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                        쓰기
+                      </span>
+
+                      <span className="font-bold text-[#3182F6]">
+                        24
+                      </span>
+
+                      {categoryTab === "write" && (
+                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191F28]" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setCategoryTab("cafe")}
+                      className="relative h-[48px] px-4 flex items-center gap-1"
+                    >
+                      <span className={categoryTab === "cafe" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                        카페
+                      </span>
+
+                      {categoryTab === "cafe" && (
+                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191F28]" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setCategoryTab("stay")}
+                      className="relative h-[48px] px-4 flex items-center gap-1"
+                    >
+                      <span className={categoryTab === "stay" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                        숙박
+                      </span>
+
+                      <span className="font-bold text-[#3182F6]">
+                        7
+                      </span>
+
+                      {categoryTab === "stay" && (
+                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191F28]" />
+                      )}
+                    </button>
+
+                  </div>
+                </div>
+
+                <div className="p-8 text-[#4E5968]">
+                  카테고리 탭 콘텐츠 영역
+                </div>
+
+              </div>
+            ) : (
+              <div className="bg-[#031B34] p-10 overflow-auto">
+                <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+{`<CategoryTab>
+  이동
+  쓰기 24
+  카페
+  숙박 7
+</CategoryTab>`}
+                </pre>
+              </div>
+            )}
+
+          </Card>
+        </div>
+
+      </div>
     </div>
   );
 }
