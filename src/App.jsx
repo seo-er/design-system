@@ -4580,6 +4580,7 @@ function FilterPage() {
 
 function TabPage() {
   const [tab, setTab] = useState("design");
+  const [activeTab, setActiveTab] = useState("info");
 
   return (
     <div>
@@ -4600,21 +4601,12 @@ function TabPage() {
       <SectionTitle title="탭" />
 
       <Card>
-
-        {/* Design / Code 탭 */}
+        {/* Design / Code */}
         <div className="border-b border-[#E5E8EB] bg-white">
           <div className="flex">
-
             <button
               onClick={() => setTab("design")}
-              className="
-                relative
-                flex-1
-                h-[56px]
-                flex
-                items-center
-                justify-center
-              "
+              className="relative flex-1 h-[56px] flex items-center justify-center"
             >
               <span
                 className={`text-[18px] font-semibold ${
@@ -4633,14 +4625,7 @@ function TabPage() {
 
             <button
               onClick={() => setTab("code")}
-              className="
-                relative
-                flex-1
-                h-[56px]
-                flex
-                items-center
-                justify-center
-              "
+              className="relative flex-1 h-[56px] flex items-center justify-center"
             >
               <span
                 className={`text-[18px] font-semibold ${
@@ -4656,37 +4641,106 @@ function TabPage() {
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
               )}
             </button>
-
           </div>
         </div>
 
         {tab === "design" ? (
           <div className="p-10 bg-[#FAFBFC] flex flex-col gap-14">
 
-            {/* tab-default */}
             <div>
               <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
                 ◆tab-default
               </div>
 
-              <div className="w-full border-b border-[#E5E8EB]">
-                <div className="flex">
-                  <button className="relative flex-1 h-[56px]">
-                    <span className="text-[18px] font-semibold text-[#222222]">
-                      정보
-                    </span>
+              {/* 실제 동작 탭 */}
+              <div className="bg-white rounded-[16px] overflow-hidden border border-[#E5E8EB]">
 
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
-                  </button>
+                <div className="border-b border-[#E5E8EB]">
+                  <div className="flex">
 
-                  <button className="flex-1 h-[56px] text-[18px] font-semibold text-[#8B95A1]">
-                    강사
-                  </button>
+                    <button
+                      onClick={() => setActiveTab("info")}
+                      className="relative flex-1 h-[56px] flex items-center justify-center"
+                    >
+                      <span
+                        className={`text-[18px] font-semibold ${
+                          activeTab === "info"
+                            ? "text-[#222222]"
+                            : "text-[#8B95A1]"
+                        }`}
+                      >
+                        정보
+                      </span>
 
-                  <button className="flex-1 h-[56px] text-[18px] font-semibold text-[#8B95A1]">
-                    후기
-                  </button>
+                      {activeTab === "info" && (
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setActiveTab("teacher")}
+                      className="relative flex-1 h-[56px] flex items-center justify-center"
+                    >
+                      <span
+                        className={`text-[18px] font-semibold ${
+                          activeTab === "teacher"
+                            ? "text-[#222222]"
+                            : "text-[#8B95A1]"
+                        }`}
+                      >
+                        강사
+                      </span>
+
+                      {activeTab === "teacher" && (
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => setActiveTab("review")}
+                      className="relative flex-1 h-[56px] flex items-center justify-center"
+                    >
+                      <span
+                        className={`text-[18px] font-semibold ${
+                          activeTab === "review"
+                            ? "text-[#222222]"
+                            : "text-[#8B95A1]"
+                        }`}
+                      >
+                        후기
+                      </span>
+
+                      {activeTab === "review" && (
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
+                      )}
+                    </button>
+
+                  </div>
                 </div>
+
+                {/* 콘텐츠 */}
+                <div className="p-8">
+
+                  {activeTab === "info" && (
+                    <div className="text-[#4E5968]">
+                      정보 콘텐츠 영역
+                    </div>
+                  )}
+
+                  {activeTab === "teacher" && (
+                    <div className="text-[#4E5968]">
+                      강사 콘텐츠 영역
+                    </div>
+                  )}
+
+                  {activeTab === "review" && (
+                    <div className="text-[#4E5968]">
+                      후기 콘텐츠 영역
+                    </div>
+                  )}
+
+                </div>
+
               </div>
             </div>
 
@@ -4694,23 +4748,33 @@ function TabPage() {
         ) : (
           <div className="bg-[#031B34] p-10 overflow-auto">
             <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-{`<Tab>
-  <TabItem active>
+{`const [activeTab, setActiveTab] = useState("info");
+
+<Tab>
+  <TabItem
+    active={activeTab === "info"}
+    onClick={() => setActiveTab("info")}
+  >
     정보
   </TabItem>
 
-  <TabItem>
+  <TabItem
+    active={activeTab === "teacher"}
+    onClick={() => setActiveTab("teacher")}
+  >
     강사
   </TabItem>
 
-  <TabItem>
+  <TabItem
+    active={activeTab === "review"}
+    onClick={() => setActiveTab("review")}
+  >
     후기
   </TabItem>
 </Tab>`}
             </pre>
           </div>
         )}
-
       </Card>
     </div>
   );
