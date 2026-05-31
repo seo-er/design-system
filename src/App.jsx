@@ -194,7 +194,7 @@ Badge
       active={menu === "tab"}
       onClick={() => setMenu("tab")}
     >
-      filter
+      tab
     </MenuItem>
   </div>
 
@@ -4653,7 +4653,7 @@ function TabPage() {
               </div>
 
               {/* 실제 동작 탭 */}
-              <div className="bg-white rounded-[16px] overflow-hidden border border-[#E5E8EB]">
+              <div className="rounded-[16px] overflow-hidden ">
 
                 <div className="border-b border-[#E5E8EB]">
                   <div className="flex">
