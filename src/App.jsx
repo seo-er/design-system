@@ -4405,117 +4405,35 @@ function FilterPage() {
     ◆filter-sort
   </div>
 
-  <div className="flex items-center gap-4 flex-wrap">
-
-    {/* 추천순 */}
-    <button
-      className="
-        h-[56px]
-        px-7
-        rounded-full
-        border
-        border-[#E5E8EB]
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span
-        className="
-          text-[18px]
-          font-medium
-          text-[#4E5968]
-        "
-      >
-        추천순
-      </span>
-
-      <img
-    src={accordionDown}
-    alt=""
-    className="
-      w-4
-      h-4
-      opacity-60
-      object-contain
-    "
-  />
-
-    </button>
-
-    {/* 최신순 */}
-    <button
-      className="
-        h-[56px]
-        px-7
-        rounded-full
-        border
-        border-[#E5E8EB]
-        bg-white
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span
-        className="
-          text-[18px]
-          font-medium
-          text-[#4E5968]
-        "
-      >
-        최신순
-      </span>
-
-      <img
-        src={accordionDown}
-        alt=""
-        className="
-          w-4
-          h-4
-          shrink-0
-          object-contain
-          opacity-60
-        "
-      />
-    </button>
-
-    {/* 낮은 가격순 */}
-    <button
-      className="
-        h-[56px]
-        px-7
-        rounded-full
-        bg-[#191F28]
-        text-white
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span
-        className="
-          text-[18px]
-          font-semibold
-        "
-      >
-        낮은 가격순
-      </span>
-
-      <img
-        src={accordionDown}
-        alt=""
-        className="
-          w-4
-          h-4
-          shrink-0
-          object-contain
-          invert
-        "
-      />
-    </button>
-
+  <div className="flex flex-wrap gap-2">
+  {/* 2자리 남음 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF8E3] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-[#C07D00]">
+      2자리 남음
+    </span>
   </div>
+
+  {/* 13~19개월 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#F4F4F4] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-[#666666]">
+      13~19개월
+    </span>
+  </div>
+
+  {/* 접수예정 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#222222] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-white">
+      접수예정
+    </span>
+  </div>
+
+  {/* 부담이 적어요 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF7ED] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-[#F97316]">
+      부담이 적어요
+    </span>
+  </div>
+</div>
 
 </div>
         </div>
