@@ -3990,25 +3990,22 @@ function BadgePage() {
               </div>
 
               <div className="flex flex-wrap gap-4">
+  <div className="px-4 py-2 rounded-[18px] bg-[#F7F1E7] text-[#C68400] font-semibold">
+    2자리 남음
+  </div>
 
-                <div className="px-4 py-2 rounded-[10px] bg-[#FFF4EB] text-[#FF7A00] font-semibold">
-                  추천
-                </div>
+  <div className="px-4 py-2 rounded-[18px] bg-[#F3F3F3] text-[#666666] font-semibold">
+    13~19개월
+  </div>
 
-                <div className="px-4 py-2 rounded-[10px] bg-[#EEF6FF] text-[#3182F6] font-semibold">
-                  NEW
-                </div>
+  <div className="px-3 py-1 rounded-[8px] bg-[#2D2D2D] text-white text-sm font-semibold">
+    접수예정
+  </div>
 
-                <div className="px-4 py-2 rounded-[10px] bg-[#FFF1F1] text-[#F04452] font-semibold">
-                  HOT
-                </div>
-
-                <div className="px-4 py-2 rounded-[10px] bg-[#F5F3FF] text-[#7C3AED] font-semibold">
-                  BEST
-                </div>
-
-              </div>
-
+  <div className="px-6 py-3 rounded-[20px] bg-[#F7F1E7] text-[#F97316] text-xl font-bold">
+    부담이 적어요
+  </div>
+</div>
             </div>
 
             {/* Badge Usage */}
@@ -4418,7 +4415,6 @@ function FilterPage() {
         rounded-full
         border
         border-[#E5E8EB]
-        bg-white
         flex
         items-center
         gap-3
