@@ -3991,28 +3991,28 @@ function BadgePage() {
 
               <div className="flex flex-wrap gap-2">
   {/* 2자리 남음 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF8E3] flex items-center">
+  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#FFF8E3] flex items-center">
     <span className="text-[12px] font-medium leading-none text-[#C07D00]">
       2자리 남음
     </span>
   </div>
 
   {/* 13~19개월 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#F4F4F4] flex items-center">
+  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#F4F4F4] flex items-center">
     <span className="text-[12px] font-medium leading-none text-[#666666]">
       13~19개월
     </span>
   </div>
 
   {/* 접수예정 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#222222] flex items-center">
+  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#222222] flex items-center">
     <span className="text-[12px] font-medium leading-none text-white">
       접수예정
     </span>
   </div>
 
   {/* 부담이 적어요 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF7ED] flex items-center">
+  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#FFF7ED] flex items-center">
     <span className="text-[12px] font-medium leading-none text-[#F97316]">
       부담이 적어요
     </span>
