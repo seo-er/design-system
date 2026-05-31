@@ -4621,11 +4621,14 @@ function TabPage() {
 
                 <button
                   onClick={() => setDefaultView("design")}
-                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                    defaultView === "design"
-                      ? "bg-white text-[#191F28] shadow-sm"
-                      : "text-[#6B7280]"
-                  }`}
+                  className={`px-5 py-2 rounded-[10px]
+                    text-[14px] font-semibold
+                    transition-all duration-200 ease-out
+                    ${
+                      defaultView === "code"
+                        ? "bg-white text-[#191F28] shadow-sm scale-[1.02]"
+                        : "text-[#6B7280]"
+                    }`}
                 >
                   Design
                 </button>
@@ -4654,18 +4657,33 @@ function TabPage() {
                       onClick={() => setActiveTab("info")}
                       className="relative flex-1 h-[56px] flex items-center justify-center"
                     >
-                      <span
-                        className={`text-[18px] font-semibold ${
-                          activeTab === "info"
-                            ? "text-[#191F28]"
-                            : "text-[#8B95A1]"
-                        }`}
-                      >
+                     <span
+  className={`text-[18px] font-semibold transition-colors duration-200 ${
+    activeTab === "teacher"
+      ? "text-[#191F28]"
+      : "text-[#8B95A1]"
+  }`}
+>
                         정보
                       </span>
 
                       {activeTab === "info" && (
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
+                        <div
+                        className="
+                          absolute
+                          bottom-0
+                          left-1/2
+                          -translate-x-1/2
+                          w-[40px]
+                          h-[4px]
+                          rounded-full
+                          bg-[#F97316]
+                          animate-in
+                          fade-in
+                          zoom-in-95
+                          duration-200
+                        "
+                      />
                       )}
                     </button>
 
@@ -4674,11 +4692,11 @@ function TabPage() {
                       className="relative flex-1 h-[56px] flex items-center justify-center"
                     >
                       <span
-                        className={`text-[18px] font-semibold ${
-                          activeTab === "teacher"
-                            ? "text-[#191F28]"
-                            : "text-[#8B95A1]"
-                        }`}
+                       className={`text-[18px] font-semibold transition-colors duration-200 ${
+                        activeTab === "review"
+                          ? "text-[#191F28]"
+                          : "text-[#8B95A1]"
+                      }`}
                       >
                         강사
                       </span>
@@ -4693,11 +4711,11 @@ function TabPage() {
                       className="relative flex-1 h-[56px] flex items-center justify-center"
                     >
                       <span
-                        className={`text-[18px] font-semibold ${
-                          activeTab === "review"
-                            ? "text-[#191F28]"
-                            : "text-[#8B95A1]"
-                        }`}
+                      className={`text-[18px] font-semibold transition-colors duration-200 ${
+                        activeTab === "review"
+                          ? "text-[#191F28]"
+                          : "text-[#8B95A1]"
+                      }`}
                       >
                         후기
                       </span>
@@ -4782,7 +4800,7 @@ function TabPage() {
                       className="relative h-[48px] px-4 flex items-center gap-1"
                     >
                       <span className={categoryTab === "move" ? "text-[#191F28]" : "text-[#6B7684]"}>
-                        이동
+                        정보보
                       </span>
 
                       <span className="w-[6px] h-[6px] rounded-full bg-[#F04452]" />
@@ -4797,7 +4815,7 @@ function TabPage() {
                       className="relative h-[48px] px-4 flex items-center gap-1"
                     >
                       <span className={categoryTab === "write" ? "text-[#191F28]" : "text-[#6B7684]"}>
-                        쓰기
+                       강사
                       </span>
 
                       <span className="font-bold text-[#3182F6]">
@@ -4814,7 +4832,7 @@ function TabPage() {
                       className="relative h-[48px] px-4 flex items-center gap-1"
                     >
                       <span className={categoryTab === "cafe" ? "text-[#191F28]" : "text-[#6B7684]"}>
-                        카페
+                        후기기
                       </span>
 
                       {categoryTab === "cafe" && (
@@ -4827,7 +4845,7 @@ function TabPage() {
                       className="relative h-[48px] px-4 flex items-center gap-1"
                     >
                       <span className={categoryTab === "stay" ? "text-[#191F28]" : "text-[#6B7684]"}>
-                        숙박
+                       공지
                       </span>
 
                       <span className="font-bold text-[#3182F6]">
