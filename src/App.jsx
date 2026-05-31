@@ -190,6 +190,12 @@ Badge
     >
       filter
     </MenuItem>
+    <MenuItem
+      active={menu === "tab"}
+      onClick={() => setMenu("tab")}
+    >
+      filter
+    </MenuItem>
   </div>
 
 </div>
@@ -289,6 +295,7 @@ Badge
             {menu === "accordion" && <AccordionPage />}
             {menu === "badge" && <BadgePage />}
             {menu === "filter" && <FilterPage />}
+            {menu === "tab" && <TabPage />}
           </div>
         </main>
 
@@ -3991,28 +3998,28 @@ function BadgePage() {
 
               <div className="flex flex-wrap gap-2">
   {/* 2자리 남음 */}
-  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#FFF8E3] flex items-center">
+  <div className="h-[22px] px-[6px] py-[14px]  rounded-[4px] bg-[#FFF8E3] flex items-center">
     <span className="text-[12px] font-medium leading-none text-[#C07D00]">
       2자리 남음
     </span>
   </div>
 
   {/* 13~19개월 */}
-  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#F4F4F4] flex items-center">
+  <div className="h-[22px] px-[6px] py-[14px]  rounded-[4px] bg-[#F4F4F4] flex items-center">
     <span className="text-[12px] font-medium leading-none text-[#666666]">
       13~19개월
     </span>
   </div>
 
   {/* 접수예정 */}
-  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#222222] flex items-center">
+  <div className="h-[22px] px-[6px] py-[14px]  rounded-[4px] bg-[#222222] flex items-center">
     <span className="text-[12px] font-medium leading-none text-white">
       접수예정
     </span>
   </div>
 
   {/* 부담이 적어요 */}
-  <div className="h-[22px] px-[4px] py-[6px] rounded-[4px] bg-[#FFF7ED] flex items-center">
+  <div className="h-[22px] px-[6px] py-[14px] rounded-[4px] bg-[#FFF7ED] flex items-center">
     <span className="text-[12px] font-medium leading-none text-[#F97316]">
       부담이 적어요
     </span>
@@ -4568,5 +4575,189 @@ function FilterPage() {
   
     </Card>
   </div>
+  );
+}
+
+
+function TabPage() {
+  const [tab, setTab] = useState("info");
+
+  return (
+    <div>
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Components
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Tab
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+          검색 및 목록 필터링에 사용하는 컴포넌트입니다.
+        </p>
+      </div>
+
+      <SectionTitle title="Tab" />
+
+      <Card>
+
+        {/* Underline Tab */}
+        <div className="border-b border-[#E5E8EB] bg-white">
+          <div className="flex">
+
+            <button
+              onClick={() => setTab("info")}
+              className="
+                relative
+                flex-1
+                h-[56px]
+                flex
+                items-center
+                justify-center
+              "
+            >
+              <span
+                className={`
+                  text-[18px]
+                  font-semibold
+                  transition-colors
+                  ${
+                    tab === "info"
+                      ? "text-[#222222]"
+                      : "text-[#8B95A1]"
+                  }
+                `}
+              >
+                정보
+              </span>
+
+              {tab === "info" && (
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-1/2
+                    -translate-x-1/2
+                    h-[3px]
+                    w-[40px]
+                    rounded-full
+                    bg-[#F97316]
+                  "
+                />
+              )}
+            </button>
+
+            <button
+              onClick={() => setTab("teacher")}
+              className="
+                relative
+                flex-1
+                h-[56px]
+                flex
+                items-center
+                justify-center
+              "
+            >
+              <span
+                className={`
+                  text-[18px]
+                  font-semibold
+                  transition-colors
+                  ${
+                    tab === "teacher"
+                      ? "text-[#222222]"
+                      : "text-[#8B95A1]"
+                  }
+                `}
+              >
+                강사
+              </span>
+
+              {tab === "teacher" && (
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-1/2
+                    -translate-x-1/2
+                    h-[3px]
+                    w-[40px]
+                    rounded-full
+                    bg-[#F97316]
+                  "
+                />
+              )}
+            </button>
+
+            <button
+              onClick={() => setTab("review")}
+              className="
+                relative
+                flex-1
+                h-[56px]
+                flex
+                items-center
+                justify-center
+              "
+            >
+              <span
+                className={`
+                  text-[18px]
+                  font-semibold
+                  transition-colors
+                  ${
+                    tab === "review"
+                      ? "text-[#222222]"
+                      : "text-[#8B95A1]"
+                  }
+                `}
+              >
+                후기
+              </span>
+
+              {tab === "review" && (
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-1/2
+                    -translate-x-1/2
+                    h-[3px]
+                    w-[40px]
+                    rounded-full
+                    bg-[#F97316]
+                  "
+                />
+              )}
+            </button>
+
+          </div>
+        </div>
+
+        <div className="p-10 bg-[#FAFBFC]">
+
+          {tab === "info" && (
+            <div>
+              정보 콘텐츠
+            </div>
+          )}
+
+          {tab === "teacher" && (
+            <div>
+              강사 콘텐츠
+            </div>
+          )}
+
+          {tab === "review" && (
+            <div>
+              후기 콘텐츠
+            </div>
+          )}
+
+        </div>
+
+      </Card>
+    </div>
   );
 }
