@@ -4609,157 +4609,156 @@ function TabPage() {
         {/* tab-default */}
         {/* ==================== */}
         <div>
-          <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-            ◆tab-default
-          </div>
+          
 
-          <Card>
+        <Card>
+  <div className="p-10 bg-[#FAFBFC]">
 
-            {/* Design / Code */}
-            <div className="p-4 border-b border-[#E5E8EB] bg-white">
-              <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+    <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+      ◆tab-default
+    </div>
 
-                <button
-                  onClick={() => setDefaultView("design")}
-                  className={`px-5 py-2 rounded-[10px]
-                    text-[14px] font-semibold
-                    transition-all duration-200 ease-out
-                    ${
-                      defaultView === "code"
-                        ? "bg-white text-[#191F28] shadow-sm scale-[1.02]"
-                        : "text-[#6B7280]"
-                    }`}
-                >
-                  Design
-                </button>
+    <div className="rounded-[16px] border border-[#E5E8EB] overflow-hidden bg-white">
 
-                <button
-                  onClick={() => setDefaultView("code")}
-                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                    defaultView === "code"
-                      ? "bg-white text-[#191F28] shadow-sm"
-                      : "text-[#6B7280]"
+      {/* Design / Code */}
+      <div className="p-4 border-b border-[#E5E8EB]">
+        <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+
+          <button
+            onClick={() => setDefaultView("design")}
+            className={`px-5 py-2 rounded-[10px]
+              text-[14px] font-semibold
+              transition-all duration-200 ease-out
+              ${
+                defaultView === "design"
+                  ? "bg-white text-[#191F28] shadow-sm scale-[1.02]"
+                  : "text-[#6B7280]"
+              }`}
+          >
+            Design
+          </button>
+
+          <button
+            onClick={() => setDefaultView("code")}
+            className={`px-5 py-2 rounded-[10px]
+              text-[14px] font-semibold
+              transition-all duration-200 ease-out
+              ${
+                defaultView === "code"
+                  ? "bg-white text-[#191F28] shadow-sm scale-[1.02]"
+                  : "text-[#6B7280]"
+              }`}
+          >
+            Code
+          </button>
+
+        </div>
+      </div>
+
+      {defaultView === "design" ? (
+        <div className="p-10 bg-[#FAFBFC]">
+
+          <div className="border-b border-[#E5E8EB]">
+            <div className="flex">
+
+              <button
+                onClick={() => setActiveTab("info")}
+                className="relative flex-1 h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA]"
+              >
+                <span
+                  className={`text-[18px] font-semibold transition-colors duration-200 ${
+                    activeTab === "info"
+                      ? "text-[#191F28]"
+                      : "text-[#8B95A1]"
                   }`}
                 >
-                  Code
-                </button>
+                  정보
+                </span>
 
-              </div>
+                {activeTab === "info" && (
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316] transition-all duration-200" />
+                )}
+              </button>
+
+              <button
+                onClick={() => setActiveTab("teacher")}
+                className="relative flex-1 h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA]"
+              >
+                <span
+                  className={`text-[18px] font-semibold transition-colors duration-200 ${
+                    activeTab === "teacher"
+                      ? "text-[#191F28]"
+                      : "text-[#8B95A1]"
+                  }`}
+                >
+                  강사
+                </span>
+
+                {activeTab === "teacher" && (
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316] transition-all duration-200" />
+                )}
+              </button>
+
+              <button
+                onClick={() => setActiveTab("review")}
+                className="relative flex-1 h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA]"
+              >
+                <span
+                  className={`text-[18px] font-semibold transition-colors duration-200 ${
+                    activeTab === "review"
+                      ? "text-[#191F28]"
+                      : "text-[#8B95A1]"
+                  }`}
+                >
+                  후기
+                </span>
+
+                {activeTab === "review" && (
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316] transition-all duration-200" />
+                )}
+              </button>
+
             </div>
+          </div>
 
-            {defaultView === "design" ? (
-              <div className="p-10 bg-[#FAFBFC]">
+          <div
+            key={activeTab}
+            className="p-8 text-[#4E5968] transition-all duration-200"
+          >
+            {activeTab === "info" && "정보 콘텐츠 영역"}
+            {activeTab === "teacher" && "강사 콘텐츠 영역"}
+            {activeTab === "review" && "후기 콘텐츠 영역"}
+          </div>
 
-                <div className="border-b border-[#E5E8EB]">
-                  <div className="flex">
-
-                    <button
-                      onClick={() => setActiveTab("info")}
-                      className="relative flex-1 h-[56px] flex items-center justify-center"
-                    >
-                     <span
-  className={`text-[18px] font-semibold transition-colors duration-200 ${
-    activeTab === "teacher"
-      ? "text-[#191F28]"
-      : "text-[#8B95A1]"
-  }`}
->
-                        정보
-                      </span>
-
-                      {activeTab === "info" && (
-                        <div
-                        className="
-                          absolute
-                          bottom-0
-                          left-1/2
-                          -translate-x-1/2
-                          w-[40px]
-                          h-[4px]
-                          rounded-full
-                          bg-[#F97316]
-                          animate-in
-                          fade-in
-                          zoom-in-95
-                          duration-200
-                        "
-                      />
-                      )}
-                    </button>
-
-                    <button
-                      onClick={() => setActiveTab("teacher")}
-                      className="relative flex-1 h-[56px] flex items-center justify-center"
-                    >
-                      <span
-                       className={`text-[18px] font-semibold transition-colors duration-200 ${
-                        activeTab === "review"
-                          ? "text-[#191F28]"
-                          : "text-[#8B95A1]"
-                      }`}
-                      >
-                        강사
-                      </span>
-
-                      {activeTab === "teacher" && (
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
-                      )}
-                    </button>
-
-                    <button
-                      onClick={() => setActiveTab("review")}
-                      className="relative flex-1 h-[56px] flex items-center justify-center"
-                    >
-                      <span
-                      className={`text-[18px] font-semibold transition-colors duration-200 ${
-                        activeTab === "review"
-                          ? "text-[#191F28]"
-                          : "text-[#8B95A1]"
-                      }`}
-                      >
-                        후기
-                      </span>
-
-                      {activeTab === "review" && (
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[4px] rounded-full bg-[#F97316]" />
-                      )}
-                    </button>
-
-                  </div>
-                </div>
-
-                <div className="p-8 text-[#4E5968]">
-                  {activeTab === "info" && "정보 콘텐츠 영역"}
-                  {activeTab === "teacher" && "강사 콘텐츠 영역"}
-                  {activeTab === "review" && "후기 콘텐츠 영역"}
-                </div>
-
-              </div>
-            ) : (
-              <div className="bg-[#031B34] p-10 overflow-auto">
-                <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+        </div>
+      ) : (
+        <div className="bg-[#031B34] p-10 overflow-auto">
+          <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
 {`<Tab>
   <TabItem>정보</TabItem>
   <TabItem>강사</TabItem>
   <TabItem>후기</TabItem>
 </Tab>`}
-                </pre>
-              </div>
-            )}
+          </pre>
+        </div>
+      )}
 
-          </Card>
+    </div>
+
+  </div>
+</Card>
         </div>
 
         {/* ==================== */}
         {/* tab-category */}
         {/* ==================== */}
         <div>
+          
+
+          <Card>
           <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
             ◆tab-category
           </div>
-
-          <Card>
-
             {/* Design / Code */}
             <div className="p-4 border-b border-[#E5E8EB] bg-white">
               <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
