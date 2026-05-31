@@ -3989,21 +3989,33 @@ function BadgePage() {
                 ◆badge-variants
               </div>
 
-              <div className="flex flex-wrap gap-4">
-  <div className="px-4 py-2 rounded-[18px] bg-[#F7F1E7] text-[#C68400] font-semibold">
-    2자리 남음
+              <div className="flex flex-wrap gap-2">
+  {/* 2자리 남음 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF8E3] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-[#C07D00]">
+      2자리 남음
+    </span>
   </div>
 
-  <div className="px-4 py-2 rounded-[18px] bg-[#F3F3F3] text-[#666666] font-semibold">
-    13~19개월
+  {/* 13~19개월 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#F4F4F4] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-[#666666]">
+      13~19개월
+    </span>
   </div>
 
-  <div className="px-3 py-1 rounded-[8px] bg-[#2D2D2D] text-white text-sm font-semibold">
-    접수예정
+  {/* 접수예정 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#222222] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-white">
+      접수예정
+    </span>
   </div>
 
-  <div className="px-6 py-3 rounded-[20px] bg-[#F7F1E7] text-[#F97316] text-xl font-bold">
-    부담이 적어요
+  {/* 부담이 적어요 */}
+  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF7ED] flex items-center">
+    <span className="text-[12px] font-medium leading-none text-[#F97316]">
+      부담이 적어요
+    </span>
   </div>
 </div>
             </div>
@@ -4405,35 +4417,115 @@ function FilterPage() {
     ◆filter-sort
   </div>
 
-  <div className="flex flex-wrap gap-2">
-  {/* 2자리 남음 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF8E3] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-[#C07D00]">
-      2자리 남음
-    </span>
-  </div>
+  <div className="flex items-center gap-4 flex-wrap">
 
-  {/* 13~19개월 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#F4F4F4] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-[#666666]">
-      13~19개월
-    </span>
-  </div>
+    {/* 추천순 */}
+    <button
+      className="
+        h-[56px]
+        px-7
+        rounded-full
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span
+        className="
+          text-[18px]
+          font-medium
+          text-[#4E5968]
+        "
+      >
+        추천순
+      </span>
 
-  {/* 접수예정 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#222222] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-white">
-      접수예정
-    </span>
-  </div>
+      <img
+    src={accordionDown}
+    alt=""
+    className="
+      w-4
+      h-4
+      opacity-60
+      object-contain
+    "
+  />
 
-  {/* 부담이 적어요 */}
-  <div className="h-[22px] px-[8px] rounded-[4px] bg-[#FFF7ED] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-[#F97316]">
-      부담이 적어요
-    </span>
+    </button>
+
+    {/* 최신순 */}
+    <button
+      className="
+        h-[56px]
+        px-7
+        rounded-full
+        border
+        border-[#E5E8EB]
+        bg-white
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span
+        className="
+          text-[18px]
+          font-medium
+          text-[#4E5968]
+        "
+      >
+        최신순
+      </span>
+
+      <img
+        src={accordionDown}
+        alt=""
+        className="
+          w-4
+          h-4
+          shrink-0
+          object-contain
+          opacity-60
+        "
+      />
+    </button>
+
+    {/* 낮은 가격순 */}
+    <button
+      className="
+        h-[56px]
+        px-7
+        rounded-full
+        bg-[#191F28]
+        text-white
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span
+        className="
+          text-[18px]
+          font-semibold
+        "
+      >
+        낮은 가격순
+      </span>
+
+      <img
+        src={accordionDown}
+        alt=""
+        className="
+          w-4
+          h-4
+          shrink-0
+          object-contain
+          invert
+        "
+      />
+    </button>
+
   </div>
-</div>
 
 </div>
         </div>
