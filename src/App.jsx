@@ -5014,6 +5014,40 @@ function CategoryPage() {
     </div>
   )}
 </Card>
+
+{ageCategories.map((category) => (
+  <div key={category} className="mt-14">
+    <SectionTitle title={category} />
+
+    <Card>
+      <div className="p-4 border-b border-[#E5E8EB] bg-white">
+        <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+          <button className="px-5 py-2 rounded-[10px] bg-white text-[#191F28] shadow-sm text-[14px] font-semibold">
+            Design
+          </button>
+
+          <button className="px-5 py-2 rounded-[10px] text-[#6B7280] text-[14px] font-semibold">
+            Code
+          </button>
+        </div>
+      </div>
+
+      <div className="p-10 bg-[#FAFBFC]">
+        <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+          ◆ {category}
+        </div>
+
+        <button className="flex flex-col items-center">
+          <div className="w-[96px] h-[96px] rounded-[32px] bg-[#F4F4F4] border border-[#E5E8EB]" />
+
+          <span className="mt-4 text-[18px] font-semibold text-[#222222]">
+            {category}
+          </span>
+        </button>
+      </div>
+    </Card>
+  </div>
+))}
     </div>
   );
 }
