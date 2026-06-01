@@ -5181,15 +5181,8 @@ function TopAppBarPage() {
             </div>
           </div>
         ) : (
-          <div className="bg-[#031B34] p-10 overflow-auto">
-            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-{`<MenuList>
-  <MenuItem>수강 가능 지역</MenuItem>
-  <MenuItem>강좌 예약 안내</MenuItem>
-  <MenuItem>회원 정보 관리</MenuItem>
-</MenuList>`}
-            </pre>
-          </div>
+          <div className="p-10 bg-[#FAFBFC]">
+            </div>
         )}
       </Card>
     </div>
