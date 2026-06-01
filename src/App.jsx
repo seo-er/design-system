@@ -4956,8 +4956,7 @@ function CategoryPage() {
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
               ◆ category-menu
             </div>
-
-            <div className="flex items-start gap-8 overflow-x-auto">
+            <div className="flex flex-wrap items-start gap-8">
               {categories.map((item) => {
                 const active = selectedCategory === item;
 
