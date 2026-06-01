@@ -4904,11 +4904,10 @@ function CategoryPage() {
     "언어·교육",
   ];
 
-  const ageCategories = [
-    "0~12개월",
-    "13~24개월",
-    "25~36개월",
-    "37~48개월",
+  const homeCategory = [
+    "내아이조회",
+    "0~24개월",
+    "2~4세",
     "5~7세",
     "초등",
   ];
@@ -5041,30 +5040,39 @@ function CategoryPage() {
             </div>
 
             <div className="p-10 bg-[#FAFBFC]">
-              <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-                ◆ {category}
-              </div>
+  <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+    ◆ homeCategory
+  </div>
 
-              <button className="flex flex-col items-center">
-  {category === "0~12개월" ? (
-    <>
-      <div className="w-[96px] h-[96px] rounded-[32px] bg-[#E8E8E8]" />
+  <div className="flex flex-wrap gap-8">
+    {homeCategory.map((item) => (
+      <button
+        key={item}
+        className="flex flex-col items-center"
+      >
+        <div
+          className="
+            w-[96px]
+            h-[96px]
+            rounded-[32px]
+            bg-[#E8E8E8]
+          "
+        />
 
-      <span className="mt-4 text-[18px] font-semibold text-[#666666]">
-        내아이조회
-      </span>
-    </>
-  ) : (
-    <>
-      <div className="w-[96px] h-[96px] rounded-[32px] bg-[#F4F4F4] border border-[#E5E8EB]" />
-
-      <span className="mt-4 text-[18px] font-semibold text-[#222222]">
-        {category}
-      </span>
-    </>
-  )}
-</button>
-            </div>
+        <span
+          className="
+            mt-4
+            text-[18px]
+            font-semibold
+            text-[#666666]
+          "
+        >
+          {item}
+        </span>
+      </button>
+    ))}
+  </div>
+</div>
           </Card>
         </div>
       ))}
