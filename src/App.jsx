@@ -4892,7 +4892,6 @@ function TabPage() {
     </div>
   );
 }
-
 function CategoryPage() {
   const [tab, setTab] = useState("design");
   const [selectedCategory, setSelectedCategory] = useState("오감발달");
@@ -4905,8 +4904,15 @@ function CategoryPage() {
     "언어·교육",
   ];
 
+  const ageCategories = [
+    "0~12개월",
+    "13~24개월",
+    "25~36개월",
+    "37~48개월",
+  ];
+
   return (
-    <div>
+    <div className="max-w-7xl mx-auto p-10">
       <div className="mb-14">
         <p className="text-sm text-[#8B95A1] mb-3">
           Components
@@ -4923,86 +4929,86 @@ function CategoryPage() {
 
       <SectionTitle title="카테고리 메뉴" />
 
-<Card>
-  <div className="p-4 border-b border-[#E5E8EB] bg-white">
-    <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-      <button
-        onClick={() => setTab("design")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-          tab === "design"
-            ? "bg-white text-[#191F28] shadow-sm"
-            : "text-[#6B7280]"
-        }`}
-      >
-        Design
-      </button>
-
-      <button
-        onClick={() => setTab("code")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-          tab === "code"
-            ? "bg-white text-[#191F28] shadow-sm"
-            : "text-[#6B7280]"
-        }`}
-      >
-        Code
-      </button>
-    </div>
-  </div>
-
-  {tab === "design" ? (
-    <div className="p-10 bg-[#FAFBFC]">
-      <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-        ◆ category-menu
-      </div>
-
-      <div className="flex flex-wrap gap-8">
-        {categories.map((item) => {
-          const active = selectedCategory === item;
-
-          return (
+      <Card>
+        <div className="p-4 border-b border-[#E5E8EB] bg-white">
+          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
             <button
-              key={item}
-              onClick={() => setSelectedCategory(item)}
-              className="flex flex-col items-center"
+              onClick={() => setTab("design")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "design"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
             >
-              <div
-                className={`
-                  w-[96px]
-                  h-[96px]
-                  rounded-[32px]
-                  transition-all
-                  duration-200
-                  ${
-                    active
-                      ? "border-[3px] border-[#333333] bg-white"
-                      : "border border-[#E5E8EB] bg-[#F4F4F4]"
-                  }
-                `}
-              />
-
-              <span
-                className={`
-                  mt-4
-                  text-[18px]
-                  font-semibold
-                  ${
-                    active
-                      ? "text-[#222222]"
-                      : "text-[#999999]"
-                  }
-                `}
-              >
-                {item}
-              </span>
+              Design
             </button>
-          );
-        })}
-      </div>
-    </div>
-  ) : (
-    <div className="bg-[#031B34] p-10 overflow-auto">
-      <pre className="text-[16px] leading-[2] text-white whitespace-pre-wrap">
+
+            <button
+              onClick={() => setTab("code")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "code"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
+            >
+              Code
+            </button>
+          </div>
+        </div>
+
+        {tab === "design" ? (
+          <div className="p-10 bg-[#FAFBFC]">
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+              ◆ category-menu
+            </div>
+
+            <div className="flex flex-wrap gap-8">
+              {categories.map((item) => {
+                const active = selectedCategory === item;
+
+                return (
+                  <button
+                    key={item}
+                    onClick={() => setSelectedCategory(item)}
+                    className="flex flex-col items-center"
+                  >
+                    <div
+                      className={`
+                        w-[96px]
+                        h-[96px]
+                        rounded-[32px]
+                        transition-all
+                        duration-200
+                        ${
+                          active
+                            ? "border-[3px] border-[#333333] bg-white"
+                            : "border border-[#E5E8EB] bg-[#F4F4F4]"
+                        }
+                      `}
+                    />
+
+                    <span
+                      className={`
+                        mt-4
+                        text-[18px]
+                        font-semibold
+                        ${
+                          active
+                            ? "text-[#222222]"
+                            : "text-[#999999]"
+                        }
+                      `}
+                    >
+                      {item}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="bg-[#031B34] p-10 overflow-auto">
+            <pre className="text-[16px] leading-[2] text-white whitespace-pre-wrap">
 {`<CategoryMenu>
   <CategoryItem active>오감발달</CategoryItem>
   <CategoryItem>창의·체험</CategoryItem>
@@ -5010,44 +5016,44 @@ function CategoryPage() {
   <CategoryItem>신체활동</CategoryItem>
   <CategoryItem>언어·교육</CategoryItem>
 </CategoryMenu>`}
-      </pre>
-    </div>
-  )}
-</Card>
+            </pre>
+          </div>
+        )}
+      </Card>
 
-{ageCategories.map((category) => (
-  <div key={category} className="mt-14">
-    <SectionTitle title={category} />
+      {ageCategories.map((category) => (
+        <div key={category} className="mt-14">
+          <SectionTitle title={category} />
 
-    <Card>
-      <div className="p-4 border-b border-[#E5E8EB] bg-white">
-        <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-          <button className="px-5 py-2 rounded-[10px] bg-white text-[#191F28] shadow-sm text-[14px] font-semibold">
-            Design
-          </button>
+          <Card>
+            <div className="p-4 border-b border-[#E5E8EB] bg-white">
+              <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+                <button className="px-5 py-2 rounded-[10px] bg-white text-[#191F28] shadow-sm text-[14px] font-semibold">
+                  Design
+                </button>
 
-          <button className="px-5 py-2 rounded-[10px] text-[#6B7280] text-[14px] font-semibold">
-            Code
-          </button>
+                <button className="px-5 py-2 rounded-[10px] text-[#6B7280] text-[14px] font-semibold">
+                  Code
+                </button>
+              </div>
+            </div>
+
+            <div className="p-10 bg-[#FAFBFC]">
+              <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+                ◆ {category}
+              </div>
+
+              <button className="flex flex-col items-center">
+                <div className="w-[96px] h-[96px] rounded-[32px] bg-[#F4F4F4] border border-[#E5E8EB]" />
+
+                <span className="mt-4 text-[18px] font-semibold text-[#222222]">
+                  {category}
+                </span>
+              </button>
+            </div>
+          </Card>
         </div>
-      </div>
-
-      <div className="p-10 bg-[#FAFBFC]">
-        <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-          ◆ {category}
-        </div>
-
-        <button className="flex flex-col items-center">
-          <div className="w-[96px] h-[96px] rounded-[32px] bg-[#F4F4F4] border border-[#E5E8EB]" />
-
-          <span className="mt-4 text-[18px] font-semibold text-[#222222]">
-            {category}
-          </span>
-        </button>
-      </div>
-    </Card>
-  </div>
-))}
+      ))}
     </div>
   );
 }
