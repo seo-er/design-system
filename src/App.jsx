@@ -5053,24 +5053,11 @@ function TabPage() {
 
 function TopAppBarPage() {
   const [tab, setTab] = useState("design");
-  const [openIndex, setOpenIndex] = useState(0);
 
   const items = [
-    {
-      title: "수강 가능 지역",
-      content:
-        "서울, 경기, 인천 지역에서 이용 가능합니다.",
-    },
-    {
-      title: "강좌 예약 안내",
-      content:
-        "원하는 날짜와 시간을 선택하여 예약할 수 있습니다.",
-    },
-    {
-      title: "회원 정보 관리",
-      content:
-        "예약 내역과 자녀 정보를 관리할 수 있습니다.",
-    },
+    "수강 가능 지역",
+    "강좌 예약 안내",
+    "회원 정보 관리",
   ];
 
   return (
@@ -5125,14 +5112,18 @@ function TopAppBarPage() {
             </div>
 
             <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-
               {/* Header */}
               <div className="h-[88px] flex items-center justify-between px-8 border-b border-[#E5E8EB]">
                 <button>
                   <img
                     src={getIconSrc("arrow_left")}
                     alt=""
-                    className="w-8 h-8"
+                    className="
+                      w-8
+                      h-8
+                      shrink-0
+                      object-contain
+                    "
                   />
                 </button>
 
@@ -5144,87 +5135,59 @@ function TopAppBarPage() {
                   <img
                     src={getIconSrc("search")}
                     alt=""
-                    className="w-8 h-8"
+                    className="
+                      w-8
+                      h-8
+                      shrink-0
+                      object-contain
+                    "
                   />
                 </button>
               </div>
 
-              {items.map((item, index) => {
-                const open = openIndex === index;
+              {items.map((item) => (
+                <button
+                  key={item}
+                  className="
+                    w-full
+                    h-[72px]
+                    px-8
+                    flex
+                    items-center
+                    justify-between
+                    border-b
+                    border-[#F2F4F6]
+                    last:border-b-0
+                    text-left
+                    hover:bg-[#FAFBFC]
+                  "
+                >
+                  <span className="text-[18px] font-semibold text-[#191F28]">
+                    {item}
+                  </span>
 
-                return (
-                  <div
-                    key={item.title}
-                    className="border-b border-[#F2F4F6] last:border-b-0"
-                  >
-                    <button
-                      onClick={() =>
-                        setOpenIndex(open ? -1 : index)
-                      }
-                      className="
-                        w-full
-                        px-8
-                        py-6
-                        flex
-                        items-center
-                        justify-between
-                        text-left
-                      "
-                    >
-                      <span className="text-[18px] font-semibold text-[#191F28]">
-                        {item.title}
-                      </span>
-
-                      <img
-                        src={getIconSrc("arrow_right")}
-                        alt=""
-                        className={`
-                          w-5
-                          h-5
-                          transition-all
-                          duration-300
-                          ${open ? "rotate-90" : ""}
-                        `}
-                      />
-                    </button>
-
-                    <div
-                      className={`
-                        overflow-hidden
-                        transition-all
-                        duration-300
-                        ${
-                          open
-                            ? "max-h-[300px] opacity-100"
-                            : "max-h-0 opacity-0"
-                        }
-                      `}
-                    >
-                      <div
-                        className="
-                          px-8
-                          pb-6
-                          text-[16px]
-                          leading-[1.8]
-                          text-[#6B7684]
-                        "
-                      >
-                        {item.content}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                  <img
+                    src={getIconSrc("arrow_right")}
+                    alt=""
+                    className="
+                      w-5
+                      h-5
+                      shrink-0
+                      object-contain
+                    "
+                  />
+                </button>
+              ))}
             </div>
           </div>
         ) : (
           <div className="bg-[#031B34] p-10 overflow-auto">
             <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-{`<Accordion>
-  <AccordionItem title="수강 가능 지역" />
-  <AccordionItem title="강좌 예약 안내" />
-  <AccordionItem title="회원 정보 관리" />
-</Accordion>`}
+{`<MenuList>
+  <MenuItem>수강 가능 지역</MenuItem>
+  <MenuItem>강좌 예약 안내</MenuItem>
+  <MenuItem>회원 정보 관리</MenuItem>
+</MenuList>`}
             </pre>
           </div>
         )}
