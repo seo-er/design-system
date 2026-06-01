@@ -5022,60 +5022,44 @@ function CategoryPage() {
         )}
       </Card>
 
-      {ageCategories.map((category) => (
-        <div key={category} className="mt-14">
-          <SectionTitle title={category} />
+      <div className="mt-14">
+  <SectionTitle title="homeCategory" />
 
-          <Card>
-            <div className="p-4 border-b border-[#E5E8EB] bg-white">
-              <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-                <button className="px-5 py-2 rounded-[10px] bg-white text-[#191F28] shadow-sm text-[14px] font-semibold">
-                  Design
-                </button>
+  <Card>
+    <div className="p-4 border-b border-[#E5E8EB] bg-white">
+      <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+        <button className="px-5 py-2 rounded-[10px] bg-white text-[#191F28] shadow-sm text-[14px] font-semibold">
+          Design
+        </button>
 
-                <button className="px-5 py-2 rounded-[10px] text-[#6B7280] text-[14px] font-semibold">
-                  Code
-                </button>
-              </div>
-            </div>
+        <button className="px-5 py-2 rounded-[10px] text-[#6B7280] text-[14px] font-semibold">
+          Code
+        </button>
+      </div>
+    </div>
 
-            <div className="p-10 bg-[#FAFBFC]">
-  <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-    ◆ homeCategory
-  </div>
+    <div className="p-10 bg-[#FAFBFC]">
+      <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+        ◆ homeCategory
+      </div>
 
-  <div className="flex flex-wrap gap-8">
-    {homeCategory.map((item) => (
-      <button
-        key={item}
-        className="flex flex-col items-center"
-      >
-        <div
-          className="
-            w-[96px]
-            h-[96px]
-            rounded-[32px]
-            bg-[#E8E8E8]
-          "
-        />
+      <div className="flex flex-wrap gap-8">
+        {homeCategory.map((item) => (
+          <button
+            key={item}
+            className="flex flex-col items-center"
+          >
+            <div className="w-[96px] h-[96px] rounded-[32px] bg-[#E8E8E8]" />
 
-        <span
-          className="
-            mt-4
-            text-[18px]
-            font-semibold
-            text-[#666666]
-          "
-        >
-          {item}
-        </span>
-      </button>
-    ))}
-  </div>
+            <span className="mt-4 text-[18px] font-semibold text-[#666666]">
+              {item}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </Card>
 </div>
-          </Card>
-        </div>
-      ))}
     </div>
   );
 }
