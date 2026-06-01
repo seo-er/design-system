@@ -4895,149 +4895,72 @@ function TabPage() {
 
 function CategoryPage() {
   const [tab, setTab] = useState("design");
+  const [selectedCategory, setSelectedCategory] = useState("오감발달");
+
+  const categories = [
+    "오감발달",
+    "창의·체험",
+    "음악·미술",
+    "신체활동",
+    "언어·교육",
+  ];
 
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
+      {/* 생략 */}
 
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Category Menu
-        </h1>
+      <div className="flex items-start gap-8 overflow-x-auto">
+        {categories.map((item) => {
+          const active = selectedCategory === item;
 
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-          카테고리를 선택할 수 있는 메뉴 컴포넌트입니다.
-        </p>
+          return (
+            <button
+              key={item}
+              onClick={() => setSelectedCategory(item)}
+              className="
+                flex
+                flex-col
+                items-center
+                shrink-0
+                transition-all
+                duration-200
+                hover:scale-[1.03]
+              "
+            >
+              <div
+                className={`
+                  w-[96px]
+                  h-[96px]
+                  rounded-[32px]
+                  transition-all
+                  duration-200
+                  ${
+                    active
+                      ? "border-[3px] border-[#333333] bg-white"
+                      : "bg-[#F4F4F4]"
+                  }
+                `}
+              />
+
+              <span
+                className={`
+                  mt-4
+                  text-[18px]
+                  font-semibold
+                  whitespace-nowrap
+                  ${
+                    active
+                      ? "text-[#222222]"
+                      : "text-[#999999]"
+                  }
+                `}
+              >
+                {item}
+              </span>
+            </button>
+          );
+        })}
       </div>
-
-      <SectionTitle title="카테고리 메뉴" />
-
-      <Card>
-        {/* Design / Code */}
-        <div className="p-4 border-b border-[#E5E8EB] bg-white">
-          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-            <button
-              onClick={() => setTab("design")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition-all duration-200 ${
-                tab === "design"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Design
-            </button>
-
-            <button
-              onClick={() => setTab("code")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition-all duration-200 ${
-                tab === "code"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-        </div>
-
-        {tab === "design" ? (
-          <div className="p-10 bg-[#FAFBFC]">
-
-            <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-              ◆category-menu
-            </div>
-
-            <div className="flex items-start gap-8 overflow-x-auto">
-
-              {[
-                "오감발달",
-                "창의·체험",
-                "음악·미술",
-                "신체활동",
-                "언어·교육",
-              ].map((item, index) => {
-                const active = index === 0;
-
-                return (
-                  <button
-                    key={item}
-                    className="
-                      flex
-                      flex-col
-                      items-center
-                      shrink-0
-                      transition-all
-                      duration-200
-                      hover:scale-[1.03]
-                    "
-                  >
-                    <div
-                      className={`
-                        w-[96px]
-                        h-[96px]
-                        rounded-[32px]
-                        transition-all
-                        duration-200
-                        ${
-                          active
-                            ? "border-[3px] border-[#333333] bg-white"
-                            : "bg-[#F4F4F4]"
-                        }
-                      `}
-                    />
-
-                    <span
-                      className={`
-                        mt-4
-                        text-[18px]
-                        font-semibold
-                        whitespace-nowrap
-                        ${
-                          active
-                            ? "text-[#222222]"
-                            : "text-[#999999]"
-                        }
-                      `}
-                    >
-                      {item}
-                    </span>
-                  </button>
-                );
-              })}
-
-            </div>
-
-          </div>
-        ) : (
-          <div className="bg-[#031B34] p-10 overflow-auto">
-            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
-{`<CategoryMenu>
-  <CategoryItem active>
-    오감발달
-  </CategoryItem>
-
-  <CategoryItem>
-    창의·체험
-  </CategoryItem>
-
-  <CategoryItem>
-    음악·미술
-  </CategoryItem>
-
-  <CategoryItem>
-    신체활동
-  </CategoryItem>
-
-  <CategoryItem>
-    언어·교육
-  </CategoryItem>
-</CategoryMenu>`}
-            </pre>
-          </div>
-        )}
-      </Card>
     </div>
   );
 }
