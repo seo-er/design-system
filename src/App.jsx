@@ -4909,6 +4909,8 @@ function CategoryPage() {
     "13~24개월",
     "25~36개월",
     "37~48개월",
+    "5~7세",
+    "초등",
   ];
 
   return (
@@ -5044,12 +5046,24 @@ function CategoryPage() {
               </div>
 
               <button className="flex flex-col items-center">
-                <div className="w-[96px] h-[96px] rounded-[32px] bg-[#F4F4F4] border border-[#E5E8EB]" />
+  {category === "0~12개월" ? (
+    <>
+      <div className="w-[96px] h-[96px] rounded-[32px] bg-[#E8E8E8]" />
 
-                <span className="mt-4 text-[18px] font-semibold text-[#222222]">
-                  {category}
-                </span>
-              </button>
+      <span className="mt-4 text-[18px] font-semibold text-[#666666]">
+        내아이조회
+      </span>
+    </>
+  ) : (
+    <>
+      <div className="w-[96px] h-[96px] rounded-[32px] bg-[#F4F4F4] border border-[#E5E8EB]" />
+
+      <span className="mt-4 text-[18px] font-semibold text-[#222222]">
+        {category}
+      </span>
+    </>
+  )}
+</button>
             </div>
           </Card>
         </div>
