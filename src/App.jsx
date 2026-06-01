@@ -188,15 +188,22 @@ Badge
       active={menu === "filter"}
       onClick={() => setMenu("filter")}
     >
-      filter
+      Filter
     </MenuItem>
     <MenuItem
       active={menu === "tab"}
       onClick={() => setMenu("tab")}
     >
-      tab
+      Tab
     </MenuItem>
- 
+    <MenuItem
+      active={menu === "topappbar"}
+      onClick={() => setMenu("topappbar")}
+    >
+      TopAppBar
+    </MenuItem>
+
+    
   </div>
 
 </div>
@@ -297,7 +304,7 @@ Badge
             {menu === "badge" && <BadgePage />}
             {menu === "filter" && <FilterPage />}
             {menu === "tab" && <TabPage />}
-            
+            {menu === "topappbar" && <TopAppBarPage />}
           </div>
         </main>
 
@@ -5040,6 +5047,188 @@ function TabPage() {
 </Card>
 </div>
       </div>
+    </div>
+  );
+}
+
+function TopAppBarPage() {
+  const [tab, setTab] = useState("design");
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const items = [
+    {
+      title: "수강 가능 지역",
+      content:
+        "서울, 경기, 인천 지역에서 이용 가능합니다.",
+    },
+    {
+      title: "강좌 예약 안내",
+      content:
+        "원하는 날짜와 시간을 선택하여 예약할 수 있습니다.",
+    },
+    {
+      title: "회원 정보 관리",
+      content:
+        "예약 내역과 자녀 정보를 관리할 수 있습니다.",
+    },
+  ];
+
+  return (
+    <div>
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Components
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Accordion
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+          콘텐츠를 펼치고 접을 수 있는 컴포넌트입니다.
+        </p>
+      </div>
+
+      <SectionTitle title="기본 아코디언" />
+
+      <Card>
+        <div className="p-4 border-b border-[#E5E8EB] bg-white">
+          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+            <button
+              onClick={() => setTab("design")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "design"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
+            >
+              Design
+            </button>
+
+            <button
+              onClick={() => setTab("code")}
+              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
+                tab === "code"
+                  ? "bg-white text-[#191F28] shadow-sm"
+                  : "text-[#6B7280]"
+              }`}
+            >
+              Code
+            </button>
+          </div>
+        </div>
+
+        {tab === "design" ? (
+          <div className="p-10 bg-[#FAFBFC]">
+            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+              ◆accordion_single
+            </div>
+
+            <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
+
+              {/* Header */}
+              <div className="h-[88px] flex items-center justify-between px-8 border-b border-[#E5E8EB]">
+                <button>
+                  <img
+                    src={getIconSrc("arrow_left")}
+                    alt=""
+                    className="w-8 h-8"
+                  />
+                </button>
+
+                <h3 className="text-[20px] font-bold text-[#191F28]">
+                  0~24개월
+                </h3>
+
+                <button>
+                  <img
+                    src={getIconSrc("search")}
+                    alt=""
+                    className="w-8 h-8"
+                  />
+                </button>
+              </div>
+
+              {items.map((item, index) => {
+                const open = openIndex === index;
+
+                return (
+                  <div
+                    key={item.title}
+                    className="border-b border-[#F2F4F6] last:border-b-0"
+                  >
+                    <button
+                      onClick={() =>
+                        setOpenIndex(open ? -1 : index)
+                      }
+                      className="
+                        w-full
+                        px-8
+                        py-6
+                        flex
+                        items-center
+                        justify-between
+                        text-left
+                      "
+                    >
+                      <span className="text-[18px] font-semibold text-[#191F28]">
+                        {item.title}
+                      </span>
+
+                      <img
+                        src={getIconSrc("arrow_right")}
+                        alt=""
+                        className={`
+                          w-5
+                          h-5
+                          transition-all
+                          duration-300
+                          ${open ? "rotate-90" : ""}
+                        `}
+                      />
+                    </button>
+
+                    <div
+                      className={`
+                        overflow-hidden
+                        transition-all
+                        duration-300
+                        ${
+                          open
+                            ? "max-h-[300px] opacity-100"
+                            : "max-h-0 opacity-0"
+                        }
+                      `}
+                    >
+                      <div
+                        className="
+                          px-8
+                          pb-6
+                          text-[16px]
+                          leading-[1.8]
+                          text-[#6B7684]
+                        "
+                      >
+                        {item.content}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="bg-[#031B34] p-10 overflow-auto">
+            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+{`<Accordion>
+  <AccordionItem title="수강 가능 지역" />
+  <AccordionItem title="강좌 예약 안내" />
+  <AccordionItem title="회원 정보 관리" />
+</Accordion>`}
+            </pre>
+          </div>
+        )}
+      </Card>
     </div>
   );
 }
