@@ -196,12 +196,7 @@ Badge
     >
       tab
     </MenuItem>
-    <MenuItem
-      active={menu === "category"}
-      onClick={() => setMenu("category")}
-    >
-      category
-    </MenuItem>
+ 
   </div>
 
 </div>
@@ -302,7 +297,6 @@ Badge
             {menu === "badge" && <BadgePage />}
             {menu === "filter" && <FilterPage />}
             {menu === "tab" && <TabPage />}
-            {menu === "category" && <CategoryPage />}
             
           </div>
         </main>
@@ -4587,6 +4581,7 @@ function FilterPage() {
 }
 
 function TabPage() {
+  const [tab, setTab] = useState("design");
   const [defaultView, setDefaultView] = useState("design");
   const [categoryView, setCategoryView] = useState("design");
   const [chipTab, setChipTab] = useState("낯가려요");
