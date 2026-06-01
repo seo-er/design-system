@@ -4905,11 +4905,9 @@ function CategoryPage() {
   ];
 
   const homeCategory = [
-    "내아이조회",
-    "0~24개월",
-    "2~4세",
-    "5~7세",
-    "초등",
+    "낯가려요",
+    "흥이 많아요",
+    "엄마가 필요해요",
   ];
 
   return (
@@ -5039,25 +5037,33 @@ function CategoryPage() {
     </div>
 
     <div className="p-10 bg-[#FAFBFC]">
-      <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-        ◆ homeCategory
-      </div>
+  <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
+    ◆ homeCategory
+  </div>
 
-      <div className="flex flex-wrap gap-8">
-        {homeCategory.map((item) => (
-          <button
-            key={item}
-            className="flex flex-col items-center"
-          >
-            <div className="w-[96px] h-[96px] rounded-[32px] bg-[#E8E8E8]" />
-
-            <span className="mt-4 text-[18px] font-semibold text-[#666666]">
-              {item}
-            </span>
-          </button>
-        ))}
-      </div>
-    </div>
+  <div className="flex flex-wrap gap-4">
+    {homeCategory.map((item, index) => (
+      <button
+        key={item}
+        className={`
+          px-8
+          h-[56px]
+          rounded-full
+          text-[18px]
+          font-semibold
+          transition-all
+          ${
+            index === 0
+              ? "bg-[#222222] text-white"
+              : "bg-white text-[#888888] border border-[#D9D9D9]"
+          }
+        `}
+      >
+        {item}
+      </button>
+    ))}
+  </div>
+</div>
   </Card>
 </div>
     </div>
