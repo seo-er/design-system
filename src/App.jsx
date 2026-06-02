@@ -5068,15 +5068,16 @@ function TopAppBarPage() {
         </p>
 
         <h1 className="text-[44px] font-bold tracking-tight">
-          Accordion
-        </h1>
+  TopAppBar
+</h1>
 
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-          콘텐츠를 펼치고 접을 수 있는 컴포넌트입니다.
-        </p>
+<p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+  화면 상단에 위치하는 내비게이션 바 컴포넌트입니다.
+</p>
+
       </div>
 
-      <SectionTitle title="기본 아코디언" />
+      <SectionTitle title="기본 TopAppBar" />
 
       <Card>
         <div className="p-4 border-b border-[#E5E8EB] bg-white">
