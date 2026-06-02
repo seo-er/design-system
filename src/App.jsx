@@ -5080,109 +5080,87 @@ function TopAppBarPage() {
       <SectionTitle title="기본 TopAppBar" />
 
       <Card>
-  <div className="p-4 border-b border-[#E5E8EB] bg-white">
-    {/* Tab */}
-  </div>
+  <div className="p-10 bg-[#FAFBFC]">
+    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+      ◆TopAppBar_default
+    </div>
 
-  {tab === "design" ? (
-    <div className="p-10 bg-[#FAFBFC]">
-      <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-        ◆TopAppBar_default
-      </div>
+    <div className="w-[375px] h-[44px] bg-white border border-[#E5E8EB] rounded-[12px]">
+      <div className="h-full px-4 flex items-center justify-between">
+        <button className="w-6 h-6 shrink-0">
+          <img
+            src={getIconSrc("arrow_left")}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </button>
 
-      <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-        <div className="h-[44px] flex items-center justify-between px-4">
-          <button>
-            <img
-              src={getIconSrc("arrow_left")}
-              alt=""
-              className="w-6 h-6 object-contain"
-            />
-          </button>
-
-          <h3 className="text-[16px] font-bold text-[#191F28]">
+        <div className="flex-1 flex justify-center">
+          <span className="text-[16px] font-bold text-[#191F28]">
             TopAppBar
-          </h3>
-
-          <button>
-            <img
-              src={getIconSrc("search")}
-              alt=""
-              className="w-6 h-6 object-contain"
-            />
-          </button>
+          </span>
         </div>
+
+        <button className="w-6 h-6 shrink-0">
+          <img
+            src={getIconSrc("search")}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </button>
       </div>
     </div>
-  ) : (
-    <div className="p-10 bg-[#FAFBFC]"></div>
-  )}
+  </div>
 </Card>
 <Card>
-  <div className="p-4 border-b border-[#E5E8EB] bg-white">
-    {/* Tab */}
-  </div>
+  <div className="p-10 bg-[#FAFBFC]">
+    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+      ◆TopAppBar_back
+    </div>
 
-  {tab === "design" ? (
-    <div className="p-10 bg-[#FAFBFC]">
-      <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-        ◆TopAppBar_back
-      </div>
-
-      <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-        <div className="h-[44px] flex items-center px-4">
-          <button>
-            <img
-              src={getIconSrc("arrow_left")}
-              alt=""
-              className="w-6 h-6 object-contain"
-            />
-          </button>
-        </div>
+    <div className="w-[375px] h-[44px] bg-white border border-[#E5E8EB] rounded-[12px]">
+      <div className="h-full px-4 flex items-center">
+        <button className="w-6 h-6 shrink-0">
+          <img
+            src={getIconSrc("arrow_left")}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </button>
       </div>
     </div>
-  ) : (
-    <div className="p-10 bg-[#FAFBFC]"></div>
-  )}
+  </div>
 </Card>
 <Card>
-  <div className="p-4 border-b border-[#E5E8EB] bg-white">
-    {/* Tab */}
-  </div>
+  <div className="p-10 bg-[#FAFBFC]">
+    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+      ◆TopAppBar_location
+    </div>
 
-  {tab === "design" ? (
-    <div className="p-10 bg-[#FAFBFC]">
-      <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-        ◆TopAppBar_location
-      </div>
+    <div className="w-[375px] h-[44px] bg-white border border-[#E5E8EB] rounded-[12px]">
+      <div className="h-full px-4 flex items-center justify-between">
+        <button className="flex items-center gap-1">
+          <span className="text-[16px] font-bold text-[#191F28]">
+            송파구, 문정1동
+          </span>
 
-      <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-        <div className="h-[44px] flex items-center justify-between px-4">
-          <button className="flex items-center gap-1.5">
-            <span className="text-[16px] font-bold text-[#191F28]">
-              송파구, 문정1동
-            </span>
+          <img
+            src={getIconSrc("accordion_down")}
+            alt=""
+            className="w-[14px] h-[14px] object-contain"
+          />
+        </button>
 
-            <img
-              src={getIconSrc("accordion_down")}
-              alt=""
-              className="w-[14px] h-[14px] object-contain opacity-60"
-            />
-          </button>
-
-          <button>
-            <img
-              src={getIconSrc("notification")}
-              alt=""
-              className="w-6 h-6 object-contain"
-            />
-          </button>
-        </div>
+        <button className="w-6 h-6 shrink-0">
+          <img
+            src={getIconSrc("notification")}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </button>
       </div>
     </div>
-  ) : (
-    <div className="p-10 bg-[#FAFBFC]"></div>
-  )}
+  </div>
 </Card>
     </div>
   );
