@@ -5080,163 +5080,74 @@ function TopAppBarPage() {
       <SectionTitle title="기본 TopAppBar" />
 
       <Card>
-        <div className="p-4 border-b border-[#E5E8EB] bg-white">
-          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-            <button
-              onClick={() => setTab("design")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "design"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Design
-            </button>
-
-            <button
-              onClick={() => setTab("code")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "code"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-        </div>
-
-        {tab === "design" ? (
-          <div className="p-10 bg-[#FAFBFC]">
-            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆TopAppBar_default
-            </div>
-
-            <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-              {/* Header */}
-              <div className="h-[88px] flex items-center justify-between px-8 border-b border-[#E5E8EB]">
-                <button>
-                  <img
-                    src={getIconSrc("arrow_left")}
-                    alt=""
-                    className="
-                      w-8
-                      h-8
-                      shrink-0
-                      object-contain
-                    "
-                  />
-                </button>
-
-                <h3 className="text-[20px] font-bold text-[#191F28]">
-                TopAppBar
-                </h3>
-
-                <button>
-                  <img
-                    src={getIconSrc("search")}
-                    alt=""
-                    className="
-                      w-8
-                      h-8
-                      shrink-0
-                      object-contain
-                    "
-                  />
-                </button>
-              </div>
-
-          
-            </div>
-          </div>
-        ) : (
-          <div className="p-10 bg-[#FAFBFC]">
-            </div>
-        )}
-      </Card>
-      <Card>
-        <div className="p-4 border-b border-[#E5E8EB] bg-white">
-          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-            <button
-              onClick={() => setTab("design")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "design"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Design
-            </button>
-
-            <button
-              onClick={() => setTab("code")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "code"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-        </div>
-
-        {tab === "design" ? (
-          <div className="p-10 bg-[#FAFBFC]">
-            <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆TopAppBar_back
-            </div>
-
-            <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-              {/* Header */}
-              <div className="h-[88px] flex items-center justify-between px-8 border-b border-[#E5E8EB]">
-                <button>
-                  <img
-                    src={getIconSrc("arrow_left")}
-                    alt=""
-                    className="
-                      w-8
-                      h-8
-                      shrink-0
-                      object-contain
-                    "
-                  />
-                </button>
-              </div>
-
-          
-            </div>
-          </div>
-        ) : (
-          <div className="p-10 bg-[#FAFBFC]">
-            </div>
-        )}
-      </Card>
-      <Card>
   <div className="p-4 border-b border-[#E5E8EB] bg-white">
-    <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-      <button
-        onClick={() => setTab("design")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-          tab === "design"
-            ? "bg-white text-[#191F28] shadow-sm"
-            : "text-[#6B7280]"
-        }`}
-      >
-        Design
-      </button>
+    {/* Tab */}
+  </div>
 
-      <button
-        onClick={() => setTab("code")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-          tab === "code"
-            ? "bg-white text-[#191F28] shadow-sm"
-            : "text-[#6B7280]"
-        }`}
-      >
-        Code
-      </button>
+  {tab === "design" ? (
+    <div className="p-10 bg-[#FAFBFC]">
+      <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+        ◆TopAppBar_default
+      </div>
+
+      <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
+        <div className="h-[44px] flex items-center justify-between px-4">
+          <button>
+            <img
+              src={getIconSrc("arrow_left")}
+              alt=""
+              className="w-6 h-6 object-contain"
+            />
+          </button>
+
+          <h3 className="text-[16px] font-bold text-[#191F28]">
+            TopAppBar
+          </h3>
+
+          <button>
+            <img
+              src={getIconSrc("search")}
+              alt=""
+              className="w-6 h-6 object-contain"
+            />
+          </button>
+        </div>
+      </div>
     </div>
+  ) : (
+    <div className="p-10 bg-[#FAFBFC]"></div>
+  )}
+</Card>
+<Card>
+  <div className="p-4 border-b border-[#E5E8EB] bg-white">
+    {/* Tab */}
+  </div>
+
+  {tab === "design" ? (
+    <div className="p-10 bg-[#FAFBFC]">
+      <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+        ◆TopAppBar_back
+      </div>
+
+      <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
+        <div className="h-[44px] flex items-center px-4">
+          <button>
+            <img
+              src={getIconSrc("arrow_left")}
+              alt=""
+              className="w-6 h-6 object-contain"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className="p-10 bg-[#FAFBFC]"></div>
+  )}
+</Card>
+<Card>
+  <div className="p-4 border-b border-[#E5E8EB] bg-white">
+    {/* Tab */}
   </div>
 
   {tab === "design" ? (
@@ -5246,35 +5157,24 @@ function TopAppBarPage() {
       </div>
 
       <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-        <div className="h-[64px] flex items-center justify-between px-6">
-          {/* Location */}
-          <button className="flex items-center gap-2">
-            <span className="text-[18px] font-bold text-[#191F28]">
+        <div className="h-[44px] flex items-center justify-between px-4">
+          <button className="flex items-center gap-1.5">
+            <span className="text-[16px] font-bold text-[#191F28]">
               송파구, 문정1동
             </span>
 
             <img
               src={getIconSrc("accordion_down")}
               alt=""
-              className="
-                w-[16px]
-                h-[16px]
-                object-contain
-                opacity-60
-              "
+              className="w-[14px] h-[14px] object-contain opacity-60"
             />
           </button>
 
-          {/* Notification */}
           <button>
             <img
               src={getIconSrc("notification")}
               alt=""
-              className="
-                w-[28px]
-                h-[28px]
-                object-contain
-              "
+              className="w-6 h-6 object-contain"
             />
           </button>
         </div>
