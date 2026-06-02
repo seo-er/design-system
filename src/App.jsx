@@ -5146,39 +5146,7 @@ function TopAppBarPage() {
                 </button>
               </div>
 
-              {items.map((item) => (
-                <button
-                  key={item}
-                  className="
-                    w-full
-                    h-[72px]
-                    px-8
-                    flex
-                    items-center
-                    justify-between
-                    border-b
-                    border-[#F2F4F6]
-                    last:border-b-0
-                    text-left
-                    hover:bg-[#FAFBFC]
-                  "
-                >
-                  <span className="text-[18px] font-semibold text-[#191F28]">
-                    {item}
-                  </span>
-
-                  <img
-                    src={getIconSrc("arrow_right")}
-                    alt=""
-                    className="
-                      w-5
-                      h-5
-                      shrink-0
-                      object-contain
-                    "
-                  />
-                </button>
-              ))}
+          
             </div>
           </div>
         ) : (
