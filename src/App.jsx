@@ -5085,27 +5085,30 @@ function TopAppBarPage() {
       ◆TopAppBar_default
     </div>
 
-    <div className="w-[375px] h-[44px] bg-white border border-[#E5E8EB] rounded-[12px]">
-      <div className="h-full px-4 flex items-center justify-between">
+    <div className="w-[375px] h-[44px] bg-white relative">
+      <div className="h-full px-4 flex items-center">
+        {/* Left */}
         <button className="w-6 h-6 shrink-0">
           <img
             src={getIconSrc("arrow_left")}
             alt=""
-            className="w-full h-full object-contain"
+            className="w-6 h-6 object-contain"
           />
         </button>
 
-        <div className="flex-1 flex justify-center">
+        {/* Center */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span className="text-[16px] font-bold text-[#191F28]">
-            TopAppBar
+            0~24개월
           </span>
         </div>
 
-        <button className="w-6 h-6 shrink-0">
+        {/* Right */}
+        <button className="ml-auto w-6 h-6 shrink-0">
           <img
             src={getIconSrc("search")}
             alt=""
-            className="w-full h-full object-contain"
+            className="w-6 h-6 object-contain"
           />
         </button>
       </div>
@@ -5118,13 +5121,13 @@ function TopAppBarPage() {
       ◆TopAppBar_back
     </div>
 
-    <div className="w-[375px] h-[44px] bg-white border border-[#E5E8EB] rounded-[12px]">
+    <div className="w-[375px] h-[44px] bg-white">
       <div className="h-full px-4 flex items-center">
         <button className="w-6 h-6 shrink-0">
           <img
             src={getIconSrc("arrow_left")}
             alt=""
-            className="w-full h-full object-contain"
+            className="w-6 h-6 object-contain"
           />
         </button>
       </div>
@@ -5137,7 +5140,7 @@ function TopAppBarPage() {
       ◆TopAppBar_location
     </div>
 
-    <div className="w-[375px] h-[44px] bg-white border border-[#E5E8EB] rounded-[12px]">
+    <div className="w-[375px] h-[44px] bg-white">
       <div className="h-full px-4 flex items-center justify-between">
         <button className="flex items-center gap-1">
           <span className="text-[16px] font-bold text-[#191F28]">
@@ -5147,7 +5150,7 @@ function TopAppBarPage() {
           <img
             src={getIconSrc("accordion_down")}
             alt=""
-            className="w-[14px] h-[14px] object-contain"
+            className="w-4 h-4 object-contain"
           />
         </button>
 
@@ -5155,7 +5158,7 @@ function TopAppBarPage() {
           <img
             src={getIconSrc("notification")}
             alt=""
-            className="w-full h-full object-contain"
+            className="w-6 h-6 object-contain"
           />
         </button>
       </div>
