@@ -5088,11 +5088,11 @@ function TopAppBarPage() {
     <div className="w-[375px] h-[44px] bg-white relative">
       <div className="h-full px-4 flex items-center">
         {/* Left */}
-        <button className="w-6 h-6 shrink-0">
+        <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
             src={getIconSrc("arrow_left")}
             alt=""
-            className="w-6 h-6 object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </button>
 
@@ -5104,11 +5104,11 @@ function TopAppBarPage() {
         </div>
 
         {/* Right */}
-        <button className="ml-auto w-6 h-6 shrink-0">
+        <button className="ml-auto w-6 h-6 shrink-0 flex items-center justify-center">
           <img
             src={getIconSrc("search")}
             alt=""
-            className="w-6 h-6 object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </button>
       </div>
@@ -5123,11 +5123,11 @@ function TopAppBarPage() {
 
     <div className="w-[375px] h-[44px] bg-white">
       <div className="h-full px-4 flex items-center">
-        <button className="w-6 h-6 shrink-0">
+        <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
             src={getIconSrc("arrow_left")}
             alt=""
-            className="w-6 h-6 object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </button>
       </div>
@@ -5154,11 +5154,11 @@ function TopAppBarPage() {
           />
         </button>
 
-        <button className="w-6 h-6 shrink-0">
+        <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
             src={getIconSrc("notification")}
             alt=""
-            className="w-6 h-6 object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </button>
       </div>
