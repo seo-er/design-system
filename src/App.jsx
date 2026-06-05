@@ -5160,47 +5160,29 @@ function TopAppBarPage() {
           />
         </button>
 
-        {/* Actions */}
-        <div className="flex items-center gap-6">
-          <button className="w-6 h-6 shrink-0 flex items-center justify-center">
-            <img
-              src={getIconSrc("notification")}
-              alt=""
-              className="w-[18px] h-[18px] object-contain"
-            />
-          </button>
+     {/* Actions */}
+     <div className="flex items-center gap-[14px]">
+  <button className="w-6 h-6 shrink-0 flex items-center justify-center">
+    <img
+      src={getIconSrc("notification")}
+      alt=""
+      className="w-[18px] h-[18px] object-contain"
+    />
+  </button>
 
-          <button className="w-6 h-6 shrink-0 flex items-center justify-center">
-            <img
-              src={getIconSrc("cart")}
-              alt=""
-              className="w-[18px] h-[18px] object-contain"
-            />
-          </button>
-        </div>
+  <button className="w-6 h-6 shrink-0 flex items-center justify-center">
+    <img
+      src={getIconSrc("cart")}
+      alt=""
+      className="w-[18px] h-[18px] object-contain"
+    />
+  </button>
+</div>
       </div>
     </div>
   </div>
 </Card>
-<Card>
-  <div className="p-10 bg-[#FAFBFC]">
-    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-      ◆TopAppBar_back
-    </div>
 
-    <div className="w-[375px] h-[44px] bg-white">
-      <div className="h-full px-4 flex items-center">
-        <button className="w-6 h-6 shrink-0 flex items-center justify-center">
-          <img
-            src={getIconSrc("arrow_left")}
-            alt=""
-            className="w-[18px] h-[18px] object-contain"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
-</Card>
     </div>
   );
 }
