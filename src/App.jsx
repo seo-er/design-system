@@ -4,6 +4,8 @@ import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
 import iconGuide from "./assets/icon_grid.png";
 import watchGrid from "./assets/watch_grid.png";
+import filterIcon from "./assets/icons/ic_filter.png";
+import accordionDown from "./assets/icons/ic_accordion_down.png";
 
 const iconModules = import.meta.glob(
   "./assets/icons/*.{png,svg,webp}",
@@ -5135,7 +5137,7 @@ function TopAppBarPage() {
 <Card>
   <div className="p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-      ◆TopAppBar_location
+      ◆TopAppBar_home
     </div>
 
     <div className="w-[375px] h-[44px] bg-white">
@@ -5183,7 +5185,7 @@ function TopAppBarPage() {
 <Card>
   <div className="p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-      ◆TopAppBar_back
+      ◆TopAppBar_detail
     </div>
 
     <div className="w-[375px] h-[44px] bg-white">
