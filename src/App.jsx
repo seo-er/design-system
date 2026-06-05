@@ -1636,27 +1636,27 @@ function PalettePage() {
   );
 }
 const iconItems = [
-  { label: "홈", slug: "home" },
-  { label: "카테고리", slug: "category" },
-  { label: "마이페이지", slug: "mypage" },
-  { label: "예약", slug: "reservation" },
-  { label: "찜", slug: "wishlist" },
+  { label: "홈", slug: "ic_home" },
+  { label: "카테고리", slug: "ic_category" },
+  { label: "마이페이지", slug: "ic_mypage" },
+  { label: "예약", slug: "ic_reservation" },
+  { label: "찜", slug: "ic_wishlist" },
 
-  { label: "검색", slug: "search" },
-  { label: "알림", slug: "notification" },
-  { label: "장바구니", slug: "cart" },
-  { label: "필터", slug: "filter" },
-  { label: "위치", slug: "location" },
+  { label: "검색", slug: "ic_search" },
+  { label: "알림", slug: "ic_notification" },
+  { label: "장바구니", slug: "ic_cart" },
+  { label: "필터", slug: "ic_filter" },
+  { label: "위치", slug: "ic_location" },
 
-  { label: "추가", slug: "add" },
-  { label: "원형 추가", slug: "add_circle" },
+  { label: "추가", slug: "ic_add" },
+  { label: "원형 추가", slug: "ic_add_circle" },
 
-  { label: "왼쪽 화살표", slug: "arrow_left" },
-  { label: "오른쪽 화살표", slug: "arrow_right" },
-  { label: "확인", slug: "check" },
-  { label: "아코디언", slug: "accordion_down" },
+  { label: "왼쪽 화살표", slug: "ic_arrow_left" },
+  { label: "오른쪽 화살표", slug: "ic_arrow_right" },
+  { label: "확인", slug: "ic_check" },
+  { label: "아코디언", slug: "ic_accordion_down" },
+  { label: "공유", slug: "ic_share" },
 ];
-
 const illustrationModules = import.meta.glob(
   "./assets/illustrations/*.{png,svg,webp}",
   {
@@ -5090,7 +5090,7 @@ function TopAppBarPage() {
         {/* Left */}
         <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
-            src={getIconSrc("arrow_left")}
+            src={getIconSrc("ic_arrow_left")}
             alt=""
             className="w-[18px] h-[18px] object-contain"
           />
@@ -5106,7 +5106,7 @@ function TopAppBarPage() {
         {/* Right */}
         <button className="ml-auto w-6 h-6 shrink-0 flex items-center justify-center">
           <img
-            src={getIconSrc("search")}
+            src={getIconSrc("ic_search")}
             alt=""
             className="w-[18px] h-[18px] object-contain"
           />
@@ -5125,7 +5125,7 @@ function TopAppBarPage() {
       <div className="h-full px-4 flex items-center">
         <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
-            src={getIconSrc("arrow_left")}
+            src={getIconSrc("ic_arrow_left")}
             alt=""
             className="w-[18px] h-[18px] object-contain"
           />
@@ -5149,7 +5149,7 @@ function TopAppBarPage() {
           </span>
 
           <img
-            src={getIconSrc("accordion_down")}
+            src={getIconSrc("ic_accordion_down")}
             alt=""
             className="
               w-[12px]
@@ -5164,7 +5164,7 @@ function TopAppBarPage() {
      <div className="flex items-center gap-[14px]">
   <button className="w-6 h-6 shrink-0 flex items-center justify-center">
     <img
-      src={getIconSrc("notification")}
+      src={getIconSrc("ic_notification")}
       alt=""
       className="w-[18px] h-[18px] object-contain"
     />
@@ -5172,7 +5172,7 @@ function TopAppBarPage() {
 
   <button className="w-6 h-6 shrink-0 flex items-center justify-center">
     <img
-      src={getIconSrc("cart")}
+      src={getIconSrc("ic_cart")}
       alt=""
       className="w-[18px] h-[18px] object-contain"
     />
@@ -5182,7 +5182,35 @@ function TopAppBarPage() {
     </div>
   </div>
 </Card>
+<Card>
+  <div className="p-10 bg-[#FAFBFC]">
+    <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+      ◆TopAppBar_back
+    </div>
 
+    <div className="w-[375px] h-[44px] bg-white">
+      <div className="h-full px-4 flex items-center justify-between">
+        {/* Back */}
+        <button className="w-6 h-6 shrink-0 flex items-center justify-center">
+          <img
+            src={getIconSrc("ic_arrow_left")}
+            alt=""
+            className="w-[18px] h-[18px] object-contain"
+          />
+        </button>
+
+        {/* Share */}
+        <button className="w-6 h-6 shrink-0 flex items-center justify-center">
+          <img
+            src={getIconSrc("ic_share")}
+            alt=""
+            className="w-[18px] h-[18px] object-contain"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</Card>
     </div>
   );
 }
