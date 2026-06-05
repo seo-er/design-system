@@ -2122,7 +2122,7 @@ function ButtonPage() {
 {/* SMALL */}
 <div className="flex flex-col gap-3">
   <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn-small
+    ◆btn_small
   </div>
 
   <button className="
@@ -2138,7 +2138,7 @@ function ButtonPage() {
 {/* MEDIUM */}
 <div className="flex flex-col gap-3">
   <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn-medium
+    ◆btn_medium
   </div>
 
   <button className="
@@ -2154,7 +2154,7 @@ function ButtonPage() {
 {/* LARGE */}
 <div className="flex flex-col gap-3">
   <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn-large
+    ◆btn_large
   </div>
 
   <button className="
@@ -2171,7 +2171,7 @@ function ButtonPage() {
 {/* XLARGE */}
 <div className="flex flex-col gap-3">
   <div className="text-[18px] font-medium text-[#7C3AED]">
-    ◆btn-xlarge
+    ◆btn_xlarge
   </div>
 
   <button className="
@@ -2243,7 +2243,7 @@ function ButtonPage() {
   <div className="flex flex-col gap-3">
 
     <div className="text-[18px] font-semibold text-[#7C3AED]">
-      ◆btn-primary
+      ◆btn_primary
     </div>
 
     <button
@@ -2268,7 +2268,7 @@ function ButtonPage() {
   <div className="flex flex-col gap-3">
 
     <div className="text-[18px] font-semibold text-[#7C3AED]">
-      ◆btn-secondary
+      ◆btn_secondary
     </div>
 
     <button
@@ -2293,7 +2293,7 @@ function ButtonPage() {
   <div className="flex flex-col gap-3">
 
     <div className="text-[18px] font-semibold text-[#7C3AED]">
-      ◆btn-outline
+      ◆btn_outline
     </div>
   <button
     className="
@@ -2318,7 +2318,7 @@ function ButtonPage() {
    <div className="flex flex-col gap-3">
 
 <div className="text-[18px] font-semibold text-[#7C3AED]">
-  ◆btn-outline
+  ◆btn_outline
 </div>
 <button
   className="
@@ -2388,7 +2388,7 @@ function ButtonPage() {
 <div className="flex flex-col gap-3">
 
   <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn-confirm
+    ◆btn_confirm
   </div>
 
   <button
@@ -2420,7 +2420,7 @@ function ButtonPage() {
 {/* LOADING */}
 <div className="flex flex-col gap-3">
   <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn-loading
+    ◆btn_loading
   </div>
 
   <button
@@ -2451,7 +2451,7 @@ function ButtonPage() {
 <div className="flex flex-col gap-3">
 
   <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn-disabled
+    ◆btn_disabled
   </div>
 
   <button
@@ -3347,7 +3347,7 @@ function CheckboxPage() {
             <div className="mb-16">
 
               <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-                ◆checkbox-states
+                ◆checkbox_states
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
@@ -3439,7 +3439,7 @@ function CheckboxPage() {
             <div className="mb-16">
 
               <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-                ◆checkbox-variants
+                ◆checkbox_variants
               </div>
 
               <div className="flex flex-wrap gap-16">
@@ -3531,15 +3531,145 @@ function CheckboxPage() {
     </div>
   );
 }
+
 function AdvertisingPage() {
   return (
     <div>
-      <h1 className="text-[44px] font-bold tracking-tight">
-        Advertising
-      </h1>
+      {/* Header */}
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Components
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Advertising
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
+          서비스 내 광고 배너 컴포넌트 및 광고 소재 가이드를 정의합니다.
+        </p>
+      </div>
+
+      {/* 광고 배너 */}
+      <SectionTitle title="광고 배너" />
+
+      <Card>
+        <div className="p-10 bg-[#FAFBFC]">
+          <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
+            ◆Advertising_primary
+          </div>
+
+          <div className="flex justify-center rounded-[20px] border border-[#E5E8EB] bg-white p-10">
+            <img
+              src={bannerPrimary}
+              alt="Advertising Banner"
+              className="max-w-full object-contain"
+            />
+          </div>
+        </div>
+      </Card>
+
+      {/* 광고 가이드 */}
+      <SectionTitle title="광고 가이드" />
+
+      <Card>
+        <div className="overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-[#F8FAFC]">
+                <th className="w-1/2 border-b border-[#E5E8EB] p-6 text-center text-[18px] font-semibold">
+                  항목
+                </th>
+
+                <th className="border-b border-[#E5E8EB] p-6 text-center text-[18px] font-semibold">
+                  상세 안내
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  파일 형식
+                </td>
+
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  PNG, JPG, JPEG
+                </td>
+              </tr>
+
+              <tr>
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  권장 비율
+                </td>
+
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  디자인 시안 기준 비율 사용
+                </td>
+              </tr>
+
+              <tr>
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  권장 용량
+                </td>
+
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  1MB 이하
+                </td>
+              </tr>
+
+              <tr>
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  광고 표시
+                </td>
+
+                <td className="border-b border-[#E5E8EB] p-6 text-center">
+                  AD 표기 필수
+                </td>
+              </tr>
+
+              <tr>
+                <td className="p-6 text-center">
+                  CTA 버튼
+                </td>
+
+                <td className="p-6 text-center">
+                  명확한 행동 유도 문구 사용
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      {/* 주의사항 */}
+      <SectionTitle title="주의사항" />
+
+      <Card>
+        <div className="p-10">
+          <ul className="space-y-4 text-[16px] text-[#4E5968] leading-[1.8]">
+            <li>
+              • 광고 이미지에는 광고(AD) 표시가 포함되어야 합니다.
+            </li>
+
+            <li>
+              • 텍스트가 잘리지 않도록 안전 영역을 확보합니다.
+            </li>
+
+            <li>
+              • 저해상도 이미지 사용을 지양합니다.
+            </li>
+
+            <li>
+              • 브랜드 가이드에 맞는 소재를 사용합니다.
+            </li>
+          </ul>
+        </div>
+      </Card>
     </div>
   );
 }
+
 
 function AccordionPage() {
   const [tab, setTab] = useState("design");
@@ -3636,7 +3766,7 @@ const [iconOpenIndex, setIconOpenIndex] =
           <div className="p-10 bg-[#FAFBFC]">
 
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆TopAppBar_default
+              ◆accordion_default
             </div>
 
             <div
@@ -3806,7 +3936,7 @@ const [iconOpenIndex, setIconOpenIndex] =
 {iconAccordionTab === "design" ? (
   <div className="p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-      ◆accordion-with-icon
+      ◆accordion_with_icon
     </div>
 
     <div
@@ -4002,7 +4132,7 @@ function BadgePage() {
             <div className="mb-14">
 
               <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-                ◆badge-variants
+                ◆badge_variants
               </div>
 
               <div className="flex flex-wrap gap-2">
@@ -4040,7 +4170,7 @@ function BadgePage() {
             <div>
 
               <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-                ◆badge-usage
+                ◆badge_usage
               </div>
 
               <div
@@ -4131,7 +4261,7 @@ function BadgePage() {
             </div>
 
             <div className="text-[18px] font-semibold text-[#7C3AED] mt-12 mb-6">
-  ◆badge-price-discount
+  ◆badge_price_discount
 </div>
 
 <div
@@ -4290,7 +4420,7 @@ function FilterPage() {
           {/* 기본 */}
           <div>
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆filter-default
+              ◆filter_default
             </div>
   
             <button className="h-[56px] px-8 rounded-full border border-[#E5E8EB] bg-white flex items-center gap-3">
@@ -4313,7 +4443,7 @@ function FilterPage() {
           {/* 숫자 없음 */}
           <div>
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆filter-no-count
+              ◆filter_no-count
             </div>
   
             <button className="h-[56px] px-8 rounded-full border-2 border-[#191F28] bg-white flex items-center gap-3">
@@ -4327,7 +4457,7 @@ function FilterPage() {
           {/* 숫자 있음 */}
           <div>
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆filter-count
+              ◆filter_count
             </div>
   
             <button className="relative h-[56px] px-8 rounded-full border-2 border-[#191F28] bg-white flex items-center gap-3">
@@ -4348,7 +4478,7 @@ function FilterPage() {
           {/* 활성 */}
           <div>
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆filter-selected
+              ◆filter_selected
             </div>
   
             <button className="h-[56px] px-8 rounded-full bg-[#191F28] text-white flex items-center gap-3">
@@ -4375,7 +4505,7 @@ function FilterPage() {
           {/* 그룹 */}
           <div>
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆filter-group
+              ◆filter_group
             </div>
   
             <div className="flex items-center gap-4 flex-wrap">
@@ -4430,7 +4560,7 @@ function FilterPage() {
 <div className="mt-14">
 
   <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-    ◆filter-sort
+    ◆filter_sort
   </div>
 
   <div className="flex items-center gap-4 flex-wrap">
@@ -4681,7 +4811,7 @@ function TabPage() {
       {defaultView === "design" ? (
         <div className="p-10 bg-[#FAFBFC]">
 <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-      ◆tab-default
+      ◆tab_default
     </div>
           <div className="border-b border-[#E5E8EB]">
             <div className="flex">
@@ -4814,7 +4944,7 @@ function TabPage() {
             {categoryView === "design" ? (
               <div className="p-10 bg-[#FAFBFC]">
  <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
- ◆ tab-count
+ ◆tab_count
           </div>
                 <div className="border-b border-[#E5E8EB]">
                   <div className="flex">
@@ -4936,7 +5066,7 @@ function TabPage() {
   {tab === "design" ? (
     <div className="p-10 bg-[#FAFBFC]">
       <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-      ◆ tab-icon
+      ◆ tab_icon
       </div>
 
       <div className="flex flex-wrap gap-8">
@@ -5016,7 +5146,7 @@ function TabPage() {
 
 <div className="p-10 bg-[#FAFBFC]">
 <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
-◆ tab-chip
+◆ tab_chip
 </div>
 
 <div className="flex items-center gap-[14px]">
