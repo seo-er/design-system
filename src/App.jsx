@@ -1,4 +1,14 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import {
+  SYSTEM_META,
+  PRINCIPLES,
+  TOKEN_TIERS,
+  TOKEN_PIPELINE,
+  SEMANTIC_COLORS,
+  PATTERNS,
+  NAV_SECTIONS,
+  PAGE_META,
+} from "./tokens";
 import alertImage from "./assets/Alert.png";
 import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
@@ -35,7 +45,7 @@ function hexToRgba(hex, opacity) {
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
-  const typographyRows = [
+const typographyRows = [
     ["font.heading.large", "SemiBold", "20px", "26px", "-1%"],
     ["font.heading.medium", "SemiBold", "18px", "24px", "-1%"],
     ["font.heading.small", "Medium", "18px", "24px", "-1%"],
@@ -67,228 +77,193 @@ const spacingRows = [
 ];
 
 export default function App() {
-  const [menu, setMenu] = useState("palette");
+  const [menu, setMenu] = useState("home");
+  const [search, setSearch] = useState("");
+  const [mobileNav, setMobileNav] = useState(false);
+
+  const filteredSections = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    if (!query) return NAV_SECTIONS;
+
+    return NAV_SECTIONS.map((section) => ({
+      ...section,
+      items: section.items.filter(
+        (item) =>
+          item.label.toLowerCase().includes(query) ||
+          section.label.toLowerCase().includes(query)
+      ),
+    })).filter((section) => section.items.length > 0);
+  }, [search]);
+
+  const pageMeta = PAGE_META[menu] || PAGE_META.home;
+
+  const navigate = (id) => {
+    setMenu(id);
+    setMobileNav(false);
+    setSearch("");
+  };
+
+  const renderPage = () => {
+    switch (menu) {
+      case "home":
+        return <HomePage onNavigate={navigate} />;
+      case "tokens":
+        return <TokenPage />;
+      case "patterns":
+        return <PatternsPage />;
+      case "palette":
+        return <PalettePage />;
+      case "icons":
+        return <IconPage />;
+      case "illustrations":
+        return <IllustrationPage />;
+      case "typography":
+        return <TypographyPage />;
+      case "spacing":
+        return <SpacingPage />;
+      case "grid":
+        return <GridPage />;
+      case "button":
+        return <ButtonPage />;
+      case "checkbox":
+        return <CheckboxPage />;
+      case "accordion":
+        return <AccordionPage />;
+      case "badge":
+        return <BadgePage />;
+      case "filter":
+        return <FilterPage />;
+      case "tab":
+        return <TabPage />;
+      case "topappbar":
+        return <TopAppBarPage />;
+      case "motion":
+        return <MotionPage />;
+      case "advertising":
+        return <AdvertisingPage />;
+      default:
+        return <HomePage onNavigate={navigate} />;
+    }
+  };
+
+  const sidebar = (
+    <>
+      <div className="px-5 pt-6 pb-5 border-b border-[var(--color-border-subtle)]">
+        <button
+          onClick={() => navigate("home")}
+          className="flex items-center gap-3 w-full text-left group"
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#2563EB] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+            <span className="text-white font-bold text-lg">f</span>
+          </div>
+          <div>
+            <h1 className="text-[20px] font-bold tracking-tight leading-none">
+              {SYSTEM_META.name}
+            </h1>
+            <p className="text-xs text-[#8B95A1] mt-1">Design System v{SYSTEM_META.version}</p>
+          </div>
+        </button>
+      </div>
+
+      <div className="px-5 pt-5">
+        <div className="relative">
+          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B95A1] text-sm">
+            ⌕
+          </span>
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="토큰, 컴포넌트 검색..."
+            className="w-full h-10 pl-9 pr-4 rounded-xl bg-[#F3F5F8] border border-transparent text-sm text-[#191F28] placeholder:text-[#8B95A1] focus:outline-none focus:border-[#C7D2FE] focus:bg-white transition"
+          />
+        </div>
+      </div>
+
+      <nav className="flex-1 overflow-auto px-3 py-5 space-y-5">
+        {filteredSections.map((section) => (
+          <div key={section.id}>
+            <p className="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#8B95A1]">
+              {section.label}
+            </p>
+            <div className="space-y-0.5">
+              {section.items.map((item) => (
+                <MenuItem
+                  key={item.id}
+                  active={menu === item.id}
+                  onClick={() => navigate(item.id)}
+                >
+                  {item.label}
+                </MenuItem>
+              ))}
+            </div>
+          </div>
+        ))}
+        {filteredSections.length === 0 && (
+          <p className="px-3 text-sm text-[#8B95A1]">검색 결과가 없습니다.</p>
+        )}
+      </nav>
+
+      <div className="border-t border-[var(--color-border-subtle)] px-5 py-4">
+        <div className="flex items-center justify-between text-xs text-[#8B95A1]">
+          <span>Figma Library</span>
+          <span className="font-medium text-[#4F46E5]">연동됨</span>
+        </div>
+        <p className="text-[11px] text-[#8B95A1] mt-2">
+          © 2026 {SYSTEM_META.name} Design System
+        </p>
+      </div>
+    </>
+  );
 
   return (
-    <div className="flex h-screen bg-[#F9FAFB] text-[#191F28]">
-      {/* SIDEBAR */}
-      <aside className="hidden lg:flex w-[280px] bg-white border-r border-[#E5E8EB] flex-col">
-        <div className="px-6 pt-7 pb-6 border-b border-[#F2F4F6]">
-          <h1 className="text-[24px] font-bold tracking-tight">flow</h1>
-          <p className="text-sm text-[#8B95A1] mt-1">Design System</p>
-        </div>
-
-        <div className="px-6 pt-6">
-          <div className="h-11 rounded-xl bg-[#F2F4F6] flex items-center px-4 text-sm text-[#8B95A1]">
-            Search...
-          </div>
-        </div>
-
-        <div className="flex-1 overflow-auto px-4 py-6">
-        <div className="space-y-8">
-
-{/* FOUNDATION */}
-<div className="bg-[#F3F5F8] rounded-[24px] p-4">
-
-  <div className="flex items-center justify-between mb-4 px-2">
-    <h3 className="text-[20px] font-semibold text-[#2563EB]">
-      Foundation
-    </h3>
-
-    <span className="text-[22px] text-[#6B7280]">
-      ⌄
-    </span>
-  </div>
-
-  <div className="space-y-1">
-
-    <MenuItem
-      active={menu === "palette"}
-      onClick={() => setMenu("palette")}
-    >
-      Colors
-    </MenuItem>
-
-    <MenuItem
-      active={menu === "icons"}
-      onClick={() => setMenu("icons")}
-    >
-      Icons
-    </MenuItem>
-    <MenuItem
-  active={menu === "illustrations"}
-  onClick={() => setMenu("illustrations")}
->
-  Illustrations
-</MenuItem>
-    <MenuItem
-      active={menu === "typography"}
-      onClick={() => setMenu("typography")}
-    >
-      Typography
-    </MenuItem>
-
-    <MenuItem
-      active={menu === "spacing"}
-      onClick={() => setMenu("spacing")}
-    >
-      Spacing
-    </MenuItem>
-
-    <MenuItem
-      active={menu === "grid"}
-      onClick={() => setMenu("grid")}
-    >
-      Grid
-    </MenuItem>
-
-  </div>
-
-</div>
-
-{/* COMPONENTS */}
-<div className="bg-[#F3F5F8] rounded-[24px] p-4">
-
-  <div className="flex items-center justify-between mb-4 px-2">
-    <h3 className="text-[20px] font-semibold text-[#2563EB]">
-      Components
-    </h3>
-
-    <span className="text-[22px] text-[#6B7280]">
-      ⌄
-    </span>
-  </div>
-
-  <div className="space-y-1">
-
-    <MenuItem
-      active={menu === "button"}
-      onClick={() => setMenu("button")}
-    >
-      Button
-    </MenuItem>
-    <MenuItem
-  active={menu === "checkbox"}
-  onClick={() => setMenu("checkbox")}
->
-  Checkbox
-</MenuItem>
-<MenuItem
-  active={menu === "accordion"}
-  onClick={() => setMenu("accordion")}
->
-  Accordion
-</MenuItem>
-<MenuItem
-  active={menu === "badge"}
-  onClick={() => setMenu("badge")}
->
-Badge
-</MenuItem>
-<MenuItem
-      active={menu === "filter"}
-      onClick={() => setMenu("filter")}
-    >
-      Filter
-    </MenuItem>
-    <MenuItem
-      active={menu === "tab"}
-      onClick={() => setMenu("tab")}
-    >
-      Tab
-    </MenuItem>
-    <MenuItem
-      active={menu === "topappbar"}
-      onClick={() => setMenu("topappbar")}
-    >
-      TopAppBar
-    </MenuItem>
-
-    
-  </div>
-
-</div>
-
-{/* MOTION */}
-<div className="bg-[#F3F5F8] rounded-[24px] p-4">
-
-  <div className="flex items-center justify-between px-2">
-    <button
-      onClick={() => setMenu("motion")}
-      className={`
-        text-[20px]
-        font-semibold
-        transition
-        ${
-          menu === "motion"
-            ? "text-[#2563EB]"
-            : "text-[#374151]"
-        }
-      `}
-    >
-      Motion
-    </button>
-
-    <span className="text-[22px] text-[#6B7280]">
-      ⌄
-    </span>
-  </div>
-
-</div>
-
-{/* ADVERTISING */}
-<div className="bg-[#F3F5F8] rounded-[24px] p-4">
-
-  <div className="flex items-center justify-between px-2">
-    <button
-      onClick={() => setMenu("advertising")}
-      className={`
-        text-[20px]
-        font-semibold
-        transition
-        ${
-          menu === "advertising"
-            ? "text-[#2563EB]"
-            : "text-[#374151]"
-        }
-      `}
-    >
-      Advertising
-    </button>
-
-    <span className="text-[22px] text-[#6B7280]">
-      ⌄
-    </span>
-  </div>
-
-</div>
-
-</div>
-        </div>
-
-        <div className="border-t border-[#F2F4F6] px-6 py-5">
-          <p className="text-xs text-[#8B95A1]">
-            © 2026 Flow Design System
-          </p>
-        </div>
+    <div className="flex h-screen bg-[var(--color-surface-subtle)] text-[var(--color-text-primary)]">
+      <aside className="hidden lg:flex w-[272px] shrink-0 bg-white border-r border-[var(--color-border-default)] flex-col">
+        {sidebar}
       </aside>
+
+      {mobileNav && (
+        <div className="lg:hidden fixed inset-0 z-50 flex">
+          <div
+            className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+            onClick={() => setMobileNav(false)}
+          />
+          <aside className="relative w-[280px] max-w-[85vw] bg-white flex flex-col shadow-xl">
+            {sidebar}
+          </aside>
+        </div>
+      )}
+
       <div className="flex-1 flex flex-col min-w-0">
-        <main className="flex-1 overflow-y-auto px-8 py-10 lg:px-12">
-          {menu === "palette" && <PalettePage />}
-          {menu === "icons" && <IconPage />}
-          {menu === "illustrations" && <IllustrationPage />}
-          {menu === "typography" && <TypographyPage />}
-          {menu === "spacing" && <SpacingPage />}
-          {menu === "grid" && <GridPage />}
-          {menu === "button" && <ButtonPage />}
-          {menu === "checkbox" && <CheckboxPage />}
-          {menu === "accordion" && <AccordionPage />}
-          {menu === "badge" && <BadgePage />}
-          {menu === "filter" && <FilterPage />}
-          {menu === "tab" && <TabPage />}
-          {menu === "topappbar" && <TopAppBarPage />}
-          {menu === "motion" && <MotionPage />}
-          {menu === "advertising" && <AdvertisingPage />}
+        <header className="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 lg:px-8 h-14 bg-white/80 backdrop-blur-md border-b border-[var(--color-border-subtle)]">
+          <div className="flex items-center gap-3 min-w-0">
+            <button
+              onClick={() => setMobileNav(true)}
+              className="lg:hidden w-9 h-9 rounded-lg border border-[#E5E8EB] flex items-center justify-center text-[#4E5968]"
+              aria-label="메뉴 열기"
+            >
+              ☰
+            </button>
+            <div className="flex items-center gap-2 text-sm min-w-0">
+              <span className="text-[#8B95A1] hidden sm:inline">{pageMeta.section}</span>
+              <span className="text-[#8B95A1] hidden sm:inline">/</span>
+              <span className="font-medium truncate">{pageMeta.label}</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-xs font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4F46E5]" />
+              v{SYSTEM_META.version}
+            </span>
+            <span className="hidden md:inline text-xs text-[#8B95A1]">
+              Updated {SYSTEM_META.lastUpdated}
+            </span>
+          </div>
+        </header>
+
+        <main className="flex-1 overflow-y-auto">
+          <div className="max-w-[1120px] mx-auto px-5 py-8 lg:px-10 lg:py-12">
+            {renderPage()}
+          </div>
         </main>
       </div>
     </div>
@@ -299,10 +274,10 @@ function MenuItem({ children, active, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center px-3 py-[11px] rounded-xl text-[15px] font-medium transition-all ${
+      className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-[14px] font-medium transition-all duration-150 ${
         active
-          ? "bg-[#EEF2FF] text-[#4F46E5]"
-          : "text-[#4B5563] hover:bg-gray-50"
+          ? "bg-[#EEF2FF] text-[#4F46E5] shadow-[inset_3px_0_0_#4F46E5]"
+          : "text-[#4B5563] hover:bg-[#F9FAFB]"
       }`}
     >
       {children}
@@ -310,20 +285,277 @@ function MenuItem({ children, active, onClick }) {
   );
 }
 
-function SectionTitle({ title }) {
+function PageHeader({ category, title, description, badge }) {
   return (
-    <div className="mb-8 mt-16 first:mt-0">
-      <h2 className="text-[28px] font-bold tracking-tight">
+    <div className="mb-12 animate-fade-up">
+      <div className="flex flex-wrap items-center gap-2 mb-3">
+        <span className="text-xs font-semibold uppercase tracking-wider text-[#8B95A1]">
+          {category}
+        </span>
+        {badge && (
+          <span className="px-2 py-0.5 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-[11px] font-semibold">
+            {badge}
+          </span>
+        )}
+      </div>
+      <h1 className="text-[36px] lg:text-[44px] font-bold tracking-tight leading-[1.1]">
         {title}
-      </h2>
+      </h1>
+      {description && (
+        <p className="text-[#4E5968] text-[16px] lg:text-[17px] leading-[1.8] mt-5 max-w-[820px]">
+          {description}
+        </p>
+      )}
     </div>
   );
 }
 
-function Card({ children }) {
+function TokenChip({ token, onCopy }) {
   return (
-    <div className="bg-white rounded-[28px] border border-[#E5E8EB] overflow-hidden mb-6">
+    <button
+      onClick={() => {
+        navigator.clipboard.writeText(token);
+        onCopy?.();
+      }}
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F3F5F8] hover:bg-[#E5E8EB] font-mono text-[13px] text-[#4E5968] transition"
+      title="클릭하여 복사"
+    >
+      {token}
+      <span className="text-[#8B95A1] text-xs">⧉</span>
+    </button>
+  );
+}
+
+function SectionTitle({ title, description }) {
+  return (
+    <div className="mb-6 mt-14 first:mt-0">
+      <h2 className="text-[24px] lg:text-[28px] font-bold tracking-tight">
+        {title}
+      </h2>
+      {description && (
+        <p className="text-[#6B7684] text-[15px] mt-2 max-w-[640px]">{description}</p>
+      )}
+    </div>
+  );
+}
+
+function Card({ children, className = "" }) {
+  return (
+    <div
+      className={`bg-white rounded-[var(--radius-xl)] border border-[var(--color-border-default)] overflow-hidden mb-6 shadow-[var(--shadow-sm)] ${className}`}
+    >
       {children}
+    </div>
+  );
+}
+
+function HomePage({ onNavigate }) {
+  const stats = [
+    { label: "Design Tokens", value: "120+", desc: "Primitive · Semantic · Component" },
+    { label: "Components", value: "7", desc: "문서화된 UI 컴포넌트" },
+    { label: "Figma Variables", value: "연동", desc: "Tokens Studio 파이프라인" },
+    { label: "Platforms", value: "2+", desc: "국내 · 글로벌 서비스" },
+  ];
+
+  const quickLinks = [
+    { id: "tokens", label: "Design Tokens", desc: "Figma → Code 토큰 체계", color: "#4F46E5" },
+    { id: "palette", label: "Colors", desc: "라이트/다크 팔레트", color: "#F97316" },
+    { id: "patterns", label: "Patterns", desc: "디자인 규칙 & 가이드", color: "#7C3AED" },
+    { id: "button", label: "Button", desc: "인터랙션 컴포넌트", color: "#2563EB" },
+  ];
+
+  return (
+    <div>
+      <section className="relative mb-14 animate-fade-up overflow-hidden rounded-[32px] bg-gradient-to-br from-[#1E1B4B] via-[#312E81] to-[#1E3A5F] p-8 lg:p-12 text-white">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#4F46E5]/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-60 h-60 bg-[#2563EB]/15 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+        <div className="relative">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            Design System v{SYSTEM_META.version}
+          </span>
+          <h1 className="text-[32px] lg:text-[48px] font-bold tracking-tight leading-[1.15] max-w-[720px]">
+            국내·글로벌 서비스를 위한
+            <br />
+            <span className="text-[#A5B4FC]">통합 디자인 시스템</span>
+          </h1>
+          <p className="text-white/75 text-[16px] lg:text-[17px] leading-[1.8] mt-5 max-w-[600px]">
+            제품 전반의 UI 완성도와 일관된 사용자 경험을 위해 설계된 Flow Design System.
+            Figma Variables 기반 토큰 체계와 개발 코드화를 통해 디자인-개발 간 구현 정확도를 높입니다.
+          </p>
+          <div className="flex flex-wrap gap-3 mt-8">
+            <button
+              onClick={() => onNavigate("tokens")}
+              className="h-11 px-6 rounded-xl bg-white text-[#312E81] text-sm font-semibold hover:bg-white/90 transition shadow-lg"
+            >
+              토큰 체계 보기
+            </button>
+            <button
+              onClick={() => onNavigate("patterns")}
+              className="h-11 px-6 rounded-xl bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition border border-white/20"
+            >
+              가이드라인 보기
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14 animate-fade-up-delay-1">
+        {stats.map((s) => (
+          <div
+            key={s.label}
+            className="bg-white rounded-[20px] border border-[var(--color-border-default)] p-5 shadow-[var(--shadow-sm)]"
+          >
+            <p className="text-xs font-medium text-[#8B95A1] uppercase tracking-wide">{s.label}</p>
+            <p className="text-[28px] font-bold mt-1">{s.value}</p>
+            <p className="text-sm text-[#6B7684] mt-1">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <SectionTitle
+        title="핵심 원칙"
+        description="시스템 설계, UX 일관성, 패턴 표준화, 토큰 코드화 — 4가지 축으로 운영됩니다."
+      />
+      <div className="grid md:grid-cols-2 gap-4 mb-14 animate-fade-up-delay-2">
+        {PRINCIPLES.map((p) => (
+          <div
+            key={p.title}
+            className="group bg-white rounded-[24px] border border-[var(--color-border-default)] p-6 hover:shadow-[var(--shadow-md)] transition-shadow duration-300"
+          >
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center text-lg mb-4"
+              style={{ backgroundColor: `${p.color}15`, color: p.color }}
+            >
+              {p.icon}
+            </div>
+            <h3 className="text-[18px] font-bold mb-2">{p.title}</h3>
+            <p className="text-[15px] text-[#4E5968] leading-[1.7]">{p.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <SectionTitle
+        title="Figma → Code 파이프라인"
+        description="Figma Variables를 단일 소스로, 토큰 자동 변환과 컴포넌트 구현까지 일관된 워크플로를 유지합니다."
+      />
+      <Card className="mb-14">
+        <div className="p-6 lg:p-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {TOKEN_PIPELINE.map((step, i) => (
+              <div key={step.step} className="relative">
+                {i < TOKEN_PIPELINE.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-[calc(100%-8px)] w-4 h-0.5 bg-[#E5E8EB]" />
+                )}
+                <div className="bg-[#F8FAFC] rounded-[20px] p-5 h-full border border-[#F2F4F6]">
+                  <span className="text-xs font-bold text-[#4F46E5]">{step.step}</span>
+                  <h4 className="text-[16px] font-bold mt-2">{step.title}</h4>
+                  <p className="text-sm text-[#6B7684] mt-1">{step.desc}</p>
+                  <span className="inline-block mt-3 px-2 py-0.5 rounded-md bg-white text-xs font-medium text-[#8B95A1] border border-[#E5E8EB]">
+                    {step.tool}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Card>
+
+      <SectionTitle title="빠른 이동" />
+      <div className="grid sm:grid-cols-2 gap-4 animate-fade-up-delay-3">
+        {quickLinks.map((link) => (
+          <button
+            key={link.id}
+            onClick={() => onNavigate(link.id)}
+            className="flex items-start gap-4 bg-white rounded-[20px] border border-[var(--color-border-default)] p-5 text-left hover:shadow-[var(--shadow-md)] hover:border-[#C7D2FE] transition-all duration-200"
+          >
+            <div
+              className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center text-white font-bold text-sm"
+              style={{ backgroundColor: link.color }}
+            >
+              {link.label[0]}
+            </div>
+            <div>
+              <p className="font-semibold text-[16px]">{link.label}</p>
+              <p className="text-sm text-[#6B7684] mt-0.5">{link.desc}</p>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PatternsPage() {
+  return (
+    <div>
+      <PageHeader
+        category="Guidelines"
+        title="Patterns & Guidelines"
+        badge="표준화"
+        description="공통 디자인 규칙 기반의 패턴을 표준화하고, Do/Don't 가이드라인을 통해 제품 전반의 UI 일관성을 유지합니다."
+      />
+
+      {PATTERNS.map((group) => (
+        <div key={group.category}>
+          <SectionTitle title={group.category} />
+          <Card>
+            <div className="divide-y divide-[#F2F4F6]">
+              {group.rules.map((rule, i) => (
+                <div key={i} className="grid md:grid-cols-2 gap-4 p-6">
+                  <div className="flex gap-3">
+                    <span className="shrink-0 w-6 h-6 rounded-full bg-[#ECFDF5] text-[#10B981] flex items-center justify-center text-xs font-bold">
+                      ✓
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold text-[#10B981] uppercase mb-1">Do</p>
+                      <p className="text-[15px] text-[#2F3A47] leading-relaxed">{rule.do}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="shrink-0 w-6 h-6 rounded-full bg-[#FEF2F2] text-[#EF4444] flex items-center justify-center text-xs font-bold">
+                      ✕
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold text-[#EF4444] uppercase mb-1">Don't</p>
+                      <p className="text-[15px] text-[#2F3A47] leading-relaxed">{rule.dont}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      ))}
+
+      <SectionTitle
+        title="컴포넌트 합성 원칙"
+        description="개별 컴포넌트를 조합할 때 따라야 할 구조적 규칙입니다."
+      />
+      <div className="grid md:grid-cols-3 gap-4">
+        {[
+          {
+            title: "단일 책임",
+            desc: "하나의 컴포넌트는 하나의 UI 역할만 담당합니다. 복합 UI는 조합으로 구성합니다.",
+          },
+          {
+            title: "토큰 우선",
+            desc: "색상·간격·타이포는 반드시 시맨틱 토큰을 참조하며, 하드코딩을 지양합니다.",
+          },
+          {
+            title: "상태 완결성",
+            desc: "default, hover, focus, disabled, loading 상태를 함께 설계하고 문서화합니다.",
+          },
+        ].map((item) => (
+          <div
+            key={item.title}
+            className="bg-gradient-to-br from-[#F8FAFC] to-white rounded-[20px] border border-[#E5E8EB] p-6"
+          >
+            <h4 className="font-bold text-[16px] mb-2">{item.title}</h4>
+            <p className="text-sm text-[#4E5968] leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -332,22 +564,80 @@ function Card({ children }) {
 function TokenPage() {
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Foundations
-        </p>
+      <PageHeader
+        category="Foundation"
+        title="Design Tokens"
+        badge="Figma Variables"
+        description="Figma Variables 기반 3단계 토큰 체계(Primitive → Semantic → Component)로 디자인과 개발의 단일 소스 오브 트루스를 유지합니다."
+      />
 
-        <h1 className="text-[44px] leading-[1.1] font-bold tracking-tight">
-          Design Tokens
-        </h1>
-
-        <p className="text-[#6B7684] text-[15px] leading-7 mt-5 max-w-[720px]">
-          Design tokens define the visual foundations of the system.
-        </p>
+      <SectionTitle
+        title="토큰 아키텍처"
+        description="변경 빈도와 추상화 수준에 따라 3계층으로 분리하여 유지보수성과 확장성을 확보합니다."
+      />
+      <div className="grid md:grid-cols-3 gap-4 mb-10">
+        {TOKEN_TIERS.map((tier) => (
+          <div
+            key={tier.tier}
+            className="bg-white rounded-[20px] border border-[var(--color-border-default)] p-5 shadow-[var(--shadow-sm)]"
+          >
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#4F46E5]">
+              {tier.tier}
+            </span>
+            <h3 className="text-[17px] font-bold mt-1">{tier.label}</h3>
+            <p className="text-sm text-[#6B7684] mt-2 leading-relaxed">{tier.description}</p>
+            <div className="mt-4 space-y-2">
+              <div>
+                <p className="text-[11px] text-[#8B95A1] mb-1">Token</p>
+                <TokenChip token={tier.example} />
+              </div>
+              <div>
+                <p className="text-[11px] text-[#8B95A1] mb-1">Figma Variable</p>
+                <code className="text-[12px] text-[#4E5968]">{tier.figma}</code>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* COLOR */}
-      <SectionTitle title="Color" />
+      <SectionTitle
+        title="시맨틱 컬러 토큰"
+        description="Figma Variables와 CSS Custom Properties가 1:1 매핑됩니다. 클릭하여 토큰명을 복사할 수 있습니다."
+      />
+      <Card className="mb-10">
+        <div className="hidden lg:grid grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr] gap-4 px-6 py-4 border-b border-[#F2F4F6] text-xs font-semibold text-[#8B95A1] uppercase tracking-wide">
+          <span>Token</span>
+          <span>Figma</span>
+          <span>CSS Variable</span>
+          <span>Light / Dark</span>
+          <span>Usage</span>
+        </div>
+        {SEMANTIC_COLORS.map((color) => (
+          <div
+            key={color.token}
+            className="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr] gap-4 px-6 py-5 border-b border-[#F2F4F6] last:border-0 items-center hover:bg-[#FAFBFC] transition"
+          >
+            <TokenChip token={color.token} />
+            <code className="text-[12px] text-[#6B7684] font-mono">{color.figma}</code>
+            <code className="text-[12px] text-[#4F46E5] font-mono">{color.css}</code>
+            <div className="flex gap-2">
+              <div
+                className="w-10 h-10 rounded-lg border border-[#E5E8EB] shadow-sm"
+                style={{ backgroundColor: color.light }}
+                title={color.light}
+              />
+              <div
+                className="w-10 h-10 rounded-lg border border-[#374151]"
+                style={{ backgroundColor: color.dark }}
+                title={color.dark}
+              />
+            </div>
+            <span className="text-sm text-[#4E5968]">{color.usage}</span>
+          </div>
+        ))}
+      </Card>
+
+      <SectionTitle title="Color" description="시맨틱 토큰이 참조하는 Primitive 컬러 값입니다." />
 
       <Card>
         <div className="grid md:grid-cols-3 border-b border-[#F2F4F6] text-sm text-[#8B95A1] px-8 py-4">
@@ -573,12 +863,13 @@ function TokenPage() {
 }
 
 function TypographyPage() {
-  
-return (
+  return (
 <div>
-<h1 className="text-[44px] font-bold tracking-tight mb-10">
-  Typography
-</h1>
+<PageHeader
+  category="Foundation"
+  title="Typography"
+  description="font.* 토큰 체계로 제목, 본문, 캡션의 위계를 정의합니다. Figma Text Styles와 1:1 대응되며, 클릭하여 토큰명을 복사할 수 있습니다."
+/>
 
 <Card>
 <div className="grid grid-cols-6 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
@@ -856,11 +1147,13 @@ return (
 }
 
 function SpacingPage() {
-return (
+  return (
 <div>
-<h1 className="text-[44px] font-bold tracking-tight mb-10">
-  Spacing
-</h1>
+<PageHeader
+  category="Foundation"
+  title="Spacing"
+  description="8pt 기반 space.* 토큰으로 레이아웃, 컴포넌트 내부 간격을 일관되게 정의합니다."
+/>
 
 <Card>
   <div className="grid grid-cols-5 px-8 py-4 border-b border-[#F2F4F6] text-sm text-[#8B95A1]">
@@ -918,22 +1211,11 @@ return (
 function GridPage() {
   return (
     <div>
-
-      <div className="mb-16">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Foundations
-        </p>
-
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Grid
-        </h1>
-
-        <p className="text-[18px] text-[#4E5968] leading-[1.8] mt-5 max-w-[900px]">
-          Grid는 화면과 콘텐츠의 정렬 기준을 정의한다.
-          일관된 레이아웃과 시각적 균형을 위해
-          동일한 구조와 규칙을 사용한다.
-        </p>
-      </div>
+      <PageHeader
+        category="Foundation"
+        title="Grid"
+        description="Grid는 화면과 콘텐츠의 정렬 기준을 정의합니다. 일관된 레이아웃과 시각적 균형을 위해 동일한 구조와 규칙을 사용합니다."
+      />
 
       <MobileGridSection />
 
@@ -1306,8 +1588,7 @@ function PaletteColumn({ palette, dark = false }) {
 
         {palette.colors.map((c) => {
 
-          const token =
-            `${palette.name.toLowerCase()}-${c.step}`;
+          const token = `color.${palette.name.toLowerCase()}.${c.step}`;
 
           return (
             <div
@@ -1415,13 +1696,12 @@ function accessibleTextColor(color) {
 function PalettePage() {
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">Foundations</p>
-        <h1 className="text-[44px] font-bold tracking-tight">Color Palette</h1>
-        <p className="text-[#6B7684] text-[15px] leading-7 mt-5">
-          Palette colors are used across the system.
-        </p>
-      </div>
+      <PageHeader
+        category="Foundation"
+        title="Color Palette"
+        badge="Light / Dark"
+        description="Primitive 컬러 팔레트를 정의하고, 라이트/다크 모드 및 색각 다양성을 고려한 접근성 가이드를 제공합니다."
+      />
 
       <div className="mb-20">
         <h2 className="text-[28px] font-bold tracking-tight mb-8">Light Mode</h2>
@@ -2042,25 +2322,12 @@ function ButtonPage() {
   return (
     <div>
 
-      {/* HEADER */}
-      <div className="mb-14">
+      <PageHeader
+        category="Components"
+        title="Button"
+        description="버튼은 사용자 액션을 트리거하는 핵심 인터랙션 컴포넌트입니다. 계층, 크기, 강조 수준에 따라 변형을 선택합니다."
+      />
 
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
-
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Button
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6 max-w-[920px]">
-          Buttons trigger actions and allow users to interact with the interface.
-          Use different sizes depending on hierarchy and layout density.
-        </p>
-
-      </div>
-
-      {/* SIZE SECTION */}
       <SectionTitle title="크기 조정하기" />
 
       <p className="text-[18px] leading-[1.8] text-[#4E5968] mb-8 max-w-[920px]">
@@ -2958,23 +3225,11 @@ function MotionPage() {
   return (
     <div>
 
-      {/* HEADER */}
-      <div className="mb-16">
-
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Foundations
-        </p>
-
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Motion
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6 max-w-[980px]">
-          Motion helps communicate hierarchy, continuity, and feedback.
-          Use motion to guide attention and improve usability.
-        </p>
-
-      </div>
+      <PageHeader
+        category="Guidelines"
+        title="Motion"
+        description="모션은 계층, 연속성, 피드백을 전달합니다. 150–300ms easing으로 사용성을 높이는 인터랙션을 설계합니다."
+      />
 
       {/* TOP MOTION */}
       <div className="grid md:grid-cols-2 gap-8 mb-20">
@@ -3513,20 +3768,11 @@ function CheckboxPage() {
 function AdvertisingPage() {
   return (
     <div>
-      {/* Header */}
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
-
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Advertising
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-          서비스 내 광고 배너 컴포넌트 및 광고 소재 가이드를 정의합니다.
-        </p>
-      </div>
+      <PageHeader
+        category="Guidelines"
+        title="Advertising"
+        description="서비스 내 광고 배너 컴포넌트 및 광고 소재 가이드를 정의합니다."
+      />
 
       {/* 광고 배너 */}
       <SectionTitle title="광고 배너" />
