@@ -193,6 +193,9 @@ export const NAV_SECTIONS = [
     label: "Components",
     items: [
       { id: "button", label: "Button" },
+      { id: "input", label: "Input" },
+      { id: "select", label: "Select" },
+      { id: "modal", label: "Modal" },
       { id: "checkbox", label: "Checkbox" },
       { id: "accordion", label: "Accordion" },
       { id: "badge", label: "Badge" },

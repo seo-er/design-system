@@ -2,6 +2,10 @@ import { useState, useMemo } from "react";
 import { SYSTEM_META, SEMANTIC_COLORS } from "./tokens";
 import { useI18n, LanguageSwitcher } from "./i18n";
 import { TypographyPage, SpacingPage, PalettePage } from "./pages/foundation";
+import { ButtonPage } from "./pages/components/ButtonPage";
+import { InputPage, SelectPage, ModalPage } from "./pages/components/FormPages";
+import { GovernancePanel } from "./components/docs/GovernancePanel";
+import { DecisionPanel } from "./components/docs/DecisionPanel";
 import { getIconSrc } from "./utils/icons";
 import { hexToRgba } from "./utils/color";
 import {
@@ -76,6 +80,12 @@ export default function App() {
         return <GridPage />;
       case "button":
         return <ButtonPage />;
+      case "input":
+        return <InputPage />;
+      case "select":
+        return <SelectPage />;
+      case "modal":
+        return <ModalPage />;
       case "checkbox":
         return <CheckboxPage />;
       case "accordion":
@@ -344,6 +354,17 @@ function HomePage({ onNavigate }) {
         </div>
       </Card>
 
+      <SectionTitle title={home.governanceTitle} description={home.governanceDesc} />
+      <button
+        type="button"
+        onClick={() => onNavigate("tokens")}
+        className="w-full text-left mb-14 rounded-[24px] border border-[#C7D2FE] bg-gradient-to-r from-[#EEF2FF] to-white p-6 lg:p-8 hover:shadow-[var(--shadow-md)] transition-shadow"
+      >
+        <p className="text-[11px] font-bold uppercase tracking-wider text-[#4F46E5]">{home.governanceBadge}</p>
+        <h3 className="text-[20px] font-bold mt-2">{home.governanceHeadline}</h3>
+        <p className="text-[15px] text-[#4E5968] mt-2 leading-relaxed">{home.governanceSummary}</p>
+      </button>
+
       <SectionTitle title={home.quickLinksTitle} />
       <div className="grid sm:grid-cols-2 gap-4 animate-fade-up-delay-3">
         {home.quickLinks.map((link) => (
@@ -448,6 +469,8 @@ function TokenPage() {
         badge={tok.badge}
         description={tok.description}
       />
+
+      <GovernancePanel />
 
       <SectionTitle title={tok.archTitle} description={tok.archDesc} />
       <div className="grid md:grid-cols-3 gap-4 mb-10">
@@ -745,6 +768,8 @@ function GridPage() {
         title={p.title}
         description={p.description}
       />
+
+      <DecisionPanel decisionId="grid" />
 
       <MobileGridSection />
 
@@ -1367,485 +1392,6 @@ function getIllustrationSrc(slug) {
       `./assets/illustrations/${slug}.svg`
     ] ||
     alertImage
-  );
-}
-function ButtonPage() {
-  const { t, page } = useI18n();
-  const p = page("button");
-  const [sizeTab, setSizeTab] = useState("design");
-  const [hierarchyTab, setHierarchyTab] = useState("design");
-  const [emphasisButtonTab, setEmphasisButtonTab] = useState("design");
-
-  return (
-    <div>
-
-      <PageHeader
-        category={t("categories.components")}
-        title={p.title}
-        badge={p.badge}
-        description={p.description}
-      />
-      <ComponentSpec
-        items={[
-          { label: "Sizes", value: "S · M · L" },
-          { label: "Hierarchy", value: "Primary · Secondary" },
-          { label: "Emphasis", value: "Confirm · Cancel" },
-          { label: "Token", value: "button.*" },
-        ]}
-      />
-
-      <SectionTitle title={p.size} description={p.sizeDesc} />
-
-      <Card>
-        <DocTabs value={sizeTab} onChange={setSizeTab} />
-
-        {sizeTab === "design" ? (
-          <div className="p-10 bg-[#FAFBFC]">
-           <div className="flex items-start gap-8 flex-wrap">
-
-{/* SMALL */}
-<div className="flex flex-col gap-3">
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn_small
-  </div>
-
-  <button className="
-  
-    rounded-[8px]
-    bg-[#F97316]
-    text-white
-  h-[46px] px-5 text-[18px] font-medium">
-    Small
-  </button>
-</div>
-
-{/* MEDIUM */}
-<div className="flex flex-col gap-3">
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn_medium
-  </div>
-
-  <button className="
-  
-  rounded-[8px]
-    bg-[#F97316]
-    text-white
-  h-[54px] px-7 text-[20px] font-medium">
-    Medium
-  </button>
-</div>
-
-{/* LARGE */}
-<div className="flex flex-col gap-3">
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn_large
-  </div>
-
-  <button className="
-  
-  rounded-[8px]
-    bg-[#F97316]
-    text-white
-    
-    h-[64px] px-9 text-[24px] font-medium">
-    Large
-  </button>
-</div>
-
-{/* XLARGE */}
-<div className="flex flex-col gap-3">
-  <div className="text-[18px] font-semibold  text-[#7C3AED]">
-    ◆btn_xlarge
-  </div>
-
-  <button className="
-  
-  rounded-[8px]
-    bg-[#F97316]
-    text-white
-    
-    h-[74px] px-11 text-[28px] font-medium">
-    XLarge
-  </button>
-</div>
-
-</div>
-          </div>
-        ) : (
-          <div className="bg-[#031B34] p-10 relative overflow-auto">
-            <div className="absolute top-6 right-6 w-11 h-11 rounded-xl bg-[#0A2747] flex items-center justify-center text-white text-[20px]">
-              ⧉
-            </div>
-            <div className="text-center text-[#7C8DA1] text-[15px] font-semibold mb-8">
-              EDITABLE EXAMPLE
-            </div>
-            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap overflow-auto">
-{`<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-  <Button size="small">Small</Button>
-  <Button size="medium">Medium</Button>
-  <Button size="large">Large</Button>
-  <Button size="xlarge">XLarge</Button>
-</div>`}
-            </pre>
-          </div>
-        )}
-
-      </Card>
-
-            {/* HIERARCHY */}
-            <div className="mt-24">
-
-<SectionTitle title={p.hierarchy} />
-
-<Card>
-  <DocTabs value={hierarchyTab} onChange={setHierarchyTab} />
-
-  {hierarchyTab === "design" ? (
-    <div className="p-14 bg-[#FAFBFC]">
-    <div className="flex items-start gap-8 flex-wrap">
-
-  {/* PRIMARY */}
-  <div className="flex flex-col gap-3">
-
-    <div className="text-[18px] font-semibold text-[#7C3AED]">
-      ◆btn_primary
-    </div>
-
-    <button
-  className="
-    w-[168px]
-    h-[48px]
-    rounded-[8px]
-    bg-[#F97316]
-    text-white
-    text-[16px]
-    font-medium
-    hover:bg-[#EA6A10]
-    transition-colors
-  "
->
- text
-</button>
-
-  </div>
-
-  {/* SECONDARY */}
-  <div className="flex flex-col gap-3">
-
-    <div className="text-[18px] font-semibold text-[#7C3AED]">
-      ◆btn_secondary
-    </div>
-
-    <button
-  className="
-    w-[168px]
-    h-[48px]
-    rounded-[8px]
-    bg-[#FFD560]
-    text-white
-    text-[16px]
-    font-medium
-    hover:bg-[#EA6A10]
-    transition-colors
-  "
->
- text
-</button>
-
-  </div>
-
-  {/* OUTLINE */}
-  <div className="flex flex-col gap-3">
-
-    <div className="text-[18px] font-semibold text-[#7C3AED]">
-      ◆btn_outline
-    </div>
-  <button
-    className="
-      w-[168px]
-      h-[48px]
-      rounded-[8px] 
-      bg-transparent
-      border
-      border-[#F97316]
-      text-[#F97316]
-      text-[16px]
-      font-medium
-      transition-colors
-    "
-  >
-  text
-  </button>
-
-  </div>
-
-   {/* OUTLINE */}
-   <div className="flex flex-col gap-3">
-
-<div className="text-[18px] font-semibold text-[#7C3AED]">
-  ◆btn_outline
-</div>
-<button
-  className="
-    w-[168px]
-    h-[48px]
-    rounded-[8px]
-    bg-white
-    border
-    border-[#E5E5E5]
-    text-[#222222]
-    text-[16px]
-    font-medium
-    hover:bg-[#F5F5F5]
-    transition-colors
-  "
->
-  text
-</button>
-
-</div>
-
-
-</div>
-    </div>
-  ) : (
-    <div className="bg-[#031B34] px-10 py-9 overflow-auto">
-      <pre className="text-[16px] leading-[1.9] text-white whitespace-pre-wrap">
-{`<Button appearance="primary">버튼 · primary</Button>
-<Button appearance="secondary">버튼 · secondary</Button>
-<Button appearance="tertiary">버튼 · tertiary</Button>`}
-      </pre>
-    </div>
-  )}
-
-</Card>
-
-</div>
-      {/* EMPHASIS BUTTONS */}
-      <div className="mt-16">
-        <Card>
-          <DocTabs value={emphasisButtonTab} onChange={setEmphasisButtonTab} />
-
-          {emphasisButtonTab === "design" ? (
-            <div className="p-6 md:p-8 bg-[#F8FAFC]">
-           <div className="flex items-start gap-6 md:gap-8 flex-wrap">
-
-{/* CONFIRM */}
-<div className="flex flex-col gap-3">
-
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn_confirm
-  </div>
-
-  <button
-  className="
-    w-[168px]
-    h-[48px]
-    rounded-[8px]
-    bg-[#F97316]
-    text-white
-    text-[16px]
-    font-medium
-    hover:bg-[#EA6A10]
-    transition-colors
-    tracking-tight
-    inline-flex
-    items-center
-    justify-center
-    gap-2
-  "
->
-  <span className="text-[16px] leading-none">♥</span>
-  <span>확인</span>
-</button>
-
-</div>
-
-
-
-{/* LOADING */}
-<div className="flex flex-col gap-3">
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn_loading
-  </div>
-
-  <button
-  className="
-    h-[54px]
-    w-[120px]
-    rounded-[8px]
-    bg-[#F97316]
-    flex
-    items-center
-    justify-center
-    gap-2
-  "
->
-  <div className="w-2 h-2 rounded-full bg-white animate-bounce" />
-  <div
-    className="w-2 h-2 rounded-full bg-white animate-bounce"
-    style={{ animationDelay: "0.15s" }}
-  />
-  <div
-    className="w-2 h-2 rounded-full bg-white animate-bounce"
-    style={{ animationDelay: "0.3s" }}
-  />
-</button>
-</div>
-
-{/* DISABLED */}
-<div className="flex flex-col gap-3">
-
-  <div className="text-[18px] font-semibold text-[#7C3AED]">
-    ◆btn_disabled
-  </div>
-
-  <button
-  className="
-    w-[168px]
-    h-[48px]
-    rounded-[8px]
-    bg-[#E5E5E5]
-    text-[#888888]
-    text-[16px]
-    font-medium
-    transition-colors
-  "
->
- 비활성
-</button>
-
-</div>
-
-</div>
-            </div>
-          ) : (
-            <div className="bg-[#031B34] px-10 py-9 overflow-auto">
-              <pre className="text-[16px] leading-[1.9] text-white whitespace-pre-wrap">
-{`<div className="flex items-center gap-4 flex-wrap">
-  <Button appearance="primary" iconLeft="heart">확인</Button>
-  <Button appearance="secondary">다음에</Button>
-  <Button loading />
-  <Button appearance="secondary" disabled iconLeft="arrow-down">비활성</Button>
-</div>`}
-              </pre>
-            </div>
-          )}
-        </Card>
-      </div>
-           
-            {/* ACCESSIBILITY */}
-            <div className="mt-24">
-
-<SectionTitle title={p.accessibility} />
-
-{/* button role */}
-<Card>
-
-  <div className="p-10">
-
-    <h3 className="text-[32px] font-bold tracking-tight leading-[1.5] mb-8">
-      버튼으로 작동하는 모든 요소는
-      스크린 리더에서 버튼으로 인지될 수 있도록 한다.
-    </h3>
-
-    <p className="text-[20px] leading-[1.9] text-[#374151] max-w-[1050px]">
-      {"<button>"} 대신 불가피하게 다른 태그를 사용해야 하는 경우
-      <code className="mx-2 px-2 py-1 rounded bg-[#F3F4F6] text-[18px]">
-        role="button"
-      </code>
-      을 사용하여 스크린 리더에서 요소의 역할이 버튼으로
-      인식될 수 있도록 해야 한다.
-    </p>
-
-    <ul className="mt-10 space-y-4 text-[20px] text-[#4B5563]">
-      <li className="flex items-start gap-4">
-        <span>•</span>
-        <span>WCAG 2.1 Name, Role, Value (A)</span>
-      </li>
-    </ul>
-
-  </div>
-
-</Card>
-
-{/* target size */}
-<Card>
-
-  <div className="p-10">
-
-    <h3 className="text-[32px] font-bold tracking-tight leading-[1.5] mb-8">
-      버튼을 적합한 크기로 제공한다.
-    </h3>
-
-    <p className="text-[20px] leading-[1.9] text-[#374151] max-w-[1100px]">
-      클릭, 터치 영역을 정교하게 조작하기 어려운 사용자를 고려하여,
-      마우스 상호작용에 대해서는 17px × 17px,
-      터치 상호작용에 대해서는 44px × 44px 이상의 영역에서
-      반응할 수 있는 컨트롤 크기를 사용할 것을 권장한다.
-    </p>
-
-    <ul className="mt-10 space-y-4 text-[20px] text-[#4B5563]">
-      <li className="flex items-start gap-4">
-        <span>•</span>
-        <span>KWCAG 2.2 조작 가능</span>
-      </li>
-
-      <li className="flex items-start gap-4">
-        <span>•</span>
-        <span>WCAG 2.1 Target Size (AAA)</span>
-      </li>
-    </ul>
-
-  </div>
-
-</Card>
-
-{/* keyboard navigation */}
-<div className="mt-20">
-
-  <h3 className="text-[36px] font-bold tracking-tight mb-8">
-    탐색
-  </h3>
-
-  <div className="overflow-hidden rounded-[24px] border border-[#E5E8EB] bg-white">
-
-    {/* header */}
-    <div className="grid grid-cols-[180px_1fr] bg-[#EEF1F4] border-b border-[#D9DEE3]">
-
-      <div className="px-6 py-5 text-[20px] font-semibold">
-        구분
-      </div>
-
-      <div className="px-6 py-5 text-[20px] font-semibold">
-        설명
-      </div>
-
-    </div>
-
-    {/* row */}
-    <div className="grid grid-cols-[180px_1fr]">
-
-      <div className="px-6 py-8 border-r border-[#E5E8EB] text-[22px] leading-[1.8] text-[#2F3A47]">
-        Tab,
-        <br />
-        Shift + Tab
-      </div>
-
-      <div className="px-6 py-8 text-[22px] leading-[1.8] text-[#2F3A47]">
-        모든 버튼은 Tab, Shift + Tab 키를 눌렀을 때
-        접근할 수 있어야 한다.
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
-    </div>
   );
 }
 function IconPage() {
@@ -2735,8 +2281,8 @@ function CheckboxPage() {
 
           </div>
         ) : (
-          <div className="bg-[#031B34] p-10 overflow-auto">
-            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+          <div className="bg-[#031B34] p-8">
+            <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<Checkbox checked>
   강의+준비물
 </Checkbox>
@@ -2979,8 +2525,8 @@ const [iconOpenIndex, setIconOpenIndex] =
             />
           </div>
         ) : (
-          <div className="bg-[#031B34] p-10 overflow-auto">
-            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+          <div className="bg-[#031B34] p-8">
+            <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<AccordionGroup>
   <Accordion title="이용 가능 지역">
     서울, 경기, 인천 지역에서 이용 가능합니다.
@@ -3016,8 +2562,8 @@ const [iconOpenIndex, setIconOpenIndex] =
     />
   </div>
 ) : (
-  <div className="bg-[#031B34] p-10 overflow-auto">
-    <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+  <div className="bg-[#031B34] p-8">
+    <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<AccordionWithIcon
   icon="location"
   title="수강 가능 지역"
@@ -3272,8 +2818,8 @@ function BadgePage() {
             
           </div>
         ) : (
-          <div className="bg-[#031B34] p-10 overflow-auto">
-            <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+          <div className="bg-[#031B34] p-8">
+            <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<Badge variant="recommend">
   추천
 </Badge>
@@ -3589,8 +3135,8 @@ function FilterPage() {
   
       ) : (
   
-        <div className="bg-[#031B34] p-10 overflow-auto">
-         <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+        <div className="bg-[#031B34] p-8">
+         <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<FilterButton>
   필터
 </FilterButton>
@@ -3770,8 +3316,8 @@ function TabPage() {
 
         </div>
       ) : (
-        <div className="bg-[#031B34] p-10 overflow-auto">
-          <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+        <div className="bg-[#031B34] p-8">
+          <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<Tab>
   <TabItem>정보</TabItem>
   <TabItem>강사</TabItem>
@@ -3876,8 +3422,8 @@ function TabPage() {
 
               </div>
             ) : (
-              <div className="bg-[#031B34] p-10 overflow-auto">
-                <pre className="text-[18px] leading-[2] text-white whitespace-pre-wrap">
+              <div className="bg-[#031B34] p-8">
+                <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<CategoryTab>
   이동
   쓰기 24
@@ -3946,8 +3492,8 @@ function TabPage() {
       </div>
     </div>
   ) : (
-    <div className="bg-[#031B34] p-10 overflow-auto">
-      <pre className="text-[16px] leading-[2] text-white whitespace-pre-wrap">
+    <div className="bg-[#031B34] p-8">
+      <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<CategoryMenu>
 <CategoryItem active>오감발달</CategoryItem>
 <CategoryItem>창의·체험</CategoryItem>
@@ -3998,8 +3544,8 @@ function TabPage() {
 </div>
 </div>
 ) : (
-  <div className="bg-[#031B34] p-10 overflow-auto">
-    <pre className="text-[16px] leading-[2] text-white whitespace-pre-wrap font-mono">
+  <div className="bg-[#031B34] p-8">
+    <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<ChipTab>
   <ChipTabItem active>낯가려요</ChipTabItem>
   <ChipTabItem>흥이 많아요</ChipTabItem>

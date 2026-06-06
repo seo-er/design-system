@@ -9,6 +9,7 @@ import {
   accessibilityBad,
   colorBlindnessAlternatives,
 } from "../../constants/foundation";
+import { DecisionPanel } from "../../components/docs/DecisionPanel";
 import { PageHeader, SectionTitle, TokenChip } from "../../components/docs/DocPrimitives";
 import { TokenTable, ContrastTable } from "../../components/docs/TokenTable";
 import { fontWeightFromLabel } from "../../utils/typography";
@@ -30,6 +31,8 @@ export function TypographyPage() {
         title={p.title}
         description={p.description}
       />
+
+      <DecisionPanel decisionId="typography" />
 
       <TokenTable
         caption="Typography token scale"
@@ -90,6 +93,8 @@ export function SpacingPage() {
         description={p.description}
       />
 
+      <DecisionPanel decisionId="spacing" />
+
       <TokenTable
         caption="Spacing token scale"
         rows={spacingRows}
@@ -132,6 +137,8 @@ export function PalettePage() {
         badge={p.badge}
         description={p.description}
       />
+
+      <DecisionPanel decisionId="color" />
 
       <SectionTitle title={p.lightMode} />
       <div className="grid xl:grid-cols-2 gap-6 mb-12">
