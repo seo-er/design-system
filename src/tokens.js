@@ -88,8 +88,8 @@ export const SEMANTIC_COLORS = [
     token: "color.text.brand",
     figma: "Semantic/Text/Brand",
     css: "--color-text-brand",
-    light: "#2563EB",
-    dark: "#60A5FA",
+    light: "#F97316",
+    dark: "#FB923C",
     usage: "브랜드 강조, 링크, 활성 상태",
   },
   {
@@ -120,8 +120,8 @@ export const SEMANTIC_COLORS = [
     token: "color.brand.primary",
     figma: "Semantic/Brand/Primary",
     css: "--color-brand-primary",
-    light: "#4F46E5",
-    dark: "#818CF8",
+    light: "#F97316",
+    dark: "#FB923C",
     usage: "CTA, 선택 상태, 포커스",
   },
   {
