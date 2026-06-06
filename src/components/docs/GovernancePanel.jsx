@@ -33,30 +33,6 @@ export function GovernancePanel() {
         </Card>
       </div>
 
-      <SectionTitle title={g.rolesTitle} description={g.rolesDesc} />
-      <div className="grid lg:grid-cols-3 gap-4">
-        {GOVERNANCE.roles.map((role, i) => (
-          <Card key={role.id} className="mb-0 p-5">
-            <h3 className="text-[16px] font-bold">{g.roles[i].role}</h3>
-            <div className="mt-4">
-              <p className="text-[11px] font-semibold uppercase text-[#10B981]">{g.canLabel}</p>
-              <ul className="mt-2 space-y-1">
-                {g.roles[i].can.map((item) => (
-                  <li key={item} className="text-[13px] text-[#4E5968]">• {item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-4">
-              <p className="text-[11px] font-semibold uppercase text-[#EF4444]">{g.cannotLabel}</p>
-              <ul className="mt-2 space-y-1">
-                {g.roles[i].cannot.map((item) => (
-                  <li key={item} className="text-[13px] text-[#4E5968]">• {item}</li>
-                ))}
-              </ul>
-            </div>
-          </Card>
-        ))}
-      </div>
 
       <SectionTitle title={g.impactTitle} description={g.impactDesc} />
       <Card className="mb-0 overflow-visible">
