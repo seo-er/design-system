@@ -184,16 +184,3 @@
 }
 
 
-  @keyframes moveDot {
-    0% {
-      transform: translate(0px, 0px);
-    }
-
-    100% {
-      transform: translate(180px, -130px);
-    }
-  }
-
-  .animate-dot {
-    animation-name: moveDot;
-  }

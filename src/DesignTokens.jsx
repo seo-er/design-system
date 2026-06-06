@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function DesignTokens() {
   return (
     <div className="text-[#191F28]">
