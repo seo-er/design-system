@@ -72,16 +72,16 @@ export const SEMANTIC_COLORS = [
     token: "color.text.primary",
     figma: "Semantic/Text/Primary",
     css: "--color-text-primary",
-    light: "#191F28",
-    dark: "#F9FAFB",
+    light: "#252425", // gray.900
+    dark: "#F4F4F4",
     usage: "본문, 제목 등 주요 텍스트",
   },
   {
     token: "color.text.secondary",
     figma: "Semantic/Text/Secondary",
     css: "--color-text-secondary",
-    light: "#4E5968",
-    dark: "#9CA3AF",
+    light: "#666666", // gray.700
+    dark: "#AAAAAA",
     usage: "보조 설명, 메타 정보",
   },
   {
@@ -97,23 +97,23 @@ export const SEMANTIC_COLORS = [
     figma: "Semantic/Surface/Default",
     css: "--color-surface-default",
     light: "#FFFFFF",
-    dark: "#1F2937",
+    dark: "#252425",
     usage: "카드, 패널 배경",
   },
   {
     token: "color.surface.subtle",
     figma: "Semantic/Surface/Subtle",
     css: "--color-surface-subtle",
-    light: "#F9FAFB",
-    dark: "#111827",
+    light: "#F4F4F4", // gray.200
+    dark: "#222222",  // gray.800
     usage: "페이지 배경, 구분 영역",
   },
   {
     token: "color.border.default",
     figma: "Semantic/Border/Default",
     css: "--color-border-default",
-    light: "#E5E8EB",
-    dark: "#374151",
+    light: "#E5E5E5", // gray.300
+    dark: "#666666",  // gray.700
     usage: "카드, 입력 필드 테두리",
   },
   {
