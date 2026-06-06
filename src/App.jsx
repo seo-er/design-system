@@ -273,7 +273,24 @@ Badge
         </div>
       </aside>
       <div className="flex-1 flex flex-col min-w-0">
-        </div>
+        <main className="flex-1 overflow-y-auto px-8 py-10 lg:px-12">
+          {menu === "palette" && <PalettePage />}
+          {menu === "icons" && <IconPage />}
+          {menu === "illustrations" && <IllustrationPage />}
+          {menu === "typography" && <TypographyPage />}
+          {menu === "spacing" && <SpacingPage />}
+          {menu === "grid" && <GridPage />}
+          {menu === "button" && <ButtonPage />}
+          {menu === "checkbox" && <CheckboxPage />}
+          {menu === "accordion" && <AccordionPage />}
+          {menu === "badge" && <BadgePage />}
+          {menu === "filter" && <FilterPage />}
+          {menu === "tab" && <TabPage />}
+          {menu === "topappbar" && <TopAppBarPage />}
+          {menu === "motion" && <MotionPage />}
+          {menu === "advertising" && <AdvertisingPage />}
+        </main>
+      </div>
     </div>
   );
 }
@@ -3522,7 +3539,7 @@ function AdvertisingPage() {
 
           <div className="flex justify-center rounded-[20px] border border-[#E5E8EB] bg-white p-10">
             <img
-              src={bannerPrimary}
+              src={advertisingImg}
               alt="Advertising Banner"
               className="max-w-full object-contain"
             />
@@ -5302,46 +5319,6 @@ function TopAppBarPage() {
     </div>
   </div>
 </Card>
-    </div>
-  );
-}
-
-function AdvertisingPage() {
-  return (
-    <div>
-
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Advertising
-        </p>
-
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Banner
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-5 max-w-[920px]">
-          서비스 내에서 사용하는 광고 배너 가이드입니다.
-        </p>
-      </div>
-
-      <Card>
-        <div className="p-10">
-
-          <h2 className="text-[28px] font-bold mb-8">
-            Primary Banner
-          </h2>
-
-          <div className="bg-[#F8FAFC] rounded-[24px] p-6">
-            <img
-              src={advertisingImg}
-              alt="Advertising Banner"
-              className="w-full rounded-[20px] border border-[#E5E8EB]"
-            />
-          </div>
-
-        </div>
-      </Card>
-
     </div>
   );
 }
