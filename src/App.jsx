@@ -534,45 +534,7 @@ function TokenPage() {
 
       <SectionTitle title={tok.colorTitle} description={tok.colorDesc} />
 
-      <Card>
-        <div className="grid md:grid-cols-3 border-b border-[#F2F4F6] text-sm text-[#8B95A1] px-8 py-4">
-          <span>Token</span>
-          <span>Light</span>
-          <span>Dark</span>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 px-8 py-8">
-          <div>
-            <code className="bg-[#F2F4F6] px-3 py-1.5 rounded-lg text-sm">
-              color.text.accent.lime
-            </code>
-
-            <p className="text-sm text-[#6B7684] mt-4">
-              Use for lime text...
-            </p>
-
-            <p className="text-xs text-[#9CA3AF] mt-2">
-              Introduced v1.8.0
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-[#E5E8EB] p-4">
-            <div
-              className="h-12 rounded-xl mb-3"
-              style={{ background: "#4C6B1F" }}
-            />
-            <span className="text-sm">Lime800</span>
-          </div>
-
-          <div className="rounded-2xl bg-[#191F28] p-4">
-            <div
-              className="h-12 rounded-xl mb-3"
-              style={{ background: "#B3DF72" }}
-            />
-            <span className="text-sm text-gray-300">Lime300</span>
-          </div>
-        </div>
-      </Card>
+    
             {/* BORDER */}
             <SectionTitle title="Border" />
 
