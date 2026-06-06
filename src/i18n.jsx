@@ -111,7 +111,6 @@ const TRANSLATIONS = {
       description: "토큰·컴포넌트 변경 권한, 릴리스 정책, Deprecated 프로세스를 정의합니다. KRDS 운영 모델을 참고했습니다.",
       versionLabel: "현재 버전",
       processLabel: "변경 프로세스",
-      rolesTitle: "역할과 권한",
       rolesDesc: "누가 Primitive/Semantic/Component 레벨을 변경할 수 있는지 명확히 합니다.",
       canLabel: "허용",
       cannotLabel: "불가",
@@ -129,11 +128,7 @@ const TRANSLATIONS = {
       deprecatedSince: "Deprecated since",
       deprecatedRemove: "Removal",
       roles: [
-        {
-          role: "Core DS Team",
-          can: ["Primitive/Semantic 토큰 추가·변경", "컴포넌트 API 승인", "Major 버전 릴리스"],
-          cannot: ["제품 단독 브랜드 Primitive 변경", "접근성 기준 하회 배포"],
-        },
+       
         {
           role: "Product Designer",
           can: ["Component 토큰 alias 제안", "패턴/템플릿 기여 PR", "Deprecated 대체안 문서화"],
@@ -553,7 +548,6 @@ const TRANSLATIONS = {
       description: "Roles, release policy, and deprecation process for tokens and components.",
       versionLabel: "Current version",
       processLabel: "Change process",
-      rolesTitle: "Roles & permissions",
       rolesDesc: "Who may change Primitive, Semantic, and Component layers.",
       canLabel: "Can",
       cannotLabel: "Cannot",
@@ -570,11 +564,7 @@ const TRANSLATIONS = {
       deprecatedTo: "Replacement",
       deprecatedSince: "Since",
       deprecatedRemove: "Removal",
-      roles: [
-        { role: "Core DS Team", can: ["Add/change Primitive & Semantic tokens", "Approve component APIs", "Major releases"], cannot: ["Product-only brand primitives", "Sub-AA accessibility"] },
-        { role: "Product Designer", can: ["Propose component token aliases", "Pattern PRs", "Migration docs"], cannot: ["Delete semantic tokens", "Ship sub-AA variants"] },
-        { role: "Frontend Engineer", can: ["Token JSON sync PRs", "Implementation & tests", "Impact analysis"], cannot: ["Figma-only changes", "New hardcoded hex"] },
-      ],
+     
       impactRows: [
         { change: "Add Primitive color step", affected: "Semantic aliases referencing palette", action: "Auto alias, docs update" },
         { change: "Rename Semantic token", affected: "All component CSS variables", action: "Deprecated alias 2 minors + codemod" },
@@ -966,7 +956,6 @@ const TRANSLATIONS = {
       description: "トークン・コンポーネント変更権限、リリース、Deprecatedプロセス。",
       versionLabel: "現在バージョン",
       processLabel: "変更プロセス",
-      rolesTitle: "役割と権限",
       rolesDesc: "Primitive/Semantic/Component変更権限を明確化。",
       canLabel: "許可",
       cannotLabel: "不可",
@@ -983,11 +972,7 @@ const TRANSLATIONS = {
       deprecatedTo: "代替",
       deprecatedSince: "Since",
       deprecatedRemove: "Removal",
-      roles: [
-        { role: "Core DS Team", can: ["Primitive/Semantic追加・変更", "API承認", "Majorリリース"], cannot: ["製品単独ブランドPrimitive", "AA未満アクセシビリティ"] },
-        { role: "Product Designer", can: ["Component alias提案", "パターンPR", "移行ドキュメント"], cannot: ["Semantic削除", "AA未満変種"] },
-        { role: "Frontend Engineer", can: ["トークンJSON同期", "実装・テスト", "影響分析"], cannot: ["Figma単独変更", "hex直書き"] },
-      ],
+    
       impactRows: [
         { change: "Primitive color step追加", affected: "参照Semantic", action: "自動alias、ドキュメント更新" },
         { change: "Semantic rename", affected: "全CSS変数", action: "Deprecated alias 2 minor + codemod" },
