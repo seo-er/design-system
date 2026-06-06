@@ -6,6 +6,7 @@ import iconGuide from "./assets/icon_grid.png";
 import watchGrid from "./assets/watch_grid.png";
 import filterIcon from "./assets/icons/ic_filter.png";
 import accordionDown from "./assets/icons/ic_accordion_down.png";
+import advertisingImg from "./assets/ad/banner_primary.png";
 
 const iconModules = import.meta.glob(
   "./assets/icons/*.{png,svg,webp}",
@@ -272,48 +273,6 @@ Badge
         </div>
       </aside>
 
-      {/* CONTENT */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <header className="h-16 bg-white border-b border-[#E5E8EB] flex items-center justify-between px-6 lg:px-10">
-          <div>
-            <p className="text-xs text-[#8B95A1]">Foundations</p>
-            <h2 className="text-[15px] font-semibold tracking-tight">
-              Design System
-            </h2>
-          </div>
-
-          <div className="hidden md:flex w-[280px] h-10 bg-[#F2F4F6] rounded-xl px-4 items-center text-sm text-[#8B95A1]">
-            Search...
-          </div>
-        </header>
-
-        <main className="flex-1 overflow-auto">
-          <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-10">
-            {menu === "tokens" && <TokenPage />}
-            {menu === "typography" && <TypographyPage />}
-            {menu === "spacing" && <SpacingPage />}
-            {menu === "grid" && <GridPage />}
-            {menu === "palette" && <PalettePage />}
-            {menu === "button" && <ButtonPage />}
-            {menu === "icons" && <IconPage />}
-            {menu === "illustrations" && <IllustrationPage />}
-            {menu === "motion" && <MotionPage />}
-            {menu === "advertising" && <AdvertisingPage />}
-            {menu === "checkbox" && <CheckboxPage />}
-            {menu === "accordion" && <AccordionPage />}
-            {menu === "badge" && <BadgePage />}
-            {menu === "filter" && <FilterPage />}
-            {menu === "tab" && <TabPage />}
-            {menu === "topappbar" && <TopAppBarPage />}
-          </div>
-        </main>
-
-        <footer className="bg-white border-t border-[#E5E8EB] px-6 lg:px-10 py-4">
-          <p className="text-sm text-[#8B95A1]">
-            Built with Flow Design System
-          </p>
-        </footer>
-      </div>
     </div>
   );
 }
@@ -350,6 +309,7 @@ function Card({ children }) {
     </div>
   );
 }
+
 
 function TokenPage() {
   return (
@@ -2170,7 +2130,7 @@ function ButtonPage() {
 
 {/* XLARGE */}
 <div className="flex flex-col gap-3">
-  <div className="text-[18px] font-medium text-[#7C3AED]">
+  <div className="text-[18px] font-semibold  text-[#7C3AED]">
     ◆btn_xlarge
   </div>
 
@@ -2632,7 +2592,7 @@ function IconPage() {
             >
 
               <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
-              ◆ic_{item.slug}
+              ◆{item.slug}
               </div>
 
               <div
@@ -2695,7 +2655,7 @@ function IconPage() {
       <div className="flex items-center gap-3 mb-4">
 
         <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
-        ◆ic_{selectedIcon.slug}
+        ◆{selectedIcon.slug}
         </h2>
 
       
@@ -4443,7 +4403,7 @@ function FilterPage() {
           {/* 숫자 없음 */}
           <div>
             <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
-              ◆filter_no-count
+              ◆filter_no_count
             </div>
   
             <button className="h-[56px] px-8 rounded-full border-2 border-[#191F28] bg-white flex items-center gap-3">
@@ -5341,6 +5301,46 @@ function TopAppBarPage() {
     </div>
   </div>
 </Card>
+    </div>
+  );
+}
+
+function AdvertisingPage() {
+  return (
+    <div>
+
+      <div className="mb-14">
+        <p className="text-sm text-[#8B95A1] mb-3">
+          Advertising
+        </p>
+
+        <h1 className="text-[44px] font-bold tracking-tight">
+          Banner
+        </h1>
+
+        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-5 max-w-[920px]">
+          서비스 내에서 사용하는 광고 배너 가이드입니다.
+        </p>
+      </div>
+
+      <Card>
+        <div className="p-10">
+
+          <h2 className="text-[28px] font-bold mb-8">
+            Primary Banner
+          </h2>
+
+          <div className="bg-[#F8FAFC] rounded-[24px] p-6">
+            <img
+              src={advertisingImg}
+              alt="Advertising Banner"
+              className="w-full rounded-[20px] border border-[#E5E8EB]"
+            />
+          </div>
+
+        </div>
+      </Card>
+
     </div>
   );
 }
