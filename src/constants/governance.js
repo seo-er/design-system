@@ -46,7 +46,7 @@ export const GOVERNANCE = {
     ],
     examples: [
       { from: "color.brand.orange", to: "color.brand.primary", since: "v1.8", remove: "v3.0" },
-      { from: "button.size.xlarge", to: "button.size.lg + padding override", since: "v1.6", remove: "v2.0" },
+      { from: "btn.size.xlarge", to: "btn.size.lg + padding override", since: "v1.6", remove: "v2.0" },
     ],
   },
 };
