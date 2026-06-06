@@ -1,14 +1,6 @@
 import { useState, useMemo } from "react";
-import {
-  SYSTEM_META,
-  PRINCIPLES,
-  TOKEN_TIERS,
-  TOKEN_PIPELINE,
-  SEMANTIC_COLORS,
-  PATTERNS,
-  NAV_SECTIONS,
-  PAGE_META,
-} from "./tokens";
+import { SYSTEM_META, SEMANTIC_COLORS } from "./tokens";
+import { useI18n, LanguageSwitcher } from "./i18n";
 import alertImage from "./assets/Alert.png";
 import gridImg from "./assets/Grid_img.png";
 import gridOverlay from "./assets/Grid.jpg";
@@ -77,25 +69,28 @@ const spacingRows = [
 ];
 
 export default function App() {
+  const { t, navSections, pageMeta: allPageMeta } = useI18n();
   const [menu, setMenu] = useState("home");
   const [search, setSearch] = useState("");
   const [mobileNav, setMobileNav] = useState(false);
 
   const filteredSections = useMemo(() => {
     const query = search.trim().toLowerCase();
-    if (!query) return NAV_SECTIONS;
+    if (!query) return navSections;
 
-    return NAV_SECTIONS.map((section) => ({
-      ...section,
-      items: section.items.filter(
-        (item) =>
-          item.label.toLowerCase().includes(query) ||
-          section.label.toLowerCase().includes(query)
-      ),
-    })).filter((section) => section.items.length > 0);
-  }, [search]);
+    return navSections
+      .map((section) => ({
+        ...section,
+        items: section.items.filter(
+          (item) =>
+            item.label.toLowerCase().includes(query) ||
+            section.label.toLowerCase().includes(query)
+        ),
+      }))
+      .filter((section) => section.items.length > 0);
+  }, [search, navSections]);
 
-  const pageMeta = PAGE_META[menu] || PAGE_META.home;
+  const pageMeta = allPageMeta[menu] || allPageMeta.home;
 
   const navigate = (id) => {
     setMenu(id);
@@ -160,7 +155,7 @@ export default function App() {
             <h1 className="text-[20px] font-bold tracking-tight leading-none">
               {SYSTEM_META.name}
             </h1>
-            <p className="text-xs text-[#8B95A1] mt-1">Design System v{SYSTEM_META.version}</p>
+            <p className="text-xs text-[#8B95A1] mt-1">{t("common.designSystem")} v{SYSTEM_META.version}</p>
           </div>
         </button>
       </div>
@@ -173,7 +168,7 @@ export default function App() {
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="토큰, 컴포넌트 검색..."
+            placeholder={t("common.search")}
             className="w-full h-10 pl-9 pr-4 rounded-xl bg-[#F3F5F8] border border-transparent text-sm text-[#191F28] placeholder:text-[#8B95A1] focus:outline-none focus:border-[#C7D2FE] focus:bg-white transition"
           />
         </div>
@@ -199,14 +194,14 @@ export default function App() {
           </div>
         ))}
         {filteredSections.length === 0 && (
-          <p className="px-3 text-sm text-[#8B95A1]">검색 결과가 없습니다.</p>
+          <p className="px-3 text-sm text-[#8B95A1]">{t("common.noResults")}</p>
         )}
       </nav>
 
       <div className="border-t border-[var(--color-border-subtle)] px-5 py-4">
         <div className="flex items-center justify-between text-xs text-[#8B95A1]">
-          <span>Figma Library</span>
-          <span className="font-medium text-[#4F46E5]">연동됨</span>
+          <span>{t("common.figmaLibrary")}</span>
+          <span className="font-medium text-[#4F46E5]">{t("common.connected")}</span>
         </div>
         <p className="text-[11px] text-[#8B95A1] mt-2">
           © 2026 {SYSTEM_META.name} Design System
@@ -239,7 +234,7 @@ export default function App() {
             <button
               onClick={() => setMobileNav(true)}
               className="lg:hidden w-9 h-9 rounded-lg border border-[#E5E8EB] flex items-center justify-center text-[#4E5968]"
-              aria-label="메뉴 열기"
+              aria-label={t("common.openMenu")}
             >
               ☰
             </button>
@@ -249,13 +244,14 @@ export default function App() {
               <span className="font-medium truncate">{pageMeta.label}</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-3 shrink-0">
+            <LanguageSwitcher />
             <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-xs font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#4F46E5]" />
               v{SYSTEM_META.version}
             </span>
-            <span className="hidden md:inline text-xs text-[#8B95A1]">
-              Updated {SYSTEM_META.lastUpdated}
+            <span className="hidden lg:inline text-xs text-[#8B95A1]">
+              {t("common.updated")} {SYSTEM_META.lastUpdated}
             </span>
           </div>
         </header>
@@ -311,6 +307,7 @@ function PageHeader({ category, title, description, badge }) {
 }
 
 function TokenChip({ token, onCopy }) {
+  const { t } = useI18n();
   return (
     <button
       onClick={() => {
@@ -318,7 +315,7 @@ function TokenChip({ token, onCopy }) {
         onCopy?.();
       }}
       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F3F5F8] hover:bg-[#E5E8EB] font-mono text-[13px] text-[#4E5968] transition"
-      title="클릭하여 복사"
+      title={t("common.copyToken")}
     >
       {token}
       <span className="text-[#8B95A1] text-xs">⧉</span>
@@ -364,6 +361,7 @@ function CheckIcon({ color = "white" }) {
 }
 
 function DocTabs({ value, onChange }) {
+  const { t } = useI18n();
   return (
     <div className="p-4 border-b border-[#E5E8EB] bg-white">
       <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
@@ -377,7 +375,7 @@ function DocTabs({ value, onChange }) {
                 : "text-[#6B7280] hover:text-[#374151]"
             }`}
           >
-            {tab === "design" ? "Design" : "Code"}
+            {t(`common.${tab}`)}
           </button>
         ))}
       </div>
@@ -404,19 +402,14 @@ function ComponentSpec({ items }) {
 }
 
 function HomePage({ onNavigate }) {
-  const stats = [
-    { label: "Design Tokens", value: "120+", desc: "Primitive · Semantic · Component" },
-    { label: "Components", value: "7", desc: "문서화된 UI 컴포넌트" },
-    { label: "Figma Variables", value: "연동", desc: "Tokens Studio 파이프라인" },
-    { label: "Platforms", value: "2+", desc: "국내 · 글로벌 서비스" },
-  ];
-
-  const quickLinks = [
-    { id: "tokens", label: "Design Tokens", desc: "Figma → Code 토큰 체계", color: "#4F46E5" },
-    { id: "palette", label: "Colors", desc: "라이트/다크 팔레트", color: "#F97316" },
-    { id: "patterns", label: "Patterns", desc: "디자인 규칙 & 가이드", color: "#7C3AED" },
-    { id: "button", label: "Button", desc: "인터랙션 컴포넌트", color: "#2563EB" },
-  ];
+  const { dict, principles } = useI18n();
+  const home = dict.home;
+  const quickLinkColors = {
+    tokens: "#4F46E5",
+    palette: "#F97316",
+    patterns: "#7C3AED",
+    button: "#2563EB",
+  };
 
   return (
     <div>
@@ -426,36 +419,35 @@ function HomePage({ onNavigate }) {
         <div className="relative">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-sm font-medium mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            Design System v{SYSTEM_META.version}
+            {home.heroBadge} v{SYSTEM_META.version}
           </span>
           <h1 className="text-[32px] lg:text-[48px] font-bold tracking-tight leading-[1.15] max-w-[720px]">
-            국내·글로벌 서비스를 위한
+            {home.heroTitle1}
             <br />
-            <span className="text-[#A5B4FC]">통합 디자인 시스템</span>
+            <span className="text-[#A5B4FC]">{home.heroTitle2}</span>
           </h1>
           <p className="text-white/75 text-[16px] lg:text-[17px] leading-[1.8] mt-5 max-w-[600px]">
-            제품 전반의 UI 완성도와 일관된 사용자 경험을 위해 설계된 Flow Design System.
-            Figma Variables 기반 토큰 체계와 개발 코드화를 통해 디자인-개발 간 구현 정확도를 높입니다.
+            {home.heroDesc}
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
             <button
               onClick={() => onNavigate("tokens")}
               className="h-11 px-6 rounded-xl bg-white text-[#312E81] text-sm font-semibold hover:bg-white/90 transition shadow-lg"
             >
-              토큰 체계 보기
+              {home.ctaTokens}
             </button>
             <button
               onClick={() => onNavigate("patterns")}
               className="h-11 px-6 rounded-xl bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition border border-white/20"
             >
-              가이드라인 보기
+              {home.ctaPatterns}
             </button>
           </div>
         </div>
       </section>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14 animate-fade-up-delay-1">
-        {stats.map((s) => (
+        {home.stats.map((s) => (
           <div
             key={s.label}
             className="bg-white rounded-[20px] border border-[var(--color-border-default)] p-5 shadow-[var(--shadow-sm)]"
@@ -467,12 +459,9 @@ function HomePage({ onNavigate }) {
         ))}
       </div>
 
-      <SectionTitle
-        title="핵심 원칙"
-        description="시스템 설계, UX 일관성, 패턴 표준화, 토큰 코드화 — 4가지 축으로 운영됩니다."
-      />
+      <SectionTitle title={home.principlesTitle} description={home.principlesDesc} />
       <div className="grid md:grid-cols-2 gap-4 mb-14 animate-fade-up-delay-2">
-        {PRINCIPLES.map((p) => (
+        {principles.map((p) => (
           <div
             key={p.title}
             className="group bg-white rounded-[24px] border border-[var(--color-border-default)] p-6 hover:shadow-[var(--shadow-md)] transition-shadow duration-300"
@@ -489,16 +478,13 @@ function HomePage({ onNavigate }) {
         ))}
       </div>
 
-      <SectionTitle
-        title="Figma → Code 파이프라인"
-        description="Figma Variables를 단일 소스로, 토큰 자동 변환과 컴포넌트 구현까지 일관된 워크플로를 유지합니다."
-      />
+      <SectionTitle title={home.pipelineTitle} description={home.pipelineDesc} />
       <Card className="mb-14">
         <div className="p-6 lg:p-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {TOKEN_PIPELINE.map((step, i) => (
+            {home.pipeline.map((step, i) => (
               <div key={step.step} className="relative">
-                {i < TOKEN_PIPELINE.length - 1 && (
+                {i < home.pipeline.length - 1 && (
                   <div className="hidden lg:block absolute top-8 left-[calc(100%-8px)] w-4 h-0.5 bg-[#E5E8EB]" />
                 )}
                 <div className="bg-[#F8FAFC] rounded-[20px] p-5 h-full border border-[#F2F4F6]">
@@ -515,9 +501,9 @@ function HomePage({ onNavigate }) {
         </div>
       </Card>
 
-      <SectionTitle title="빠른 이동" />
+      <SectionTitle title={home.quickLinksTitle} />
       <div className="grid sm:grid-cols-2 gap-4 animate-fade-up-delay-3">
-        {quickLinks.map((link) => (
+        {home.quickLinks.map((link) => (
           <button
             key={link.id}
             onClick={() => onNavigate(link.id)}
@@ -525,7 +511,7 @@ function HomePage({ onNavigate }) {
           >
             <div
               className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center text-white font-bold text-sm"
-              style={{ backgroundColor: link.color }}
+              style={{ backgroundColor: quickLinkColors[link.id] }}
             >
               {link.label[0]}
             </div>
@@ -541,16 +527,19 @@ function HomePage({ onNavigate }) {
 }
 
 function PatternsPage() {
+  const { t, dict } = useI18n();
+  const p = dict.patterns;
+
   return (
     <div>
       <PageHeader
-        category="Guidelines"
-        title="Patterns & Guidelines"
-        badge="표준화"
-        description="공통 디자인 규칙 기반의 패턴을 표준화하고, Do/Don't 가이드라인을 통해 제품 전반의 UI 일관성을 유지합니다."
+        category={t("categories.guidelines")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
 
-      {PATTERNS.map((group) => (
+      {p.groups.map((group) => (
         <div key={group.category}>
           <SectionTitle title={group.category} />
           <Card>
@@ -562,7 +551,7 @@ function PatternsPage() {
                       ✓
                     </span>
                     <div>
-                      <p className="text-xs font-semibold text-[#10B981] uppercase mb-1">Do</p>
+                      <p className="text-xs font-semibold text-[#10B981] uppercase mb-1">{t("common.do")}</p>
                       <p className="text-[15px] text-[#2F3A47] leading-relaxed">{rule.do}</p>
                     </div>
                   </div>
@@ -571,7 +560,7 @@ function PatternsPage() {
                       ✕
                     </span>
                     <div>
-                      <p className="text-xs font-semibold text-[#EF4444] uppercase mb-1">Don't</p>
+                      <p className="text-xs font-semibold text-[#EF4444] uppercase mb-1">{t("common.dont")}</p>
                       <p className="text-[15px] text-[#2F3A47] leading-relaxed">{rule.dont}</p>
                     </div>
                   </div>
@@ -582,25 +571,9 @@ function PatternsPage() {
         </div>
       ))}
 
-      <SectionTitle
-        title="컴포넌트 합성 원칙"
-        description="개별 컴포넌트를 조합할 때 따라야 할 구조적 규칙입니다."
-      />
+      <SectionTitle title={p.compositionTitle} description={p.compositionDesc} />
       <div className="grid md:grid-cols-3 gap-4">
-        {[
-          {
-            title: "단일 책임",
-            desc: "하나의 컴포넌트는 하나의 UI 역할만 담당합니다. 복합 UI는 조합으로 구성합니다.",
-          },
-          {
-            title: "토큰 우선",
-            desc: "색상·간격·타이포는 반드시 시맨틱 토큰을 참조하며, 하드코딩을 지양합니다.",
-          },
-          {
-            title: "상태 완결성",
-            desc: "default, hover, focus, disabled, loading 상태를 함께 설계하고 문서화합니다.",
-          },
-        ].map((item) => (
+        {p.composition.map((item) => (
           <div
             key={item.title}
             className="bg-gradient-to-br from-[#F8FAFC] to-white rounded-[20px] border border-[#E5E8EB] p-6"
@@ -616,21 +589,26 @@ function PatternsPage() {
 
 
 function TokenPage() {
+  const { t, dict } = useI18n();
+  const tok = dict.tokens;
+  const tierExamples = [
+    { example: "color.orange.500", figma: "Primitives / Color / Orange / 500" },
+    { example: "color.text.primary", figma: "Semantic / Text / Primary" },
+    { example: "button.primary.background", figma: "Components / Button / Primary / Background" },
+  ];
+
   return (
     <div>
       <PageHeader
-        category="Foundation"
-        title="Design Tokens"
-        badge="Figma Variables"
-        description="Figma Variables 기반 3단계 토큰 체계(Primitive → Semantic → Component)로 디자인과 개발의 단일 소스 오브 트루스를 유지합니다."
+        category={t("categories.foundation")}
+        title={tok.title}
+        badge={tok.badge}
+        description={tok.description}
       />
 
-      <SectionTitle
-        title="토큰 아키텍처"
-        description="변경 빈도와 추상화 수준에 따라 3계층으로 분리하여 유지보수성과 확장성을 확보합니다."
-      />
+      <SectionTitle title={tok.archTitle} description={tok.archDesc} />
       <div className="grid md:grid-cols-3 gap-4 mb-10">
-        {TOKEN_TIERS.map((tier) => (
+        {tok.tiers.map((tier, i) => (
           <div
             key={tier.tier}
             className="bg-white rounded-[20px] border border-[var(--color-border-default)] p-5 shadow-[var(--shadow-sm)]"
@@ -642,31 +620,28 @@ function TokenPage() {
             <p className="text-sm text-[#6B7684] mt-2 leading-relaxed">{tier.description}</p>
             <div className="mt-4 space-y-2">
               <div>
-                <p className="text-[11px] text-[#8B95A1] mb-1">Token</p>
-                <TokenChip token={tier.example} />
+                <p className="text-[11px] text-[#8B95A1] mb-1">{t("common.token")}</p>
+                <TokenChip token={tierExamples[i].example} />
               </div>
               <div>
-                <p className="text-[11px] text-[#8B95A1] mb-1">Figma Variable</p>
-                <code className="text-[12px] text-[#4E5968]">{tier.figma}</code>
+                <p className="text-[11px] text-[#8B95A1] mb-1">{t("common.figmaVariable")}</p>
+                <code className="text-[12px] text-[#4E5968]">{tierExamples[i].figma}</code>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <SectionTitle
-        title="시맨틱 컬러 토큰"
-        description="Figma Variables와 CSS Custom Properties가 1:1 매핑됩니다. 클릭하여 토큰명을 복사할 수 있습니다."
-      />
+      <SectionTitle title={tok.semanticTitle} description={tok.semanticDesc} />
       <Card className="mb-10">
         <div className="hidden lg:grid grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr] gap-4 px-6 py-4 border-b border-[#F2F4F6] text-xs font-semibold text-[#8B95A1] uppercase tracking-wide">
-          <span>Token</span>
+          <span>{t("common.token")}</span>
           <span>Figma</span>
           <span>CSS Variable</span>
-          <span>Light / Dark</span>
-          <span>Usage</span>
+          <span>{t("common.lightDark")}</span>
+          <span>{t("common.usage")}</span>
         </div>
-        {SEMANTIC_COLORS.map((color) => (
+        {SEMANTIC_COLORS.map((color, i) => (
           <div
             key={color.token}
             className="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr] gap-4 px-6 py-5 border-b border-[#F2F4F6] last:border-0 items-center hover:bg-[#FAFBFC] transition"
@@ -686,12 +661,12 @@ function TokenPage() {
                 title={color.dark}
               />
             </div>
-            <span className="text-sm text-[#4E5968]">{color.usage}</span>
+            <span className="text-sm text-[#4E5968]">{tok.usages[i]}</span>
           </div>
         ))}
       </Card>
 
-      <SectionTitle title="Color" description="시맨틱 토큰이 참조하는 Primitive 컬러 값입니다." />
+      <SectionTitle title={tok.colorTitle} description={tok.colorDesc} />
 
       <Card>
         <div className="grid md:grid-cols-3 border-b border-[#F2F4F6] text-sm text-[#8B95A1] px-8 py-4">
@@ -917,12 +892,14 @@ function TokenPage() {
 }
 
 function TypographyPage() {
+  const { t, page } = useI18n();
+  const p = page("typography");
   return (
 <div>
 <PageHeader
-  category="Foundation"
-  title="Typography"
-  description="font.* 토큰 체계로 제목, 본문, 캡션의 위계를 정의합니다. Figma Text Styles와 1:1 대응되며, 클릭하여 토큰명을 복사할 수 있습니다."
+  category={t("categories.foundation")}
+  title={p.title}
+  description={p.description}
 />
 
 <Card>
@@ -979,7 +956,7 @@ function TypographyPage() {
             : 400,
       }}
     >
-      망설임 없이 고르고 배우는 문화센터 서비스
+      {p.preview}
     </span>
   </div>
 ))}
@@ -1201,12 +1178,14 @@ function TypographyPage() {
 }
 
 function SpacingPage() {
+  const { t, page } = useI18n();
+  const p = page("spacing");
   return (
 <div>
 <PageHeader
-  category="Foundation"
-  title="Spacing"
-  description="8pt 기반 space.* 토큰으로 레이아웃, 컴포넌트 내부 간격을 일관되게 정의합니다."
+  category={t("categories.foundation")}
+  title={p.title}
+  description={p.description}
 />
 
 <Card>
@@ -1263,12 +1242,14 @@ function SpacingPage() {
 }
 
 function GridPage() {
+  const { t, page } = useI18n();
+  const p = page("grid");
   return (
     <div>
       <PageHeader
-        category="Foundation"
-        title="Grid"
-        description="Grid는 화면과 콘텐츠의 정렬 기준을 정의합니다. 일관된 레이아웃과 시각적 균형을 위해 동일한 구조와 규칙을 사용합니다."
+        category={t("categories.foundation")}
+        title={p.title}
+        description={p.description}
       />
 
       <MobileGridSection />
@@ -1281,14 +1262,15 @@ function GridPage() {
   );
 }
 function MobileGridSection() {
+  const { page } = useI18n();
+  const p = page("grid");
   return (
     <div className="mb-24">
 
-      <SectionTitle title="Mobile Grid" />
+      <SectionTitle title={p.mobile} />
 
       <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-10">
-        모바일 화면은 4 Column Grid를 사용한다.
-        모든 콘텐츠는 Margin과 Gutter 기준으로 정렬한다.
+        {p.mobileDesc}
       </p>
 
       <Card>
@@ -1341,10 +1323,12 @@ function MobileGridSection() {
   );
 }
 function IconGridSection() {
+  const { page } = useI18n();
+  const p = page("grid");
   return (
     <div className="mb-24">
 
-      <SectionTitle title="Icon Grid" />
+      <SectionTitle title={p.icon} />
 
       <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-10">
         모든 아이콘은 동일한 Grid 규칙을 사용하여
@@ -1364,10 +1348,12 @@ function IconGridSection() {
   );
 }
 function WatchGridSection() {
+  const { page } = useI18n();
+  const p = page("grid");
   return (
     <div>
 
-      <SectionTitle title="Watch Grid" />
+      <SectionTitle title={p.watch} />
 
       <p className="text-[18px] text-[#4E5968] leading-[1.8] mb-10">
         원형 디스플레이 환경에서는 Safe Area를 기준으로
@@ -1727,17 +1713,19 @@ function accessibleTextColor(color) {
 }
 
 function PalettePage() {
+  const { t, page } = useI18n();
+  const p = page("palette");
   return (
     <div>
       <PageHeader
-        category="Foundation"
-        title="Color Palette"
-        badge="Light / Dark"
-        description="Primitive 컬러 팔레트를 정의하고, 라이트/다크 모드 및 색각 다양성을 고려한 접근성 가이드를 제공합니다."
+        category={t("categories.foundation")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
 
       <div className="mb-20">
-        <h2 className="text-[28px] font-bold tracking-tight mb-8">Light Mode</h2>
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">{p.lightMode}</h2>
         <div className="grid xl:grid-cols-2 gap-6 mb-12">
           {lightPalettes
             .filter((p) => p.name !== "Gray")
@@ -1748,7 +1736,7 @@ function PalettePage() {
 
         <div>
           <h2 className="text-[24px] font-bold tracking-tight mb-8">
-            Light mode neutrals
+            {p.lightNeutrals}
           </h2>
           <div className="grid grid-cols-1">
             {lightPalettes
@@ -1763,7 +1751,7 @@ function PalettePage() {
 
 
       <div className="mt-24">
-        <h2 className="text-[28px] font-bold tracking-tight mb-8">Dark Mode</h2>
+        <h2 className="text-[28px] font-bold tracking-tight mb-8">{p.darkMode}</h2>
         <div className="grid xl:grid-cols-2 gap-6">
           {darkPalettes.map((p) => (
             <PaletteColumn key={p.name} palette={p} dark />
@@ -1772,7 +1760,7 @@ function PalettePage() {
       </div>
       <div className="mt-24">
         <h2 className="text-[32px] font-bold tracking-tight mb-8">
-          색각이상자가 명확히 구분할 수 있는 색상
+          {p.accessibleGood}
         </h2>
         <div className="bg-[#F2F4F6] rounded-[28px] p-10">
           {accessibilityGood.map((section) => (
@@ -1808,7 +1796,7 @@ function PalettePage() {
 
       <div className="mt-24">
         <h2 className="text-[32px] font-bold tracking-tight mb-8">
-          색각이상자가 구분하기 어려운 조합
+          {p.accessibleBad}
         </h2>
         <div className="bg-[#F2F4F6] rounded-[28px] p-10">
           {accessibilityBad.map((section) => (
@@ -1970,15 +1958,17 @@ const illustrationItems = [
 ];
 
 function IllustrationPage() {
+  const { t, page } = useI18n();
+  const p = page("illustrations");
   const [selectedIllustration, setSelectedIllustration] = useState(illustrationItems[0]);
 
   return (
     <div>
       <PageHeader
-        category="Foundation"
-        title="Illustrations"
-        badge="Asset Library"
-        description="서비스 맥락별 일러스트레이션 에셋을 정의합니다. Figma 컴포넌트와 React import 경로가 1:1 매핑됩니다."
+        category={t("categories.foundation")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -2357,6 +2347,8 @@ function getIllustrationSrc(slug) {
   );
 }
 function ButtonPage() {
+  const { t, page } = useI18n();
+  const p = page("button");
   const [sizeTab, setSizeTab] = useState("design");
   const [hierarchyTab, setHierarchyTab] = useState("design");
   const [emphasisButtonTab, setEmphasisButtonTab] = useState("design");
@@ -2365,10 +2357,10 @@ function ButtonPage() {
     <div>
 
       <PageHeader
-        category="Components"
-        title="Button"
-        badge="Action"
-        description="버튼은 사용자 액션을 트리거하는 핵심 인터랙션 컴포넌트입니다. 계층, 크기, 강조 수준에 따라 변형을 선택합니다."
+        category={t("categories.components")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -2379,7 +2371,7 @@ function ButtonPage() {
         ]}
       />
 
-      <SectionTitle title="크기 조정하기" description="size 속성으로 Small, Medium, Large를 지정합니다." />
+      <SectionTitle title={p.size} description={p.sizeDesc} />
 
       <Card>
         <DocTabs value={sizeTab} onChange={setSizeTab} />
@@ -2480,7 +2472,7 @@ function ButtonPage() {
             {/* HIERARCHY */}
             <div className="mt-24">
 
-<SectionTitle title="계층" />
+<SectionTitle title={p.hierarchy} />
 
 <Card>
   <DocTabs value={hierarchyTab} onChange={setHierarchyTab} />
@@ -2722,7 +2714,7 @@ function ButtonPage() {
             {/* ACCESSIBILITY */}
             <div className="mt-24">
 
-<SectionTitle title="접근성" />
+<SectionTitle title={p.accessibility} />
 
 {/* button role */}
 <Card>
@@ -2834,15 +2826,17 @@ function ButtonPage() {
   );
 }
 function IconPage() {
+  const { t, page } = useI18n();
+  const p = page("icons");
   const [selectedIcon, setSelectedIcon] = useState(iconItems[0]);
 
   return (
     <div>
       <PageHeader
-        category="Foundation"
-        title="Icons"
-        badge="24×24 Grid"
-        description="24px 기준 아이콘 시스템입니다. ic_{name} 네이밍 규칙을 따르며, Small/Medium/Large 3단계 크기 토큰을 지원합니다."
+        category={t("categories.foundation")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -3207,7 +3201,8 @@ Status
 }
 
 function MotionPage() {
-
+  const { t, page } = useI18n();
+  const p = page("motion");
   const [dropdownPlay, setDropdownPlay] = useState(false);
   const [modalPlay, setModalPlay] = useState(false);
 
@@ -3223,10 +3218,10 @@ function MotionPage() {
     <div>
 
       <PageHeader
-        category="Guidelines"
-        title="Motion"
-        badge="Interaction"
-        description="모션은 계층, 연속성, 피드백을 전달합니다. 150–300ms easing으로 사용성을 높이는 인터랙션을 설계합니다."
+        category={t("categories.guidelines")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -3514,6 +3509,8 @@ function MotionPage() {
   );
 }
 function CheckboxPage() {
+  const { t, page } = useI18n();
+  const p = page("checkbox");
   const [checkboxTab, setCheckboxTab] = useState("design");
 
   const [demo, setDemo] = useState({
@@ -3525,10 +3522,10 @@ function CheckboxPage() {
   return (
     <div>
       <PageHeader
-        category="Components"
-        title="Checkbox"
-        badge="Selection"
-        description="여러 항목을 동시에 선택할 수 있는 체크박스 컴포넌트입니다. default, checked, outline, disabled 상태를 토큰 기반으로 정의합니다."
+        category={t("categories.components")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -3539,7 +3536,7 @@ function CheckboxPage() {
         ]}
       />
 
-      <SectionTitle title="기본 체크박스" description="단일 선택 및 다중 선택 시나리오에 사용합니다." />
+      <SectionTitle title={p.basic} description={p.basicDesc} />
 
       <Card>
         <DocTabs value={checkboxTab} onChange={setCheckboxTab} />
@@ -3737,13 +3734,15 @@ function CheckboxPage() {
 }
 
 function AdvertisingPage() {
+  const { t, page } = useI18n();
+  const p = page("advertising");
   return (
     <div>
       <PageHeader
-        category="Guidelines"
-        title="Advertising"
-        badge="Monetization"
-        description="서비스 내 광고 배너 컴포넌트 및 광고 소재 가이드를 정의합니다. AD 표기, CTA, 안전 영역 규칙을 포함합니다."
+        category={t("categories.guidelines")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -3754,7 +3753,7 @@ function AdvertisingPage() {
         ]}
       />
 
-      <SectionTitle title="광고 배너" description="Primary 배너 변형의 레이아웃과 소재 규격을 정의합니다." />
+      <SectionTitle title={p.banner} description={p.bannerDesc} />
 
       <Card>
         <div className="p-10 bg-[#FAFBFC]">
@@ -3773,7 +3772,7 @@ function AdvertisingPage() {
       </Card>
 
       {/* 광고 가이드 */}
-      <SectionTitle title="광고 가이드" />
+      <SectionTitle title={p.guide} />
 
       <Card>
         <div className="overflow-hidden">
@@ -3846,7 +3845,7 @@ function AdvertisingPage() {
       </Card>
 
       {/* 주의사항 */}
-      <SectionTitle title="주의사항" />
+      <SectionTitle title={p.caution} />
 
       <Card>
         <div className="p-10">
@@ -3920,13 +3919,15 @@ const [iconOpenIndex, setIconOpenIndex] =
         "예약 내역, 관심 강좌, 자녀 정보를 확인하고 관리할 수 있습니다.",
     },
   ];
+  const { t, page } = useI18n();
+  const pg = page("accordion");
   return (
     <div>
       <PageHeader
-        category="Components"
-        title="Accordion"
-        badge="Expandable"
-        description="콘텐츠를 펼치고 접을 수 있는 아코디언 컴포넌트입니다. 텍스트 전용·아이콘 포함 2가지 변형을 지원합니다."
+        category={t("categories.components")}
+        title={pg.title}
+        badge={pg.badge}
+        description={pg.description}
       />
       <ComponentSpec
         items={[
@@ -3937,7 +3938,7 @@ const [iconOpenIndex, setIconOpenIndex] =
         ]}
       />
 
-      <SectionTitle title="기본 아코디언" description="FAQ, 상세 정보 등 접이식 콘텐츠에 사용합니다." />
+      <SectionTitle title={pg.basic} description={pg.basicDesc} />
 
       <Card>
         <DocTabs value={tab} onChange={setTab} />
@@ -4228,15 +4229,17 @@ const [iconOpenIndex, setIconOpenIndex] =
 }
 
 function BadgePage() {
+  const { t, page } = useI18n();
+  const p = page("badge");
   const [tab, setTab] = useState("design");
 
   return (
     <div>
       <PageHeader
-        category="Components"
-        title="Badge"
-        badge="Status"
-        description="상태, 카테고리, 프로모션 정보를 강조하는 배지 컴포넌트입니다. 색상 토큰으로 의미를 구분합니다."
+        category={t("categories.components")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -4247,7 +4250,7 @@ function BadgePage() {
         ]}
       />
 
-      <SectionTitle title="배지" description="리스트, 카드, 상세 페이지에서 보조 정보를 표시합니다." />
+      <SectionTitle title={p.basic} description={p.basicDesc} />
 
       <Card>
         <DocTabs value={tab} onChange={setTab} />
@@ -4489,15 +4492,17 @@ function BadgePage() {
 
 
 function FilterPage() {
+  const { t, page } = useI18n();
+  const p = page("filter");
   const [tab, setTab] = useState("design");
 
   return (
     <div>
       <PageHeader
-        category="Components"
-        title="Filter"
-        badge="Discovery"
-        description="검색 및 목록 필터링에 사용하는 필터 컴포넌트입니다. 선택 상태와 카운트 배지를 함께 제공합니다."
+        category={t("categories.components")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -4508,7 +4513,7 @@ function FilterPage() {
         ]}
       />
 
-      <SectionTitle title="필터" description="목록 상단에서 조건을 선택·해제합니다." />
+      <SectionTitle title={p.basic} description={p.basicDesc} />
 
       <Card>
         <DocTabs value={tab} onChange={setTab} />
@@ -4841,13 +4846,16 @@ function TabPage() {
     "엄마가 필요해요",
   ];
 
+  const { t, page } = useI18n();
+  const p = page("tab");
+
   return (
     <div>
       <PageHeader
-        category="Components"
-        title="Tab"
-        badge="Navigation"
-        description="콘텐츠 전환에 사용하는 탭 컴포넌트입니다. Default, Category, Chip 3가지 변형으로 정보 계층에 맞게 선택합니다."
+        category={t("categories.components")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -4858,7 +4866,7 @@ function TabPage() {
         ]}
       />
 
-      <SectionTitle title="탭" description="동일 뷰 내 콘텐츠 섹션을 전환합니다." />
+      <SectionTitle title={p.basic} description={p.basicDesc} />
 
       <div className="flex flex-col gap-14">
 
@@ -5076,7 +5084,7 @@ function TabPage() {
 
           </Card>
         </div>
-        <SectionTitle title="Icon Tab" />
+        <SectionTitle title={p.iconTab} />
 
 <Card>
   <DocTabs value={tab} onChange={setTab} />
@@ -5147,7 +5155,7 @@ function TabPage() {
 </Card>
 
 <div className="mt-14">
-<SectionTitle title="Chip Tab" />
+<SectionTitle title={p.chipTab} />
 
 <Card>
 <DocTabs value={chipTabView} onChange={setChipTabView} />
@@ -5202,13 +5210,15 @@ function TabPage() {
 }
 
 function TopAppBarPage() {
+  const { t, page } = useI18n();
+  const p = page("topappbar");
   return (
     <div>
       <PageHeader
-        category="Components"
-        title="TopAppBar"
-        badge="Navigation"
-        description="화면 상단 내비게이션 바입니다. 뒤로가기, 타이틀, 액션 버튼 영역을 표준 레이아웃으로 정의합니다."
+        category={t("categories.components")}
+        title={p.title}
+        badge={p.badge}
+        description={p.description}
       />
       <ComponentSpec
         items={[
@@ -5219,7 +5229,7 @@ function TopAppBarPage() {
         ]}
       />
 
-      <SectionTitle title="기본 TopAppBar" description="모바일 화면 최상단에 고정됩니다." />
+      <SectionTitle title={p.basic} description={p.basicDesc} />
 
       <Card>
   <div className="p-10 bg-[#FAFBFC]">
