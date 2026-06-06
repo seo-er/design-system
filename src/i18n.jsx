@@ -51,6 +51,20 @@ const TRANSLATIONS = {
       motion: "Motion",
       advertising: "Advertising",
     },
+    typography: {
+      contrastTitle: "텍스트 대비 (WCAG)",
+      contrastDesc: "본문·제목 텍스트는 배경과의 명도 대비를 WCAG AA 이상으로 유지합니다.",
+      contrastLevel: "Level",
+      contrastLarge: "Large text",
+      contrastNormal: "Normal text",
+      contrastNote: "Note",
+    },
+    palette: {
+      accessibleGoodDesc: "Okabe–Ito 팔레트 기반. 적록색약에서도 색상 간 명도·색상 차이로 구분 가능합니다.",
+      accessibleBadDesc: "유사 명도·유사 색상 조합은 상태 구분, 차트, 알림 UI에서 혼동을 유발합니다.",
+      colorUsageTitle: "색상 사용 시 주의사항",
+      colorUsageDesc: "색상만으로 정보를 전달하지 않고, 대체 색상·아이콘·텍스트 레이블을 함께 제공합니다.",
+    },
     home: {
       heroBadge: "Design System",
       heroTitle1: "국내·글로벌 서비스를 위한",
@@ -345,6 +359,21 @@ const TRANSLATIONS = {
       motion: "Motion",
       advertising: "Advertising",
     },
+    typography: {
+      contrastTitle: "Text contrast (WCAG)",
+      contrastDesc: "Body and heading text must meet WCAG AA contrast against backgrounds.",
+      contrastLevel: "Level",
+      contrastLarge: "Large text",
+      contrastNormal: "Normal text",
+      contrastNote: "Note",
+    },
+    palette: {
+      accessibleGoodDesc:
+        "Based on the Okabe–Ito palette. Distinguishable by luminance and hue even with red-green color blindness.",
+      accessibleBadDesc: "Similar luminance and hue pairs cause confusion in status, charts, and alerts.",
+      colorUsageTitle: "Color usage guidelines",
+      colorUsageDesc: "Never rely on color alone—pair with icons, labels, and accessible alternatives.",
+    },
     home: {
       heroBadge: "Design System",
       heroTitle1: "For domestic & global services",
@@ -625,6 +654,20 @@ const TRANSLATIONS = {
       patterns: "Patterns",
       motion: "Motion",
       advertising: "Advertising",
+    },
+    typography: {
+      contrastTitle: "テキストコントラスト (WCAG)",
+      contrastDesc: "本文・見出しは背景とのコントラスト比をWCAG AA以上に維持します。",
+      contrastLevel: "Level",
+      contrastLarge: "Large text",
+      contrastNormal: "Normal text",
+      contrastNote: "Note",
+    },
+    palette: {
+      accessibleGoodDesc: "Okabe–Itoパレット基準。赤緑色覚でも明度・色相差で区別可能です。",
+      accessibleBadDesc: "類似した明度・色相の組み合わせは状態、チャート、アラートで混乱を招きます。",
+      colorUsageTitle: "色使用時の注意事項",
+      colorUsageDesc: "色だけで情報を伝えず、代替色・アイコン・テキストラベルを併用します。",
     },
     home: {
       heroBadge: "Design System",
