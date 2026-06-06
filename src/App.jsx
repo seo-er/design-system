@@ -349,6 +349,60 @@ function Card({ children, className = "" }) {
   );
 }
 
+function CheckIcon({ color = "white" }) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M20 6L9 17L4 12"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function DocTabs({ value, onChange }) {
+  return (
+    <div className="p-4 border-b border-[#E5E8EB] bg-white">
+      <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
+        {["design", "code"].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => onChange(tab)}
+            className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
+              value === tab
+                ? "bg-white text-[#191F28] shadow-sm"
+                : "text-[#6B7280] hover:text-[#374151]"
+            }`}
+          >
+            {tab === "design" ? "Design" : "Code"}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ComponentSpec({ items }) {
+  return (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+      {items.map((item) => (
+        <div
+          key={item.label}
+          className="bg-white rounded-[16px] border border-[#E5E8EB] px-4 py-3"
+        >
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-[#8B95A1]">
+            {item.label}
+          </p>
+          <p className="text-[14px] font-semibold text-[#191F28] mt-1">{item.value}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function HomePage({ onNavigate }) {
   const stats = [
     { label: "Design Tokens", value: "120+", desc: "Primitive · Semantic · Component" },
@@ -1400,27 +1454,6 @@ function SpecCard({ title, value }) {
     </div>
   );
 }
-function SizeCard({ size, desc }) {
-  return (
-    <div className="
-      bg-white
-      border
-      border-[#E5E8EB]
-      rounded-[20px]
-      p-5
-      text-center
-    ">
-      <div className="text-[24px] font-bold">
-        {size}
-      </div>
-
-      <div className="text-sm text-[#8B95A1] mt-2">
-        {desc}
-      </div>
-    </div>
-  );
-}
-
 const lightPalettes = [
   {
       name: "Orange",
@@ -1753,10 +1786,7 @@ function PalettePage() {
       className="flex-1 h-[124px] px-3 py-4 flex flex-col justify-between"
       style={{
         backgroundColor: displayColor || color,
-        color:
-          color === "#000000" || color === "#0072B2"
-            ? "#fff"
-            : "#191F28",
+        color: accessibleTextColor(color),
       }}
     >
       <div className="text-[15px] font-medium">
@@ -1943,7 +1973,22 @@ function IllustrationPage() {
   const [selectedIllustration, setSelectedIllustration] = useState(illustrationItems[0]);
 
   return (
-    <div className="grid grid-cols-[1fr_380px] gap-10">
+    <div>
+      <PageHeader
+        category="Foundation"
+        title="Illustrations"
+        badge="Asset Library"
+        description="서비스 맥락별 일러스트레이션 에셋을 정의합니다. Figma 컴포넌트와 React import 경로가 1:1 매핑됩니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Format", value: "PNG · SVG" },
+          { label: "Naming", value: "ill_{category}" },
+          { label: "Grid", value: "4 Column" },
+          { label: "Usage", value: "Empty · Onboarding" },
+        ]}
+      />
+    <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-8">
 
       {/* LEFT */}
       <div>
@@ -2296,10 +2341,8 @@ Status
   </div>
 
 </div>
-
-
     </div>
-    
+    </div>
   );
 }
 function getIllustrationSrc(slug) {
@@ -2317,7 +2360,6 @@ function ButtonPage() {
   const [sizeTab, setSizeTab] = useState("design");
   const [hierarchyTab, setHierarchyTab] = useState("design");
   const [emphasisButtonTab, setEmphasisButtonTab] = useState("design");
-  const [iconButtonTab, setIconButtonTab] = useState("design");
 
   return (
     <div>
@@ -2325,40 +2367,22 @@ function ButtonPage() {
       <PageHeader
         category="Components"
         title="Button"
+        badge="Action"
         description="버튼은 사용자 액션을 트리거하는 핵심 인터랙션 컴포넌트입니다. 계층, 크기, 강조 수준에 따라 변형을 선택합니다."
       />
+      <ComponentSpec
+        items={[
+          { label: "Sizes", value: "S · M · L" },
+          { label: "Hierarchy", value: "Primary · Secondary" },
+          { label: "Emphasis", value: "Confirm · Cancel" },
+          { label: "Token", value: "button.*" },
+        ]}
+      />
 
-      <SectionTitle title="크기 조정하기" />
-
-      <p className="text-[18px] leading-[1.8] text-[#4E5968] mb-8 max-w-[920px]">
-        Button 컴포넌트의 크기를 변경하려면
-        <code className="mx-2 px-2 py-1 rounded bg-[#F3F4F6] text-[16px]">
-          size
-        </code>
-        속성을 사용하세요.
-      </p>
+      <SectionTitle title="크기 조정하기" description="size 속성으로 Small, Medium, Large를 지정합니다." />
 
       <Card>
-        <div className="p-4 border-b border-[#E5E8EB] bg-white">
-          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-            <button
-              onClick={() => setSizeTab("design")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-                sizeTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-              }`}
-            >
-              Design
-            </button>
-            <button
-              onClick={() => setSizeTab("code")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-                sizeTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-        </div>
+        <DocTabs value={sizeTab} onChange={setSizeTab} />
 
         {sizeTab === "design" ? (
           <div className="p-10 bg-[#FAFBFC]">
@@ -2459,26 +2483,7 @@ function ButtonPage() {
 <SectionTitle title="계층" />
 
 <Card>
-  <div className="p-4 border-b border-[#E5E8EB] bg-white">
-    <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-      <button
-        onClick={() => setHierarchyTab("design")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-          hierarchyTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-        }`}
-      >
-        Design
-      </button>
-      <button
-        onClick={() => setHierarchyTab("code")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-          hierarchyTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-        }`}
-      >
-        Code
-      </button>
-    </div>
-  </div>
+  <DocTabs value={hierarchyTab} onChange={setHierarchyTab} />
 
   {hierarchyTab === "design" ? (
     <div className="p-14 bg-[#FAFBFC]">
@@ -2604,26 +2609,7 @@ function ButtonPage() {
       {/* EMPHASIS BUTTONS */}
       <div className="mt-16">
         <Card>
-          <div className="p-4 border-b border-[#E5E8EB] bg-white">
-            <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-              <button
-                onClick={() => setEmphasisButtonTab("design")}
-                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-                  emphasisButtonTab === "design" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-                }`}
-              >
-                Design
-              </button>
-              <button
-                onClick={() => setEmphasisButtonTab("code")}
-                className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold transition ${
-                  emphasisButtonTab === "code" ? "bg-white text-[#191F28] shadow-sm" : "text-[#6B7280]"
-                }`}
-              >
-                Code
-              </button>
-            </div>
-          </div>
+          <DocTabs value={emphasisButtonTab} onChange={setEmphasisButtonTab} />
 
           {emphasisButtonTab === "design" ? (
             <div className="p-6 md:p-8 bg-[#F8FAFC]">
@@ -2851,7 +2837,22 @@ function IconPage() {
   const [selectedIcon, setSelectedIcon] = useState(iconItems[0]);
 
   return (
-    <div className="grid grid-cols-[1fr_380px] gap-10">
+    <div>
+      <PageHeader
+        category="Foundation"
+        title="Icons"
+        badge="24×24 Grid"
+        description="24px 기준 아이콘 시스템입니다. ic_{name} 네이밍 규칙을 따르며, Small/Medium/Large 3단계 크기 토큰을 지원합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Base Size", value: "24 × 24px" },
+          { label: "Naming", value: "ic_{name}" },
+          { label: "Sizes", value: "S · M · L" },
+          { label: "Format", value: "PNG · SVG" },
+        ]}
+      />
+    <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-8">
 
       {/* LEFT */}
       <div>
@@ -3200,10 +3201,8 @@ Status
   </div>
 
 </div>
-
-
     </div>
-    
+    </div>
   );
 }
 
@@ -3211,8 +3210,6 @@ function MotionPage() {
 
   const [dropdownPlay, setDropdownPlay] = useState(false);
   const [modalPlay, setModalPlay] = useState(false);
-  const [curve1, setCurve1] = useState(false);
-  const [curve2, setCurve2] = useState(false);
 
   const replay = (setter) => {
     setter(false);
@@ -3228,7 +3225,16 @@ function MotionPage() {
       <PageHeader
         category="Guidelines"
         title="Motion"
+        badge="Interaction"
         description="모션은 계층, 연속성, 피드백을 전달합니다. 150–300ms easing으로 사용성을 높이는 인터랙션을 설계합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Duration", value: "150 – 300ms" },
+          { label: "Easing", value: "ease-out" },
+          { label: "Token", value: "motion.*" },
+          { label: "Use Case", value: "Enter · Exit · Feedback" },
+        ]}
       />
 
       {/* TOP MOTION */}
@@ -3516,62 +3522,27 @@ function CheckboxPage() {
     outline: true,
   });
 
-  const CheckIcon = ({ color = "white" }) => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M20 6L9 17L4 12"
-        stroke={color}
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
+      <PageHeader
+        category="Components"
+        title="Checkbox"
+        badge="Selection"
+        description="여러 항목을 동시에 선택할 수 있는 체크박스 컴포넌트입니다. default, checked, outline, disabled 상태를 토큰 기반으로 정의합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Touch Target", value: "32 × 32px" },
+          { label: "States", value: "4 variants" },
+          { label: "Token", value: "checkbox.*" },
+          { label: "A11y", value: "role=checkbox" },
+        ]}
+      />
 
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Checkbox
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-          여러 항목을 동시에 선택할 수 있는 체크박스 컴포넌트입니다.
-        </p>
-      </div>
-
-      <SectionTitle title="기본 체크박스" />
+      <SectionTitle title="기본 체크박스" description="단일 선택 및 다중 선택 시나리오에 사용합니다." />
 
       <Card>
-        <div className="p-4 border-b border-[#E5E8EB] bg-white">
-          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-            <button
-              onClick={() => setCheckboxTab("design")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                checkboxTab === "design"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Design
-            </button>
-
-            <button
-              onClick={() => setCheckboxTab("code")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                checkboxTab === "code"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-        </div>
+        <DocTabs value={checkboxTab} onChange={setCheckboxTab} />
 
         {checkboxTab === "design" ? (
           <div className="p-10 bg-[#FAFBFC]">
@@ -3771,11 +3742,19 @@ function AdvertisingPage() {
       <PageHeader
         category="Guidelines"
         title="Advertising"
-        description="서비스 내 광고 배너 컴포넌트 및 광고 소재 가이드를 정의합니다."
+        badge="Monetization"
+        description="서비스 내 광고 배너 컴포넌트 및 광고 소재 가이드를 정의합니다. AD 표기, CTA, 안전 영역 규칙을 포함합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Format", value: "PNG · JPG" },
+          { label: "Max Size", value: "1MB" },
+          { label: "AD Label", value: "필수" },
+          { label: "Token", value: "ad.banner.*" },
+        ]}
       />
 
-      {/* 광고 배너 */}
-      <SectionTitle title="광고 배너" />
+      <SectionTitle title="광고 배너" description="Primary 배너 변형의 레이아웃과 소재 규격을 정의합니다." />
 
       <Card>
         <div className="p-10 bg-[#FAFBFC]">
@@ -3943,48 +3922,25 @@ const [iconOpenIndex, setIconOpenIndex] =
   ];
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
+      <PageHeader
+        category="Components"
+        title="Accordion"
+        badge="Expandable"
+        description="콘텐츠를 펼치고 접을 수 있는 아코디언 컴포넌트입니다. 텍스트 전용·아이콘 포함 2가지 변형을 지원합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Variants", value: "Text · Icon" },
+          { label: "Animation", value: "150ms ease" },
+          { label: "Token", value: "accordion.*" },
+          { label: "Behavior", value: "Single expand" },
+        ]}
+      />
 
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Accordion
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-          콘텐츠를 펼치고 접을 수 있는 컴포넌트입니다.
-        </p>
-      </div>
-
-      <SectionTitle title="기본 아코디언" />
+      <SectionTitle title="기본 아코디언" description="FAQ, 상세 정보 등 접이식 콘텐츠에 사용합니다." />
 
       <Card>
-        <div className="p-4 border-b border-[#E5E8EB] bg-white">
-          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-            <button
-              onClick={() => setTab("design")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "design"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Design
-            </button>
-
-            <button
-              onClick={() => setTab("code")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "code"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-        </div>
+        <DocTabs value={tab} onChange={setTab} />
 
         {tab === "design" ? (
           <div className="p-10 bg-[#FAFBFC]">
@@ -4126,37 +4082,7 @@ const [iconOpenIndex, setIconOpenIndex] =
 
     
       <Card>
-      <div className="p-4 border-b border-[#E5E8EB] bg-white">
-  <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-
-    <button
-      onClick={() =>
-        setIconAccordionTab("design")
-      }
-      className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-        iconAccordionTab === "design"
-          ? "bg-white text-[#191F28] shadow-sm"
-          : "text-[#6B7280]"
-      }`}
-    >
-      Design
-    </button>
-
-    <button
-      onClick={() =>
-        setIconAccordionTab("code")
-      }
-      className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-        iconAccordionTab === "code"
-          ? "bg-white text-[#191F28] shadow-sm"
-          : "text-[#6B7280]"
-      }`}
-    >
-      Code
-    </button>
-
-  </div>
-</div>
+      <DocTabs value={iconAccordionTab} onChange={setIconAccordionTab} />
 {iconAccordionTab === "design" ? (
   <div className="p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
@@ -4306,48 +4232,25 @@ function BadgePage() {
 
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
+      <PageHeader
+        category="Components"
+        title="Badge"
+        badge="Status"
+        description="상태, 카테고리, 프로모션 정보를 강조하는 배지 컴포넌트입니다. 색상 토큰으로 의미를 구분합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Height", value: "22px" },
+          { label: "Radius", value: "4px" },
+          { label: "Types", value: "Status · Promo" },
+          { label: "Token", value: "badge.*" },
+        ]}
+      />
 
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Badge
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-          상태 및 정보를 강조하기 위한 배지 컴포넌트입니다.
-        </p>
-      </div>
-
-      <SectionTitle title="배지" />
+      <SectionTitle title="배지" description="리스트, 카드, 상세 페이지에서 보조 정보를 표시합니다." />
 
       <Card>
-        <div className="p-4 border-b border-[#E5E8EB] bg-white">
-          <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-            <button
-              onClick={() => setTab("design")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "design"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Design
-            </button>
-
-            <button
-              onClick={() => setTab("code")}
-              className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                tab === "code"
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#6B7280]"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-        </div>
+        <DocTabs value={tab} onChange={setTab} />
 
         {tab === "design" ? (
           <div className="p-10 bg-[#FAFBFC]">
@@ -4590,52 +4493,25 @@ function FilterPage() {
 
   return (
     <div>
-    <div className="mb-14">
-      <p className="text-sm text-[#8B95A1] mb-3">
-        Components
-      </p>
-  
-      <h1 className="text-[44px] font-bold tracking-tight">
-        Filter
-      </h1>
-  
-      <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-        검색 및 목록 필터링에 사용하는 컴포넌트입니다.
-      </p>
-    </div>
-  
-    <SectionTitle title="필터" />
-  
-    <Card>
-  
-      {/* 탭 */}
-      <div className="p-4 border-b border-[#E5E8EB] bg-white">
-        <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-  
-          <button
-            onClick={() => setTab("design")}
-            className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-              tab === "design"
-                ? "bg-white text-[#191F28] shadow-sm"
-                : "text-[#6B7280]"
-            }`}
-          >
-            Design
-          </button>
-  
-          <button
-            onClick={() => setTab("code")}
-            className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-              tab === "code"
-                ? "bg-white text-[#191F28] shadow-sm"
-                : "text-[#6B7280]"
-            }`}
-          >
-            Code
-          </button>
-  
-        </div>
-      </div>
+      <PageHeader
+        category="Components"
+        title="Filter"
+        badge="Discovery"
+        description="검색 및 목록 필터링에 사용하는 필터 컴포넌트입니다. 선택 상태와 카운트 배지를 함께 제공합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Height", value: "40px" },
+          { label: "Icon", value: "ic_filter" },
+          { label: "States", value: "Default · Active" },
+          { label: "Token", value: "filter.*" },
+        ]}
+      />
+
+      <SectionTitle title="필터" description="목록 상단에서 조건을 선택·해제합니다." />
+
+      <Card>
+        <DocTabs value={tab} onChange={setTab} />
   
       {tab === "design" ? (
   
@@ -4950,6 +4826,7 @@ function TabPage() {
   const [categoryTab, setCategoryTab] = useState("review");
   const [selectedCategory, setSelectedCategory] =
   useState("오감발달");
+  const [chipTabView, setChipTabView] = useState("design");
   const categories = [
     "오감발달",
     "창의·체험",
@@ -4966,21 +4843,22 @@ function TabPage() {
 
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
+      <PageHeader
+        category="Components"
+        title="Tab"
+        badge="Navigation"
+        description="콘텐츠 전환에 사용하는 탭 컴포넌트입니다. Default, Category, Chip 3가지 변형으로 정보 계층에 맞게 선택합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Variants", value: "Default · Category · Chip" },
+          { label: "Height", value: "44 – 56px" },
+          { label: "Token", value: "tab.*" },
+          { label: "Motion", value: "200ms ease" },
+        ]}
+      />
 
-        <h1 className="text-[44px] font-bold tracking-tight">
-          Tab
-        </h1>
-
-        <p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-          콘텐츠 전환에 사용하는 탭 컴포넌트입니다.
-        </p>
-      </div>
-
-      <SectionTitle title="탭" />
+      <SectionTitle title="탭" description="동일 뷰 내 콘텐츠 섹션을 전환합니다." />
 
       <div className="flex flex-col gap-14">
 
@@ -4997,40 +4875,7 @@ function TabPage() {
 
     <div className="rounded-[16px] border border-[#E5E8EB] overflow-hidden bg-white">
 
-      {/* Design / Code */}
-      <div className="p-4 border-b border-[#E5E8EB]">
-        <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-
-          <button
-            onClick={() => setDefaultView("design")}
-            className={`px-5 py-2 rounded-[10px]
-              text-[14px] font-semibold
-              transition-all duration-200 ease-out
-              ${
-                defaultView === "design"
-                  ? "bg-white text-[#191F28] shadow-sm scale-[1.02]"
-                  : "text-[#6B7280]"
-              }`}
-          >
-            Design
-          </button>
-
-          <button
-            onClick={() => setDefaultView("code")}
-            className={`px-5 py-2 rounded-[10px]
-              text-[14px] font-semibold
-              transition-all duration-200 ease-out
-              ${
-                defaultView === "code"
-                  ? "bg-white text-[#191F28] shadow-sm scale-[1.02]"
-                  : "text-[#6B7280]"
-              }`}
-          >
-            Code
-          </button>
-
-        </div>
-      </div>
+      <DocTabs value={defaultView} onChange={setDefaultView} />
 
       {defaultView === "design" ? (
         <div className="p-10 bg-[#FAFBFC]">
@@ -5136,34 +4981,7 @@ function TabPage() {
 
           <Card>
          
-            {/* Design / Code */}
-            <div className="p-4 border-b border-[#E5E8EB] bg-white">
-              <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-
-                <button
-                  onClick={() => setCategoryView("design")}
-                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                    categoryView === "design"
-                      ? "bg-white text-[#191F28] shadow-sm"
-                      : "text-[#6B7280]"
-                  }`}
-                >
-                  Design
-                </button>
-
-                <button
-                  onClick={() => setCategoryView("code")}
-                  className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-                    categoryView === "code"
-                      ? "bg-white text-[#191F28] shadow-sm"
-                      : "text-[#6B7280]"
-                  }`}
-                >
-                  Code
-                </button>
-
-              </div>
-            </div>
+            <DocTabs value={categoryView} onChange={setCategoryView} />
 
             {categoryView === "design" ? (
               <div className="p-10 bg-[#FAFBFC]">
@@ -5261,31 +5079,7 @@ function TabPage() {
         <SectionTitle title="Icon Tab" />
 
 <Card>
-  <div className="p-4 border-b border-[#E5E8EB] bg-white">
-    <div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-      <button
-        onClick={() => setTab("design")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-          tab === "design"
-            ? "bg-white text-[#191F28] shadow-sm"
-            : "text-[#6B7280]"
-        }`}
-      >
-        Design
-      </button>
-
-      <button
-        onClick={() => setTab("code")}
-        className={`px-5 py-2 rounded-[10px] text-[14px] font-semibold ${
-          tab === "code"
-            ? "bg-white text-[#191F28] shadow-sm"
-            : "text-[#6B7280]"
-        }`}
-      >
-        Code
-      </button>
-    </div>
-  </div>
+  <DocTabs value={tab} onChange={setTab} />
 
   {tab === "design" ? (
     <div className="p-10 bg-[#FAFBFC]">
@@ -5356,18 +5150,9 @@ function TabPage() {
 <SectionTitle title="Chip Tab" />
 
 <Card>
-<div className="p-4 border-b border-[#E5E8EB] bg-white">
-<div className="inline-flex rounded-[12px] bg-[#F2F4F6] p-1">
-  <button className="px-5 py-2 rounded-[10px] bg-white text-[#191F28] shadow-sm text-[14px] font-semibold">
-    Design
-  </button>
+<DocTabs value={chipTabView} onChange={setChipTabView} />
 
-  <button className="px-5 py-2 rounded-[10px] text-[#6B7280] text-[14px] font-semibold">
-    Code
-  </button>
-</div>
-</div>
-
+{chipTabView === "design" ? (
 <div className="p-10 bg-[#FAFBFC]">
 <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
 ◆ tab_chip
@@ -5398,6 +5183,17 @@ function TabPage() {
 ))}
 </div>
 </div>
+) : (
+  <div className="bg-[#031B34] p-10 overflow-auto">
+    <pre className="text-[16px] leading-[2] text-white whitespace-pre-wrap font-mono">
+{`<ChipTab>
+  <ChipTabItem active>낯가려요</ChipTabItem>
+  <ChipTabItem>흥이 많아요</ChipTabItem>
+  <ChipTabItem>엄마가 필요해요</ChipTabItem>
+</ChipTab>`}
+    </pre>
+  </div>
+)}
 </Card>
 </div>
       </div>
@@ -5406,32 +5202,24 @@ function TabPage() {
 }
 
 function TopAppBarPage() {
-  const [tab, setTab] = useState("design");
-
-  const items = [
-    "수강 가능 지역",
-    "강좌 예약 안내",
-    "회원 정보 관리",
-  ];
-
   return (
     <div>
-      <div className="mb-14">
-        <p className="text-sm text-[#8B95A1] mb-3">
-          Components
-        </p>
+      <PageHeader
+        category="Components"
+        title="TopAppBar"
+        badge="Navigation"
+        description="화면 상단 내비게이션 바입니다. 뒤로가기, 타이틀, 액션 버튼 영역을 표준 레이아웃으로 정의합니다."
+      />
+      <ComponentSpec
+        items={[
+          { label: "Height", value: "44px" },
+          { label: "Width", value: "375px (Mobile)" },
+          { label: "Slots", value: "Left · Title · Right" },
+          { label: "Token", value: "topappbar.*" },
+        ]}
+      />
 
-        <h1 className="text-[44px] font-bold tracking-tight">
-  TopAppBar
-</h1>
-
-<p className="text-[#4E5968] text-[18px] leading-[1.8] mt-6">
-  화면 상단에 위치하는 내비게이션 바 컴포넌트입니다.
-</p>
-
-      </div>
-
-      <SectionTitle title="기본 TopAppBar" />
+      <SectionTitle title="기본 TopAppBar" description="모바일 화면 최상단에 고정됩니다." />
 
       <Card>
   <div className="p-10 bg-[#FAFBFC]">
