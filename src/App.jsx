@@ -531,9 +531,6 @@ function TokenPage() {
           </div>
         ))}
       </Card>
-
-      <SectionTitle title={tok.colorTitle} description={tok.colorDesc} />
-
     
             {/* BORDER */}
             <SectionTitle title="Border" />
