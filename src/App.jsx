@@ -458,7 +458,7 @@ function TokenPage() {
   const tierExamples = [
     { example: "color.orange.500", figma: "Primitives / Color / Orange / 500" },
     { example: "color.text.primary", figma: "Semantic / Text / Primary" },
-    { example: "button.primary.background", figma: "Components / Button / Primary / Background" },
+    { example: "btn.primary.background", figma: "Components / Button / Primary / Background" },
   ];
 
   return (

@@ -189,11 +189,11 @@ const TRANSLATIONS = {
       pipelineDesc:
         "Figma Variables를 단일 소스로, 토큰 자동 변환과 컴포넌트 구현까지 일관된 워크플로를 유지합니다.",
       governanceTitle: "거버넌스",
-      governanceDesc: "버전 관리, 변경 권한, Deprecated 정책 — 시니어 DS 운영 기준",
+      governanceDesc: "버전 관리, 변경 권한, Deprecated 정책",
       governanceBadge: "Governance",
-      governanceHeadline: "누가 변경할 수 있고, 버전은 어떻게 관리되나요?",
+      governanceHeadline: "버전은 어떻게 관리되나요?",
       governanceSummary:
-        "Core DS / Product / Engineering 역할 분리, Semantic rename 영향 범위, 2 minor Deprecated 유예 정책을 확인하세요.",
+        "Semantic rename 영향 범위, 2 minor Deprecated 유예 정책을 확인하세요.",
       quickLinksTitle: "빠른 이동",
       quickLinks: [
         { id: "tokens", label: "Design Tokens", desc: "Figma → Code 토큰 체계" },
@@ -612,9 +612,9 @@ const TRANSLATIONS = {
       governanceTitle: "Governance",
       governanceDesc: "Versioning, roles, deprecation — senior DS operating model",
       governanceBadge: "Governance",
-      governanceHeadline: "Who can change tokens, and how are versions managed?",
+      governanceHeadline: "How are versions managed here?",
       governanceSummary:
-        "Core DS / Product / Engineering roles, semantic rename impact, and 2-minor deprecation grace period.",
+        "Please check the impact scope of the semantic rename and the deprecation grace policy for two minor versions.",
       quickLinksTitle: "Quick Links",
       quickLinks: [
         { id: "tokens", label: "Design Tokens", desc: "Figma → Code token system" },
@@ -1020,8 +1020,8 @@ const TRANSLATIONS = {
       governanceTitle: "ガバナンス",
       governanceDesc: "バージョン管理、変更権限、Deprecatedポリシー",
       governanceBadge: "Governance",
-      governanceHeadline: "誰が変更でき、バージョンはどう管理されますか？",
-      governanceSummary: "Core DS / Product / Engineering役割、Semantic rename影響、2 minor Deprecated猶予。",
+      governanceHeadline: "こちらではバージョンはどのように管理されていますか？",
+      governanceSummary: "Semantic Rename の影響範囲と、非推奨化後の 2 マイナーバージョン猶予ポリシーを確認してください。",
       quickLinksTitle: "クイックリンク",
       quickLinks: [
         { id: "tokens", label: "Design Tokens", desc: "Figma → Code トークン体系" },
