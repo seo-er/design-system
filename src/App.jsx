@@ -57,23 +57,7 @@ export default function App() {
     setMobileNav(false);
     setSearch("");
   };
-  const borderData = [
-    {
-      token: "border.width",
-      value: "1px",
-      i18nKey: "width",
-    },
-    {
-      token: "border.width.selected",
-      value: "2px",
-      i18nKey: "selected",
-    },
-    {
-      token: "border.width.focused",
-      value: "2px",
-      i18nKey: "focused",
-    },
-  ];
+ 
   const renderPage = () => {
     switch (menu) {
       case "home":
@@ -476,7 +460,25 @@ function TokenPage() {
     { example: "color.text.primary", figma: "Semantic / Text / Primary" },
     { example: "btn.primary.background", figma: "Components / Button / Primary / Background" },
   ];
-
+  
+    const borderData = [
+      {
+        token: "border.width",
+        value: "1px",
+        i18nKey: "width",
+      },
+      {
+        token: "border.width.selected",
+        value: "2px",
+        i18nKey: "selected",
+      },
+      {
+        token: "border.width.focused",
+        value: "2px",
+        i18nKey: "focused",
+      },
+    ];
+  
   return (
     <div>
       <PageHeader
