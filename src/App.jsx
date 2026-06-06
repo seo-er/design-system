@@ -57,7 +57,23 @@ export default function App() {
     setMobileNav(false);
     setSearch("");
   };
-
+  const borderData = [
+    {
+      token: "border.width",
+      value: "1px",
+      i18nKey: "width",
+    },
+    {
+      token: "border.width.selected",
+      value: "2px",
+      i18nKey: "selected",
+    },
+    {
+      token: "border.width.focused",
+      value: "2px",
+      i18nKey: "focused",
+    },
+  ];
   const renderPage = () => {
     switch (menu) {
       case "home":
@@ -532,29 +548,11 @@ function TokenPage() {
         ))}
       </Card>
     
+    
             {/* BORDER */}
             <SectionTitle title="Border" />
 
-{[
-  {
-    token: "border.width",
-    desc: "The default width for all standard component borders and dividers.",
-    value: "1px",
-    version: "Introduced v1.5.2",
-  },
-  {
-    token: "border.width.selected",
-    desc: "The width used to indicate a selected element, such as an active tab or a chosen item.",
-    value: "2px",
-    version: "Introduced v6.1.0",
-  },
-  {
-    token: "border.width.focused",
-    desc: "The width used for focus rings on interactive elements.",
-    value: "2px",
-    version: "Introduced v6.1.0",
-  },
-].map((b) => (
+{borderData.map((b) => (
   <Card key={b.token}>
     <div className="grid md:grid-cols-2 gap-8 px-8 py-8 items-center border-b border-[#F2F4F6]">
       <div>
@@ -563,11 +561,11 @@ function TokenPage() {
         </code>
 
         <p className="text-sm text-[#6B7684] mt-4">
-          {b.desc}
+          {tok.borderTokens[b.i18nKey].desc}
         </p>
 
         <p className="text-xs text-[#8B95A1] mt-2">
-          {b.version}
+          {tok.borderTokens[b.i18nKey].version}
         </p>
       </div>
 
