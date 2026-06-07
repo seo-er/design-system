@@ -188,7 +188,7 @@ export default function App() {
   );
 
   return (
-    <div className="flex h-screen  bg-[var(--color-surface-subtle)]">
+    <div className="flex h-screen overflow-hidden bg-[var(--color-surface-subtle)]">
 
     <aside
       className="
@@ -196,6 +196,7 @@ export default function App() {
         lg:flex
         w-[272px]
         shrink-0
+        h-full
         bg-white
         border-r
         border-[var(--color-border-default)]
@@ -218,8 +219,8 @@ export default function App() {
         </div>
       )}
 
-      <div className="flex-1 flex flex-col min-w-0">
-        <header className="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 lg:px-8 h-14 bg-white/80 backdrop-blur-md border-b border-[var(--color-border-subtle)]">
+      <div className="flex-1 flex flex-col min-w-0 min-h-0 overflow-hidden">
+        <header className="shrink-0 z-10 flex items-center justify-between gap-4 px-5 lg:px-8 h-14 bg-white/80 backdrop-blur-md border-b border-[var(--color-border-subtle)]">
           <div className="flex items-center gap-3 min-w-0">
             <button
               onClick={() => setMobileNav(true)}
@@ -247,10 +248,10 @@ export default function App() {
         </header>
 
         <main
-  className="flex-1 "
-  id="main-content"
-  tabIndex={-1}
->
+          className="flex-1 min-h-0 overflow-y-auto"
+          id="main-content"
+          tabIndex={-1}
+        >
           <div className="max-w-[1120px] mx-auto px-5 py-8 lg:px-10 lg:py-12">
             {renderPage()}
           </div>

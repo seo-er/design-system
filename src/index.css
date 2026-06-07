@@ -52,8 +52,14 @@ body {
   background: var(--color-surface-subtle);
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 #root {
-  min-height: 100vh;
+  height: 100%;
 }
 
 @keyframes fade-up {
