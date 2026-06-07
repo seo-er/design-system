@@ -165,13 +165,75 @@ export function PalettePage() {
         ))}
       </div>
 
-      <SectionTitle title={p.accessibleGood} description={t("palette.accessibleGoodDesc")} />
-      <div className="rounded-[28px] border border-[#E5E8EB] bg-gradient-to-b from-[#FAFBFC] to-white p-8 lg:p-10 space-y-12 shadow-[var(--shadow-sm)]">
-        {accessibilityGood.map((section) => (
-          <AccessibleColorStrip key={section.id} section={section} />
-        ))}
+    
+{/* Old Palette UI */}
+<Card className="mb-8">
+  <div className="p-8">
+    <div className="text-xs font-bold tracking-wider text-[#4F46E5] mb-3">
+      ACCESSIBILITY DECISION
+    </div>
+
+    <h3 className="text-2xl font-bold mb-4">
+      왜 Okabe-Ito Palette를 선택했는가?
+    </h3>
+
+    <p className="text-[#6B7684] leading-relaxed mb-6">
+      색각 이상 환경에서도 상태와 정보를 명확하게 구분할 수 있도록
+      검증된 Okabe-Ito Palette를 채택했습니다.
+    </p>
+
+    <div className="grid md:grid-cols-2 gap-4">
+      <div className="rounded-xl border border-[#E5E8EB] p-5">
+        <h4 className="font-semibold mb-3">
+          선정 이유
+        </h4>
+
+        <ul className="space-y-2 text-sm text-[#4E5968]">
+          <li>✓ 적록색약 환경에서도 구분 가능</li>
+          <li>✓ 데이터 시각화 분야에서 검증</li>
+          <li>✓ WCAG 접근성 고려</li>
+          <li>✓ 브랜드 컬러와 충돌 없음</li>
+        </ul>
       </div>
 
+      <div className="rounded-xl border border-[#E5E8EB] p-5">
+        <h4 className="font-semibold mb-3">
+          적용 효과
+        </h4>
+
+        <ul className="space-y-2 text-sm text-[#4E5968]">
+          <li>✓ 상태 구분 명확성 향상</li>
+          <li>✓ 차트 가독성 개선</li>
+          <li>✓ 접근성 기준 충족</li>
+          <li>✓ 사용자 인지 부담 감소</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Card>
+<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  {accessibilityGood[0].colors.map((color) => (
+    <div
+      key={color.label}
+      className="bg-white rounded-2xl border border-[#E5E8EB] p-4"
+    >
+      <div
+        className="w-full h-20 rounded-xl mb-3"
+        style={{
+          backgroundColor: color.hex,
+        }}
+      />
+
+      <div className="font-medium text-sm">
+        {color.label}
+      </div>
+
+      <div className="text-xs text-[#8B95A1] mt-1">
+        {color.hex}
+      </div>
+    </div>
+  ))}
+</div>
       <SectionTitle title={p.accessibleBad} description={t("palette.accessibleBadDesc")} />
       <div className="rounded-[28px] border border-[#FECACA] bg-[#FFFBFB] p-8 lg:p-10 space-y-12">
         {accessibilityBad.map((section) => (
