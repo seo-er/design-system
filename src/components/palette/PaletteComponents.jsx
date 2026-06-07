@@ -13,7 +13,9 @@ export function PaletteColumn({ palette, dark = false }) {
         : palette.name.toLowerCase();
   
     return {
-      token: `color-${paletteName}-${c.step}`,
+      token: dark
+        ? `color-${paletteName}-${c.step}-theme`
+        : `color-${paletteName}-${c.step}`,
       step: c.step,
       hex: c.hex,
     };
