@@ -120,11 +120,10 @@ export function InaccessiblePairGrid({ section }) {
           <div
             key={`${section.id}-pair-${index}`}
             role="listitem"
-           className="rounded-2xl overflow-hidden border border-[#E5E8EB] bg-white"
+            className="rounded-xl overflow-hidden"
             aria-label={`Hard to distinguish pair ${left} and ${right}`}
           >
-          <div className="px-4 py-2 border-b border-[#F2F4F6]" />
-            <div className="flex h-[72px]">
+            <div className="flex h-[48px]">
             <div
   className="flex-1 flex flex-col items-center justify-center"
   style={{
@@ -132,7 +131,7 @@ export function InaccessiblePairGrid({ section }) {
   }}
 >
   <span
-    className="text-[11px] font-mono font-semibold"
+    className="text-[16px] font-mono font-semibold"
     style={{
       color: accessibleTextColor(left),
     }}

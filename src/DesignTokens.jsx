@@ -45,7 +45,7 @@ export default function DesignTokens() {
         className="
           bg-white
           rounded-[28px]
-          border border-[#E5E8EB]
+          border 
           p-6 md:p-8
           shadow-[0_1px_2px_rgba(0,0,0,0.04)]
           mb-8
