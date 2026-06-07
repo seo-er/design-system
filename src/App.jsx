@@ -825,23 +825,54 @@ function MobileGridSection() {
       </p>
 
       <Card>
-        <div className="p-10">
+  <div className="p-10">
 
-        <div className="grid lg:grid-cols-[520px_240px] gap-12 justify-center">
-  <img
-    src={gridImg}
-    alt=""
-    className="w-full h-auto rounded-lg border border-[#E5E8EB]"
-  />
+    <div className="grid md:grid-cols-2 gap-12 items-start">
 
-  <img
-    src={gridOverlay}
-    alt=""
-    className="w-full h-auto rounded-lg border border-[#E5E8EB]"
-  />
-</div>
+      <div>
+        <div className="mb-4">
+          <h4 className="text-lg font-semibold">
+            Figma Layout Grid
+          </h4>
+
+          <p className="text-sm text-[#6B7684]">
+            Margin 34px · Gutter 16px · 4 Columns
+          </p>
         </div>
-      </Card>
+
+        <div className="rounded-xl border border-[#E5E8EB] bg-[#FAFBFC] p-4">
+          <img
+            src={gridImg}
+            alt="Figma Grid Setting"
+            className="w-full max-w-[320px] mx-auto"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div className="mb-4">
+          <h4 className="text-lg font-semibold">
+            Mobile Overlay
+          </h4>
+
+          <p className="text-sm text-[#6B7684]">
+            360px viewport 기준
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-[#E5E8EB] bg-[#FAFBFC] p-4">
+          <img
+            src={gridOverlay}
+            alt="Mobile Grid Overlay"
+            className="w-full max-w-[220px] mx-auto"
+          />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</Card>
 
       <div className="grid md:grid-cols-4 gap-6 mt-6">
 
