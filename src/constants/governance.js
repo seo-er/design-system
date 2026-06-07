@@ -29,7 +29,11 @@ export const GOVERNANCE = {
     { step: "01", title: "RFC / Proposal", desc: "변경 배경, 영향 범위, 마이그레이션 계획을 Notion RFC로 작성" },
     { step: "02", title: "Design Review", desc: "Core DS + 접근성 리뷰 (WCAG, 색각 다양성)" },
     { step: "03", title: "Token Sync", desc: "Figma Variables → Tokens Studio → Style Dictionary 순 동기화" },
-    { step: "04", title: "Release", desc: "semver 태깅, CHANGELOG, codemod(필요 시) 배포" },
+    {
+      step: "04",
+      title: "Release",
+      desc: "semver 태깅, CHANGELOG, token migration guide(필요 시) 배포",
+    },
   ],
   impactMatrix: [
     { change: "Primitive color step 추가", scope: "Low", affected: "해당 팔레트 참조 Semantic", action: "자동 alias, 문서 업데이트" },
@@ -45,8 +49,18 @@ export const GOVERNANCE = {
       { stage: "Removed", desc: "Major 버전에서 삭제, CHANGELOG Breaking Changes 섹션 필수" },
     ],
     examples: [
-      { from: "color.brand.orange", to: "color.brand.primary", since: "v1.8", remove: "v3.0" },
-      { from: "btn.size.xlarge", to: "btn.size.lg", since: "v1.6", remove: "v2.0" },
+      {
+        from: "color-brand-orange",
+        to: "color-brand-primary",
+        since: "v1.8",
+        remove: "v3.0",
+      },
+      {
+        from: "btn-size-xlarge",
+        to: "btn-size-lg",
+        since: "v1.6",
+        remove: "v2.0",
+      },
     ],
   },
 };

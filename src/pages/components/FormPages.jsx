@@ -20,8 +20,8 @@ export function InputPage() {
         items={[
           { label: "Variants", value: "Default · Search · Error" },
           { label: "States", value: "Default · Focus · Disabled · Error" },
-          { label: "Token", value: "input.*" },
-          { label: "Min height", value: "48px (space.600)" },
+          { label: "Token", value: "input-*" },
+          { label: "Min height", value: "48px (space-600)" },
         ]}
       />
       <SectionTitle title={labels.architectureTitle} description={labels.architectureDesc} />
@@ -65,9 +65,9 @@ export function InputPage() {
 <Input label="코드" disabled />
 
 // Tokens
-input.height.md → space.600
-input.border.default → color.border.default
-input.border.focus → color.brand.primary`}
+input-height-md → space-600
+input-border-default → color-border-default
+input-border-focus → color-brand-primary`}
       />
     </div>
   );
@@ -86,7 +86,7 @@ export function SelectPage() {
         items={[
           { label: "Variants", value: "Default · Multi" },
           { label: "States", value: "Closed · Open · Focus · Disabled" },
-          { label: "Token", value: "select.*" },
+          { label: "Token", value: "select-*" },
           { label: "Menu", value: "Elevation 2" },
         ]}
       />
@@ -118,9 +118,9 @@ export function SelectPage() {
 <Select multiple label="태그" />
 
 // Tokens
-select.trigger.border → color.border.default
-select.trigger.border.active → color.brand.primary
-select.menu.shadow → elevation.2`}
+select-trigger-border → color-border-default
+select-trigger-border-active → color-brand-primary
+select-menu-shadow → elevation-2`}
       />
     </div>
   );
@@ -139,8 +139,8 @@ export function ModalPage() {
         items={[
           { label: "Variants", value: "Dialog · Sheet · Alert" },
           { label: "A11y", value: "Focus trap · aria-modal" },
-          { label: "Token", value: "modal.*" },
-          { label: "Overlay", value: "gray.900 @ 40%" },
+          { label: "Token", value: "modal-*" },
+          { label: "Overlay", value: "color-gray-900 @ 40%" },
         ]}
       />
       <SectionTitle title={labels.architectureTitle} description={labels.architectureDesc} />
@@ -181,9 +181,9 @@ export function ModalPage() {
 </Modal>
 
 // Tokens
-modal.overlay → color.overlay.default
-modal.radius.lg → space.300
-modal.shadow → elevation.3`}
+modal-overlay → color-overlay-default
+modal-radius-lg → space-300
+modal-shadow → elevation-3`}
       />
     </div>
   );
