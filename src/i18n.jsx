@@ -282,6 +282,32 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      common: {
+        original: "기존 색상",
+        accessible: "권장 색상",
+      },
+      accessibility: {
+        redTitle: "Red → Vermilion",
+        greenTitle: "Green → Bluish Green",
+      
+        redGuidance:
+          "빨간색은 초록색 또는 갈색과 혼동될 수 있으므로 주황 계열로 조정합니다.",
+      
+        greenGuidance:
+          "초록색은 빨간색 또는 갈색과 혼동될 수 있으므로 청록 계열로 조정합니다.",
+      },
+      accessibility: {
+        normalVisionTitle: "일반 사용자 (Normal Vision)",
+        normalVisionDesc: "일반 사용자가 인지하는 색상 조합입니다.",
+        colorBlindTitle: "적록색약자 (Deuteranopia)",
+        colorBlindDesc: "적록색약 환경에서 인지되는 색상입니다.",
+        paletteDecisionTitle: "왜 Okabe-Ito Palette를 선택했는가?",
+        paletteDecisionDesc: "색각 이상 환경에서도 상태와 정보를 명확하게 구분할 수 있도록 Okabe-Ito Palette를 참고하여 상태 색상을 정의했습니다. 브랜드 컬러와 분리하여 성공, 오류, 정보 상태를 명확하게 전달합니다.",
+        reasons: "선정 이유",
+        benefits: "적용 효과",
+        redToVermilion: "Red → Vermilion",
+        greenToBluishGreen: "Green → Bluish Green",
+      },
       motionTitle: "모션",
 opacityTitle: "투명도",
 
@@ -742,7 +768,39 @@ opacityTokens: {
         },
       ],
     },
-    tokens: {
+    tokens: {common: {
+      original: "Original",
+      accessible: "Accessible",
+    },
+      accessibility: {
+        redTitle: "Red → Vermilion",
+        greenTitle: "Green → Bluish Green",
+      
+        redGuidance:
+          "Red may be confused with green or brown, so a vermilion hue is recommended.",
+      
+        greenGuidance:
+          "Green may be confused with red or brown, so a bluish-green hue is recommended.",
+      },
+      accessibility: {
+        normalVisionTitle: "Normal Vision",
+        normalVisionDesc:
+          "Colors perceived by users with typical color vision.",
+      
+        colorBlindTitle: "Deuteranopia",
+        colorBlindDesc:
+          "Colors perceived by users with red-green color vision deficiency.",
+      
+        paletteDecisionTitle: "Why Did We Choose the Okabe-Ito Palette?",
+        paletteDecisionDesc:
+          "The Okabe-Ito Palette was selected to ensure clear differentiation of states and information in color vision deficiency environments. Status colors are separated from brand colors to clearly communicate success, error, and information states.",
+      
+        reasons: "Reasons",
+        benefits: "Benefits",
+      
+        redToVermilion: "Red → Vermilion",
+        greenToBluishGreen: "Green → Bluish Green",
+      },
       motionTitle: "Motion",
 opacityTitle: "Opacity",
 
@@ -1185,6 +1243,39 @@ opacityTokens: {
       ],
     },
     tokens: {
+      accessibility: {
+        redTitle: "Red → Vermilion",
+        greenTitle: "Green → Bluish Green",
+      
+        redGuidance:
+          "赤は緑や茶色と混同される可能性があるため、朱色系を推奨します。",
+      
+        greenGuidance:
+          "緑は赤や茶色と混同される可能性があるため、青緑系を推奨します。",
+      },
+      common: {
+        original: "元の色",
+        accessible: "推奨色",
+      },
+      accessibility: {
+        normalVisionTitle: "通常の視覚 (Normal Vision)",
+        normalVisionDesc:
+          "一般的な色覚を持つユーザーが認識する色です。",
+      
+        colorBlindTitle: "赤緑色覚異常 (Deuteranopia)",
+        colorBlindDesc:
+          "赤緑色覚異常の環境で認識される色です。",
+      
+        paletteDecisionTitle: "なぜ Okabe-Ito Palette を採用したのか？",
+        paletteDecisionDesc:
+          "色覚異常環境でも状態や情報を明確に区別できるよう、Okabe-Ito Palette を参考に状態カラーを定義しました。ブランドカラーと分離し、成功・エラー・情報状態を明確に伝達します。",
+      
+        reasons: "採用理由",
+        benefits: "適用効果",
+      
+        redToVermilion: "Red → Vermilion",
+        greenToBluishGreen: "Green → Bluish Green",
+      },
       motionTitle: "モーション",
 opacityTitle: "不透明度",
 

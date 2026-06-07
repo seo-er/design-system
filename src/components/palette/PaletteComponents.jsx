@@ -125,23 +125,25 @@ export function InaccessiblePairGrid({ section }) {
         <div />
 
         <div>
-          <h4 className="text-[18px] font-semibold text-[#191F28]">
-            일반 사용자 (Normal Vision)
-          </h4>
-          <p className="mt-1 text-sm text-[#6B7684]">
-            일반 사용자가 인지하는 색상 조합입니다.
-          </p>
+        <h4>
+  {t("accessibility.normalVisionTitle")}
+</h4>
+
+<p>
+  {t("accessibility.normalVisionDesc")}
+</p>
         </div>
 
         <div />
 
         <div>
-          <h4 className="text-[18px] font-semibold text-[#191F28]">
-            적록색약자 (Deuteranopia)
-          </h4>
-          <p className="mt-1 text-sm text-[#6B7684]">
-            적록색약 환경에서 인지되는 색상입니다.
-          </p>
+        <h4>
+  {t("accessibility.colorBlindTitle")}
+</h4>
+
+<p>
+  {t("accessibility.colorBlindDesc")}
+</p>
         </div>
       </div>
 
@@ -204,53 +206,70 @@ export function ColorBlindnessAlternatives({ items }) {
   const { t } = useI18n();
 
   return (
-    
-    <section aria-labelledby="color-blind-alternatives-title" className="mt-12">
-      <div className="rounded-[28px] border border-[#E5E8EB] bg-white p-8 lg:p-10 shadow-[var(--shadow-sm)]">
-        <h3 id="color-blind-alternatives-title" className="text-[24px] font-bold tracking-tight mb-2">
+    <section
+      aria-labelledby="color-blind-alternatives-title"
+      className="mt-12"
+    >
+      <div className="rounded-2xl border border-[#E5E8EB] bg-white p-8 lg:p-10">
+        <h3
+          id="color-blind-alternatives-title"
+          className="text-[24px] font-bold tracking-tight mb-2"
+        >
           {t("palette.colorUsageTitle")}
         </h3>
-        <p className="text-[15px] text-[#6B7684] mb-8">{t("palette.colorUsageDesc")}</p>
 
-        <div className="space-y-10">
+        <p className="text-[15px] text-[#6B7684] mb-8">
+          {t("palette.colorUsageDesc")}
+        </p>
+
+        <div className="space-y-0">
           {items.map((item) => (
-           <article className="py-6 border-b border-[#E5E8EB] last:border-b-0">
-           <div className="flex items-center gap-6">
-             <div>
-               <div className="text-sm text-[#8B95A1]">
-                 Original
-               </div>
-         
-               <div
-                 className="w-16 h-16 rounded-xl mt-2"
-                 style={{ backgroundColor: item.before.hex }}
-               />
-             </div>
-         
-             <span className="text-[#B0B8C1]">→</span>
-         
-             <div>
-               <div className="text-sm text-[#8B95A1]">
-                 Accessible
-               </div>
-         
-               <div
-                 className="w-16 h-16 rounded-xl mt-2"
-                 style={{ backgroundColor: item.after.hex }}
-               />
-             </div>
-         
-             <div className="flex-1 pl-4">
-               <div className="font-medium">
-                 {item.before.label} → {item.after.label}
-               </div>
-         
-               <p className="text-sm text-[#6B7684] mt-1">
-                 {item.guidance}
-               </p>
-             </div>
-           </div>
-         </article>
+            <article
+              key={item.id}
+              className="py-8 border-b border-[#E5E8EB] last:border-b-0"
+            >
+              <div className="flex items-center gap-6">
+                <div>
+                  <div className="text-sm text-[#8B95A1]">
+                    {t("common.original")}
+                  </div>
+
+                  <div
+                    className="w-16 h-16 rounded-lg mt-2"
+                    style={{
+                      backgroundColor: item.before.hex,
+                    }}
+                  />
+                </div>
+
+                <span className="text-[#B0B8C1] text-xl">
+                  →
+                </span>
+
+                <div>
+                  <div className="text-sm text-[#8B95A1]">
+                    {t("common.accessible")}
+                  </div>
+
+                  <div
+                    className="w-16 h-16 rounded-lg mt-2"
+                    style={{
+                      backgroundColor: item.after.hex,
+                    }}
+                  />
+                </div>
+
+                <div className="flex-1 pl-4">
+                  <div className="font-semibold text-[18px] text-[#191F28]">
+                    {t(`accessibility.${item.id}Title`)}
+                  </div>
+
+                  <p className="text-sm text-[#6B7684] mt-2 leading-relaxed">
+                    {t(`accessibility.${item.id}Guidance`)}
+                  </p>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>

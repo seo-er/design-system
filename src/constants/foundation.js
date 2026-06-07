@@ -187,7 +187,7 @@ export const colorBlindnessAlternatives = [
       textColor: "#FFFFFF",
     },
     guidance:
-      "빨간색은 초록색 또는 갈색과 혼동될 수 있으므로 주황 계열로 조정합니다.",
+     guidanceKey: "redGuidance",
   },
   {
     id: "green",
