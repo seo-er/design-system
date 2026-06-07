@@ -295,8 +295,6 @@ const TRANSLATIONS = {
       
         greenGuidance:
           "초록색은 빨간색 또는 갈색과 혼동될 수 있으므로 청록 계열로 조정합니다.",
-      },
-      accessibility: {
         normalVisionTitle: "일반 사용자 (Normal Vision)",
         normalVisionDesc: "일반 사용자가 인지하는 색상 조합입니다.",
         colorBlindTitle: "적록색약자 (Deuteranopia)",
@@ -781,8 +779,7 @@ opacityTokens: {
       
         greenGuidance:
           "Green may be confused with red or brown, so a bluish-green hue is recommended.",
-      },
-      accessibility: {
+
         normalVisionTitle: "Normal Vision",
         normalVisionDesc:
           "Colors perceived by users with typical color vision.",
@@ -1243,6 +1240,11 @@ opacityTokens: {
       ],
     },
     tokens: {
+      common: {
+        original: "元の色",
+        accessible: "推奨色",
+      },
+      
       accessibility: {
         redTitle: "Red → Vermilion",
         greenTitle: "Green → Bluish Green",
@@ -1252,12 +1254,6 @@ opacityTokens: {
       
         greenGuidance:
           "緑は赤や茶色と混同される可能性があるため、青緑系を推奨します。",
-      },
-      common: {
-        original: "元の色",
-        accessible: "推奨色",
-      },
-      accessibility: {
         normalVisionTitle: "通常の視覚 (Normal Vision)",
         normalVisionDesc:
           "一般的な色覚を持つユーザーが認識する色です。",

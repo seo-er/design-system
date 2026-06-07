@@ -122,11 +122,11 @@ export function InaccessiblePairGrid({ section }) {
 
         <div>
           <h4 className="text-[20px] font-semibold text-[#191F28]">
-            {t("accessibility.normalVisionTitle")}
+            {t("tokens.accessibility.normalVisionTitle")}
           </h4>
 
           <p className="mt-1 text-sm text-[#6B7684]">
-            {t("accessibility.normalVisionDesc")}
+            {t("tokens.accessibility.normalVisionDesc")}
           </p>
         </div>
 
@@ -134,11 +134,11 @@ export function InaccessiblePairGrid({ section }) {
 
         <div>
           <h4 className="text-[20px] font-semibold text-[#191F28]">
-            {t("accessibility.colorBlindTitle")}
+            {t("tokens.accessibility.colorBlindTitle")}
           </h4>
 
           <p className="mt-1 text-sm text-[#6B7684]">
-            {t("accessibility.colorBlindDesc")}
+            {t("tokens.accessibility.colorBlindDesc")}
           </p>
         </div>
       </div>
@@ -154,7 +154,7 @@ export function InaccessiblePairGrid({ section }) {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-lg flex h-12 shadow-sm">
+          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
             <div
               className="flex-1 flex items-center justify-center text-xs font-semibold"
               style={{
@@ -180,7 +180,7 @@ export function InaccessiblePairGrid({ section }) {
             →
           </div>
 
-          <div className="overflow-hidden rounded-lg flex h-12 shadow-sm">
+          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
             <div
               className="flex-1 flex items-center justify-center text-xs font-semibold"
               style={{
@@ -235,7 +235,7 @@ export function ColorBlindnessAlternatives({ items }) {
               <div className="flex items-center gap-6">
                 <div>
                   <div className="text-sm text-[#8B95A1]">
-                    {t("common.original")}
+                  {t("tokens.common.original")}
                   </div>
 
                   <div
@@ -252,7 +252,7 @@ export function ColorBlindnessAlternatives({ items }) {
 
                 <div>
                   <div className="text-sm text-[#8B95A1]">
-                    {t("common.accessible")}
+                    {t("tokens.common.accessible")}
                   </div>
 
                   <div
@@ -265,11 +265,11 @@ export function ColorBlindnessAlternatives({ items }) {
 
                 <div className="flex-1 pl-4">
                   <div className="font-semibold text-[18px] text-[#191F28]">
-                    {t(`accessibility.${item.id}Title`)}
+                    {t(`tokens.accessibility.${item.id}Title`)}
                   </div>
 
                   <p className="text-sm text-[#6B7684] mt-2 leading-relaxed">
-                    {t(`accessibility.${item.id}Guidance`)}
+                  {t(`tokens.accessibility.${item.id}Guidance`)}
                   </p>
                 </div>
               </div>
