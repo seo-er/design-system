@@ -112,6 +112,38 @@ export const darkPalettes = [
     ],
   },
 ];
+export const accessibilityGood = [
+  {
+    id: "normal-vision",
+    title: "일반 사용자가 보는 색상",
+    colorBlind: false,
+    colors: [
+      { label: "Black", hex: "#000000" },
+      { label: "Orange", hex: "#E69F00" },
+      { label: "Sky Blue", hex: "#56B4E9" },
+      { label: "Bluish Green", hex: "#009E73" },
+      { label: "Yellow", hex: "#F0E442" },
+      { label: "Blue", hex: "#0072B2" },
+      { label: "Vermilion", hex: "#D55E00" },
+      { label: "Reddish Purple", hex: "#CC79A7" },
+    ],
+  },
+  {
+    id: "color-blind-vision",
+    title: "적록색약자가 보는 색상",
+    colorBlind: true,
+    colors: [
+      { label: "Black", hex: "#000000", displayHex: "#000000" },
+      { label: "Orange", hex: "#E69F00", displayHex: "#B7A400" },
+      { label: "Sky Blue", hex: "#56B4E9", displayHex: "#7E97D8" },
+      { label: "Bluish Green", hex: "#009E73", displayHex: "#A39B79" },
+      { label: "Yellow", hex: "#F0E442", displayHex: "#F0E442" },
+      { label: "Blue", hex: "#0072B2", displayHex: "#5978B8" },
+      { label: "Vermilion", hex: "#D55E00", displayHex: "#8A7B00" },
+      { label: "Reddish Purple", hex: "#CC79A7", displayHex: "#7F89A9" },
+    ],
+  },
+];
 export const accessibilityBad = [
   {
     id: "status",
