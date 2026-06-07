@@ -110,33 +110,49 @@ export function AccessibleColorStrip({ section }) {
     </figure>
   );
 }
-
 export function InaccessiblePairGrid({ section }) {
   return (
-    <figure className="space-y-4">
-      <figcaption className="text-[22px] font-semibold text-[#191F28]">
+    <section className="space-y-8">
+      <h3 className="text-[40px] font-bold tracking-[-0.03em] text-[#191F28]">
         {section.title}
-      </figcaption>
+      </h3>
 
       <div
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         role="list"
+        className="
+          grid
+          grid-cols-1
+          gap-6
+          md:grid-cols-2
+          xl:grid-cols-3
+        "
       >
         {section.pairs.map(([left, right], index) => (
           <div
             key={`${section.id}-pair-${index}`}
             role="listitem"
-            aria-label={`${left} and ${right} are hard to distinguish`}
-            className="overflow-hidden rounded-2xl border border-[#E5E8EB] bg-white shadow-sm"
+            aria-label={`${left} and ${right} are difficult to distinguish`}
+            className="
+              h-[108px]
+              overflow-hidden
+              rounded-[24px]
+              shadow-[0_4px_12px_rgba(15,23,42,0.12)]
+            "
           >
-            <div className="flex h-24">
-              {/* Left */}
+            <div className="flex h-full">
               <div
                 className="flex flex-1 items-center justify-center"
-                style={{ backgroundColor: left }}
+                style={{
+                  backgroundColor: left,
+                }}
               >
                 <span
-                  className="font-mono text-lg font-semibold tracking-wide"
+                  className="
+                    font-mono
+                    text-[18px]
+                    font-bold
+                    tracking-[-0.02em]
+                  "
                   style={{
                     color: accessibleTextColor(left),
                   }}
@@ -145,16 +161,21 @@ export function InaccessiblePairGrid({ section }) {
                 </span>
               </div>
 
-              {/* Divider */}
-              <div className="w-px bg-white/60" />
+              <div className="w-px bg-white/80 shrink-0" />
 
-              {/* Right */}
               <div
                 className="flex flex-1 items-center justify-center"
-                style={{ backgroundColor: right }}
+                style={{
+                  backgroundColor: right,
+                }}
               >
                 <span
-                  className="font-mono text-lg font-semibold tracking-wide"
+                  className="
+                    font-mono
+                    text-[18px]
+                    font-bold
+                    tracking-[-0.02em]
+                  "
                   style={{
                     color: accessibleTextColor(right),
                   }}
@@ -166,7 +187,7 @@ export function InaccessiblePairGrid({ section }) {
           </div>
         ))}
       </div>
-    </figure>
+    </section>
   );
 }
 
