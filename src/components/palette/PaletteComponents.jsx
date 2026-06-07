@@ -112,85 +112,56 @@ export function AccessibleColorStrip({ section }) {
 }
 export function InaccessiblePairGrid({ section }) {
   return (
-    <section className="space-y-8">
-      <h3 className="text-[40px] font-bold tracking-[-0.03em] text-[#191F28]">
-        {section.title}
-      </h3>
+    <div className="space-y-4">
+      {section.map((item) => (
+        <div
+          key={item.id}
+          className="grid grid-cols-[56px_1fr_60px_1fr] gap-6 items-center"
+        >
+          <div className="w-14 h-14 rounded-xl border border-[#E5E8EB] flex items-center justify-center font-semibold">
+            {item.id}
+          </div>
 
-      <div
-        role="list"
-        className="
-          grid
-          grid-cols-1
-          gap-6
-          md:grid-cols-2
-          xl:grid-cols-3
-        "
-      >
-        {section.pairs.map(([left, right], index) => (
-          <div
-            key={`${section.id}-pair-${index}`}
-            role="listitem"
-            aria-label={`${left} and ${right} are difficult to distinguish`}
-            className="
-              h-[108px]
-              overflow-hidden
-              rounded-[24px]
-              shadow-[0_4px_12px_rgba(15,23,42,0.12)]
-            "
-          >
-            <div className="flex h-full">
-              <div
-                className="flex flex-1 items-center justify-center"
-                style={{
-                  backgroundColor: left,
-                }}
-              >
-                <span
-                  className="
-                    font-mono
-                    text-[18px]
-                    font-bold
-                    tracking-[-0.02em]
-                  "
-                  style={{
-                    color: accessibleTextColor(left),
-                  }}
-                >
-                  {left.toUpperCase()}
-                </span>
-              </div>
+          <div className="overflow-hidden rounded-xl flex h-14">
+            <div
+              className="flex-1 flex items-center justify-center font-semibold"
+              style={{ backgroundColor: item.normal[0] }}
+            >
+              {item.normal[0]}
+            </div>
 
-              <div className="w-px bg-white/80 shrink-0" />
-
-              <div
-                className="flex flex-1 items-center justify-center"
-                style={{
-                  backgroundColor: right,
-                }}
-              >
-                <span
-                  className="
-                    font-mono
-                    text-[18px]
-                    font-bold
-                    tracking-[-0.02em]
-                  "
-                  style={{
-                    color: accessibleTextColor(right),
-                  }}
-                >
-                  {right.toUpperCase()}
-                </span>
-              </div>
+            <div
+              className="flex-1 flex items-center justify-center font-semibold"
+              style={{ backgroundColor: item.normal[1] }}
+            >
+              {item.normal[1]}
             </div>
           </div>
-        ))}
-      </div>
-    </section>
+
+          <div className="text-center text-3xl text-[#94A3B8]">
+            →
+          </div>
+
+          <div className="overflow-hidden rounded-xl flex h-14">
+            <div
+              className="flex-1 flex items-center justify-center font-semibold"
+              style={{ backgroundColor: item.colorBlind[0] }}
+            >
+              {item.colorBlind[0]}
+            </div>
+
+            <div
+              className="flex-1 flex items-center justify-center font-semibold"
+              style={{ backgroundColor: item.colorBlind[1] }}
+            >
+              {item.colorBlind[1]}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
-
 export function ColorBlindnessAlternatives({ items }) {
   const { t } = useI18n();
 

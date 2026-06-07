@@ -146,26 +146,29 @@ export const accessibilityGood = [
 ];
 export const accessibilityBad = [
   {
-    id: "bad-normal",
-    title: "일반 사용자가 보는 색상",
-    pairs: [
-      ["#F5003D", "#006B21"],
-      ["#946300", "#006B21"],
-      ["#E4DA3D", "#6BC679"],
-      ["#1476AD", "#C154A7"],
-      ["#284B9B", "#56389E"],
-    ],
+    id: "01",
+    normal: ["#F5003D", "#006B21"],
+    colorBlind: ["#706642", "#6F6513"],
   },
   {
-    id: "bad-color-blind",
-    title: "적록색약자가 보는 색상",
-    pairs: [
-      ["#706642", "#6F6513"],
-      ["#776A00", "#70661B"],
-      ["#CCBE74", "#E1C900"],
-      ["#5978B8", "#6279B2"],
-      ["#0D4F97", "#0F4D96"],
-    ],
+    id: "02",
+    normal: ["#1476AD", "#C15AA7"],
+    colorBlind: ["#5978B8", "#6279B2"],
+  },
+  {
+    id: "03",
+    normal: ["#946300", "#006B21"],
+    colorBlind: ["#776A00", "#70661B"],
+  },
+  {
+    id: "04",
+    normal: ["#284B9B", "#56389E"],
+    colorBlind: ["#0D4F97", "#0F4D96"],
+  },
+  {
+    id: "05",
+    normal: ["#E4DA3D", "#6BC679"],
+    colorBlind: ["#CCBE74", "#E1C900"],
   },
 ];
 
