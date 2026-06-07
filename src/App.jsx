@@ -247,7 +247,7 @@ export default function App() {
         </header>
 
         <main
-  className="flex-1 overflow-y-auto"
+  className="flex-1 "
   id="main-content"
   tabIndex={-1}
 >
@@ -949,7 +949,7 @@ function WatchGridSection() {
         </div>
       </Card>
 <Card>
-  <div className="overflow-x-auto">
+  <div>
     <table className="w-full">
       <thead>
         <tr className="border-b border-[#E5E8EB] bg-[#F8FAFC]">
@@ -1417,26 +1417,6 @@ Status
 </div>
 
 </div>
-  {/* FIGMA */}
-  <div className="border-t border-[#E5E8EB] p-8">
-
-    <div className="text-[34px] font-bold mb-6">
-      Figma
-    </div>
-
-    <a
-      href="https://figma.com"
-      target="_blank"
-      className="
-        text-[#2563EB]
-        underline
-        text-[18px]
-      "
-    >
-      Atlassian icon library ↗
-    </a>
-
-  </div>
 
 </div>
     </div>
@@ -1802,27 +1782,7 @@ Status
 </div>
 
 </div>
-  {/* FIGMA */}
-  <div className="border-t border-[#E5E8EB] p-8">
-
-    <div className="text-[34px] font-bold mb-6">
-      Figma
-    </div>
-
-    <a
-      href="https://figma.com"
-      target="_blank"
-      className="
-        text-[#2563EB]
-        underline
-        text-[18px]
-      "
-    >
-      Atlassian icon library ↗
-    </a>
-
-  </div>
-
+ 
 </div>
     </div>
     </div>
