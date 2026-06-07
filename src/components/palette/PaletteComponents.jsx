@@ -112,11 +112,11 @@ export function AccessibleColorStrip({ section }) {
 }
 export function InaccessiblePairGrid({ section }) {
   const labels = [
-    "Status",
-    "Chart",
-    "Warning",
-    "Category",
-    "Navigation",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
   ];
 
   return (
