@@ -22,7 +22,7 @@ export function InputPage() {
   );
 
   const inputClass =
-    "w-full max-w-[320px] h-12 px-4 rounded-xl border text-[15px] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-[#F97316]";
+    "w-full max-w-[320px] h-12 px-4 rounded-xl border text-[15px] focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-[#F97316]";
 
   return (
     <div>
@@ -52,18 +52,18 @@ export function InputPage() {
             <label className="flex flex-col items-start gap-2">
               <span className="text-sm font-medium text-[#4E5968]">Focus</span>
               <input
-                className={`${inputClass} border-[#F97316] ring-2 ring-[#4F46E5] bg-white`}
+                className={`${inputClass} border-[#F97316] ring-2 ring-[#F97316] bg-white`}
                 defaultValue="포커스 상태"
               />
             </label>
             <label className="flex flex-col items-start gap-2">
-              <span className="text-sm font-medium text-[#EF4444]">Error</span>
+              <span className="text-sm font-medium text-[#DC2626]">Error</span>
               <input
-                className={`${inputClass} border-[#EF4444] bg-[#FEF2F2]`}
+                className={`${inputClass} border-[#DC2626] bg-[#DC2626]/10`}
                 defaultValue="invalid@"
                 aria-invalid="true"
               />
-              <span className="text-[13px] text-[#EF4444]">올바른 이메일 형식이 아닙니다.</span>
+              <span className="text-[13px] text-[#DC2626]">올바른 이메일 형식이 아닙니다.</span>
             </label>
             <label className="flex flex-col items-start gap-2">
               <span className="text-sm font-medium text-[#8B95A1]">Disabled</span>
@@ -71,15 +71,40 @@ export function InputPage() {
             </label>
           </div>
         }
-        code={`<Input label="이름" placeholder="이름을 입력하세요" />
-<Input label="이메일" error="올바른 이메일 형식이 아닙니다." />
-<Input label="코드" disabled />
+        code={`<Input
+  placeholder="이름을 입력하세요"
+/>
+
+<Input
+  value="포커스 상태"
+  focused
+/>
+
+<Input
+  value="invalid@"
+  error="올바른 이메일 형식이 아닙니다."
+/>
+
+<Input
+  value="비활성"
+  disabled
+/>
 
 // Tokens
-input-height-md → space-600
 input-border-default → color-border-default
-input-border-focus → color-brand-primary`}
+input-border-focus → color-brand-primary
+input-background-filled → color-brand-primary-subtle
+input-background-disabled → color-surface-disabled
+input-border-error → color-error-500`}
       />
+
+      <SectionTitle title={labels.statesTitle} description={labels.statesDesc} />
+      <DocShowcase
+        idPrefix="input-state"
+        tab={stateTab}
+        onTabChange={setStateTab}
+        design={
+          <div className="flex flex-wrap gap-6">
     </div>
   );
 }

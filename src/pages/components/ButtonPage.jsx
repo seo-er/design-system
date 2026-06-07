@@ -12,7 +12,7 @@ const SIZE_STYLES = {
 };
 
 function FlowButton({ children, variant = "primary", size = "md", disabled = false, className = "" }) {
-  const base = "rounded-[8px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4F46E5]";
+  const base = "rounded-[8px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F97316]";
   const variants = {
     primary: "bg-[#F97316] text-white hover:bg-[#EA6A10]",
     secondary: "bg-[#FFD560] text-[#191F28] hover:bg-[#F5C842]",
@@ -147,7 +147,7 @@ export function ButtonPage() {
             </div>
             <div className="space-y-2 text-center">
               <p className="text-[12px] text-[#8B95A1]">Focus</p>
-              <FlowButton variant="primary" className="ring-2 ring-[#4F46E5] ring-offset-2">Confirm</FlowButton>
+              <FlowButton variant="primary" className="ring-2 ring-[#F97316] ring-offset-2">Confirm</FlowButton>
             </div>
             <div className="space-y-2 text-center">
               <p className="text-[12px] text-[#8B95A1]">Disabled</p>
