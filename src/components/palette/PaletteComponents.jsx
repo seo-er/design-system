@@ -113,34 +113,54 @@ export function AccessibleColorStrip({ section }) {
 
 export function InaccessiblePairGrid({ section }) {
   return (
-    <figure className="space-y-2">
-      <figcaption className="text-[22px] font-semibold text-[#191F28]">{section.title}</figcaption>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list">
+    <figure className="space-y-4">
+      <figcaption className="text-[22px] font-semibold text-[#191F28]">
+        {section.title}
+      </figcaption>
+
+      <div
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        role="list"
+      >
         {section.pairs.map(([left, right], index) => (
           <div
             key={`${section.id}-pair-${index}`}
             role="listitem"
-            className="rounded-xl overflow-hidden"
-            aria-label={`Hard to distinguish pair ${left} and ${right}`}
+            aria-label={`${left} and ${right} are hard to distinguish`}
+            className="overflow-hidden rounded-2xl border border-[#E5E8EB] bg-white shadow-sm"
           >
-            <div className="flex h-[48px]">
-            <div
-  className="flex-1 flex flex-col items-center justify-center"
-  style={{
-    backgroundColor: left,
-  }}
->
-  <span
-    className="text-[16px] font-mono font-semibold"
-    style={{
-      color: accessibleTextColor(left),
-    }}
-  >
-    {left}
-  </span>
-</div>
-              <div className="flex-1 flex flex-col items-center justify-center" style={{ backgroundColor: right }}>
-                <span className="text-[11px] font-mono text-white mix-blend-difference">{right}</span>
+            <div className="flex h-24">
+              {/* Left */}
+              <div
+                className="flex flex-1 items-center justify-center"
+                style={{ backgroundColor: left }}
+              >
+                <span
+                  className="font-mono text-lg font-semibold tracking-wide"
+                  style={{
+                    color: accessibleTextColor(left),
+                  }}
+                >
+                  {left.toUpperCase()}
+                </span>
+              </div>
+
+              {/* Divider */}
+              <div className="w-px bg-white/60" />
+
+              {/* Right */}
+              <div
+                className="flex flex-1 items-center justify-center"
+                style={{ backgroundColor: right }}
+              >
+                <span
+                  className="font-mono text-lg font-semibold tracking-wide"
+                  style={{
+                    color: accessibleTextColor(right),
+                  }}
+                >
+                  {right.toUpperCase()}
+                </span>
               </div>
             </div>
           </div>
