@@ -126,28 +126,61 @@ export function InaccessiblePairGrid({ section }) {
   return (
     <figure className="space-y-4">
       <figcaption className="text-[22px] font-semibold text-[#191F28]">{section.title}</figcaption>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list">
-        {section.pairs.map(([left, right], index) => (
-          <div
-            key={`${section.id}-pair-${index}`}
-            role="listitem"
-            className="rounded-2xl overflow-hidden border-2 border-[#FCA5A5] bg-white shadow-sm"
-            aria-label={`Hard to distinguish pair ${left} and ${right}`}
-          >
-            <div className="px-4 py-2 bg-[#FEF2F2] text-[12px] font-semibold text-[#B91C1C] uppercase tracking-wide">
-              Avoid combination
-            </div>
-            <div className="flex h-[72px]">
-              <div className="flex-1 flex flex-col items-center justify-center" style={{ backgroundColor: left }}>
-                <span className="text-[11px] font-mono text-white mix-blend-difference">{left}</span>
-              </div>
-              <div className="flex-1 flex flex-col items-center justify-center" style={{ backgroundColor: right }}>
-                <span className="text-[11px] font-mono text-white mix-blend-difference">{right}</span>
-              </div>
-            </div>
-          </div>
-        ))}
+      <section className="space-y-6">
+  {accessibilityBad.map((item) => (
+    <article
+      key={item.id}
+      className="rounded-3xl border border-red-200 bg-red-50 overflow-hidden"
+    >
+      <div className="px-6 py-4 border-b border-red-200">
+        <h4 className="font-bold text-red-700">
+          ❌ {item.title}
+        </h4>
+        <p className="text-sm text-gray-600 mt-1">
+          {item.description}
+        </p>
       </div>
+
+      <div className="grid lg:grid-cols-2">
+        <div className="p-6 bg-white">
+          <div className="text-xs font-semibold text-gray-500 mb-4">
+            일반 사용자
+          </div>
+
+          <div className="flex gap-3">
+            {item.normal.map((c) => (
+              <div
+                key={c.label}
+                className="flex-1 rounded-xl p-4 text-white font-semibold"
+                style={{ backgroundColor: c.color }}
+              >
+                {c.label}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="p-6 bg-red-50">
+          <div className="text-xs font-semibold text-red-600 mb-4">
+            색각이상 시뮬레이션
+          </div>
+
+          <div className="flex gap-3">
+            {item.colorBlind.map((c) => (
+              <div
+                key={c.label}
+                className="flex-1 rounded-xl p-4 text-white font-semibold"
+                style={{ backgroundColor: c.color }}
+              >
+                {c.label}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  ))}
+</section>
     </figure>
   );
 }

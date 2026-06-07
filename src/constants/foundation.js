@@ -112,80 +112,49 @@ export const darkPalettes = [
     ],
   },
 ];
-
-export const accessibilityGood = [
-  {
-    id: "normal-vision",
-    title: "일반 사용자가 보는 색상",
-    colorBlind: false,
-    colors: [
-      { label: "Black", hex: "#000000" },
-      { label: "Orange", hex: "#E69F00" },
-      { label: "Sky blue", hex: "#56B4E9" },
-      { label: "Bluish green", hex: "#009E73" },
-      { label: "Yellow", hex: "#F0E442" },
-      { label: "Blue", hex: "#0072B2" },
-      { label: "Vermilion", hex: "#D55E00" },
-      { label: "Reddish purple", hex: "#CC79A7" },
-    ],
-  },
-  {
-    id: "color-blind-vision",
-    title: "적록색약자가 보는 색상",
-    colorBlind: true,
-    colors: [
-      { label: "Black", hex: "#000000", displayHex: "#000000" },
-      { label: "Orange", hex: "#E69F00", displayHex: "#B7A400" },
-      { label: "Sky blue", hex: "#56B4E9", displayHex: "#7E97D8" },
-      { label: "Bluish green", hex: "#009E73", displayHex: "#A39B79" },
-      { label: "Yellow", hex: "#F0E442", displayHex: "#F0E442" },
-      { label: "Blue", hex: "#0072B2", displayHex: "#5978B8" },
-      { label: "Vermilion", hex: "#D55E00", displayHex: "#8A7B00" },
-      { label: "Reddish purple", hex: "#CC79A7", displayHex: "#7F89A9" },
-    ],
-  },
-];
-
 export const accessibilityBad = [
   {
-    id: "bad-normal",
-    title: "일반 사용자가 보는 색상",
-    pairs: [
-      ["#F5003D", "#006B21"],
-      ["#946300", "#006B21"],
-      ["#E4DA3D", "#6BC679"],
-      ["#1476AD", "#C154A7"],
-      ["#284B9B", "#56389E"],
+    id: "status",
+    title: "상태 구분에 색상만 사용",
+    description:
+      "성공/오류 상태를 색상만으로 표현하면 적록색약 사용자에게 동일하게 보일 수 있습니다.",
+    normal: [
+      { label: "Error", color: "#F5003D" },
+      { label: "Success", color: "#006B21" },
+    ],
+    colorBlind: [
+      { label: "Error", color: "#706642" },
+      { label: "Success", color: "#6F6513" },
     ],
   },
-  {
-    id: "bad-color-blind",
-    title: "적록색약자가 보는 색상",
-    pairs: [
-      ["#706642", "#6F6513"],
-      ["#776A00", "#70661B"],
-      ["#CCBE74", "#E1C900"],
-      ["#5978B8", "#6279B2"],
-      ["#0D4F97", "#0F4D96"],
-    ],
-  },
-];
 
-export const colorBlindnessAlternatives = [
   {
-    id: "red",
-    name: "Red",
-    before: { label: "Red", hex: "#FF0000", textColor: "#000000" },
-    after: { label: "Vermilion", hex: "#D55E00", textColor: "#FFFFFF" },
-    guidance:
-      "빨간색은 초록색 또는 갈색과 혼동될 수 있으므로 주황 계열로 채도를 조정합니다.",
+    id: "chart",
+    title: "차트 범례 색상 충돌",
+    description:
+      "차트 데이터가 색상만으로 구분되면 정보 해석이 어려워질 수 있습니다.",
+    normal: [
+      { label: "Series A", color: "#1476AD" },
+      { label: "Series B", color: "#C154A7" },
+    ],
+    colorBlind: [
+      { label: "Series A", color: "#5978B8" },
+      { label: "Series B", color: "#6279B2" },
+    ],
   },
+
   {
-    id: "green",
-    name: "Green",
-    before: { label: "Green", hex: "#00FF00", textColor: "#000000" },
-    after: { label: "Bluish Green", hex: "#009E73", textColor: "#FFFFFF" },
-    guidance:
-      "초록색은 빨간색 또는 갈색과 혼동될 수 있으므로 청록 계열로 채도를 조정합니다.",
+    id: "badge",
+    title: "배지 및 태그 구분",
+    description:
+      "노랑과 연두 계열은 일부 사용자에게 거의 동일하게 인식될 수 있습니다.",
+    normal: [
+      { label: "Warning", color: "#E4DA3D" },
+      { label: "Available", color: "#6BC679" },
+    ],
+    colorBlind: [
+      { label: "Warning", color: "#CCBE74" },
+      { label: "Available", color: "#E1C900" },
+    ],
   },
 ];
