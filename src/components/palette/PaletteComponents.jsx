@@ -111,68 +111,66 @@ export function AccessibleColorStrip({ section }) {
   );
 }
 export function InaccessiblePairGrid({ section }) {
-  const labels = [
-    "01",
-    "02",
-    "03",
-    "04",
-    "05",
-  ];
+  const { t } = useI18n();
+
+  const labels = ["01", "02", "03", "04", "05"];
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-[120px_1fr_80px_1fr] gap-6 items-end mb-8">
+      <div className="grid grid-cols-[80px_1fr_80px_1fr] gap-6 items-end mb-10">
         <div />
 
         <div>
-        <h4>
-  {t("accessibility.normalVisionTitle")}
-</h4>
+          <h4 className="text-[20px] font-semibold text-[#191F28]">
+            {t("accessibility.normalVisionTitle")}
+          </h4>
 
-<p>
-  {t("accessibility.normalVisionDesc")}
-</p>
+          <p className="mt-1 text-sm text-[#6B7684]">
+            {t("accessibility.normalVisionDesc")}
+          </p>
         </div>
 
         <div />
 
         <div>
-        <h4>
-  {t("accessibility.colorBlindTitle")}
-</h4>
+          <h4 className="text-[20px] font-semibold text-[#191F28]">
+            {t("accessibility.colorBlindTitle")}
+          </h4>
 
-<p>
-  {t("accessibility.colorBlindDesc")}
-</p>
+          <p className="mt-1 text-sm text-[#6B7684]">
+            {t("accessibility.colorBlindDesc")}
+          </p>
         </div>
       </div>
 
       {section.map((item, index) => (
         <div
           key={item.id}
-          className="grid grid-cols-[120px_1fr_80px_1fr] gap-6 items-center"
+          className="grid grid-cols-[80px_1fr_80px_1fr] gap-6 items-center"
         >
-          <div>
-            <div className="text-[15px] font-semibold text-[#191F28]">
+          <div className="flex justify-center">
+            <div className="w-12 h-12 rounded-lg border border-[#E5E8EB] flex items-center justify-center text-sm font-semibold text-[#191F28]">
               {labels[index]}
-            </div>
-
-            <div className="text-xs text-[#8B95A1] mt-1">
-              Example {item.id}
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
+          <div className="overflow-hidden rounded-lg flex h-12 shadow-sm">
             <div
-              className="flex-1 flex items-center justify-center text-xs font-medium"
-              style={{ backgroundColor: item.normal[0] }}
+              className="flex-1 flex items-center justify-center text-xs font-semibold"
+              style={{
+                backgroundColor: item.normal[0],
+                color: "#FFFFFF",
+              }}
             >
               {item.normal[0]}
             </div>
 
             <div
-              className="flex-1 flex items-center justify-center text-xs font-medium"
-              style={{ backgroundColor: item.normal[1] }}
+              className="flex-1 flex items-center justify-center text-xs font-semibold"
+              style={{
+                backgroundColor: item.normal[1],
+                color: "#FFFFFF",
+              }}
             >
               {item.normal[1]}
             </div>
@@ -182,17 +180,23 @@ export function InaccessiblePairGrid({ section }) {
             →
           </div>
 
-          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
+          <div className="overflow-hidden rounded-lg flex h-12 shadow-sm">
             <div
-              className="flex-1 flex items-center justify-center text-xs font-medium"
-              style={{ backgroundColor: item.colorBlind[0] }}
+              className="flex-1 flex items-center justify-center text-xs font-semibold"
+              style={{
+                backgroundColor: item.colorBlind[0],
+                color: "#FFFFFF",
+              }}
             >
               {item.colorBlind[0]}
             </div>
 
             <div
-              className="flex-1 flex items-center justify-center text-xs font-medium"
-              style={{ backgroundColor: item.colorBlind[1] }}
+              className="flex-1 flex items-center justify-center text-xs font-semibold"
+              style={{
+                backgroundColor: item.colorBlind[1],
+                color: "#FFFFFF",
+              }}
             >
               {item.colorBlind[1]}
             </div>
