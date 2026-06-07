@@ -71,7 +71,7 @@ export default function DesignTokens() {
                 text-[#4E5968]
               "
             >
-              color.text.primary
+              color-text-primary
             </code>
 
             <p
