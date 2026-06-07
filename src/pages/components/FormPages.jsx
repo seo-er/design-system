@@ -3,6 +3,7 @@ import { useI18n } from "../../i18n";
 import { INPUT_SPEC, SELECT_SPEC, MODAL_SPEC } from "../../constants/componentSpecs";
 import { PageHeader, SectionTitle, ComponentSpec } from "../../components/docs/DocPrimitives";
 import { ComponentArchitecture, DocShowcase } from "../../components/docs/ComponentDoc";
+import { getIconSrc } from "../../utils/icons";
 
 export function InputPage() {
   const { t, page, dict } = useI18n();
@@ -97,14 +98,6 @@ input-background-filled → color-brand-primary-subtle
 input-background-disabled → color-surface-disabled
 input-border-error → color-error-500`}
       />
-
-      <SectionTitle title={labels.statesTitle} description={labels.statesDesc} />
-      <DocShowcase
-        idPrefix="input-state"
-        tab={stateTab}
-        onTabChange={setStateTab}
-        design={
-          <div className="flex flex-wrap gap-6">
     </div>
   );
 }
@@ -114,6 +107,17 @@ export function SelectPage() {
   const p = page("select");
   const labels = dict.componentDoc;
   const [tab, setTab] = useState("design");
+
+  const selectSpec = useMemo(
+    () => ({
+      ...SELECT_SPEC,
+      variants: SELECT_SPEC.variants.map((variant) => ({
+        ...variant,
+        usage: p.variantUsage?.[variant.id] ?? "",
+      })),
+    }),
+    [p.variantUsage]
+  );
 
   return (
     <div>
@@ -127,7 +131,7 @@ export function SelectPage() {
         ]}
       />
       <SectionTitle title={labels.architectureTitle} description={labels.architectureDesc} />
-      <ComponentArchitecture spec={SELECT_SPEC} labels={labels} />
+      <ComponentArchitecture spec={selectSpec} labels={labels} />
 
       <SectionTitle title={p.demoTitle} />
       <DocShowcase
@@ -138,12 +142,17 @@ export function SelectPage() {
           <div className="max-w-[320px] space-y-4">
             <button
               type="button"
-              className="w-full h-12 px-4 rounded-xl border border-[#E5E8EB] bg-white flex items-center justify-between text-[15px] text-[#191F28]"
+              className="w-full h-12 px-4 rounded-[8px] border border-[#E5E8EB] bg-white flex items-center justify-between text-[15px] text-[#191F28]"
             >
               강좌 카테고리 선택
-              <span aria-hidden="true">▾</span>
+              <img
+                src={getIconSrc("ic_accordion_down")}
+                alt=""
+                aria-hidden="true"
+                className="w-4 h-4 object-contain shrink-0 opacity-60"
+              />
             </button>
-            <div className="rounded-xl border border-[#E5E8EB] bg-white shadow-lg overflow-hidden">
+            <div className="rounded-[8px] border border-[#E5E8EB] bg-white shadow-lg overflow-hidden">
               <div className="px-4 py-3 bg-[#FFF7ED] text-[#F97316] font-medium text-[14px]">창의 · 교육</div>
               <div className="px-4 py-3 hover:bg-[#FAFBFC] text-[14px]">음악 · 미술</div>
               <div className="px-4 py-3 hover:bg-[#FAFBFC] text-[14px]">신체 · 감각</div>
@@ -168,6 +177,17 @@ export function ModalPage() {
   const labels = dict.componentDoc;
   const [tab, setTab] = useState("design");
 
+  const modalSpec = useMemo(
+    () => ({
+      ...MODAL_SPEC,
+      variants: MODAL_SPEC.variants.map((variant) => ({
+        ...variant,
+        usage: p.variantUsage?.[variant.id] ?? "",
+      })),
+    }),
+    [p.variantUsage]
+  );
+
   return (
     <div>
       <PageHeader category={t("categories.components")} title={p.title} badge={p.badge} description={p.description} />
@@ -180,7 +200,7 @@ export function ModalPage() {
         ]}
       />
       <SectionTitle title={labels.architectureTitle} description={labels.architectureDesc} />
-      <ComponentArchitecture spec={MODAL_SPEC} labels={labels} />
+      <ComponentArchitecture spec={modalSpec} labels={labels} />
 
       <SectionTitle title={p.demoTitle} />
       <DocShowcase

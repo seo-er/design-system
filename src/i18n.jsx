@@ -74,7 +74,7 @@ const TRANSLATIONS = {
       alternativesLabel: "검토했으나 채택하지 않은 대안",
       spacing: {
         title: "왜 8pt 스페이싱 시스템인가?",
-        context: "Flow는 모바일·웹·키오스크 등 이질적 플랫폼에서 동일한 리듬감을 유지해야 합니다.",
+        context: "망고는 모바일·웹·키오스크 등 이질적 플랫폼에서 동일한 리듬감을 유지해야 합니다.",
         why: "8은 2·4의 배수로 iOS/Android dp, rem 변환 시 분수 오차가 적고 Figma 8px grid와 1:1 대응됩니다.",
         strategy: "문화·교육 서비스는 정보 밀도보다 가독성과 터치 여백을 우선하므로 Base unit 8px을 채택했습니다.",
         alternatives: ["4pt — 촘촘하지만 토큰 수·QA 비용 급증", "10pt — rem 변환 시 1.25rem 비정수 반복"],
@@ -173,7 +173,7 @@ const TRANSLATIONS = {
       heroTitle1: "국내·글로벌 서비스를 위한",
       heroTitle2: "통합 디자인 시스템",
       heroDesc:
-        "제품 전반의 UI 완성도와 일관된 사용자 경험을 위해 설계된 Flow Design System. Figma Variables 기반 토큰 체계와 개발 코드화를 통해 디자인-개발 간 구현 정확도를 높입니다.",
+        "제품 전반의 UI 완성도와 일관된 사용자 경험을 위해 설계된 망고 Design System. Figma Variables 기반 토큰 체계와 개발 코드화를 통해 디자인-개발 간 구현 정확도를 높입니다.",
       ctaTokens: "토큰 체계 보기",
       ctaPatterns: "가이드라인 보기",
       stats: [
@@ -466,12 +466,21 @@ opacityTokens: {
         badge: "Form",
         description: "단일·다중 선택 드롭다운. trigger/menu/option 토큰 계층으로 상태를 표현합니다.",
         demoTitle: "드롭다운 Preview",
+        variantUsage: {
+          default: "단일 선택 드롭다운",
+          multi: "태그형 다중 선택",
+        },
       },
       modal: {
         title: "Modal",
         badge: "Overlay",
         description: "Dialog/Sheet/Alert variant. overlay, focus trap, aria-modal을 포함한 오버레이 패턴입니다.",
         demoTitle: "Dialog Preview",
+        variantUsage: {
+          dialog: "확인/취소 등 단기 결정",
+          sheet: "모바일 하단 시트",
+          alert: "시스템 알림, 단일 버튼",
+        },
       },
       checkbox: {
         title: "Checkbox",
@@ -613,7 +622,7 @@ opacityTokens: {
       alternativesLabel: "Alternatives considered",
       spacing: {
         title: "Why an 8pt spacing system?",
-        context: "Flow must keep rhythm across mobile, web, and kiosk surfaces.",
+        context: "망고 must keep rhythm across mobile, web, and kiosk surfaces.",
         why: "8 divides cleanly into 2/4, maps 1:1 to Figma's 8px grid, and minimizes rem rounding errors.",
         strategy: "Education services prioritize readability and touch padding over density—8px base unit.",
         alternatives: ["4pt — denser but more tokens and QA cost", "10pt — awkward rem fractions"],
@@ -629,7 +638,7 @@ opacityTokens: {
       },
       color: {
         title: "Why Orange as Primary brand?",
-        context: "Flow conveys learning energy and warm community.",
+        context: "망고 conveys learning energy and warm community.",
         why: "Orange avoids error associations of red, conflicts less with success green, and meets contrast more easily than yellow.",
         strategy: "Orange for Primary CTA, Yellow for secondary emphasis, Gray for neutral UI.",
         alternatives: ["Blue Primary — generic gov-service look", "Red Primary — error confusion"],
@@ -697,7 +706,7 @@ opacityTokens: {
       heroTitle1: "For domestic & global services",
       heroTitle2: "Unified Design System",
       heroDesc:
-        "Flow Design System ensures UI quality and consistent UX across products. Figma Variables-based tokens bridge design and development for accurate implementation.",
+        "망고 Design System ensures UI quality and consistent UX across products. Figma Variables-based tokens bridge design and development for accurate implementation.",
       ctaTokens: "View token system",
       ctaPatterns: "View guidelines",
       stats: [
@@ -985,12 +994,21 @@ opacityTokens: {
         badge: "Form",
         description: "Single/multi dropdown with trigger/menu/option token layers.",
         demoTitle: "Dropdown preview",
+        variantUsage: {
+          default: "Single-selection dropdown",
+          multi: "Tag-style multi-selection",
+        },
       },
       modal: {
         title: "Modal",
         badge: "Overlay",
         description: "Dialog/Sheet/Alert variants with overlay, focus trap, aria-modal.",
         demoTitle: "Dialog preview",
+        variantUsage: {
+          dialog: "Short decisions such as confirm or cancel",
+          sheet: "Mobile bottom sheet",
+          alert: "System alerts with a single button",
+        },
       },
       checkbox: {
         title: "Checkbox",
@@ -1125,7 +1143,7 @@ opacityTokens: {
       alternativesLabel: "検討したが採用しなかった案",
       spacing: {
         title: "なぜ8ptスペーシングか？",
-        context: "Flowはモバイル・Web・キオスクで同一リズムを維持する必要があります。",
+        context: "망고はモバイル・Web・キオスクで同一リズムを維持する必要があります。",
         why: "8は2・4の倍数でFigma 8px gridと1:1対応し、rem変換誤差が少ないです。",
         strategy: "教育サービスは密度より可読性とタッチ余白を優先しBase unit 8pxを採用。",
         alternatives: ["4pt — トークン数・QAコスト増", "10pt — rem非整数反復"],
@@ -1141,7 +1159,7 @@ opacityTokens: {
       },
       color: {
         title: "なぜOrangeをPrimary Brandか？",
-        context: "Flowは「学びの活力」と「温かいコミュニティ」を伝えます。",
+        context: "망고は「学びの活力」と「温かいコミュニティ」を伝えます。",
         why: "OrangeはRedより警告連想が弱く、Green(成功)と衝突せずYellowよりコントラスト確保が容易。",
         strategy: "Primary CTAにOrange、Secondary強調にYellow、Neutral UIにGrayを固定。",
         alternatives: ["Blue Primary — 政府サービスと差別化不足", "Red Primary — エラー混淆"],
@@ -1209,7 +1227,7 @@ opacityTokens: {
       heroTitle1: "国内・グローバルサービス向け",
       heroTitle2: "統合デザインシステム",
       heroDesc:
-        "製品全体のUI品質と一貫したUXのために設計されたFlow Design System。Figma Variablesベースのトークン体系でデザインと開発の実装精度を高めます。",
+        "製品全体のUI品質と一貫したUXのために設計された망고 Design System。Figma Variablesベースのトークン体系でデザインと開発の実装精度を高めます。",
       ctaTokens: "トークン体系を見る",
       ctaPatterns: "ガイドラインを見る",
       stats: [
@@ -1491,12 +1509,21 @@ opacityTokens: {
         badge: "Form",
         description: "単一・複数選択ドロップダウン。trigger/menu/optionトークン階層。",
         demoTitle: "ドロップダウンPreview",
+        variantUsage: {
+          default: "単一選択ドロップダウン",
+          multi: "タグ型複数選択",
+        },
       },
       modal: {
         title: "Modal",
         badge: "Overlay",
         description: "Dialog/Sheet/Alert variant。overlay、focus trap、aria-modalを含む。",
         demoTitle: "Dialog Preview",
+        variantUsage: {
+          dialog: "確認/キャンセルなど短期決定",
+          sheet: "モバイル下部シート",
+          alert: "システム通知、単一ボタン",
+        },
       },
       checkbox: {
         title: "Checkbox",

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { SYSTEM_META, SEMANTIC_COLORS } from "./tokens";
 import { useI18n, LanguageSwitcher } from "./i18n";
 import { TypographyPage, SpacingPage, PalettePage } from "./pages/foundation";
@@ -57,6 +57,10 @@ export default function App() {
     setMobileNav(false);
     setSearch("");
   };
+
+  useEffect(() => {
+    document.getElementById("main-content")?.scrollTo({ top: 0, left: 0 });
+  }, [menu]);
  
   const renderPage = () => {
     switch (menu) {
@@ -1847,7 +1851,7 @@ function MotionPage() {
         items={[
           { label: "Duration", value: "150 – 300ms" },
           { label: "Easing", value: "ease-out" },
-          { label: "Token", value: "motion.*" },
+          { label: "Token", value: "motion-*" },
           { label: "Use Case", value: "Enter · Exit · Feedback" },
         ]}
       />
@@ -2151,7 +2155,7 @@ function CheckboxPage() {
         items={[
           { label: "Touch Target", value: "32 × 32px" },
           { label: "States", value: "4 variants" },
-          { label: "Token", value: "checkbox.*" },
+          { label: "Token", value: "checkbox-*" },
           { label: "A11y", value: "role=checkbox" },
         ]}
       />
@@ -2369,7 +2373,7 @@ function AdvertisingPage() {
           { label: "Format", value: "PNG · JPG" },
           { label: "Max Size", value: "1MB" },
           { label: "AD Label", value: "필수" },
-          { label: "Token", value: "ad.banner.*" },
+          { label: "Token", value: "ad-banner-*" },
         ]}
       />
 
@@ -2410,56 +2414,64 @@ function AdvertisingPage() {
             </thead>
 
             <tbody>
-              <tr>
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  파일 형식
-                </td>
+  <tr>
+    <td className="border-b border-[#E5E8EB] p-6 text-center">
+      ① 배너 규격
+    </td>
 
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  PNG, JPG, JPEG
-                </td>
-              </tr>
+    <td className="border-b border-[#E5E8EB] p-6">
+      • 권장 크기 : 375 × 128px<br />
+      • 권장 용량 : 150KB 이하<br />
+      • 파일 형식 : PNG, JPG, JPEG
+    </td>
+  </tr>
 
-              <tr>
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  권장 비율
-                </td>
+  <tr>
+    <td className="border-b border-[#E5E8EB] p-6 text-center">
+      ② 타이틀
+    </td>
 
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  디자인 시안 기준 비율 사용
-                </td>
-              </tr>
+    <td className="border-b border-[#E5E8EB] p-6">
+      • 최대 1줄 노출 권장<br />
+      • 핵심 메시지 우선 배치
+    </td>
+  </tr>
 
-              <tr>
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  권장 용량
-                </td>
+  <tr>
+    <td className="border-b border-[#E5E8EB] p-6 text-center">
+      ③ 서브 텍스트
+    </td>
 
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  1MB 이하
-                </td>
-              </tr>
+    <td className="border-b border-[#E5E8EB] p-6">
+      • 보조 설명 및 부가 정보 제공<br />
+      • 1줄 노출 권장
+    </td>
+  </tr>
 
-              <tr>
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  광고 표시
-                </td>
+  <tr>
+    <td className="border-b border-[#E5E8EB] p-6 text-center">
+      ④ 이미지
+    </td>
 
-                <td className="border-b border-[#E5E8EB] p-6 text-center">
-                  AD 표기 필수
-                </td>
-              </tr>
+    <td className="border-b border-[#E5E8EB] p-6">
+      • 오브젝트형 또는 썸네일 박스형 사용<br />
+      • 이미지 내 임의 텍스트 사용 지양<br />
+      • 텍스트 영역과 최소 42px 이상 여백 확보<br />
+      • Safe Zone 영역 내 주요 요소 배치
+    </td>
+  </tr>
 
-              <tr>
-                <td className="p-6 text-center">
-                  CTA 버튼
-                </td>
+  <tr>
+    <td className="p-6 text-center">
+      제작 가이드
+    </td>
 
-                <td className="p-6 text-center">
-                  명확한 행동 유도 문구 사용
-                </td>
-              </tr>
-            </tbody>
+    <td className="p-6">
+      • 익스팬더블 유형 집행 시 힌트 에셋 영역 고려<br />
+      • PSD 템플릿 기준 제작
+    </td>
+  </tr>
+</tbody>
           </table>
         </div>
       </Card>
@@ -2499,19 +2511,19 @@ function AccordionPage() {
 
   const items = [
     {
-      title: "이용 가능 지역",
+      title: "수강 가능 연령",
       content:
-        "서울, 경기, 인천 지역에서 이용 가능합니다. 일부 지역은 서비스 운영 상황에 따라 제한될 수 있습니다.",
+        "0~24개월, 2~4세, 5~7세, 초등 등 연령별 강좌를 제공합니다. 아이의 발달 단계에 맞는 프로그램을 선택할 수 있습니다.",
     },
     {
-      title: "차량 옵션",
+      title: "강좌 분야",
       content:
-        "네비게이션, 하이패스, 블랙박스를 기본 제공합니다. 차량별 옵션은 상이할 수 있습니다.",
+        "창의, 교육, 전시, 음악·미술, 신체, 감각 분야의 다양한 프로그램을 운영합니다. 분야별 특성에 맞는 체험과 학습을 제공합니다.",
     },
     {
-      title: "보험 선택",
+      title: "수강 신청 방법",
       content:
-        "일반자차, 완전자차 중 선택할 수 있으며 이용 중에도 변경 가능합니다.",
+        "온라인 또는 현장에서 강좌를 신청할 수 있습니다. 예약 변경·취소는 개강 3일 전까지 가능하며, 환불 정책은 센터 안내를 따릅니다.",
     },
   ];
   const [iconAccordionTab, setIconAccordionTab] =
@@ -2521,22 +2533,22 @@ const [iconOpenIndex, setIconOpenIndex] =
   useState(0);
   const iconItems = [
     {
-      icon: getIconSrc("location"),
+      icon: getIconSrc("ic_location"),
       title: "수강 가능 지역",
       content:
-        "서울, 경기, 인천 지역에서 이용 가능합니다. 일부 지역은 서비스 운영 상황에 따라 제한될 수 있습니다.",
+        "송파구 문화센터를 비롯해 서울·경기·인천 소재 센터에서 강좌를 수강할 수 있습니다. 거주 지역과 가까운 센터를 선택해 신청하세요.",
     },
     {
-      icon: getIconSrc("reservation"),
-      title: "강좌 예약 안내",
+      icon: getIconSrc("ic_reservation"),
+      title: "강좌 예약",
       content:
-        "원하는 날짜와 시간을 선택하여 예약할 수 있으며 예약 완료 시 알림을 제공합니다.",
+        "원하는 강좌와 시간을 선택해 예약할 수 있습니다. 정원이 마감된 경우 대기 신청이 가능하며, 예약 완료 시 확인 알림을 받을 수 있습니다.",
     },
     {
-      icon: getIconSrc("mypage"),
-      title: "회원 정보 관리",
+      icon: getIconSrc("ic_notification"),
+      title: "알림 안내",
       content:
-        "예약 내역, 관심 강좌, 자녀 정보를 확인하고 관리할 수 있습니다.",
+        "개강 일정, 강의실 변경, 휴강 등 주요 공지를 알림으로 받을 수 있습니다. 앱 또는 문자 알림 수신 설정을 확인해 주세요.",
     },
   ];
   const { t, page } = useI18n();
@@ -2553,7 +2565,7 @@ const [iconOpenIndex, setIconOpenIndex] =
         items={[
           { label: "Variants", value: "Text · Icon" },
           { label: "Animation", value: "150ms ease" },
-          { label: "Token", value: "accordion.*" },
+          { label: "Token", value: "accordion-*" },
           { label: "Behavior", value: "Single expand" },
         ]}
       />
@@ -2579,16 +2591,16 @@ const [iconOpenIndex, setIconOpenIndex] =
           <div className="bg-[#031B34] p-8">
             <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<AccordionGroup>
-  <Accordion title="이용 가능 지역">
-    서울, 경기, 인천 지역에서 이용 가능합니다.
+  <Accordion title="수강 가능 연령">
+    0~24개월, 2~4세, 5~7세, 초등 등 연령별 강좌를 제공합니다.
   </Accordion>
 
-  <Accordion title="차량 옵션">
-    네비게이션, 하이패스, 블랙박스를 제공합니다.
+  <Accordion title="강좌 분야">
+    창의, 교육, 전시, 음악·미술, 신체, 감각 분야 프로그램을 운영합니다.
   </Accordion>
 
-  <Accordion title="보험 선택">
-    일반자차, 완전자차 중 선택할 수 있습니다.
+  <Accordion title="수강 신청 방법">
+    온라인 또는 현장에서 신청할 수 있으며, 변경·취소는 개강 3일 전까지 가능합니다.
   </Accordion>
 </AccordionGroup>`}
             </pre>
@@ -2616,11 +2628,27 @@ const [iconOpenIndex, setIconOpenIndex] =
   <div className="bg-[#031B34] p-8">
     <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
 {`<AccordionWithIcon
-  icon="location"
+  icon="ic_location"
   title="수강 가능 지역"
 >
-  서울, 경기, 인천 지역에서
-  이용 가능합니다.
+  송파구 문화센터를 비롯해 서울·경기·인천 소재 센터에서
+  강좌를 수강할 수 있습니다.
+</AccordionWithIcon>
+
+<AccordionWithIcon
+  icon="ic_reservation"
+  title="강좌 예약"
+>
+  원하는 강좌와 시간을 선택해 예약할 수 있으며,
+  대기 신청도 가능합니다.
+</AccordionWithIcon>
+
+<AccordionWithIcon
+  icon="ic_notification"
+  title="알림 안내"
+>
+  개강 일정, 강의실 변경, 휴강 등 주요 공지를
+  알림으로 받을 수 있습니다.
 </AccordionWithIcon>`}
     </pre>
   </div>
@@ -2649,7 +2677,7 @@ function BadgePage() {
           { label: "Height", value: "22px" },
           { label: "Radius", value: "4px" },
           { label: "Types", value: "Status · Promo" },
-          { label: "Token", value: "badge.*" },
+          { label: "Token", value: "badge-*" },
         ]}
       />
 
@@ -2871,19 +2899,33 @@ function BadgePage() {
         ) : (
           <div className="bg-[#031B34] p-8">
             <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
-{`<Badge variant="recommend">
-  추천
+{`<Badge variant="warning">
+  2자리 남음
 </Badge>
 
-<Badge variant="new">
-  NEW
+<Badge variant="neutral">
+  13~19개월
 </Badge>
 
-<ProductCard
+<Badge variant="inverse">
+  접수예정
+</Badge>
+
+<Badge variant="recommend">
+  부담이 적어요
+</Badge>
+
+<ProductOptionCard
   checked
   title="강의+준비물"
   price="15,000원"
   badge="추천"
+/>
+
+<PriceCard
+  originalPrice="140,000원"
+  price="120,000원"
+  badge="부담이 적어요"
 />`}
             </pre>
           </div>
@@ -2912,7 +2954,7 @@ function FilterPage() {
           { label: "Height", value: "40px" },
           { label: "Icon", value: "ic_filter" },
           { label: "States", value: "Default · Active" },
-          { label: "Token", value: "filter.*" },
+          { label: "Token", value: "filter-*" },
         ]}
       />
 
@@ -3188,33 +3230,36 @@ function FilterPage() {
   
         <div className="bg-[#031B34] p-8">
          <pre className="text-[15px] leading-[1.85] text-white whitespace-pre-wrap break-words font-mono">
-{`<FilterButton>
+{`<FilterChip icon="filter">
   필터
-</FilterButton>
+</FilterChip>
 
-<FilterButton count={1}>
+<FilterChip
+  icon="filter"
+  count={1}
+>
   필터
-</FilterButton>
+</FilterChip>
 
 <FilterChip selected>
   수업 일정
 </FilterChip>
 
-<SortFilter>
+<FilterChip>
+  수업 조건
+</FilterChip>
+
+<FilterChip>
+  지점
+</FilterChip>
+
+<SortChip>
   추천순
-</SortFilter>
+</SortChip>
 
-<SortFilter>
-  최신순
-</SortFilter>
-
-<SortFilter selected>
+<SortChip selected>
   낮은 가격순
-</SortFilter>
-
-<FilterGroup>
-  ...
-</FilterGroup>`}
+</SortChip>`}
 </pre>
         </div>
   
@@ -3410,7 +3455,7 @@ function TabPage() {
                         정보
                       </span>
 
-                      <span className="w-[6px] h-[6px] rounded-full bg-[#F04452]" />
+                      <span className="w-[6px] h-[6px] rounded-full bg-[#DC2626]" />
 
                       {categoryTab === "move" && (
                         <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191F28]" />
@@ -3425,7 +3470,7 @@ function TabPage() {
                        강사
                       </span>
 
-                      <span className="font-bold text-[#3182F6]">
+                      <span className="font-bold text-[#F97316]">
                         24
                       </span>
 
@@ -3455,7 +3500,7 @@ function TabPage() {
                        공지
                       </span>
 
-                      <span className="font-bold text-[#3182F6]">
+                      <span className="font-bold text-[#F97316]">
                         7
                       </span>
 
@@ -3628,7 +3673,7 @@ function TopAppBarPage() {
           { label: "Height", value: "44px" },
           { label: "Width", value: "375px (Mobile)" },
           { label: "Slots", value: "Left · Title · Right" },
-          { label: "Token", value: "topappbar.*" },
+          { label: "Token", value: "topappbar-*" },
         ]}
       />
 

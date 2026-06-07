@@ -26,7 +26,14 @@ export function AccessibleAccordion({ items, openIndex, onToggle, idPrefix = "ac
               >
                 <span className="flex items-center gap-3 min-w-0">
                   {item.icon && (
-                    <img src={item.icon} alt="" className="w-6 h-6 shrink-0" aria-hidden="true" />
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center">
+                      <img
+                        src={item.icon}
+                        alt=""
+                        className="max-h-6 max-w-6 object-contain"
+                        aria-hidden="true"
+                      />
+                    </span>
                   )}
                   <span className="text-[18px] font-semibold text-[#191F28] truncate">{item.title}</span>
                 </span>
@@ -34,7 +41,7 @@ export function AccessibleAccordion({ items, openIndex, onToggle, idPrefix = "ac
                   src={accordionDown}
                   alt=""
                   aria-hidden="true"
-                  className={`w-5 h-5 shrink-0 transition-transform duration-300 ${
+                  className={`h-5 w-5 shrink-0 object-contain transition-transform duration-300 ${
                     open ? "rotate-180" : ""
                   }`}
                 />
@@ -45,7 +52,11 @@ export function AccessibleAccordion({ items, openIndex, onToggle, idPrefix = "ac
               role="region"
               aria-labelledby={triggerId}
               hidden={!open}
-              className={open ? "px-8 pb-8 text-[16px] leading-[1.8] text-[#4E5968]" : undefined}
+              className={
+                open
+                  ? "bg-[#FAFBFC] px-8 pt-10 pb-8 text-[16px] leading-[1.8] text-[#4E5968]"
+                  : undefined
+              }
             >
               {open && item.content}
             </div>

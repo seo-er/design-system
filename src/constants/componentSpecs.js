@@ -51,8 +51,8 @@ export const INPUT_SPEC = {
 };
 export const SELECT_SPEC = {
   variants: [
-    { id: "default", token: "select-default-*", usage: "단일 선택 드롭다운" },
-    { id: "multi", token: "select-multi-*", usage: "태그형 다중 선택" },
+    { id: "default", token: "select-default-*" },
+    { id: "multi", token: "select-multi-*" },
   ],
   states: [
     { id: "default", token: "select-trigger-border" },
@@ -70,9 +70,9 @@ export const SELECT_SPEC = {
 
 export const MODAL_SPEC = {
   variants: [
-    { id: "dialog", token: "modal-dialog-*", usage: "확인/취소 등 단기 결정" },
-    { id: "sheet", token: "modal-sheet-*", usage: "모바일 하단 시트" },
-    { id: "alert", token: "modal-alert-*", usage: "시스템 알림, 단일 버튼" },
+    { id: "dialog", token: "modal-dialog-*" },
+    { id: "sheet", token: "modal-sheet-*" },
+    { id: "alert", token: "modal-alert-*" },
   ],
   states: [
     { id: "open", token: "modal-overlay + modal-panel" },

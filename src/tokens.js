@@ -1,7 +1,7 @@
 export const SYSTEM_META = {
-  name: "Flow",
+  name: "망고",
   version: "2.0.0",
-  figmaLibrary: "Flow Design System",
+  figmaLibrary: "망고 Design System",
   lastUpdated: "2026.06",
 };
 
