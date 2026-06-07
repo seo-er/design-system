@@ -216,17 +216,17 @@ export function PalettePage() {
   {[
     {
       name: "Success",
-      token: "color.feedback.success",
+      token: "color-status-success",
       hex: "#009E73",
     },
     {
       name: "Error",
-      token: "color.feedback.error",
+      token: "color-status-error",
       hex: "#DC2626",
     },
     {
       name: "Info",
-      token: "color.feedback.info",
+      token: "color-status-info",
       hex: "#0072B2",
     },
   ].map((item) => (
