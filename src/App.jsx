@@ -142,7 +142,7 @@ export default function App() {
         </div>
       </div>
 
-      <nav className="flex-1 px-3 py-5 space-y-5" aria-label={t("common.designSystem")}>
+      <nav className="flex-1 overflow-auto px-3 py-5 space-y-5" aria-label={t("common.designSystem")}>
         {filteredSections.map((section) => (
           <div key={section.id}>
             <p className="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#8B95A1]">
@@ -225,7 +225,7 @@ export default function App() {
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto" id="main-content" tabIndex={-1}>
+        <main className="flex-1" id="main-content" tabIndex={-1}>
           <div className="max-w-[1120px] mx-auto px-5 py-8 lg:px-10 lg:py-12">
             {renderPage()}
           </div>
