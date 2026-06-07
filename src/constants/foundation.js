@@ -146,47 +146,25 @@ export const accessibilityGood = [
 ];
 export const accessibilityBad = [
   {
-    id: "status",
-    title: "상태 구분에 색상만 사용",
-    description:
-      "성공/오류 상태를 색상만으로 표현하면 적록색약 사용자에게 동일하게 보일 수 있습니다.",
-    normal: [
-      { label: "Error", color: "#F5003D" },
-      { label: "Success", color: "#006B21" },
-    ],
-    colorBlind: [
-      { label: "Error", color: "#706642" },
-      { label: "Success", color: "#6F6513" },
+    id: "bad-normal",
+    title: "일반 사용자가 보는 색상",
+    pairs: [
+      ["#F5003D", "#006B21"],
+      ["#946300", "#006B21"],
+      ["#E4DA3D", "#6BC679"],
+      ["#1476AD", "#C154A7"],
+      ["#284B9B", "#56389E"],
     ],
   },
-
   {
-    id: "chart",
-    title: "차트 범례 색상 충돌",
-    description:
-      "차트 데이터가 색상만으로 구분되면 정보 해석이 어려워질 수 있습니다.",
-    normal: [
-      { label: "Series A", color: "#1476AD" },
-      { label: "Series B", color: "#C154A7" },
-    ],
-    colorBlind: [
-      { label: "Series A", color: "#5978B8" },
-      { label: "Series B", color: "#6279B2" },
-    ],
-  },
-
-  {
-    id: "badge",
-    title: "배지 및 태그 구분",
-    description:
-      "노랑과 연두 계열은 일부 사용자에게 거의 동일하게 인식될 수 있습니다.",
-    normal: [
-      { label: "Warning", color: "#E4DA3D" },
-      { label: "Available", color: "#6BC679" },
-    ],
-    colorBlind: [
-      { label: "Warning", color: "#CCBE74" },
-      { label: "Available", color: "#E1C900" },
+    id: "bad-color-blind",
+    title: "적록색약자가 보는 색상",
+    pairs: [
+      ["#706642", "#6F6513"],
+      ["#776A00", "#70661B"],
+      ["#CCBE74", "#E1C900"],
+      ["#5978B8", "#6279B2"],
+      ["#0D4F97", "#0F4D96"],
     ],
   },
 ];
