@@ -844,7 +844,7 @@ function MobileGridSection() {
           <img
             src={gridImg}
             alt="Figma Grid Setting"
-            className="w-full max-w-[320px] mx-auto"
+            className="w-full max-w-[220px] mx-auto"
           />
         </div>
       </div>
