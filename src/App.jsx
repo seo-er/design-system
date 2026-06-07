@@ -118,9 +118,7 @@ export default function App() {
           onClick={() => navigate("home")}
           className="flex items-center gap-3 w-full text-left group"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#2563EB] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-            <span className="text-white font-bold text-lg">f</span>
-          </div>
+          
           <div>
             <h1 className="text-[20px] font-bold tracking-tight leading-none">
               {SYSTEM_META.name}
