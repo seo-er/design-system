@@ -656,74 +656,76 @@ function TokenPage() {
 {/* OPACITY */}
 <SectionTitle title="Opacity" />
 
-<Card>
-  <div className="grid md:grid-cols-3 gap-8 px-8 py-8 items-center">
-    <div>
-      <code className="bg-[#F2F4F6] px-3 py-1.5 rounded-lg text-sm">
-        opacity.disabled
-      </code>
+{opacityData.map((o) => (
+  <Card key={o.token}>
+    <div className="grid md:grid-cols-3 gap-8 px-8 py-8 items-center">
+      <div>
+        <code className="bg-[#F2F4F6] px-3 py-1.5 rounded-lg text-sm">
+          {o.token}
+        </code>
 
-      <p className="text-sm text-[#6B7684] mt-4">
-        Apply to images when in a disabled state.
-      </p>
+        <p className="text-sm text-[#6B7684] mt-4">
+          {tok.opacityTokens?.[o.i18nKey]?.desc}
+        </p>
 
-      <p className="text-xs text-[#8B95A1] mt-2">
-        Introduced v3.4.0
-      </p>
+        <p className="text-xs text-[#8B95A1] mt-2">
+          {tok.opacityTokens?.[o.i18nKey]?.version}
+        </p>
+      </div>
+
+      {/* LIGHT */}
+      <div
+        style={{
+          width: "120px",
+          height: "64px",
+          borderRadius: "8px",
+          border: "1px solid #E5E7EB",
+          backgroundColor: hexToRgba("#292A2E", o.opacity),
+          backgroundImage: `
+            linear-gradient(45deg, #eee 25%, transparent 25%),
+            linear-gradient(-45deg, #eee 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #eee 75%),
+            linear-gradient(-45deg, transparent 75%, #eee 75%)
+          `,
+          backgroundSize: "12px 12px",
+          backgroundPosition: "0 0, 0 6px, 6px -6px, -6px 0px",
+          display: "flex",
+          alignItems: "flex-end",
+          padding: "8px",
+          fontSize: "12px",
+        }}
+      >
+        {o.label}
+      </div>
+
+      {/* DARK */}
+      <div
+        style={{
+          width: "120px",
+          height: "64px",
+          borderRadius: "8px",
+          border: "1px solid #333",
+          backgroundColor: hexToRgba("#111111", o.opacity),
+          backgroundImage: `
+            linear-gradient(45deg, #444 25%, transparent 25%),
+            linear-gradient(-45deg, #444 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #444 75%),
+            linear-gradient(-45deg, transparent 75%, #444 75%)
+          `,
+          backgroundSize: "12px 12px",
+          backgroundPosition: "0 0, 0 6px, 6px -6px, -6px 0px",
+          display: "flex",
+          alignItems: "flex-end",
+          padding: "8px",
+          fontSize: "12px",
+          color: "#fff",
+        }}
+      >
+        {o.label}
+      </div>
     </div>
-
-    {/* LIGHT */}
-    <div
-      style={{
-        width: "120px",
-        height: "64px",
-        borderRadius: "8px",
-        border: "1px solid #E5E7EB",
-        backgroundColor: hexToRgba("#292A2E", 0.4),
-        backgroundImage: `
-          linear-gradient(45deg, #eee 25%, transparent 25%),
-          linear-gradient(-45deg, #eee 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, #eee 75%),
-          linear-gradient(-45deg, transparent 75%, #eee 75%)
-        `,
-        backgroundSize: "12px 12px",
-        backgroundPosition: "0 0, 0 6px, 6px -6px, -6px 0px",
-        display: "flex",
-        alignItems: "flex-end",
-        padding: "8px",
-        fontSize: "12px",
-      }}
-    >
-      Opacity40
-    </div>
-
-    {/* DARK */}
-    <div
-      style={{
-        width: "120px",
-        height: "64px",
-        borderRadius: "8px",
-        border: "1px solid #333",
-        backgroundColor: hexToRgba("#111111", 0.4),
-        backgroundImage: `
-          linear-gradient(45deg, #444 25%, transparent 25%),
-          linear-gradient(-45deg, #444 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, #444 75%),
-          linear-gradient(-45deg, transparent 75%, #444 75%)
-        `,
-        backgroundSize: "12px 12px",
-        backgroundPosition: "0 0, 0 6px, 6px -6px, -6px 0px",
-        display: "flex",
-        alignItems: "flex-end",
-        padding: "8px",
-        fontSize: "12px",
-        color: "#fff",
-      }}
-    >
-      Opacity40
-    </div>
-  </div>
-</Card>
+  </Card>
+))}
 
 {/* RADIUS */}
 <SectionTitle title="Radius" />
