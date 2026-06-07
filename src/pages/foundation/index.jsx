@@ -167,7 +167,7 @@ export function PalettePage() {
 
     
 {/* Old Palette UI */}
-<Card className="mb-8">
+<div className="rounded-[28px] border border-[#E5E8EB] bg-white shadow-[var(--shadow-sm)] mb-8">
   <div className="p-8">
     <div className="text-xs font-bold tracking-wider text-[#4F46E5] mb-3">
       ACCESSIBILITY DECISION
@@ -210,7 +210,7 @@ export function PalettePage() {
       </div>
     </div>
   </div>
-</Card>
+</div>
 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
   {accessibilityGood[0].colors.map((color) => (
     <div
