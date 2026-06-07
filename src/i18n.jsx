@@ -303,6 +303,7 @@ const TRANSLATIONS = {
         "CTA, 선택 상태, 포커스",
         "성공, 완료 상태",
       ],
+      borderTokens: { width: { desc: "기본 컴포넌트와 구분선에 사용되는 기본 두께", version: "v1.5.2 도입", }, selected: { desc: "선택된 탭이나 항목을 표시할 때 사용하는 두께", version: "v6.1.0 도입", }, focused: { desc: "포커스 링에 사용되는 두께", version: "v6.1.0 도입", }, },
     },
     pages: {
       palette: {
@@ -724,6 +725,7 @@ const TRANSLATIONS = {
         "CTA, selection, focus states",
         "Success and completion states",
       ],
+      borderTokens: { width: { desc: "The default width for all standard component borders and dividers.", version: "Introduced v1.5.2", }, selected: { desc: "The width used to indicate a selected element, such as an active tab or a chosen item.", version: "Introduced v6.1.0", }, focused: { desc: "The width used for focus rings on interactive elements.", version: "Introduced v6.1.0", }, },
     },
     pages: {
       palette: {
@@ -1126,48 +1128,7 @@ const TRANSLATIONS = {
         "CTA、選択状態、フォーカス",
         "成功、完了状態",
       ],
-    },
-    borderTokens: {
-      width: {
-        desc: "기본 컴포넌트와 구분선에 사용되는 기본 두께",
-        version: "v1.5.2 도입",
-      },
-      selected: {
-        desc: "선택된 탭이나 항목을 표시할 때 사용하는 두께",
-        version: "v6.1.0 도입",
-      },
-      focused: {
-        desc: "포커스 링에 사용되는 두께",
-        version: "v6.1.0 도입",
-      },
-    },
-    borderTokens: {
-      width: {
-        desc: "The default width for all standard component borders and dividers.",
-        version: "Introduced v1.5.2",
-      },
-      selected: {
-        desc: "The width used to indicate a selected element, such as an active tab or a chosen item.",
-        version: "Introduced v6.1.0",
-      },
-      focused: {
-        desc: "The width used for focus rings on interactive elements.",
-        version: "Introduced v6.1.0",
-      },
-    },
-    borderTokens: {
-      width: {
-        desc: "標準コンポーネントと区切り線に使用される基本の太さ",
-        version: "v1.5.2 で導入",
-      },
-      selected: {
-        desc: "選択されたタブや項目を示すために使用される太さ",
-        version: "v6.1.0 で導入",
-      },
-      focused: {
-        desc: "フォーカスリングに使用される太さ",
-        version: "v6.1.0 で導入",
-      },
+      borderTokens: { width: { desc: "標準コンポーネントと区切り線に使用される基本の太さ", version: "v1.5.2 で導入", }, selected: { desc: "選択されたタブや項目を示すために使用される太さ", version: "v6.1.0 で導入", }, focused: { desc: "フォーカスリングに使用される太さ", version: "v6.1.0 で導入", }, }
     },
     pages: {
       palette: {
