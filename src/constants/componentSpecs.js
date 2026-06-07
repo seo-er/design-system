@@ -1,10 +1,10 @@
 export const BUTTON_SPEC = {
   anatomy: ["Label", "Icon (optional)", "Container", "Focus ring"],
   variants: [
-    { id: "primary", token: "btn-primary-*", usage: "주요 CTA, 페이지 핵심 액션" },
-    { id: "secondary", token: "btn-secondary-*", usage: "보조 액션, Primary와 쌍으로 사용" },
-    { id: "outline-brand", token: "btn-outline-brand-*", usage: "브랜드 강조가 필요한 중립 배경 위" },
-    { id: "outline-neutral", token: "btn-neutral-*", usage: "취소, 닫기 등 저강조 액션" },
+    { id: "primary", token: "btn-primary-*" },
+    { id: "secondary", token: "btn-secondary-*" },
+    { id: "outline-brand", token: "btn-outline-brand-*" },
+    { id: "outline-neutral", token: "btn-neutral-*" },
   ],
   sizes: [
     { id: "sm", height: "46px", token: "btn-size-sm", font: "font-title-medium" },

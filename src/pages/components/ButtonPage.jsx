@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useI18n } from "../../i18n";
 import { BUTTON_SPEC } from "../../constants/componentSpecs";
 import { PageHeader, SectionTitle, ComponentSpec } from "../../components/docs/DocPrimitives";
@@ -39,6 +39,17 @@ export function ButtonPage() {
   const [variantTab, setVariantTab] = useState("design");
   const [stateTab, setStateTab] = useState("design");
 
+  const buttonSpec = useMemo(
+    () => ({
+      ...BUTTON_SPEC,
+      variants: BUTTON_SPEC.variants.map((variant) => ({
+        ...variant,
+        usage: p.variantUsage?.[variant.id] ?? "",
+      })),
+    }),
+    [p.variantUsage]
+  );
+
   return (
     <div>
       <PageHeader
@@ -53,12 +64,12 @@ export function ButtonPage() {
           { label: "Variants", value: "Primary · Secondary · Outline" },
           { label: "States", value: "Default · Hover · Focus · Disabled" },
           { label: "Sizes", value: "SM · MD · LG · XL" },
-          { label: "Token", value: "btn_*" },
+          { label: "Token", value: "btn-*" },
         ]}
       />
 
       <SectionTitle title={labels.architectureTitle} description={labels.architectureDesc} />
-      <ComponentArchitecture spec={BUTTON_SPEC} labels={labels} />
+      <ComponentArchitecture spec={buttonSpec} labels={labels} />
 
       <SectionTitle title={p.size} description={p.sizeDesc} />
       <DocShowcase
@@ -93,19 +104,19 @@ export function ButtonPage() {
         onTabChange={setVariantTab}
         design={
           <div className="flex flex-wrap gap-6">
-            <div className="space-y-2">
+            <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_primary</span>
               <FlowButton variant="primary">Primary</FlowButton>
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_secondary</span>
               <FlowButton variant="secondary">Secondary</FlowButton>
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_outline_brand</span>
               <FlowButton variant="outline-brand">Outline</FlowButton>
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_outline_neutral</span>
               <FlowButton variant="outline-neutral">Cancel</FlowButton>
             </div>
@@ -150,8 +161,9 @@ export function ButtonPage() {
 // State tokens
 button.primary.background
 button.primary.background.hover
+button.primary.focus.ring
 button.primary.background.disabled
-button.primary.focus.ring`}
+`}
       />
     </div>
   );

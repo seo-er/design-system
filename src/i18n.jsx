@@ -164,7 +164,7 @@ const TRANSLATIONS = {
       tokens: "Token 연결",
       statesTitle: "Interactive States",
       statesDesc: "default, hover, focus, disabled를 토큰으로 분리해 구현합니다.",
-      variantColumns: { id: "Variant", token: "Token prefix", usage: "Usage" },
+      variantColumns: { id: "Variant", token: "Token prefix", usage: "용도" },
       stateColumns: { id: "State", token: "Token pattern" },
       tokenColumns: { prop: "Property", primitive: "Primitive", semantic: "Semantic" },
     },
@@ -443,6 +443,12 @@ opacityTokens: {
         sizeDesc: "size 속성으로 SM, MD, LG, XL을 지정합니다.",
         hierarchy: "Variant · Hierarchy",
         accessibility: "접근성",
+        variantUsage: {
+          primary: "주요 CTA, 페이지 핵심 액션",
+          secondary: "보조 액션, Primary와 쌍으로 사용",
+          "outline-brand": "브랜드 강조가 필요한 중립 배경 위",
+          "outline-neutral": "취소, 닫기 등 저강조 액션",
+        },
       },
       input: {
         title: "Input",
@@ -951,6 +957,12 @@ opacityTokens: {
         sizeDesc: "Set SM, MD, LG, XL via the size prop.",
         hierarchy: "Variants · Hierarchy",
         accessibility: "Accessibility",
+        variantUsage: {
+          primary: "Primary CTA and the main action on a page",
+          secondary: "Secondary action, paired with Primary",
+          "outline-brand": "Brand emphasis on neutral backgrounds",
+          "outline-neutral": "Low-emphasis actions such as cancel or close",
+        },
       },
       input: {
         title: "Input",
@@ -1178,7 +1190,7 @@ opacityTokens: {
       tokens: "Token接続",
       statesTitle: "Interactive States",
       statesDesc: "default/hover/focus/disabledをトークン分離。",
-      variantColumns: { id: "Variant", token: "Token prefix", usage: "Usage" },
+      variantColumns: { id: "Variant", token: "Token prefix", usage: "用途" },
       stateColumns: { id: "State", token: "Token pattern" },
       tokenColumns: { prop: "Property", primitive: "Primitive", semantic: "Semantic" },
     },
@@ -1446,6 +1458,12 @@ opacityTokens: {
         sizeDesc: "size属性でSM, MD, LG, XLを指定。",
         hierarchy: "Variant · 階層",
         accessibility: "アクセシビリティ",
+        variantUsage: {
+          primary: "主要CTA、ページの核心アクション",
+          secondary: "補助アクション、Primaryとセットで使用",
+          "outline-brand": "ブランド強調が必要な中立背景上",
+          "outline-neutral": "キャンセル、閉じるなど低強調アクション",
+        },
       },
       input: {
         title: "Input",
