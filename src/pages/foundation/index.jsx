@@ -179,7 +179,7 @@ export function PalettePage() {
 
     <p className="text-[#6B7684] leading-relaxed mb-6">
       색각 이상 환경에서도 상태와 정보를 명확하게 구분할 수 있도록
-      검증된 Okabe-Ito Palette를 채택했습니다.
+      Okabe-Ito Palette를 참고하여 상태 색상을 정의했습니다. 브랜드 컬러와 분리하여 성공, 오류, 정보 상태를 명확하게 전달합니다.
     </p>
 
     <div className="grid md:grid-cols-2 gap-4">
@@ -211,25 +211,52 @@ export function PalettePage() {
     </div>
   </div>
 </div>
-<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-  {accessibilityGood[0].colors.map((color) => (
-    <div
-      key={color.label}
-      className="bg-white rounded-2xl border border-[#E5E8EB] p-4"
-    >
-      <div
-        className="w-full h-20 rounded-xl mb-3"
-        style={{
-          backgroundColor: color.hex,
-        }}
-      />
 
-      <div className="font-medium text-sm">
-        {color.label}
+<div className="grid xl:grid-cols-2 gap-6 mb-12">
+  {[
+    {
+      name: "Success",
+      token: "color.feedback.success",
+      hex: "#009E73",
+    },
+    {
+      name: "Error",
+      token: "color.feedback.error",
+      hex: "#DC2626",
+    },
+    {
+      name: "Info",
+      token: "color.feedback.info",
+      hex: "#0072B2",
+    },
+  ].map((item) => (
+    <div
+      key={item.name}
+      className="bg-white rounded-[24px] border border-[#E5E8EB] overflow-hidden"
+    >
+      <div className="px-7 py-6 border-b border-[#F2F4F6]">
+        <h3 className="text-[18px] font-bold">
+          {item.name}
+        </h3>
       </div>
 
-      <div className="text-xs text-[#8B95A1] mt-1">
-        {color.hex}
+      <div className="grid grid-cols-[120px_1fr_140px] items-center">
+        <div className="flex justify-center py-8">
+          <div
+            className="w-14 h-14 rounded-full border border-[#E5E8EB]"
+            style={{
+              backgroundColor: item.hex,
+            }}
+          />
+        </div>
+
+        <div className="font-semibold text-[#374151]">
+          {item.token}
+        </div>
+
+        <div className="font-mono text-[#4E5968]">
+          {item.hex}
+        </div>
       </div>
     </div>
   ))}
