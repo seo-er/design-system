@@ -91,7 +91,7 @@ const TRANSLATIONS = {
       },
       color: {
         title: "왜 Orange를 Primary Brand로 정의했는가?",
-        context: "Flow 브랜드는 '배움의 활력'과 '따뜻한 커뮤니티'를 전달해야 합니다.",
+        context: "Orange는 학습의 활력과 긍정적인 참여를 상징합니다. 또한 국내 사용자에게 익숙한 지역 기반 서비스의 친근한 인상을 연상시켜, 망고가 추구하는 지역 문화센터 플랫폼의 정체성을 효과적으로 전달할 수 있습니다.",
         why: "Orange(#F97316)는 Red보다 경고 연상이 약하고, Green(성공)과 역할 충돌이 없으며 Yellow보다 WCAG 대비 확보가 쉽습니다.",
         strategy: "Primary CTA·브랜드 강조에 Orange, Secondary 강조·프로모션에 Yellow, Neutral UI에 Gray를 분리해 색 역할을 고정했습니다.",
         alternatives: ["Blue Primary — 정부 서비스와 차별화 부족", "Red Primary — 오류·위험과 혼동"],
