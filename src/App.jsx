@@ -142,7 +142,15 @@ export default function App() {
         </div>
       </div>
 
-      <nav className="flex-1 overflow-auto px-3 py-5 space-y-5" aria-label={t("common.designSystem")}>
+      <nav
+  className="
+    flex-1
+    min-h-0
+    overflow-y-auto
+    px-3
+    py-5
+    space-y-5
+  " aria-label={t("common.designSystem")}>
         {filteredSections.map((section) => (
           <div key={section.id}>
             <p className="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#8B95A1]">
@@ -180,8 +188,21 @@ export default function App() {
   );
 
   return (
-    <div className="flex h-screen bg-[var(--color-surface-subtle)] text-[var(--color-text-primary)]">
-      <aside className="hidden lg:flex w-[272px] shrink-0 bg-white border-r border-[var(--color-border-default)] flex-col">
+    <div className="flex h-screen overflow-hidden bg-[var(--color-surface-subtle)]">
+
+    <aside
+      className="
+        hidden
+        lg:flex
+        w-[272px]
+        shrink-0
+        bg-white
+        border-r
+        border-[var(--color-border-default)]
+        flex-col
+        overflow-hidden
+      "
+    >
         {sidebar}
       </aside>
 
@@ -802,22 +823,19 @@ function MobileGridSection() {
       <Card>
         <div className="p-10">
 
-          <div className="flex gap-10 flex-wrap justify-center">
+        <div className="grid lg:grid-cols-[520px_240px] gap-12 justify-center">
+  <img
+    src={gridImg}
+    alt=""
+    className="w-full h-auto rounded-lg border border-[#E5E8EB]"
+  />
 
-            <img
-              src={gridImg}
-              alt=""
-              className="w-[240px]"
-            />
-
-            <img
-              src={gridOverlay}
-              alt=""
-              className="w-[240px]"
-            />
-
-          </div>
-
+  <img
+    src={gridOverlay}
+    alt=""
+    className="w-full h-auto rounded-lg border border-[#E5E8EB]"
+  />
+</div>
         </div>
       </Card>
 
