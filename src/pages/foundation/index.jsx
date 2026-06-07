@@ -166,46 +166,60 @@ export function PalettePage() {
       </div>
 
     
-{/* Old Palette UI */}
-<div className="rounded-[28px] border border-[#E5E8EB] bg-white shadow-[var(--shadow-sm)] mb-8">
+      <div className="rounded-[28px] border border-[#E5E8EB] bg-white shadow-[var(--shadow-sm)] mb-8">
   <div className="p-8">
     <div className="text-xs font-bold tracking-wider text-[#4F46E5] mb-3">
-      ACCESSIBILITY DECISION
+      {t("tokens.accessibilityDecision.eyebrow")}
     </div>
 
     <h3 className="text-2xl font-bold mb-4">
-      왜 Okabe-Ito Palette를 선택했는가?
+      {t("tokens.accessibilityDecision.title")}
     </h3>
 
     <p className="text-[#6B7684] leading-relaxed mb-6">
-      색각 이상 환경에서도 상태와 정보를 명확하게 구분할 수 있도록
-      Okabe-Ito Palette를 참고하여 상태 색상을 정의했습니다. 브랜드 컬러와 분리하여 성공, 오류, 정보 상태를 명확하게 전달합니다.
+      {t("tokens.accessibilityDecision.description")}
     </p>
 
     <div className="grid md:grid-cols-2 gap-4">
       <div className="rounded-xl border border-[#E5E8EB] p-5">
         <h4 className="font-semibold mb-3">
-          선정 이유
+          {t("tokens.accessibilityDecision.reasonsTitle")}
         </h4>
 
         <ul className="space-y-2 text-sm text-[#4E5968]">
-          <li>✓ 적록색약 환경에서도 구분 가능</li>
-          <li>✓ 데이터 시각화 분야에서 검증</li>
-          <li>✓ WCAG 접근성 고려</li>
-          <li>✓ 브랜드 컬러와 충돌 없음</li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.reason1")}
+          </li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.reason2")}
+          </li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.reason3")}
+          </li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.reason4")}
+          </li>
         </ul>
       </div>
 
       <div className="rounded-xl border border-[#E5E8EB] p-5">
         <h4 className="font-semibold mb-3">
-          적용 효과
+          {t("tokens.accessibilityDecision.effectsTitle")}
         </h4>
 
         <ul className="space-y-2 text-sm text-[#4E5968]">
-          <li>✓ 상태 구분 명확성 향상</li>
-          <li>✓ 차트 가독성 개선</li>
-          <li>✓ 접근성 기준 충족</li>
-          <li>✓ 사용자 인지 부담 감소</li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.effect1")}
+          </li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.effect2")}
+          </li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.effect3")}
+          </li>
+          <li>
+            ✓ {t("tokens.accessibilityDecision.effect4")}
+          </li>
         </ul>
       </div>
     </div>
