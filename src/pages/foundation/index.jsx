@@ -176,50 +176,34 @@ export function PalettePage() {
       {t("tokens.accessibilityDecision.title")}
     </h3>
 
-    <p className="text-[#6B7684] leading-relaxed mb-6">
+    <p className="text-[#6B7684] leading-relaxed mb-8">
       {t("tokens.accessibilityDecision.description")}
     </p>
 
-    <div className="grid md:grid-cols-2 gap-4">
-      <div className="rounded-xl border border-[#E5E8EB] p-5">
-        <h4 className="font-semibold mb-3">
+    <div className="grid md:grid-cols-2 gap-6">
+      <div className="rounded-xl border border-[#E5E8EB] p-6">
+        <h4 className="font-semibold text-[#191F28] mb-4">
           {t("tokens.accessibilityDecision.reasonsTitle")}
         </h4>
 
-        <ul className="space-y-2 text-sm text-[#4E5968]">
-          <li>
-            ✓ {t("tokens.accessibilityDecision.reason1")}
-          </li>
-          <li>
-            ✓ {t("tokens.accessibilityDecision.reason2")}
-          </li>
-          <li>
-            ✓ {t("tokens.accessibilityDecision.reason3")}
-          </li>
-          <li>
-            ✓ {t("tokens.accessibilityDecision.reason4")}
-          </li>
+        <ul className="space-y-3 text-sm text-[#4E5968]">
+          <li>✓ {t("tokens.accessibilityDecision.reason1")}</li>
+          <li>✓ {t("tokens.accessibilityDecision.reason2")}</li>
+          <li>✓ {t("tokens.accessibilityDecision.reason3")}</li>
+          <li>✓ {t("tokens.accessibilityDecision.reason4")}</li>
         </ul>
       </div>
 
-      <div className="rounded-xl border border-[#E5E8EB] p-5">
-        <h4 className="font-semibold mb-3">
-          {t("tokens.accessibilityDecision.effectsTitle")}
+      <div className="rounded-xl border border-[#E5E8EB] p-6">
+        <h4 className="font-semibold text-[#191F28] mb-4">
+          {t("tokens.accessibilityDecision.benefitsTitle")}
         </h4>
 
-        <ul className="space-y-2 text-sm text-[#4E5968]">
-          <li>
-            ✓ {t("tokens.accessibilityDecision.effect1")}
-          </li>
-          <li>
-            ✓ {t("tokens.accessibilityDecision.effect2")}
-          </li>
-          <li>
-            ✓ {t("tokens.accessibilityDecision.effect3")}
-          </li>
-          <li>
-            ✓ {t("tokens.accessibilityDecision.effect4")}
-          </li>
+        <ul className="space-y-3 text-sm text-[#4E5968]">
+          <li>✓ {t("tokens.accessibilityDecision.benefit1")}</li>
+          <li>✓ {t("tokens.accessibilityDecision.benefit2")}</li>
+          <li>✓ {t("tokens.accessibilityDecision.benefit3")}</li>
+          <li>✓ {t("tokens.accessibilityDecision.benefit4")}</li>
         </ul>
       </div>
     </div>
