@@ -188,7 +188,7 @@ export default function App() {
   );
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[var(--color-surface-subtle)]">
+    <div className="flex h-screen  bg-[var(--color-surface-subtle)]">
 
     <aside
       className="
@@ -246,7 +246,11 @@ export default function App() {
           </div>
         </header>
 
-        <main className="flex-1" id="main-content" tabIndex={-1}>
+        <main
+  className="flex-1 overflow-y-auto"
+  id="main-content"
+  tabIndex={-1}
+>
           <div className="max-w-[1120px] mx-auto px-5 py-8 lg:px-10 lg:py-12">
             {renderPage()}
           </div>
