@@ -111,47 +111,85 @@ export function AccessibleColorStrip({ section }) {
   );
 }
 export function InaccessiblePairGrid({ section }) {
+  const labels = [
+    "Status",
+    "Chart",
+    "Warning",
+    "Category",
+    "Navigation",
+  ];
+
   return (
-    <div className="space-y-4">
-      {section.map((item) => (
+    <div className="space-y-5">
+      <div className="grid grid-cols-[120px_1fr_80px_1fr] gap-6 items-end mb-8">
+        <div />
+
+        <div>
+          <h4 className="text-[18px] font-semibold text-[#191F28]">
+            일반 사용자 (Normal Vision)
+          </h4>
+          <p className="mt-1 text-sm text-[#6B7684]">
+            일반 사용자가 인지하는 색상 조합입니다.
+          </p>
+        </div>
+
+        <div />
+
+        <div>
+          <h4 className="text-[18px] font-semibold text-[#191F28]">
+            적록색약자 (Deuteranopia)
+          </h4>
+          <p className="mt-1 text-sm text-[#6B7684]">
+            적록색약 환경에서 인지되는 색상입니다.
+          </p>
+        </div>
+      </div>
+
+      {section.map((item, index) => (
         <div
           key={item.id}
-          className="grid grid-cols-[56px_1fr_60px_1fr] gap-6 items-center"
+          className="grid grid-cols-[120px_1fr_80px_1fr] gap-6 items-center"
         >
-          <div className="w-14 h-14 rounded-xl border border-[#E5E8EB] flex items-center justify-center font-semibold">
-            {item.id}
+          <div>
+            <div className="text-[15px] font-semibold text-[#191F28]">
+              {labels[index]}
+            </div>
+
+            <div className="text-xs text-[#8B95A1] mt-1">
+              Example {item.id}
+            </div>
           </div>
 
-          <div className="overflow-hidden rounded-xl flex h-14">
+          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
             <div
-              className="flex-1 flex items-center justify-center font-semibold"
+              className="flex-1 flex items-center justify-center text-xs font-medium"
               style={{ backgroundColor: item.normal[0] }}
             >
               {item.normal[0]}
             </div>
 
             <div
-              className="flex-1 flex items-center justify-center font-semibold"
+              className="flex-1 flex items-center justify-center text-xs font-medium"
               style={{ backgroundColor: item.normal[1] }}
             >
               {item.normal[1]}
             </div>
           </div>
 
-          <div className="text-center text-3xl text-[#94A3B8]">
+          <div className="text-center text-2xl text-[#94A3B8]">
             →
           </div>
 
-          <div className="overflow-hidden rounded-xl flex h-14">
+          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
             <div
-              className="flex-1 flex items-center justify-center font-semibold"
+              className="flex-1 flex items-center justify-center text-xs font-medium"
               style={{ backgroundColor: item.colorBlind[0] }}
             >
               {item.colorBlind[0]}
             </div>
 
             <div
-              className="flex-1 flex items-center justify-center font-semibold"
+              className="flex-1 flex items-center justify-center text-xs font-medium"
               style={{ backgroundColor: item.colorBlind[1] }}
             >
               {item.colorBlind[1]}
@@ -166,6 +204,7 @@ export function ColorBlindnessAlternatives({ items }) {
   const { t } = useI18n();
 
   return (
+    
     <section aria-labelledby="color-blind-alternatives-title" className="mt-12">
       <div className="rounded-[28px] border border-[#E5E8EB] bg-white p-8 lg:p-10 shadow-[var(--shadow-sm)]">
         <h3 id="color-blind-alternatives-title" className="text-[24px] font-bold tracking-tight mb-2">
