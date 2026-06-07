@@ -53,7 +53,7 @@ export function ButtonPage() {
           { label: "Variants", value: "Primary · Secondary · Outline" },
           { label: "States", value: "Default · Hover · Focus · Disabled" },
           { label: "Sizes", value: "SM · MD · LG · XL" },
-          { label: "Token", value: "button.*" },
+          { label: "Token", value: "btn_*" },
         ]}
       />
 

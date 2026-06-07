@@ -1081,19 +1081,19 @@ function IllustrationPage() {
       />
       <ComponentSpec
         items={[
-          { label: "Format", value: "PNG · SVG" },
+          { label: "Base Size", value: "24 × 24px" },
           { label: "Naming", value: "ill_{category}" },
-          { label: "Grid", value: "4 Column" },
-          { label: "Usage", value: "Empty · Onboarding" },
+          { label: "Sizes", value: "S · M · L" },
+          { label: "Format", value: "PNG · SVG" },
         ]}
       />
-    <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-8">
+    <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_340px] gap-8">
 
       {/* LEFT */}
-      <div>
+      <div className="min-w-0">
   {/* ICON GUIDE */}
 
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 xl:gap-6">
 
           {illustrationItems.map((item) => (
             <button
@@ -1101,9 +1101,12 @@ function IllustrationPage() {
               onClick={() => setSelectedIllustration(item)}
               className={`
                 rounded-[28px]
-                p-6
+                p-4 xl:p-6
                 transition
                 text-left
+                min-w-0
+                w-full
+                overflow-hidden
                 ${
                   selectedIllustration.label === item.label
                     ? "bg-[#F3F4F6]"
@@ -1112,7 +1115,10 @@ function IllustrationPage() {
               `}
             >
 
-              <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
+              <div
+                className="text-[#5B4CF0] text-[14px] xl:text-[18px] font-medium leading-[1.5] mb-4 xl:mb-6 truncate"
+                title={`◆ill_${item.slug}`}
+              >
               ◆ill_{item.slug}
               </div>
 
@@ -1157,6 +1163,10 @@ function IllustrationPage() {
   rounded-[32px]
   overflow-hidden
   h-fit
+  shrink-0
+  w-full
+  xl:w-[340px]
+  xl:max-w-[340px]
 ">
 
   {/* preview */}
@@ -1179,7 +1189,7 @@ function IllustrationPage() {
 
       <div className="flex items-center gap-3 mb-4">
 
-        <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
+        <h2 className="text-[28px] xl:text-[36px] text-[#7C3AED] font-bold tracking-tight leading-tight break-all">
         ◆ill_{selectedIllustration.slug}
         </h2>
 
@@ -1201,11 +1211,16 @@ function IllustrationPage() {
       bg-[#F3F4F6]
       rounded-[16px]
       p-6
-      text-[17px]
-      leading-[2]
+      pr-14
+      text-[14px]
+      xl:text-[17px]
+      leading-[1.8]
       font-mono
       text-[#374151]
       relative
+      overflow-x-auto
+      break-all
+      whitespace-pre-wrap
     ">
 
 {`import ${selectedIllustration.label.replace(/\s/g, "")}Icon from
@@ -1456,13 +1471,13 @@ function IconPage() {
           { label: "Format", value: "PNG · SVG" },
         ]}
       />
-    <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-8">
+    <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_340px] gap-8">
 
       {/* LEFT */}
-      <div>
+      <div className="min-w-0">
   {/* ICON GUIDE */}
 
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 xl:gap-6">
 
           {iconItems.map((item) => (
             <button
@@ -1470,9 +1485,12 @@ function IconPage() {
               onClick={() => setSelectedIcon(item)}
               className={`
                 rounded-[28px]
-                p-6
+                p-4 xl:p-6
                 transition
                 text-left
+                min-w-0
+                w-full
+                overflow-hidden
                 ${
                   selectedIcon.label === item.label
                     ? "bg-[#F3F4F6]"
@@ -1481,7 +1499,10 @@ function IconPage() {
               `}
             >
 
-              <div className="text-[#5B4CF0] text-[18px] font-medium leading-[1.5] mb-6">
+              <div
+                className="text-[#5B4CF0] text-[14px] xl:text-[18px] font-medium leading-[1.5] mb-4 xl:mb-6 truncate"
+                title={`◆${item.slug}`}
+              >
               ◆{item.slug}
               </div>
 
@@ -1522,6 +1543,10 @@ function IconPage() {
   rounded-[32px]
   overflow-hidden
   h-fit
+  shrink-0
+  w-full
+  xl:w-[340px]
+  xl:max-w-[340px]
 ">
 
   {/* preview */}
@@ -1544,7 +1569,7 @@ function IconPage() {
 
       <div className="flex items-center gap-3 mb-4">
 
-        <h2 className="text-[42px] text-[#7C3AED] font-bold tracking-tight leading-none">
+        <h2 className="text-[28px] xl:text-[36px] text-[#7C3AED] font-bold tracking-tight leading-tight break-all">
         ◆{selectedIcon.slug}
         </h2>
 
@@ -1566,11 +1591,16 @@ function IconPage() {
       bg-[#F3F4F6]
       rounded-[16px]
       p-6
-      text-[17px]
-      leading-[2]
+      pr-14
+      text-[14px]
+      xl:text-[17px]
+      leading-[1.8]
       font-mono
       text-[#374151]
       relative
+      overflow-x-auto
+      break-all
+      whitespace-pre-wrap
     ">
 
 {`import ${selectedIcon.label.replace(/\s/g, "")}Icon from
