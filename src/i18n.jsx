@@ -63,7 +63,6 @@ const TRANSLATIONS = {
       contrastNote: "Note",
     },
     palette: {
-      accessibleGoodDesc: "Okabe–Ito 팔레트 기반. 적록색약에서도 색상 간 명도·색상 차이로 구분 가능합니다.",
       accessibleBadDesc: "유사 명도·유사 색상 조합은 상태 구분, 차트, 알림 UI에서 혼동을 유발합니다.",
       colorUsageTitle: "색상 사용 시 주의사항",
       colorUsageDesc: "색상만으로 정보를 전달하지 않고, 대체 색상·아이콘·텍스트 레이블을 함께 제공합니다.",
@@ -95,7 +94,7 @@ const TRANSLATIONS = {
         why: "Orange(#F97316)는 Red보다 경고 연상이 약하고, Green(성공)과 역할 충돌이 없으며 Yellow보다 WCAG 대비 확보가 쉽습니다.",
         strategy: "Primary CTA·브랜드 강조에 Orange, Secondary 강조·프로모션에 Yellow, Neutral UI에 Gray를 분리해 색 역할을 고정했습니다.",
         alternatives: ["Blue Primary — 정부 서비스와 차별화 부족", "Red Primary — 오류·위험과 혼동"],
-        metric: "color.orange.500 on white = 3.1:1 (Large text AA)",
+        metric: "color-primary-500 on white = 3.1:1 (Large text AA)",
       },
       grid: {
         title: "왜 모바일 4컬럼 그리드인가?",
@@ -271,9 +270,14 @@ const TRANSLATIONS = {
           category: "토큰 운영",
           rules: [
             { do: "Figma Variables 변경 시 토큰 JSON을 동기화한다", dont: "디자인과 코드 토큰을 별도 관리한다" },
-            { do: "Primitive → Semantic → Component 3단계를 유지한다", dont: "컴포넌트에서 Primitive를 직접 참조한다" },
-            { do: "토큰 네이밍은 dot notation으로 일관되게 짓는다", dont: "팀/프로젝트마다 다른 네이밍 규칙을 사용한다" },
-          ],
+            {
+              do: "Primitive → Semantic → Component 3단계를 유지한다",
+              dont: "컴포넌트에서 Primitive를 직접 참조한다"
+            },
+            {
+              do: "토큰 네이밍은 kebab-case(-) 규칙으로 일관되게 짓는다",
+              dont: "팀/프로젝트마다 다른 네이밍 규칙을 사용한다"
+            } ],
         },
       ],
     },
@@ -572,7 +576,7 @@ opacityTokens: {
         why: "Orange avoids error associations of red, conflicts less with success green, and meets contrast more easily than yellow.",
         strategy: "Orange for Primary CTA, Yellow for secondary emphasis, Gray for neutral UI.",
         alternatives: ["Blue Primary — generic gov-service look", "Red Primary — error confusion"],
-        metric: "color.orange.500 on white = 3.1:1 (Large text AA)",
+        metric: "color-primary-500 on white = 3.1:1 (Large text AA)",
       },
       grid: {
         title: "Why 4-column mobile grid?",
@@ -1020,7 +1024,7 @@ opacityTokens: {
         why: "OrangeはRedより警告連想が弱く、Green(成功)と衝突せずYellowよりコントラスト確保が容易。",
         strategy: "Primary CTAにOrange、Secondary強調にYellow、Neutral UIにGrayを固定。",
         alternatives: ["Blue Primary — 政府サービスと差別化不足", "Red Primary — エラー混淆"],
-        metric: "color.orange.500 on white = 3.1:1 (Large text AA)",
+        metric: "color-primary-500 on white = 3.1:1 (Large text AA)",
       },
       grid: {
         title: "なぜモバイル4カラムグリッドか？",

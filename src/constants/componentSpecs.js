@@ -20,8 +20,8 @@ export const BUTTON_SPEC = {
     { id: "loading", token: "button.{variant}.spinner" },
   ],
   tokenMap: [
-    { prop: "background", primitive: "color.orange.500", semantic: "color.brand.primary" },
-    { prop: "background.hover", primitive: "color.orange.600", semantic: "color.brand.primary.hover" },
+    { prop: "background", primitive: "color.primary.500", semantic: "color.brand.primary" },
+    { prop: "background.hover", primitive: "color.primary.600", semantic: "color.brand.primary.hover" },
     { prop: "text", primitive: "color.gray.900", semantic: "color.text.on-brand" },
     { prop: "radius", primitive: "space.100", semantic: "button.radius.md" },
     { prop: "padding-x", primitive: "space.200", semantic: "button.padding.x.md" },
@@ -44,7 +44,7 @@ export const INPUT_SPEC = {
   tokenMap: [
     { prop: "height", primitive: "space.600", semantic: "input.height.md" },
     { prop: "border", primitive: "color.gray.400", semantic: "color.border.default" },
-    { prop: "border.focus", primitive: "color.orange.500", semantic: "color.brand.primary" },
+    { prop: "border.focus", primitive: "color.primary.500", semantic: "color.brand.primary" },
     { prop: "text", primitive: "color.gray.900", semantic: "color.text.primary" },
     { prop: "placeholder", primitive: "color.gray.600", semantic: "color.text.secondary" },
   ],
@@ -65,7 +65,7 @@ export const SELECT_SPEC = {
     { prop: "trigger.height", primitive: "space.600", semantic: "select.height.md" },
     { prop: "menu.elevation", primitive: "elevation.2", semantic: "select.menu.shadow" },
     { prop: "option.hover", primitive: "color.gray.200", semantic: "color.surface.subtle" },
-    { prop: "option.selected", primitive: "color.orange.50", semantic: "color.brand.primary.subtle" },
+    { prop: "option.selected", primitive: "color.primary.50", semantic: "color.brand.primary.subtle" },
   ],
 };
 

@@ -456,38 +456,38 @@ function TokenPage() {
   const { t, dict } = useI18n();
   const tok = dict.tokens;
   const tierExamples = [
-    { example: "color.orange.500", figma: "Primitives / Color / Orange / 500" },
-    { example: "color.text.primary", figma: "Semantic / Text / Primary" },
-    { example: "btn.primary.background", figma: "Components / Button / Primary / Background" },
+    { example: "color-primary-500", figma: "Primitives / Color / Primary / 500" },
+    { example: "color-text-primary", figma: "Semantic / Text / Primary" },
+    { example: "btn-primary-background", figma: "Components / Button / Primary / Background" },
   ];
   
     const borderData = [
       {
-        token: "border.width",
+        token: "border-width",
         value: "1px",
         i18nKey: "width",
       },
       {
-        token: "border.width.selected",
+        token: "border-width-selected",
         value: "2px",
         i18nKey: "selected",
       },
       {
-        token: "border.width.focused",
+        token: "border-width-focused",
         value: "2px",
         i18nKey: "focused",
       },
     ];
     const opacityData = [
       {
-        token: "opacity.disabled",
+        token: "opacity-disabled",
         value: "40%",
         label: "Opacity40",
         opacity: 0.4,
         i18nKey: "disabled",
       },
       {
-        token: "opacity.loading",
+        token: "opacity-loading",
         value: "20%",
         label: "Opacity20",
         opacity: 0.2,
@@ -496,22 +496,22 @@ function TokenPage() {
     ];
     const radiusData = [
       {
-        token: "radius.xsmall",
+        token: "radius-xsmall",
         value: "2px",
         i18nKey: "xsmall",
       },
       {
-        token: "radius.small",
+        token: "radius-small",
         value: "4px",
         i18nKey: "small",
       },
       {
-        token: "radius.medium",
+        token: "radius-medium",
         value: "8px",
         i18nKey: "medium",
       },
       {
-        token: "radius.large",
+        token: "radius-large",
         value: "20px",
         i18nKey: "large",
       },
@@ -632,7 +632,7 @@ function TokenPage() {
   <div className="grid md:grid-cols-2 gap-8 px-8 py-8">
     <div>
       <code className="bg-[#F2F4F6] px-3 py-1.5 rounded-lg text-sm">
-        motion.avatar.enter
+      motion-avatar-enter
       </code>
 
       <p className="text-sm text-[#6B7684] mt-4">

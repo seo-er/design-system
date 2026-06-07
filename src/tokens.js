@@ -41,21 +41,21 @@ export const TOKEN_TIERS = [
     tier: "Primitive",
     label: "원시 토큰",
     description: "색상, 간격, 타이포그래피 등 변경 불가한 기초 값",
-    example: "color.orange.500",
-    figma: "Primitives / Color / Orange / 500",
+    example: "color-primary-500",
+    figma: "Primitives / Color / Primary / 500",
   },
   {
     tier: "Semantic",
     label: "시맨틱 토큰",
     description: "용도와 맥락에 따라 Primitive를 매핑한 의미 기반 토큰",
-    example: "color.text.primary",
+    example: "color-text-primary",
     figma: "Semantic / Text / Primary",
   },
   {
     tier: "Component",
     label: "컴포넌트 토큰",
     description: "특정 컴포넌트에 적용되는 토큰으로 UI 일관성을 보장",
-    example: "button.primary.background",
+    example: "button-primary-background",
     figma: "Components / Button / Primary / Background",
   },
 ];
@@ -69,23 +69,23 @@ export const TOKEN_PIPELINE = [
 
 export const SEMANTIC_COLORS = [
   {
-    token: "color.text.primary",
+    token: "color-text-primary",
     figma: "Semantic/Text/Primary",
     css: "--color-text-primary",
-    light: "#252425", // gray.900
+    light: "#252425",
     dark: "#F4F4F4",
     usage: "본문, 제목 등 주요 텍스트",
   },
   {
-    token: "color.text.secondary",
+    token: "color-text-secondary",
     figma: "Semantic/Text/Secondary",
     css: "--color-text-secondary",
-    light: "#666666", // gray.700
+    light: "#666666",
     dark: "#AAAAAA",
     usage: "보조 설명, 메타 정보",
   },
   {
-    token: "color.text.brand",
+    token: "color-text-brand",
     figma: "Semantic/Text/Brand",
     css: "--color-text-brand",
     light: "#F97316",
@@ -93,7 +93,7 @@ export const SEMANTIC_COLORS = [
     usage: "브랜드 강조, 링크, 활성 상태",
   },
   {
-    token: "color.surface.default",
+    token: "color-surface-default",
     figma: "Semantic/Surface/Default",
     css: "--color-surface-default",
     light: "#FFFFFF",
@@ -101,23 +101,23 @@ export const SEMANTIC_COLORS = [
     usage: "카드, 패널 배경",
   },
   {
-    token: "color.surface.subtle",
+    token: "color-surface-subtle",
     figma: "Semantic/Surface/Subtle",
     css: "--color-surface-subtle",
-    light: "#F4F4F4", // gray.200
-    dark: "#222222",  // gray.800
+    light: "#F4F4F4",
+    dark: "#222222",
     usage: "페이지 배경, 구분 영역",
   },
   {
-    token: "color.border.default",
+    token: "color-border-default",
     figma: "Semantic/Border/Default",
     css: "--color-border-default",
-    light: "#E5E5E5", // gray.300
-    dark: "#666666",  // gray.700
+    light: "#E5E5E5",
+    dark: "#666666",
     usage: "카드, 입력 필드 테두리",
   },
   {
-    token: "color.brand.primary",
+    token: "color-brand-primary",
     figma: "Semantic/Brand/Primary",
     css: "--color-brand-primary",
     light: "#F97316",
@@ -125,7 +125,7 @@ export const SEMANTIC_COLORS = [
     usage: "CTA, 선택 상태, 포커스",
   },
   {
-    token: "color.feedback.success",
+    token: "color-feedback-success",
     figma: "Semantic/Feedback/Success",
     css: "--color-feedback-success",
     light: "#10B981",
@@ -164,7 +164,7 @@ export const PATTERNS = [
     rules: [
       { do: "Figma Variables 변경 시 토큰 JSON을 동기화한다", dont: "디자인과 코드 토큰을 별도 관리한다" },
       { do: "Primitive → Semantic → Component 3단계를 유지한다", dont: "컴포넌트에서 Primitive를 직접 참조한다" },
-      { do: "토큰 네이밍은 dot notation으로 일관되게 짓는다", dont: "팀/프로젝트마다 다른 네이밍 규칙을 사용한다" },
+      { do: "토큰 네이밍은 kebab-case(-) 규칙으로 일관되게 짓는다", dont: "팀/프로젝트마다 다른 네이밍 규칙을 사용한다" },
     ],
   },
 ];

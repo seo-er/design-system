@@ -4,11 +4,20 @@ import { Card } from "../docs/DocPrimitives";
 import { TokenTable } from "../docs/TokenTable";
 
 export function PaletteColumn({ palette, dark = false }) {
-  const rows = palette.colors.map((c) => ({
-    token: `color.${palette.name.toLowerCase()}.${c.step}`,
-    step: c.step,
-    hex: c.hex,
-  }));
+  const rows = palette.colors.map((c) => {
+    const paletteName =
+      palette.name.toLowerCase() === "orange"
+        ? "primary"
+        : palette.name.toLowerCase() === "yellow"
+        ? "secondary"
+        : palette.name.toLowerCase();
+  
+    return {
+      token: `color-${paletteName}-${c.step}`,
+      step: c.step,
+      hex: c.hex,
+    };
+  });
 
   return (
     <Card className="mb-0">
