@@ -154,22 +154,43 @@ export function ColorBlindnessAlternatives({ items }) {
 
         <div className="space-y-10">
           {items.map((item) => (
-            <article key={item.id} className="space-y-4">
-              <p className="text-[16px] leading-[1.75] text-[#4E5968]">{item.guidance}</p>
-              <div
-                className="flex flex-col lg:flex-row items-stretch gap-0 overflow-hidden rounded-2xl border border-[#E5E8EB] shadow-sm max-w-[720px]"
-                aria-label={`${item.name} color alternative`}
-              >
-                <ColorSwatchBlock swatch={item.before} badge="Before" />
-                <div
-                  className="flex items-center justify-center bg-[#64748B] text-white text-sm font-semibold px-4 lg:px-6"
-                  aria-hidden="true"
-                >
-                  →
-                </div>
-                <ColorSwatchBlock swatch={item.after} badge="Recommended" recommended />
-              </div>
-            </article>
+           <article className="py-6 border-b border-[#E5E8EB] last:border-b-0">
+           <div className="flex items-center gap-6">
+             <div>
+               <div className="text-sm text-[#8B95A1]">
+                 Original
+               </div>
+         
+               <div
+                 className="w-16 h-16 rounded-xl mt-2"
+                 style={{ backgroundColor: item.before.hex }}
+               />
+             </div>
+         
+             <span className="text-[#B0B8C1]">→</span>
+         
+             <div>
+               <div className="text-sm text-[#8B95A1]">
+                 Accessible
+               </div>
+         
+               <div
+                 className="w-16 h-16 rounded-xl mt-2"
+                 style={{ backgroundColor: item.after.hex }}
+               />
+             </div>
+         
+             <div className="flex-1 pl-4">
+               <div className="font-medium">
+                 {item.before.label} → {item.after.label}
+               </div>
+         
+               <p className="text-sm text-[#6B7684] mt-1">
+                 {item.guidance}
+               </p>
+             </div>
+           </div>
+         </article>
           ))}
         </div>
       </div>
@@ -177,17 +198,3 @@ export function ColorBlindnessAlternatives({ items }) {
   );
 }
 
-function ColorSwatchBlock({ swatch, badge, recommended = false }) {
-  return (
-    <div
-      className={`flex-1 min-h-[120px] px-6 py-5 flex flex-col justify-center ${
-        recommended ? "ring-2 ring-inset ring-[#10B981]" : ""
-      }`}
-      style={{ backgroundColor: swatch.hex, color: swatch.textColor }}
-    >
-      <span className="text-[11px] font-bold uppercase tracking-wider opacity-80">{badge}</span>
-      <span className="text-[18px] font-semibold mt-2">{swatch.label}</span>
-      <span className="text-[14px] font-mono mt-1 opacity-90">{swatch.hex}</span>
-    </div>
-  );
-}
