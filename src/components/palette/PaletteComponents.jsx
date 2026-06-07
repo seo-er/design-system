@@ -121,7 +121,7 @@ export function InaccessiblePairGrid({ section }) {
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-[120px_1fr_80px_1fr] gap-6 items-end mb-8">
+      <div className="grid grid-cols-[56px_1fr_80px_1fr_56px] gap-6 items-end mb-8">
         <div />
 
         <div>
@@ -150,15 +150,7 @@ export function InaccessiblePairGrid({ section }) {
           key={item.id}
           className="grid grid-cols-[120px_1fr_80px_1fr] gap-6 items-center"
         >
-          <div>
-            <div className="text-[15px] font-semibold text-[#191F28]">
-              {labels[index]}
-            </div>
-
-            <div className="text-xs text-[#8B95A1] mt-1">
-              Example {item.id}
-            </div>
-          </div>
+         
 
           <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
             <div
