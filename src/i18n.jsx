@@ -282,6 +282,28 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      accessibilityDecision: {
+        eyebrow: "ACCESSIBILITY DECISION",
+      
+        title: "왜 Okabe-Ito Palette를 선택했는가?",
+      
+        description:
+          "색각 이상 환경에서도 상태와 정보를 명확하게 구분할 수 있도록 Okabe-Ito Palette를 참고하여 상태 색상을 정의했습니다. 브랜드 컬러와 분리하여 성공, 오류, 정보 상태를 명확하게 전달합니다.",
+      
+        reasonsTitle: "선정 이유",
+      
+        reason1: "적록색약 환경에서도 구분 가능",
+        reason2: "데이터 시각화 분야에서 검증",
+        reason3: "WCAG 접근성 고려",
+        reason4: "브랜드 컬러와 충돌 없음",
+      
+        benefitsTitle: "적용 효과",
+      
+        benefit1: "상태 구분 명확성 향상",
+        benefit2: "차트 가독성 개선",
+        benefit3: "접근성 기준 충족",
+        benefit4: "사용자 인지 부담 감소",
+      },
       common: {
         original: "기존 색상",
         accessible: "권장 색상",
@@ -770,6 +792,28 @@ opacityTokens: {
       original: "Original",
       accessible: "Accessible",
     },
+    accessibilityDecision: {
+      eyebrow: "ACCESSIBILITY DECISION",
+    
+      title: "Why did we choose the Okabe-Ito Palette?",
+    
+      description:
+        "We adopted the Okabe-Ito Palette to ensure status and information remain distinguishable in color-vision-deficient environments. It is separated from brand colors to clearly communicate success, error, and informational states.",
+    
+      reasonsTitle: "Why We Chose It",
+    
+      reason1: "Distinguishable under color vision deficiency",
+      reason2: "Validated in data visualization",
+      reason3: "Designed with WCAG accessibility in mind",
+      reason4: "No conflict with brand colors",
+    
+      benefitsTitle: "Benefits",
+    
+      benefit1: "Improved status recognition",
+      benefit2: "Better chart readability",
+      benefit3: "Meets accessibility standards",
+      benefit4: "Reduced cognitive load",
+    },
       accessibility: {
         redTitle: "Red → Vermilion",
         greenTitle: "Green → Bluish Green",
@@ -1244,7 +1288,28 @@ opacityTokens: {
         original: "元の色",
         accessible: "推奨色",
       },
+      accessibilityDecision: {
+        eyebrow: "ACCESSIBILITY DECISION",
       
+        title: "なぜ Okabe-Ito パレットを採用したのか？",
+      
+        description:
+          "色覚特性の違いがある環境でも状態や情報を明確に区別できるよう、Okabe-Ito パレットを参考に状態カラーを定義しました。ブランドカラーとは分離し、成功・エラー・情報状態を明確に伝えます。",
+      
+        reasonsTitle: "採用理由",
+      
+        reason1: "色覚特性が異なる環境でも識別可能",
+        reason2: "データ可視化分野で実績がある",
+        reason3: "WCAG アクセシビリティを考慮",
+        reason4: "ブランドカラーと競合しない",
+      
+        benefitsTitle: "効果",
+      
+        benefit1: "状態認識の向上",
+        benefit2: "グラフの可読性向上",
+        benefit3: "アクセシビリティ基準を満たす",
+        benefit4: "認知負荷の軽減",
+      },
       accessibility: {
         redTitle: "Red → Vermilion",
         greenTitle: "Green → Bluish Green",
