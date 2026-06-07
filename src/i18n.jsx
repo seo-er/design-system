@@ -455,6 +455,11 @@ opacityTokens: {
         badge: "Form",
         description: "텍스트 입력 필드. default/search/error variant와 focus/disabled/error state를 토큰으로 연결합니다.",
         demoTitle: "상태별 Preview",
+        variantUsage: {
+          default: "일반 텍스트 입력",
+          search: "검색 필드, 아이콘 슬롯 포함",
+          error: "유효성 검증 실패",
+        },
       },
       select: {
         title: "Select",
@@ -969,6 +974,11 @@ opacityTokens: {
         badge: "Form",
         description: "Text field with default/search/error variants and token-linked states.",
         demoTitle: "State preview",
+        variantUsage: {
+          default: "General text input",
+          search: "Search field with an icon slot",
+          error: "Validation failure state",
+        },
       },
       select: {
         title: "Select",
@@ -1470,6 +1480,11 @@ opacityTokens: {
         badge: "Form",
         description: "テキスト入力。default/search/error variantとfocus/disabled/error stateをトークン接続。",
         demoTitle: "状態別Preview",
+        variantUsage: {
+          default: "一般テキスト入力",
+          search: "検索フィールド、アイコンスロット付き",
+          error: "バリデーション失敗",
+        },
       },
       select: {
         title: "Select",

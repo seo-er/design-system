@@ -30,9 +30,9 @@ export const BUTTON_SPEC = {
 
 export const INPUT_SPEC = {
   variants: [
-    { id: "default", token: "input-default-*", usage: "일반 텍스트 입력" },
-    { id: "search", token: "input-search-*", usage: "검색 필드, 아이콘 슬롯 포함" },
-    { id: "error", token: "input-error-*", usage: "유효성 검증 실패" },
+    { id: "default", token: "input-default-*" },
+    { id: "search", token: "input-search-*" },
+    { id: "error", token: "input-error-*" },
   ],
   states: [
     { id: "default", token: "input-border-default" },

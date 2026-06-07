@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useI18n } from "../../i18n";
 import { INPUT_SPEC, SELECT_SPEC, MODAL_SPEC } from "../../constants/componentSpecs";
 import { PageHeader, SectionTitle, ComponentSpec } from "../../components/docs/DocPrimitives";
@@ -9,6 +9,17 @@ export function InputPage() {
   const p = page("input");
   const labels = dict.componentDoc;
   const [tab, setTab] = useState("design");
+
+  const inputSpec = useMemo(
+    () => ({
+      ...INPUT_SPEC,
+      variants: INPUT_SPEC.variants.map((variant) => ({
+        ...variant,
+        usage: p.variantUsage?.[variant.id] ?? "",
+      })),
+    }),
+    [p.variantUsage]
+  );
 
   const inputClass =
     "w-full max-w-[320px] h-12 px-4 rounded-xl border text-[15px] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-[#F97316]";
@@ -25,7 +36,7 @@ export function InputPage() {
         ]}
       />
       <SectionTitle title={labels.architectureTitle} description={labels.architectureDesc} />
-      <ComponentArchitecture spec={INPUT_SPEC} labels={labels} />
+      <ComponentArchitecture spec={inputSpec} labels={labels} />
 
       <SectionTitle title={p.demoTitle} />
       <DocShowcase
@@ -33,19 +44,19 @@ export function InputPage() {
         tab={tab}
         onTabChange={setTab}
         design={
-          <div className="space-y-6 max-w-[360px]">
-            <label className="block space-y-2">
+          <div className="flex flex-col gap-6 max-w-[360px]">
+            <label className="flex flex-col items-start gap-2">
               <span className="text-sm font-medium text-[#4E5968]">Default</span>
               <input className={`${inputClass} border-[#E5E8EB] bg-white`} placeholder="이름을 입력하세요" />
             </label>
-            <label className="block space-y-2">
+            <label className="flex flex-col items-start gap-2">
               <span className="text-sm font-medium text-[#4E5968]">Focus</span>
               <input
                 className={`${inputClass} border-[#F97316] ring-2 ring-[#4F46E5] bg-white`}
                 defaultValue="포커스 상태"
               />
             </label>
-            <label className="block space-y-2">
+            <label className="flex flex-col items-start gap-2">
               <span className="text-sm font-medium text-[#EF4444]">Error</span>
               <input
                 className={`${inputClass} border-[#EF4444] bg-[#FEF2F2]`}
@@ -54,7 +65,7 @@ export function InputPage() {
               />
               <span className="text-[13px] text-[#EF4444]">올바른 이메일 형식이 아닙니다.</span>
             </label>
-            <label className="block space-y-2">
+            <label className="flex flex-col items-start gap-2">
               <span className="text-sm font-medium text-[#8B95A1]">Disabled</span>
               <input className={`${inputClass} border-[#E5E8EB] bg-[#F3F5F8] text-[#8B95A1]`} disabled defaultValue="비활성" />
             </label>
