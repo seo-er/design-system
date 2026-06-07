@@ -261,13 +261,18 @@ export function PalettePage() {
     </div>
   ))}
 </div>
-      <SectionTitle title={p.accessibleBad} description={t("palette.accessibleBadDesc")} />
-      <div className="rounded-[28px] border border-[#FECACA] bg-[#FFFBFB] p-8 lg:p-10 space-y-12">
-        {accessibilityBad.map((section) => (
-          <InaccessiblePairGrid key={section.id} section={section} />
-        ))}
-        <ColorBlindnessAlternatives items={colorBlindnessAlternatives} />
-      </div>
+<SectionTitle
+  title={p.accessibleBad}
+  description={t("palette.accessibleBadDesc")}
+/>
+
+<div className="rounded-[28px] border border-[#E5E8EB] bg-white p-8 lg:p-10 space-y-12">
+  <InaccessiblePairGrid section={accessibilityBad} />
+
+  <ColorBlindnessAlternatives
+    items={colorBlindnessAlternatives}
+  />
+</div>
     </div>
   );
 }
