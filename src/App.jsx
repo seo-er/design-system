@@ -636,12 +636,12 @@ function TokenPage() {
       </code>
 
       <p className="text-sm text-[#6B7684] mt-4">
-        Use for avatar group enter transitions.
-      </p>
+  {tok.motionTokens.avatarEnter.desc}
+</p>
 
-      <p className="text-xs text-[#8B95A1] mt-2">
-        Introduced v2.0.0
-      </p>
+<p className="text-xs text-[#8B95A1] mt-2">
+  {tok.motionTokens.avatarEnter.version}
+</p>
     </div>
 
     <div className="space-y-2 text-sm text-[#4E5968]">
