@@ -176,33 +176,36 @@ export const colorBlindnessAlternatives = [
   {
     id: "red",
     name: "Red",
+    guidanceKey: "redGuidance",
+
     before: {
       label: "Red",
       hex: "#FF0000",
       textColor: "#000000",
     },
+
     after: {
       label: "Vermilion",
       hex: "#D55E00",
       textColor: "#FFFFFF",
     },
-    guidance:
-     guidanceKey: "redGuidance",
   },
+
   {
     id: "green",
     name: "Green",
+    guidanceKey: "greenGuidance",
+
     before: {
       label: "Green",
       hex: "#00FF00",
       textColor: "#000000",
     },
+
     after: {
       label: "Bluish Green",
       hex: "#009E73",
       textColor: "#FFFFFF",
     },
-    guidance:
-      "초록색은 빨간색 또는 갈색과 혼동될 수 있으므로 청록 계열로 조정합니다.",
   },
 ];
