@@ -478,6 +478,28 @@ function TokenPage() {
         i18nKey: "focused",
       },
     ];
+    const radiusData = [
+      {
+        token: "radius.xsmall",
+        value: "2px",
+        i18nKey: "xsmall",
+      },
+      {
+        token: "radius.small",
+        value: "4px",
+        i18nKey: "small",
+      },
+      {
+        token: "radius.medium",
+        value: "8px",
+        i18nKey: "medium",
+      },
+      {
+        token: "radius.large",
+        value: "20px",
+        i18nKey: "large",
+      },
+    ];
   
   return (
     <div>
@@ -690,28 +712,36 @@ function TokenPage() {
 {/* RADIUS */}
 <SectionTitle title="Radius" />
 
-<Card>
-  <div className="grid md:grid-cols-2 gap-8 px-8 py-8 items-center">
-    <div>
-      <code className="bg-[#F2F4F6] px-3 py-1.5 rounded-lg text-sm">
-        radius.xsmall
-      </code>
+{radiusData.map((r) => (
+  <Card key={r.token}>
+    <div className="grid md:grid-cols-2 gap-8 px-8 py-8 items-center border-b border-[#F2F4F6]">
+      <div>
+        <code className="bg-[#F2F4F6] px-3 py-1.5 rounded-lg text-sm">
+          {r.token}
+        </code>
 
-      <p className="text-sm text-[#6B7684] mt-4">
-        Use for small detail elements.
-      </p>
+        <p className="text-sm text-[#6B7684] mt-4">
+          {tok.radiusTokens?.[r.i18nKey]?.desc}
+        </p>
 
-      <p className="text-xs text-[#8B95A1] mt-2">
-        Introduced v1.0.0
-      </p>
+        <p className="text-xs text-[#8B95A1] mt-2">
+          {tok.radiusTokens?.[r.i18nKey]?.version}
+        </p>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <div
+          className="w-20 h-12 border border-[#E5E8EB]"
+          style={{
+            borderRadius: r.value,
+          }}
+        />
+
+        <span className="text-sm">{r.value}</span>
+      </div>
     </div>
-
-    <div className="flex items-center gap-4">
-      <div className="w-16 h-10 border border-[#E5E8EB] rounded-sm" />
-      <span className="text-sm">2px</span>
-    </div>
-  </div>
-</Card>
+  </Card>
+))}
 </div>
 );
 }

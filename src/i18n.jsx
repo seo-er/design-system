@@ -278,6 +278,24 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      radiusTokens: {
+        xsmall: {
+          desc: "작은 디테일 요소에 사용하는 반경",
+          version: "v1.0.0 도입",
+        },
+        small: {
+          desc: "일반적인 입력 필드와 카드에 사용하는 반경",
+          version: "v1.0.0 도입",
+        },
+        medium: {
+          desc: "강조된 카드와 패널에 사용하는 반경",
+          version: "v1.0.0 도입",
+        },
+        large: {
+          desc: "모달 및 주요 컨테이너에 사용하는 반경",
+          version: "v1.0.0 도입",
+        },
+      },
       title: "Design Tokens",
       badge: "Figma Variables",
       description:
@@ -700,6 +718,24 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      radiusTokens: {
+        xsmall: {
+          desc: "Use for small detail elements.",
+          version: "Introduced v1.0.0",
+        },
+        small: {
+          desc: "Use for standard inputs and cards.",
+          version: "Introduced v1.0.0",
+        },
+        medium: {
+          desc: "Use for emphasized cards and panels.",
+          version: "Introduced v1.0.0",
+        },
+        large: {
+          desc: "Use for modals and primary containers.",
+          version: "Introduced v1.0.0",
+        },
+      },
       title: "Design Tokens",
       badge: "Figma Variables",
       description:
@@ -1103,6 +1139,24 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      radiusTokens: {
+        xsmall: {
+          desc: "小さなディテール要素に使用する角丸",
+          version: "v1.0.0 で導入",
+        },
+        small: {
+          desc: "標準的な入力フィールドやカードに使用する角丸",
+          version: "v1.0.0 で導入",
+        },
+        medium: {
+          desc: "強調されたカードやパネルに使用する角丸",
+          version: "v1.0.0 で導入",
+        },
+        large: {
+          desc: "モーダルや主要コンテナに使用する角丸",
+          version: "v1.0.0 で導入",
+        },
+      },
       title: "Design Tokens",
       badge: "Figma Variables",
       description:
