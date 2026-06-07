@@ -278,6 +278,27 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      motionTitle: "모션",
+opacityTitle: "투명도",
+
+motionTokens: {
+  avatarEnter: {
+    desc: "아바타 그룹 진입 애니메이션에 사용",
+    version: "v2.0.0 도입",
+  },
+},
+
+opacityTokens: {
+  disabled: {
+    desc: "비활성 상태의 이미지에 적용",
+    version: "v3.4.0 도입",
+  },
+
+  loading: {
+    desc: "로딩 스피너 아래에 표시되는 콘텐츠에 적용",
+    version: "v0.10.13 도입",
+  },
+},
       radiusTokens: {
         xsmall: {
           desc: "작은 디테일 요소에 사용하는 반경",
@@ -718,6 +739,27 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      motionTitle: "Motion",
+opacityTitle: "Opacity",
+
+motionTokens: {
+  avatarEnter: {
+    desc: "Use for avatar group enter transitions.",
+    version: "Introduced v2.0.0",
+  },
+},
+
+opacityTokens: {
+  disabled: {
+    desc: "Apply to images when in a disabled state.",
+    version: "Introduced v3.4.0",
+  },
+
+  loading: {
+    desc: "Apply to content that sits under a loading spinner.",
+    version: "Introduced v0.10.13",
+  },
+},
       radiusTokens: {
         xsmall: {
           desc: "Use for small detail elements.",
@@ -1139,6 +1181,27 @@ const TRANSLATIONS = {
       ],
     },
     tokens: {
+      motionTitle: "モーション",
+opacityTitle: "不透明度",
+
+motionTokens: {
+  avatarEnter: {
+    desc: "アバターグループの表示アニメーションに使用",
+    version: "v2.0.0 で導入",
+  },
+},
+
+opacityTokens: {
+  disabled: {
+    desc: "無効状態の画像に適用",
+    version: "v3.4.0 で導入",
+  },
+
+  loading: {
+    desc: "ローディングスピナーの下に表示されるコンテンツに適用",
+    version: "v0.10.13 で導入",
+  },
+},
       radiusTokens: {
         xsmall: {
           desc: "小さなディテール要素に使用する角丸",

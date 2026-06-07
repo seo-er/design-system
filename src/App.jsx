@@ -478,6 +478,22 @@ function TokenPage() {
         i18nKey: "focused",
       },
     ];
+    const opacityData = [
+      {
+        token: "opacity.disabled",
+        value: "40%",
+        label: "Opacity40",
+        opacity: 0.4,
+        i18nKey: "disabled",
+      },
+      {
+        token: "opacity.loading",
+        value: "20%",
+        label: "Opacity20",
+        opacity: 0.2,
+        i18nKey: "loading",
+      },
+    ];
     const radiusData = [
       {
         token: "radius.xsmall",
