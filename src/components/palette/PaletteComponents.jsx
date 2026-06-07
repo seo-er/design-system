@@ -113,23 +113,33 @@ export function AccessibleColorStrip({ section }) {
 
 export function InaccessiblePairGrid({ section }) {
   return (
-    <figure className="space-y-4">
+    <figure className="space-y-2">
       <figcaption className="text-[22px] font-semibold text-[#191F28]">{section.title}</figcaption>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list">
         {section.pairs.map(([left, right], index) => (
           <div
             key={`${section.id}-pair-${index}`}
             role="listitem"
-            className="rounded-2xl overflow-hidden border-2 border-[#FCA5A5] bg-white shadow-sm"
+           className="rounded-2xl overflow-hidden border border-[#E5E8EB] bg-white"
             aria-label={`Hard to distinguish pair ${left} and ${right}`}
           >
-            <div className="px-4 py-2 bg-[#FEF2F2] text-[12px] font-semibold text-[#B91C1C] uppercase tracking-wide">
-              Avoid combination
-            </div>
+          <div className="px-4 py-2 border-b border-[#F2F4F6]" />
             <div className="flex h-[72px]">
-              <div className="flex-1 flex flex-col items-center justify-center" style={{ backgroundColor: left }}>
-                <span className="text-[11px] font-mono text-white mix-blend-difference">{left}</span>
-              </div>
+            <div
+  className="flex-1 flex flex-col items-center justify-center"
+  style={{
+    backgroundColor: left,
+  }}
+>
+  <span
+    className="text-[11px] font-mono font-semibold"
+    style={{
+      color: accessibleTextColor(left),
+    }}
+  >
+    {left}
+  </span>
+</div>
               <div className="flex-1 flex flex-col items-center justify-center" style={{ backgroundColor: right }}>
                 <span className="text-[11px] font-mono text-white mix-blend-difference">{right}</span>
               </div>
