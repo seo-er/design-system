@@ -142,7 +142,7 @@ export default function App() {
         </div>
       </div>
 
-      <nav className="flex-1 overflow-auto px-3 py-5 space-y-5" aria-label={t("common.designSystem")}>
+      <nav className="flex-1 px-3 py-5 space-y-5" aria-label={t("common.designSystem")}>
         {filteredSections.map((section) => (
           <div key={section.id}>
             <p className="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#8B95A1]">
