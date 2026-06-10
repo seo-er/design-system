@@ -265,7 +265,7 @@ export default function App() {
           id="main-content"
           tabIndex={-1}
         >
-          <div className="max-w-[1120px] mx-auto px-5 py-8 pb-[calc(2rem+env(safe-area-inset-bottom,0px)+3.5rem)] lg:px-10 lg:py-12 lg:pb-12">
+          <div className="max-w-[1120px] mx-auto w-full min-w-0 px-4 sm:px-5 py-8 pb-[calc(3rem+env(safe-area-inset-bottom,0px)+4.5rem)] lg:px-10 lg:py-12 lg:pb-12">
             {renderPage()}
           </div>
         </main>
@@ -839,9 +839,9 @@ function MobileGridSection() {
       </p>
 
       <Card>
-  <div className="p-10">
+  <div className="p-4 sm:p-6 lg:p-10 min-w-0">
 
-    <div className="grid md:grid-cols-2 gap-12 items-start">
+    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
 
       <div>
         <div className="mb-4">
@@ -858,7 +858,7 @@ function MobileGridSection() {
           <img
             src={gridImg}
             alt="Figma Grid Setting"
-            className="w-full max-w-[220px] mx-auto"
+            className="w-full max-w-[160px] sm:max-w-[220px] mx-auto h-auto object-contain"
           />
         </div>
       </div>
@@ -878,7 +878,7 @@ function MobileGridSection() {
           <img
             src={gridOverlay}
             alt="Mobile Grid Overlay"
-            className="w-full max-w-[220px] mx-auto"
+            className="w-full max-w-[160px] sm:max-w-[220px] mx-auto h-auto object-contain"
           />
         </div>
       </div>
@@ -929,11 +929,11 @@ function IconGridSection() {
       </p>
 
       <Card>
-        <div className="p-10">
+        <div className="p-4 sm:p-6 lg:p-10 flex justify-center min-w-0">
           <img
             src={iconGuide}
             alt=""
-            className="w-full rounded-2xl"
+            className="w-full max-w-[200px] sm:max-w-[320px] lg:max-w-[480px] h-auto object-contain rounded-2xl"
           />
         </div>
       </Card>
@@ -954,16 +954,16 @@ function WatchGridSection() {
       </p>
 
       <Card>
-        <div className="p-10 flex justify-center">
+        <div className="p-4 sm:p-6 lg:p-10 flex justify-center min-w-0">
           <img
             src={watchGrid}
             alt=""
-            className="max-w-[720px] rounded-2xl"
+            className="w-full max-w-[200px] sm:max-w-[320px] lg:max-w-[480px] h-auto object-contain rounded-2xl"
           />
         </div>
       </Card>
 <Card>
-  <div className="overflow-x-auto">
+  <div className="overflow-x-auto min-w-0">
     <table className="w-full min-w-[560px]">
       <thead>
         <tr className="border-b border-[#E5E8EB] bg-[#F8FAFC]">
@@ -2696,214 +2696,53 @@ function BadgePage() {
         <DocTabs value={tab} onChange={setTab} />
 
         {tab === "design" ? (
-          <div className="p-10 bg-[#FAFBFC]">
-
-            {/* Badge Variants */}
-            <div className="mb-14">
-
+          <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
+            <div className="mb-10">
               <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
                 ◆badge_variants
               </div>
 
-              <div className="flex flex-wrap gap-2">
-  {/* 2자리 남음 */}
-  <div className="h-[22px] px-[6px] py-[14px]  rounded-[4px] bg-[#FFF8E3] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-[#C07D00]">
-      2자리 남음
-    </span>
-  </div>
-
-  {/* 13~19개월 */}
-  <div className="h-[22px] px-[6px] py-[14px]  rounded-[4px] bg-[#F4F4F4] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-[#666666]">
-      13~19개월
-    </span>
-  </div>
-
-  {/* 접수예정 */}
-  <div className="h-[22px] px-[6px] py-[14px]  rounded-[4px] bg-[#222222] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-white">
-      접수예정
-    </span>
-  </div>
-
-  {/* 부담이 적어요 */}
-  <div className="h-[22px] px-[6px] py-[14px] rounded-[4px] bg-[#FFF7ED] flex items-center">
-    <span className="text-[12px] font-medium leading-none text-[#F97316]">
-      부담이 적어요
-    </span>
-  </div>
-</div>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex h-[22px] items-center rounded-[4px] bg-[#FFF4EB] px-[6px]">
+                  <span className="text-[12px] font-medium leading-none text-[#FF7A00]">추천</span>
+                </div>
+                <div className="inline-flex h-[22px] items-center rounded-[4px] bg-[#222222] px-[6px]">
+                  <span className="text-[12px] font-medium leading-none text-white">NEW</span>
+                </div>
+              </div>
             </div>
 
-            {/* Badge Usage */}
             <div>
-
               <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
                 ◆badge_usage
               </div>
 
-              <div
-  className="
-    flex
-    items-center
-    justify-between
-    rounded-[16px]
-    border-2
-    border-[#FF7A00]
-    bg-white
-    px-8
-    py-5
-  "
->
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-[16px] border-2 border-[#F97316] bg-white p-4 sm:px-6 sm:py-5">
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[6px] bg-[#F97316]">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M20 6L9 17L4 12"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-[15px] sm:text-[18px] font-medium text-[#191F28] truncate">
+                    강의+준비물
+                  </span>
+                </div>
 
-  <div className="flex items-center gap-5">
-
-    <div
-      className="
-        w-10
-        h-10
-        rounded-[6px]
-        bg-[#FF7A00]
-        flex
-        items-center
-        justify-center
-        shrink-0
-      "
-    >
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
-        <path
-          d="M20 6L9 17L4 12"
-          stroke="white"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
-
-    <span
-      className="
-        text-[18px]
-        font-medium
-        text-[#9B9B9B]
-      "
-    >
-      강의+준비물
-    </span>
-
-  </div>
-
-  <div className="flex items-center gap-8">
-
-    <span
-      className="
-        text-[18px]
-        font-bold
-        text-[#191F28]
-      "
-    >
-      15,000원
-    </span>
-
-    <div
-      className="
-        px-3
-        py-1
-        rounded-[8px]
-        bg-[#FFF4EB]
-        text-[#FF7A00]
-        text-[14px]
-        font-semibold
-      "
-    >
-      추천
-    </div>
-
-  </div>
-
-</div>
+                <div className="flex shrink-0 items-center justify-between gap-4 sm:justify-end sm:gap-6">
+                  <span className="text-[16px] sm:text-[18px] font-bold text-[#191F28]">15,000원</span>
+                  <div className="inline-flex h-[22px] items-center rounded-[4px] bg-[#FFF4EB] px-[6px]">
+                    <span className="text-[12px] font-medium leading-none text-[#FF7A00]">추천</span>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div className="text-[18px] font-semibold text-[#7C3AED] mt-12 mb-6">
-  ◆badge_price_discount
-</div>
-
-<div
-  className="
-    flex
-    items-center
-    justify-between
-    rounded-[20px]
-    border
-    border-[#E5E8EB]
-    bg-white
-    px-8
-    py-6
-  "
->
-
-  <span
-    className="
-      text-[18px]
-      text-[#8B8B8B]
-      line-through
-    "
-  >
-    140,000원
-  </span>
-
-  <div
-    className="
-      px-5
-      py-3
-      rounded-full
-      bg-[#BDBDBD]
-      text-white
-      text-[16px]
-      font-medium
-    "
-  >
-    가격 부담
-  </div>
-
-  <div className="text-right">
-
-    <div
-      className="
-        text-[18px]
-        font-bold
-        text-[#191F28]
-        mb-2
-      "
-    >
-      120,000원
-    </div>
-
-    <div
-      className="
-        inline-flex
-        px-3
-        py-2
-        rounded-[8px]
-        bg-[#FFF4EB]
-        text-[#FF7A00]
-        text-[14px]
-        font-semibold
-      "
-    >
-      부담이 적어요
-    </div>
-
-  </div>
-
-</div>
-            
           </div>
         ) : (
           <div className="bg-[#031B34] p-8">
@@ -3338,24 +3177,24 @@ function TabPage() {
 
     
 
-    <div className="rounded-[16px] border border-[#E5E8EB] overflow-hidden bg-white">
+    <div className="rounded-[16px] border border-[#E5E8EB] bg-white min-w-0">
 
       <DocTabs value={defaultView} onChange={setDefaultView} />
 
       {defaultView === "design" ? (
-        <div className="p-10 bg-[#FAFBFC]">
+        <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
 <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
       ◆tab_default
     </div>
           <div className="border-b border-[#E5E8EB]">
-            <div className="flex">
+            <div className="flex min-w-0">
 
               <button
                 onClick={() => setActiveTab("info")}
-                className="relative flex-1 h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA]"
+                className="relative flex-1 min-w-0 h-[48px] sm:h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA] px-1"
               >
                 <span
-                  className={`text-[18px] font-semibold transition-colors duration-200 ${
+                  className={`text-[14px] sm:text-[18px] font-semibold transition-colors duration-200 truncate ${
                     activeTab === "info"
                       ? "text-[#191F28]"
                       : "text-[#8B95A1]"
@@ -3371,10 +3210,10 @@ function TabPage() {
 
               <button
                 onClick={() => setActiveTab("teacher")}
-                className="relative flex-1 h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA]"
+                className="relative flex-1 min-w-0 h-[48px] sm:h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA] px-1"
               >
                 <span
-                  className={`text-[18px] font-semibold transition-colors duration-200 ${
+                  className={`text-[14px] sm:text-[18px] font-semibold transition-colors duration-200 truncate ${
                     activeTab === "teacher"
                       ? "text-[#191F28]"
                       : "text-[#8B95A1]"
@@ -3390,10 +3229,10 @@ function TabPage() {
 
               <button
                 onClick={() => setActiveTab("review")}
-                className="relative flex-1 h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA]"
+                className="relative flex-1 min-w-0 h-[48px] sm:h-[56px] flex items-center justify-center transition-all duration-200 hover:bg-[#F8F9FA] px-1"
               >
                 <span
-                  className={`text-[18px] font-semibold transition-colors duration-200 ${
+                  className={`text-[14px] sm:text-[18px] font-semibold transition-colors duration-200 truncate ${
                     activeTab === "review"
                       ? "text-[#191F28]"
                       : "text-[#8B95A1]"
@@ -3412,7 +3251,7 @@ function TabPage() {
 
           <div
             key={activeTab}
-            className="p-8 text-[#4E5968] transition-all duration-200"
+            className="p-4 sm:p-6 lg:p-8 text-[#4E5968] transition-all duration-200"
           >
             {activeTab === "info" && "정보 콘텐츠 영역"}
             {activeTab === "teacher" && "강사 콘텐츠 영역"}
@@ -3449,22 +3288,22 @@ function TabPage() {
             <DocTabs value={categoryView} onChange={setCategoryView} />
 
             {categoryView === "design" ? (
-              <div className="p-10 bg-[#FAFBFC]">
+              <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
  <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
  ◆tab_count
           </div>
-                <div className="border-b border-[#E5E8EB]">
-                  <div className="flex">
+                <div className="border-b border-[#E5E8EB] overflow-x-auto -mx-1 px-1">
+                  <div className="flex min-w-0 sm:min-w-0">
 
                     <button
                       onClick={() => setCategoryTab("move")}
-                      className="relative h-[48px] px-4 flex items-center gap-1"
+                      className="relative h-[48px] px-3 sm:px-4 flex items-center gap-1 shrink-0"
                     >
-                      <span className={categoryTab === "move" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                      <span className={`text-[14px] sm:text-base whitespace-nowrap ${categoryTab === "move" ? "text-[#191F28]" : "text-[#6B7684]"}`}>
                         정보
                       </span>
 
-                      <span className="w-[6px] h-[6px] rounded-full bg-[#DC2626]" />
+                      <span className="w-[6px] h-[6px] rounded-full bg-[#DC2626] shrink-0" />
 
                       {categoryTab === "move" && (
                         <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191F28]" />
@@ -3473,13 +3312,13 @@ function TabPage() {
 
                     <button
                       onClick={() => setCategoryTab("write")}
-                      className="relative h-[48px] px-4 flex items-center gap-1"
+                      className="relative h-[48px] px-3 sm:px-4 flex items-center gap-1 shrink-0"
                     >
-                      <span className={categoryTab === "write" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                      <span className={`text-[14px] sm:text-base whitespace-nowrap ${categoryTab === "write" ? "text-[#191F28]" : "text-[#6B7684]"}`}>
                        강사
                       </span>
 
-                      <span className="font-bold text-[#F97316]">
+                      <span className="font-bold text-[#F97316] text-[14px] sm:text-base">
                         24
                       </span>
 
@@ -3490,9 +3329,9 @@ function TabPage() {
 
                     <button
                       onClick={() => setCategoryTab("cafe")}
-                      className="relative h-[48px] px-4 flex items-center gap-1"
+                      className="relative h-[48px] px-3 sm:px-4 flex items-center gap-1 shrink-0"
                     >
-                      <span className={categoryTab === "cafe" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                      <span className={`text-[14px] sm:text-base whitespace-nowrap ${categoryTab === "cafe" ? "text-[#191F28]" : "text-[#6B7684]"}`}>
                         후기
                       </span>
 
@@ -3503,13 +3342,13 @@ function TabPage() {
 
                     <button
                       onClick={() => setCategoryTab("stay")}
-                      className="relative h-[48px] px-4 flex items-center gap-1"
+                      className="relative h-[48px] px-3 sm:px-4 flex items-center gap-1 shrink-0"
                     >
-                      <span className={categoryTab === "stay" ? "text-[#191F28]" : "text-[#6B7684]"}>
+                      <span className={`text-[14px] sm:text-base whitespace-nowrap ${categoryTab === "stay" ? "text-[#191F28]" : "text-[#6B7684]"}`}>
                        공지
                       </span>
 
-                      <span className="font-bold text-[#F97316]">
+                      <span className="font-bold text-[#F97316] text-[14px] sm:text-base">
                         7
                       </span>
 
@@ -3521,7 +3360,7 @@ function TabPage() {
                   </div>
                 </div>
 
-                <div className="p-8 text-[#4E5968]">
+                <div className="p-4 sm:p-6 lg:p-8 text-[#4E5968]">
                   카테고리 탭 콘텐츠 영역
                 </div>
 
@@ -3547,12 +3386,12 @@ function TabPage() {
   <DocTabs value={tab} onChange={setTab} />
 
   {tab === "design" ? (
-    <div className="p-10 bg-[#FAFBFC]">
+    <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
       <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
       ◆ tab_icon
       </div>
 
-      <div className="flex flex-wrap gap-8">
+      <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-3 sm:gap-8 justify-items-center sm:justify-start">
         {categories.map((item) => {
           const active = selectedCategory === item;
 
@@ -3560,13 +3399,13 @@ function TabPage() {
             <button
               key={item}
               onClick={() => setSelectedCategory(item)}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center min-w-0 w-full max-w-[72px] sm:max-w-[96px]"
             >
               <div
                 className={`
-                  w-[96px]
-                  h-[96px]
-                  rounded-[32px]
+                  w-[52px] h-[52px]
+                  sm:w-[96px] sm:h-[96px]
+                  rounded-[18px] sm:rounded-[32px]
                   transition-all
                   duration-200
                   ${
@@ -3579,9 +3418,12 @@ function TabPage() {
 
               <span
                 className={`
-                  mt-4
-                  text-[18px]
+                  mt-2 sm:mt-4
+                  text-[11px] sm:text-[18px]
                   font-semibold
+                  text-center
+                  break-keep
+                  leading-tight
                   ${
                     active
                       ? "text-[#222222]"
@@ -3618,24 +3460,26 @@ function TabPage() {
 <DocTabs value={chipTabView} onChange={setChipTabView} />
 
 {chipTabView === "design" ? (
-<div className="p-10 bg-[#FAFBFC]">
+<div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
 <div className="text-[18px] font-semibold text-[#7C3AED] mb-6">
 ◆ tab_chip
 </div>
 
-<div className="flex items-center gap-[14px]">
+<div className="overflow-x-auto -mx-1 px-1">
+<div className="flex items-center gap-3 sm:gap-[14px] min-w-max sm:min-w-0 sm:flex-wrap">
 {homeCategory.map((item) => (
   <button
     key={item}
     onClick={() => setChipTab(item)}
     className={`
-      h-[56px]
-      px-[22px]
+      h-[48px] sm:h-[56px]
+      px-4 sm:px-[22px]
       rounded-[9999px]
-      text-[15px]
+      text-[14px] sm:text-[15px]
       font-semibold
       leading-none
       whitespace-nowrap
+      shrink-0
       ${
         chipTab === item
           ? "bg-[#222222] text-white"
@@ -3646,6 +3490,7 @@ function TabPage() {
 {item}
 </button>
 ))}
+</div>
 </div>
 </div>
 ) : (
@@ -3689,25 +3534,25 @@ function TopAppBarPage() {
       <SectionTitle title={p.basic} description={p.basicDesc} />
 
       <Card>
-  <div className="p-10 bg-[#FAFBFC]">
+  <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
       ◆TopAppBar_default
     </div>
 
-    <div className="w-[375px] h-[44px] bg-white relative">
-      <div className="h-full px-4 flex items-center">
+    <div className="w-full max-w-[280px] sm:max-w-[375px] h-[44px] bg-white relative mx-auto border border-[#E5E8EB] rounded-lg">
+      <div className="h-full px-3 sm:px-4 flex items-center">
         {/* Left */}
         <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
             src={getIconSrc("ic_arrow_left")}
             alt=""
-            className="w-[18px] h-[18px] object-contain"
+            className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] object-contain"
           />
         </button>
 
         {/* Center */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-[16px] font-bold text-[#191F28]">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-10">
+          <span className="text-[14px] sm:text-[16px] font-bold text-[#191F28] truncate">
             0~24개월
           </span>
         </div>
@@ -3717,7 +3562,7 @@ function TopAppBarPage() {
           <img
             src={getIconSrc("ic_search")}
             alt=""
-            className="w-[18px] h-[18px] object-contain"
+            className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] object-contain"
           />
         </button>
       </div>
@@ -3725,18 +3570,18 @@ function TopAppBarPage() {
   </div>
 </Card>
 <Card>
-  <div className="p-10 bg-[#FAFBFC]">
+  <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
       ◆TopAppBar_back
     </div>
 
-    <div className="w-[375px] h-[44px] bg-white">
-      <div className="h-full px-4 flex items-center">
+    <div className="w-full max-w-[280px] sm:max-w-[375px] h-[44px] bg-white mx-auto border border-[#E5E8EB] rounded-lg">
+      <div className="h-full px-3 sm:px-4 flex items-center">
         <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
             src={getIconSrc("ic_arrow_left")}
             alt=""
-            className="w-[18px] h-[18px] object-contain"
+            className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] object-contain"
           />
         </button>
       </div>
@@ -3744,16 +3589,16 @@ function TopAppBarPage() {
   </div>
 </Card>
 <Card>
-  <div className="p-10 bg-[#FAFBFC]">
+  <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
       ◆TopAppBar_home
     </div>
 
-    <div className="w-[375px] h-[44px] bg-white">
-      <div className="h-full px-4 flex items-center justify-between">
+    <div className="w-full max-w-[280px] sm:max-w-[375px] h-[44px] bg-white mx-auto border border-[#E5E8EB] rounded-lg">
+      <div className="h-full px-3 sm:px-4 flex items-center justify-between gap-2 min-w-0">
         {/* Location */}
-        <button className="flex items-center gap-1">
-          <span className="text-[16px] font-bold text-[#191F28]">
+        <button className="flex items-center gap-1 min-w-0">
+          <span className="text-[14px] sm:text-[16px] font-bold text-[#191F28] truncate">
             송파구, 문정1동
           </span>
 
@@ -3770,12 +3615,12 @@ function TopAppBarPage() {
         </button>
 
      {/* Actions */}
-     <div className="flex items-center gap-[14px]">
+     <div className="flex items-center gap-2 sm:gap-[14px] shrink-0">
   <button className="w-6 h-6 shrink-0 flex items-center justify-center">
     <img
       src={getIconSrc("ic_notification")}
       alt=""
-      className="w-[18px] h-[18px] object-contain"
+      className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] object-contain"
     />
   </button>
 
@@ -3783,7 +3628,7 @@ function TopAppBarPage() {
     <img
       src={getIconSrc("ic_cart")}
       alt=""
-      className="w-[18px] h-[18px] object-contain"
+      className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] object-contain"
     />
   </button>
 </div>
@@ -3792,19 +3637,19 @@ function TopAppBarPage() {
   </div>
 </Card>
 <Card>
-  <div className="p-10 bg-[#FAFBFC]">
+  <div className="p-4 sm:p-6 lg:p-10 bg-[#FAFBFC]">
     <div className="text-[18px] font-semibold text-[#7C3AED] mb-5">
       ◆TopAppBar_detail
     </div>
 
-    <div className="w-[375px] h-[44px] bg-white">
-      <div className="h-full px-4 flex items-center justify-between">
+    <div className="w-full max-w-[280px] sm:max-w-[375px] h-[44px] bg-white mx-auto border border-[#E5E8EB] rounded-lg">
+      <div className="h-full px-3 sm:px-4 flex items-center justify-between">
         {/* Back */}
         <button className="w-6 h-6 shrink-0 flex items-center justify-center">
           <img
             src={getIconSrc("ic_arrow_left")}
             alt=""
-            className="w-[18px] h-[18px] object-contain"
+            className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] object-contain"
           />
         </button>
 
@@ -3813,7 +3658,7 @@ function TopAppBarPage() {
           <img
             src={getIconSrc("ic_share")}
             alt=""
-            className="w-[18px] h-[18px] object-contain"
+            className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] object-contain"
           />
         </button>
       </div>

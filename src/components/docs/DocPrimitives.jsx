@@ -40,7 +40,7 @@ export function SectionTitle({ title, description }) {
 export function Card({ children, className = "" }) {
   return (
     <div
-      className={`bg-white rounded-[var(--radius-xl)] border border-[var(--color-border-default)] overflow-hidden mb-6 shadow-[var(--shadow-sm)] ${className}`}
+      className={`bg-white rounded-[var(--radius-xl)] border border-[var(--color-border-default)] mb-6 shadow-[var(--shadow-sm)] min-w-0 ${className}`}
     >
       {children}
     </div>
