@@ -622,7 +622,7 @@ opacityTokens: {
       alternativesLabel: "Alternatives considered",
       spacing: {
         title: "Why an 8pt spacing system?",
-        context: "망고 must keep rhythm across mobile, web, and kiosk surfaces.",
+        context: "Mango must keep rhythm across mobile, web, and kiosk surfaces.",
         why: "8 divides cleanly into 2/4, maps 1:1 to Figma's 8px grid, and minimizes rem rounding errors.",
         strategy: "Education services prioritize readability and touch padding over density—8px base unit.",
         alternatives: ["4pt — denser but more tokens and QA cost", "10pt — awkward rem fractions"],
@@ -638,7 +638,7 @@ opacityTokens: {
       },
       color: {
         title: "Why Orange as Primary brand?",
-        context: "망고 conveys learning energy and warm community.",
+        context: "Mango conveys learning energy and warm community.",
         why: "Orange avoids error associations of red, conflicts less with success green, and meets contrast more easily than yellow.",
         strategy: "Orange for Primary CTA, Yellow for secondary emphasis, Gray for neutral UI.",
         alternatives: ["Blue Primary — generic gov-service look", "Red Primary — error confusion"],
@@ -706,7 +706,7 @@ opacityTokens: {
       heroTitle1: "For domestic & global services",
       heroTitle2: "Unified Design System",
       heroDesc:
-        "망고 Design System ensures UI quality and consistent UX across products. Figma Variables-based tokens bridge design and development for accurate implementation.",
+        "Mango Design System ensures UI quality and consistent UX across products. Figma Variables-based tokens bridge design and development for accurate implementation.",
       ctaTokens: "View token system",
       ctaPatterns: "View guidelines",
       stats: [
@@ -1143,7 +1143,7 @@ opacityTokens: {
       alternativesLabel: "検討したが採用しなかった案",
       spacing: {
         title: "なぜ8ptスペーシングか？",
-        context: "망고はモバイル・Web・キオスクで同一リズムを維持する必要があります。",
+        context: "マンゴーはモバイル・Web・キオスクで同一リズムを維持する必要があります。",
         why: "8は2・4の倍数でFigma 8px gridと1:1対応し、rem変換誤差が少ないです。",
         strategy: "教育サービスは密度より可読性とタッチ余白を優先しBase unit 8pxを採用。",
         alternatives: ["4pt — トークン数・QAコスト増", "10pt — rem非整数反復"],
@@ -1159,7 +1159,7 @@ opacityTokens: {
       },
       color: {
         title: "なぜOrangeをPrimary Brandか？",
-        context: "망고は「学びの活力」と「温かいコミュニティ」を伝えます。",
+        context: "マンゴーは「学びの活力」と「温かいコミュニティ」を伝えます。",
         why: "OrangeはRedより警告連想が弱く、Green(成功)と衝突せずYellowよりコントラスト確保が容易。",
         strategy: "Primary CTAにOrange、Secondary強調にYellow、Neutral UIにGrayを固定。",
         alternatives: ["Blue Primary — 政府サービスと差別化不足", "Red Primary — エラー混淆"],
@@ -1227,7 +1227,7 @@ opacityTokens: {
       heroTitle1: "国内・グローバルサービス向け",
       heroTitle2: "統合デザインシステム",
       heroDesc:
-        "製品全体のUI品質と一貫したUXのために設計された망고 Design System。Figma Variablesベースのトークン体系でデザインと開発の実装精度を高めます。",
+        "製品全体のUI品質と一貫したUXのために設計されたマンゴー Design System。Figma Variablesベースのトークン体系でデザインと開発の実装精度を高めます。",
       ctaTokens: "トークン体系を見る",
       ctaPatterns: "ガイドラインを見る",
       stats: [

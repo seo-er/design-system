@@ -11,7 +11,7 @@ const SIZE_STYLES = {
   xl: "h-[74px] px-11 text-[28px]",
 };
 
-function FlowButton({ children, variant = "primary", size = "md", disabled = false, className = "" }) {
+function MangoButton({ children, variant = "primary", size = "md", disabled = false, className = "" }) {
   const base = "rounded-[8px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F97316]";
   const variants = {
     primary: "bg-[#F97316] text-white hover:bg-[#EA6A10]",
@@ -81,9 +81,9 @@ export function ButtonPage() {
             {BUTTON_SPEC.sizes.map((s) => (
               <div key={s.id} className="flex flex-col gap-3">
                 <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_{s.id}</span>
-                <FlowButton size={s.id} variant="primary">
+                <MangoButton size={s.id} variant="primary">
                   {s.id.toUpperCase()}
-                </FlowButton>
+                </MangoButton>
                 <code className="text-[11px] text-[#8B95A1]">{s.token}</code>
               </div>
             ))}
@@ -106,19 +106,19 @@ export function ButtonPage() {
           <div className="flex flex-wrap gap-6">
             <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_primary</span>
-              <FlowButton variant="primary">Primary</FlowButton>
+              <MangoButton variant="primary">Primary</MangoButton>
             </div>
             <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_secondary</span>
-              <FlowButton variant="secondary">Secondary</FlowButton>
+              <MangoButton variant="secondary">Secondary</MangoButton>
             </div>
             <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_outline_brand</span>
-              <FlowButton variant="outline-brand">Outline</FlowButton>
+              <MangoButton variant="outline-brand">Outline</MangoButton>
             </div>
             <div className="flex flex-col items-start gap-3">
               <span className="text-[14px] font-semibold text-[#7C3AED]">◆btn_outline_neutral</span>
-              <FlowButton variant="outline-neutral">Cancel</FlowButton>
+              <MangoButton variant="outline-neutral">Cancel</MangoButton>
             </div>
           </div>
         }
@@ -139,19 +139,19 @@ export function ButtonPage() {
           <div className="flex flex-wrap gap-6">
             <div className="space-y-2 text-center">
               <p className="text-[12px] text-[#8B95A1]">Default</p>
-              <FlowButton variant="primary">Confirm</FlowButton>
+              <MangoButton variant="primary">Confirm</MangoButton>
             </div>
             <div className="space-y-2 text-center">
               <p className="text-[12px] text-[#8B95A1]">Hover</p>
-              <FlowButton variant="primary" className="bg-[#EA6A10]">Confirm</FlowButton>
+              <MangoButton variant="primary" className="bg-[#EA6A10]">Confirm</MangoButton>
             </div>
             <div className="space-y-2 text-center">
               <p className="text-[12px] text-[#8B95A1]">Focus</p>
-              <FlowButton variant="primary" className="ring-2 ring-[#F97316] ring-offset-2">Confirm</FlowButton>
+              <MangoButton variant="primary" className="ring-2 ring-[#F97316] ring-offset-2">Confirm</MangoButton>
             </div>
             <div className="space-y-2 text-center">
               <p className="text-[12px] text-[#8B95A1]">Disabled</p>
-              <FlowButton variant="primary" disabled>Confirm</FlowButton>
+              <MangoButton variant="primary" disabled>Confirm</MangoButton>
             </div>
           </div>
         }

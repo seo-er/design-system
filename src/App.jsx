@@ -27,6 +27,7 @@ import filterIcon from "./assets/icons/ic_filter.png";
 import accordionDown from "./assets/icons/ic_accordion_down.png";
 import advertisingImg from "./assets/ad/banner_primary.png";
 
+const faviconSrc = `${import.meta.env.BASE_URL}favicon.png`;
 
 export default function App() {
   const { t, navSections, pageMeta: allPageMeta } = useI18n();
@@ -59,9 +60,17 @@ export default function App() {
   };
 
   useEffect(() => {
-    document.getElementById("main-content")?.scrollTo({ top: 0, left: 0 });
+    const main = document.getElementById("main-content");
+    main?.scrollTo({ top: 0, left: 0 });
   }, [menu]);
- 
+
+  useEffect(() => {
+    document.body.style.overflow = mobileNav ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileNav]);
+
   const renderPage = () => {
     switch (menu) {
       case "home":
@@ -118,7 +127,9 @@ export default function App() {
           onClick={() => navigate("home")}
           className="flex items-center gap-3 w-full text-left group"
         >
-          
+          <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-md group-hover:shadow-lg transition-shadow">
+            <img src={faviconSrc} alt="" className="w-full h-full object-cover" />
+          </div>
           <div>
             <h1 className="text-[20px] font-bold tracking-tight leading-none">
               {SYSTEM_META.name}
@@ -149,6 +160,8 @@ export default function App() {
     flex-1
     min-h-0
     overflow-y-auto
+    overscroll-y-contain
+    [-webkit-overflow-scrolling:touch]
     px-3
     py-5
     space-y-5
@@ -190,7 +203,7 @@ export default function App() {
   );
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[var(--color-surface-subtle)]">
+    <div className="flex h-dvh h-screen overflow-hidden bg-[var(--color-surface-subtle)]">
 
     <aside
       className="
@@ -210,12 +223,12 @@ export default function App() {
       </aside>
 
       {mobileNav && (
-        <div className="lg:hidden fixed inset-0 z-50 flex">
+        <div className="lg:hidden fixed inset-0 z-50 flex h-dvh h-screen">
           <div
             className="absolute inset-0 bg-black/30 backdrop-blur-sm"
             onClick={() => setMobileNav(false)}
           />
-          <aside className="relative w-[280px] max-w-[85vw] bg-white flex flex-col shadow-xl">
+          <aside className="relative w-[280px] max-w-[85vw] h-full bg-white flex flex-col overflow-hidden shadow-xl">
             {sidebar}
           </aside>
         </div>
@@ -250,7 +263,7 @@ export default function App() {
         </header>
 
         <main
-          className="flex-1 min-h-0 overflow-y-auto"
+          className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-y-contain [-webkit-overflow-scrolling:touch]"
           id="main-content"
           tabIndex={-1}
         >
