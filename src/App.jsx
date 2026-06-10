@@ -261,11 +261,11 @@ export default function App() {
         </header>
 
         <main
-          className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-y-contain [-webkit-overflow-scrolling:touch]"
+          className="flex-1 min-h-0 overflow-y-auto overscroll-y-contain [-webkit-overflow-scrolling:touch]"
           id="main-content"
           tabIndex={-1}
         >
-          <div className="max-w-[1120px] mx-auto px-5 py-8 lg:px-10 lg:py-12">
+          <div className="max-w-[1120px] mx-auto px-5 py-8 pb-[calc(2rem+env(safe-area-inset-bottom,0px)+3.5rem)] lg:px-10 lg:py-12 lg:pb-12">
             {renderPage()}
           </div>
         </main>
@@ -963,8 +963,8 @@ function WatchGridSection() {
         </div>
       </Card>
 <Card>
-  <div>
-    <table className="w-full">
+  <div className="overflow-x-auto">
+    <table className="w-full min-w-[560px]">
       <thead>
         <tr className="border-b border-[#E5E8EB] bg-[#F8FAFC]">
           <th className="px-6 py-4 text-left">Type</th>
@@ -2408,8 +2408,8 @@ function AdvertisingPage() {
       <SectionTitle title={p.guide} />
 
       <Card>
-        <div className="overflow-hidden">
-          <table className="w-full">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[520px]">
             <thead>
               <tr className="bg-[#F8FAFC]">
                 <th className="w-1/2 border-b border-[#E5E8EB] p-6 text-center text-[18px] font-semibold">
@@ -2489,8 +2489,8 @@ function AdvertisingPage() {
       <SectionTitle title={p.caution} />
 
       <Card>
-        <div className="p-10">
-          <ul className="space-y-4 text-[16px] text-[#4E5968] leading-[1.8]">
+        <div className="p-6 lg:p-10">
+          <ul className="space-y-4 text-[15px] sm:text-[16px] text-[#4E5968] leading-[1.8]">
             <li>
               • 광고 이미지에는 광고(AD) 표시가 포함되어야 합니다.
             </li>

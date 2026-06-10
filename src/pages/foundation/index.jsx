@@ -238,8 +238,8 @@ export function PalettePage() {
         </h3>
       </div>
 
-      <div className="grid grid-cols-[120px_1fr_140px] items-center">
-        <div className="flex justify-center py-8">
+      <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr_auto] sm:items-center gap-4 sm:gap-0 px-6 py-6 sm:px-0 sm:py-0">
+        <div className="flex justify-center sm:py-8">
           <div
             className="w-14 h-14 rounded-full border border-[#E5E8EB]"
             style={{
@@ -248,11 +248,11 @@ export function PalettePage() {
           />
         </div>
 
-        <div className="font-semibold text-[#374151]">
+        <div className="font-semibold text-[#374151] text-center sm:text-left break-all">
           {item.token}
         </div>
 
-        <div className="font-mono text-[#4E5968]">
+        <div className="font-mono text-[#4E5968] text-center sm:text-left sm:pr-6">
           {item.hex}
         </div>
       </div>
@@ -264,7 +264,7 @@ export function PalettePage() {
   description={t("palette.accessibleBadDesc")}
 />
 
-<div className="rounded-[28px] border border-[#E5E8EB] bg-white p-8 lg:p-10 space-y-12">
+<div className="rounded-[28px] border border-[#E5E8EB] bg-white p-5 sm:p-8 lg:p-10 space-y-12">
   <InaccessiblePairGrid section={accessibilityBad} />
 
   <ColorBlindnessAlternatives

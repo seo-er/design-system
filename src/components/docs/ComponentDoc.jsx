@@ -77,28 +77,47 @@ function ArchitectureTable({ title, columns, rows }) {
     <div>
       <h3 className="text-[16px] font-bold mb-3">{title}</h3>
       <div className="rounded-[20px] border border-[#E5E8EB] overflow-hidden bg-white">
-        <div
-          className="hidden sm:grid gap-4 px-5 py-3 border-b border-[#F2F4F6] bg-[#FAFBFC] text-[11px] font-semibold uppercase tracking-wide text-[#8B95A1]"
-          style={{ gridTemplateColumns: `repeat(${colKeys.length}, minmax(0, 1fr))` }}
-        >
-          {colKeys.map((key) => (
-            <span key={key}>{columns[key]}</span>
-          ))}
+        <div className="hidden sm:block overflow-x-auto">
+          <div
+            className="grid gap-4 px-5 py-3 border-b border-[#F2F4F6] bg-[#FAFBFC] text-[11px] font-semibold uppercase tracking-wide text-[#8B95A1] min-w-[480px]"
+            style={{ gridTemplateColumns: `repeat(${colKeys.length}, minmax(0, 1fr))` }}
+          >
+            {colKeys.map((key) => (
+              <span key={key}>{columns[key]}</span>
+            ))}
+          </div>
+          <div className="divide-y divide-[#F2F4F6] min-w-[480px]">
+            {rows.map((row) => (
+              <div
+                key={row.id || row.prop || row.token}
+                className="grid gap-4 px-5 py-4"
+                style={{ gridTemplateColumns: `repeat(${colKeys.length}, minmax(0, 1fr))` }}
+              >
+                {colKeys.map((key) => (
+                  <span
+                    key={key}
+                    className={`text-[13px] break-words ${
+                      key === "token" || key === "prop" ? "font-mono text-[#4F46E5]" : "text-[#4E5968]"
+                    }`}
+                  >
+                    {row[key]}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="divide-y divide-[#F2F4F6]">
+
+        <div className="sm:hidden divide-y divide-[#F2F4F6]">
           {rows.map((row) => (
-            <div
-              key={row.id || row.prop || row.token}
-              className="grid gap-2 sm:gap-4 px-5 py-4"
-              style={{ gridTemplateColumns: `repeat(${colKeys.length}, minmax(0, 1fr))` }}
-            >
+            <div key={row.id || row.prop || row.token} className="px-5 py-4 space-y-2">
               {colKeys.map((key) => (
                 <div key={key}>
-                  <span className="sm:hidden text-[10px] font-semibold uppercase text-[#8B95A1] block mb-0.5">
+                  <span className="text-[10px] font-semibold uppercase text-[#8B95A1] block mb-0.5">
                     {columns[key]}
                   </span>
                   <span
-                    className={`text-[13px] ${
+                    className={`text-[13px] break-words ${
                       key === "token" || key === "prop" ? "font-mono text-[#4F46E5]" : "text-[#4E5968]"
                     }`}
                   >

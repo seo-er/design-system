@@ -6,8 +6,8 @@ import { Card } from "./DocPrimitives";
  */
 export function TokenTable({ caption, columns, rows, getRowKey = (row) => row.token || row.id, embedded = false }) {
   const table = (
-    <div className="overflow-x-auto max-w-full">
-      <table className="w-full border-collapse">
+    <div className="overflow-x-auto max-w-full -mx-1 px-1">
+      <table className="w-full min-w-[560px] border-collapse">
           <caption className="sr-only">{caption}</caption>
           <thead>
             <tr className="border-b border-[#F2F4F6] bg-[#FAFBFC]">

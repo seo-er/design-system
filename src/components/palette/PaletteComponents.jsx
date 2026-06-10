@@ -115,9 +115,33 @@ export function InaccessiblePairGrid({ section }) {
 
   const labels = ["01", "02", "03", "04", "05"];
 
+  const renderPair = (colors) => (
+    <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12 min-w-0">
+      <div
+        className="flex-1 flex items-center justify-center text-[10px] sm:text-xs font-semibold px-1"
+        style={{
+          backgroundColor: colors[0],
+          color: "#FFFFFF",
+        }}
+      >
+        {colors[0]}
+      </div>
+
+      <div
+        className="flex-1 flex items-center justify-center text-[10px] sm:text-xs font-semibold px-1"
+        style={{
+          backgroundColor: colors[1],
+          color: "#FFFFFF",
+        }}
+      >
+        {colors[1]}
+      </div>
+    </div>
+  );
+
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-[80px_1fr_80px_1fr] gap-6 items-end mb-10">
+      <div className="hidden sm:grid grid-cols-[80px_1fr_80px_1fr] gap-6 items-end mb-10">
         <div />
 
         <div>
@@ -144,62 +168,36 @@ export function InaccessiblePairGrid({ section }) {
       </div>
 
       {section.map((item, index) => (
-        <div
-          key={item.id}
-          className="grid grid-cols-[80px_1fr_80px_1fr] gap-6 items-center"
-        >
-          <div className="flex justify-center">
-            <div className="w-12 h-12 rounded-lg border border-[#E5E8EB] flex items-center justify-center text-sm font-semibold text-[#191F28]">
-              {labels[index]}
+        <div key={item.id}>
+          <div className="sm:hidden rounded-xl border border-[#E5E8EB] p-4 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg border border-[#E5E8EB] flex items-center justify-center text-sm font-semibold text-[#191F28]">
+                {labels[index]}
+              </div>
+              <span className="text-sm font-semibold text-[#191F28]">
+                {t("tokens.accessibility.normalVisionTitle")}
+              </span>
             </div>
+            {renderPair(item.normal)}
+            <div className="text-center text-xl text-[#94A3B8]">→</div>
+            <p className="text-sm font-semibold text-[#191F28]">
+              {t("tokens.accessibility.colorBlindTitle")}
+            </p>
+            {renderPair(item.colorBlind)}
           </div>
 
-          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
-            <div
-              className="flex-1 flex items-center justify-center text-xs font-semibold"
-              style={{
-                backgroundColor: item.normal[0],
-                color: "#FFFFFF",
-              }}
-            >
-              {item.normal[0]}
+          <div className="hidden sm:grid grid-cols-[80px_1fr_80px_1fr] gap-6 items-center">
+            <div className="flex justify-center">
+              <div className="w-12 h-12 rounded-lg border border-[#E5E8EB] flex items-center justify-center text-sm font-semibold text-[#191F28]">
+                {labels[index]}
+              </div>
             </div>
 
-            <div
-              className="flex-1 flex items-center justify-center text-xs font-semibold"
-              style={{
-                backgroundColor: item.normal[1],
-                color: "#FFFFFF",
-              }}
-            >
-              {item.normal[1]}
-            </div>
-          </div>
+            {renderPair(item.normal)}
 
-          <div className="text-center text-2xl text-[#94A3B8]">
-            →
-          </div>
+            <div className="text-center text-2xl text-[#94A3B8]">→</div>
 
-          <div className="overflow-hidden rounded-lg border border-[#E5E8EB] flex h-12">
-            <div
-              className="flex-1 flex items-center justify-center text-xs font-semibold"
-              style={{
-                backgroundColor: item.colorBlind[0],
-                color: "#FFFFFF",
-              }}
-            >
-              {item.colorBlind[0]}
-            </div>
-
-            <div
-              className="flex-1 flex items-center justify-center text-xs font-semibold"
-              style={{
-                backgroundColor: item.colorBlind[1],
-                color: "#FFFFFF",
-              }}
-            >
-              {item.colorBlind[1]}
-            </div>
+            {renderPair(item.colorBlind)}
           </div>
         </div>
       ))}
@@ -214,7 +212,7 @@ export function ColorBlindnessAlternatives({ items }) {
       aria-labelledby="color-blind-alternatives-title"
       className="mt-12"
     >
-      <div className="rounded-2xl border border-[#E5E8EB] bg-white p-8 lg:p-10">
+      <div className="rounded-2xl border border-[#E5E8EB] bg-white p-5 sm:p-8 lg:p-10">
         <h3
           id="color-blind-alternatives-title"
           className="text-[24px] font-bold tracking-tight mb-2"
@@ -232,44 +230,44 @@ export function ColorBlindnessAlternatives({ items }) {
               key={item.id}
               className="py-8 border-b border-[#E5E8EB] last:border-b-0"
             >
-              <div className="flex items-center gap-6">
-                <div>
-                  <div className="text-sm text-[#8B95A1]">
-                  {t("tokens.common.original")}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+                  <div>
+                    <div className="text-sm text-[#8B95A1]">
+                      {t("tokens.common.original")}
+                    </div>
+
+                    <div
+                      className="w-16 h-16 rounded-lg mt-2"
+                      style={{
+                        backgroundColor: item.before.hex,
+                      }}
+                    />
                   </div>
 
-                  <div
-                    className="w-16 h-16 rounded-lg mt-2"
-                    style={{
-                      backgroundColor: item.before.hex,
-                    }}
-                  />
-                </div>
+                  <span className="text-[#B0B8C1] text-xl">→</span>
 
-                <span className="text-[#B0B8C1] text-xl">
-                  →
-                </span>
+                  <div>
+                    <div className="text-sm text-[#8B95A1]">
+                      {t("tokens.common.accessible")}
+                    </div>
 
-                <div>
-                  <div className="text-sm text-[#8B95A1]">
-                    {t("tokens.common.accessible")}
+                    <div
+                      className="w-16 h-16 rounded-lg mt-2"
+                      style={{
+                        backgroundColor: item.after.hex,
+                      }}
+                    />
                   </div>
-
-                  <div
-                    className="w-16 h-16 rounded-lg mt-2"
-                    style={{
-                      backgroundColor: item.after.hex,
-                    }}
-                  />
                 </div>
 
-                <div className="flex-1 pl-4">
-                  <div className="font-semibold text-[18px] text-[#191F28]">
+                <div className="flex-1 sm:pl-4 min-w-0">
+                  <div className="font-semibold text-[16px] sm:text-[18px] text-[#191F28]">
                     {t(`tokens.accessibility.${item.id}Title`)}
                   </div>
 
-                  <p className="text-sm text-[#6B7684] mt-2 leading-relaxed">
-                  {t(`tokens.accessibility.${item.id}Guidance`)}
+                  <p className="text-sm text-[#6B7684] mt-2 leading-relaxed break-words">
+                    {t(`tokens.accessibility.${item.id}Guidance`)}
                   </p>
                 </div>
               </div>
