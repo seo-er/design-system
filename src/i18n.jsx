@@ -78,7 +78,7 @@ const TRANSLATIONS = {
         why: "8은 2·4의 배수로 iOS/Android dp, rem 변환 시 분수 오차가 적고 Figma 8px grid와 1:1 대응됩니다.",
         strategy: "문화·교육 서비스는 정보 밀도보다 가독성과 터치 여백을 우선하므로 Base unit 8px을 채택했습니다.",
         alternatives: ["4pt — 촘촘하지만 토큰 수·QA 비용 급증", "10pt — rem 변환 시 1.25rem 비정수 반복"],
-        metric: "터치 타겟 주변 최소 space.200(16px) 권장",
+        metric: "터치 타겟 주변 최소 space-200(16px) 권장",
       },
       typography: {
         title: "왜 Pretendard + 8단계 Type scale인가?",
@@ -86,7 +86,7 @@ const TRANSLATIONS = {
         why: "Pretendard는 한글 가독성과 OSS 라이선스, variable font 지원으로 Figma–Code 동기화 비용이 낮습니다.",
         strategy: "Heading/Title/Subtitle/Caption 4계층으로 정보 위계를 제한해 제품팀의 임의 스타일 확장을 방지합니다.",
         alternatives: ["System font stack — 플랫폼별 불일치", "12단계 scale — 선택 피로·유지보수 증가"],
-        metric: "본문 font.subtitle.medium(14px) WCAG AA 대비 4.5:1 이상",
+        metric: "본문 font-subtitle-medium(14px) WCAG AA 대비 4.5:1 이상",
       },
       color: {
         title: "왜 Orange를 Primary Brand로 정의했는가?",
@@ -100,7 +100,7 @@ const TRANSLATIONS = {
         title: "왜 모바일 4컬럼 그리드인가?",
         context: "주 사용 화면은 375px 모바일이며, 카드·필터·리스트가 2열 배치되는 경우가 많습니다.",
         why: "4컬럼은 2열 카드(각 2 span)와 1열 히어로를 동일 그리드로 표현할 수 있는 최소 짝수 컬럼입니다.",
-        strategy: "Margin 16px + Gutter 16px은 space.200과 일치해 스페이싱 토큰과 레이아웃 토큰을 통합 운영합니다.",
+        strategy: "Margin 16px + Gutter 16px은 space-200과 일치해 스페이싱 토큰과 레이아웃 토큰을 통합 운영합니다.",
         alternatives: ["6컬럼 — 좁은 화면에서 컬럼 폭 40px 미만", "12컬럼 — 모바일에서 과도한 복잡성"],
         metric: "360px viewport → column width ≈ 71px",
       },
@@ -409,10 +409,10 @@ opacityTokens: {
       typography: {
         title: "Typography",
         description:
-          "font.* 토큰 체계로 제목, 본문, 캡션의 위계를 정의합니다. Figma Text Styles와 1:1 대응되며, 클릭하여 토큰명을 복사할 수 있습니다.",
+          "font-* 토큰 체계로 제목, 본문, 캡션의 위계를 정의합니다. Figma Text Styles와 1:1 대응되며, 클릭하여 토큰명을 복사할 수 있습니다.",
         preview: "망설임 없이 고르고 배우는 문화센터 서비스",
       },
-      spacing: { title: "Spacing", description: "8pt 기반 space.* 토큰으로 레이아웃, 컴포넌트 내부 간격을 일관되게 정의합니다." },
+      spacing: { title: "Spacing", description: "8pt 기반 space-* 토큰으로 레이아웃, 컴포넌트 내부 간격을 일관되게 정의합니다." },
       grid: {
         title: "Grid",
         description:
@@ -626,7 +626,7 @@ opacityTokens: {
         why: "8 divides cleanly into 2/4, maps 1:1 to Figma's 8px grid, and minimizes rem rounding errors.",
         strategy: "Education services prioritize readability and touch padding over density—8px base unit.",
         alternatives: ["4pt — denser but more tokens and QA cost", "10pt — awkward rem fractions"],
-        metric: "Min space.200 (16px) around touch targets",
+        metric: "Min space-200 (16px) around touch targets",
       },
       typography: {
         title: "Why Pretendard + 8-step type scale?",
@@ -634,7 +634,7 @@ opacityTokens: {
         why: "Pretendard offers Korean readability, OSS licensing, and variable font sync with code.",
         strategy: "Four tiers (Heading/Title/Subtitle/Caption) limit ad-hoc style sprawl.",
         alternatives: ["System fonts — platform inconsistency", "12-step scale — choice fatigue"],
-        metric: "Body font.subtitle.medium (14px) meets WCAG AA 4.5:1",
+        metric: "Body font-subtitle-medium (14px) meets WCAG AA 4.5:1",
       },
       color: {
         title: "Why Orange as Primary brand?",
@@ -648,7 +648,7 @@ opacityTokens: {
         title: "Why 4-column mobile grid?",
         context: "Primary viewports are 360–428px with many 2-column card layouts.",
         why: "4 columns express 2-span cards and full-width hero with the smallest even column count.",
-        strategy: "16px margin + 16px gutter aligns with space.200 for unified layout tokens.",
+        strategy: "16px margin + 16px gutter aligns with space-200 for unified layout tokens.",
         alternatives: ["6 columns — column width <40px on narrow screens", "12 columns — excessive mobile complexity"],
         metric: "360px viewport → column width ≈ 71px",
       },
@@ -941,10 +941,10 @@ opacityTokens: {
       },
       typography: {
         title: "Typography",
-        description: "font.* tokens define heading, body, and caption hierarchy. Maps 1:1 to Figma Text Styles.",
+        description: "font-* tokens define heading, body, and caption hierarchy. Maps 1:1 to Figma Text Styles.",
         preview: "Discover and learn at your local culture center",
       },
-      spacing: { title: "Spacing", description: "8pt-based space.* tokens for consistent layout and component spacing." },
+      spacing: { title: "Spacing", description: "8pt-based space-* tokens for consistent layout and component spacing." },
       grid: {
         title: "Grid",
         description: "Grid defines alignment for screens and content with consistent structure and rules.",
@@ -1147,7 +1147,7 @@ opacityTokens: {
         why: "8は2・4の倍数でFigma 8px gridと1:1対応し、rem変換誤差が少ないです。",
         strategy: "教育サービスは密度より可読性とタッチ余白を優先しBase unit 8pxを採用。",
         alternatives: ["4pt — トークン数・QAコスト増", "10pt — rem非整数反復"],
-        metric: "タッチターゲット周囲最小 space.200(16px)",
+        metric: "タッチターゲット周囲最小 space-200(16px)",
       },
       typography: {
         title: "なぜPretendard + 8段階Type scaleか？",
@@ -1155,7 +1155,7 @@ opacityTokens: {
         why: "Pretendardは韓国語可読性とOSS、variable fontでFigma–Code同期コストが低い。",
         strategy: "4階層(Heading/Title/Subtitle/Caption)で任意スタイル拡張を防止。",
         alternatives: ["System font — プラットフォーム不一致", "12段階 — 選択疲労"],
-        metric: "本文 font.subtitle.medium(14px) WCAG AA 4.5:1以上",
+        metric: "本文 font-subtitle-medium(14px) WCAG AA 4.5:1以上",
       },
       color: {
         title: "なぜOrangeをPrimary Brandか？",
@@ -1169,7 +1169,7 @@ opacityTokens: {
         title: "なぜモバイル4カラムグリッドか？",
         context: "主画面360–428px、2列カード配置が多い。",
         why: "4カラムは2spanカードと全幅ヒーローを同一グリッドで表現できる最小偶数。",
-        strategy: "Margin 16px + Gutter 16pxはspace.200と一致しレイアウトトークン統合。",
+        strategy: "Margin 16px + Gutter 16pxはspace-200と一致しレイアウトトークン統合。",
         alternatives: ["6カラム — 狭画面で列幅40px未満", "12カラム — モバイル過剰複雑"],
         metric: "360px viewport → 列幅 ≈ 71px",
       },
@@ -1456,10 +1456,10 @@ opacityTokens: {
       },
       typography: {
         title: "Typography",
-        description: "font.*トークン体系で見出し、本文、キャプションの階層を定義。Figma Text Stylesと1:1対応。",
+        description: "font-*トークン体系で見出し、本文、キャプションの階層を定義。Figma Text Stylesと1:1対応。",
         preview: "迷わず選んで学ぶ文化センターサービス",
       },
-      spacing: { title: "Spacing", description: "8ptベースのspace.*トークンでレイアウトとコンポーネント内部間隔を一貫定義。" },
+      spacing: { title: "Spacing", description: "8ptベースのspace-*トークンでレイアウトとコンポーネント内部間隔を一貫定義。" },
       grid: {
         title: "Grid",
         description: "画面とコンテンツの整列基準を定義。一貫したレイアウトと視覚的バランスのため同一構造を使用。",

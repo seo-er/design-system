@@ -21,7 +21,7 @@ export const BUTTON_SPEC = {
   ],
   tokenMap: [
     { prop: "background", primitive: "color-primary-500", semantic: "color-brand-primary" },
-    { prop: "background.hover", primitive: "color-primary-600", semantic: "color-brand-primary-hover" },
+    { prop: "background-hover", primitive: "color-primary-600", semantic: "color-brand-primary-hover" },
     { prop: "text", primitive: "color-gray-900", semantic: "color-text-on-brand" },
     { prop: "radius", primitive: "space-100", semantic: "button-radius-md" },
     { prop: "padding-x", primitive: "space-200", semantic: "button-padding-x-md" },
@@ -44,7 +44,7 @@ export const INPUT_SPEC = {
   tokenMap: [
     { prop: "height", primitive: "space-600", semantic: "input-height-md" },
     { prop: "border", primitive: "color-gray-400", semantic: "color-border-default" },
-    { prop: "border.focus", primitive: "color-primary-500", semantic: "color-brand-primary" },
+    { prop: "border-focus", primitive: "color-primary-500", semantic: "color-brand-primary" },
     { prop: "text", primitive: "color-gray-900", semantic: "color-text-primary" },
     { prop: "placeholder", primitive: "color-gray-600", semantic: "color-text-secondary" },
   ],
@@ -81,8 +81,8 @@ export const MODAL_SPEC = {
   ],
   tokenMap: [
     { prop: "overlay", primitive: "color-gray-900 @ 40%", semantic: "color-overlay-default" },
-    { prop: "panel.radius", primitive: "space-300", semantic: "modal-radius-lg" },
-    { prop: "panel.padding", primitive: "space-400", semantic: "modal-padding-lg" },
+    { prop: "panel-radius", primitive: "space-300", semantic: "modal-radius-lg" },
+    { prop: "panel-padding", primitive: "space-400", semantic: "modal-padding-lg" },
     { prop: "elevation", primitive: "elevation-3", semantic: "modal-shadow" },
   ],
 };

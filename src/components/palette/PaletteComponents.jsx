@@ -5,7 +5,7 @@ import { TokenTable } from "../docs/TokenTable";
 
 export function PaletteColumn({ palette, dark = false }) {
   const rows = palette.colors.map((c) => ({
-    token: `color.${palette.name.toLowerCase()}.${c.step}`,
+    token: `color-${palette.name.toLowerCase()}-${c.step}`,
     step: c.step,
     hex: c.hex,
   }));

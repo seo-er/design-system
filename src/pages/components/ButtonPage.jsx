@@ -94,7 +94,7 @@ export function ButtonPage() {
 <Button size="lg" variant="primary">Large</Button>
 <Button size="xl" variant="primary">XLarge</Button>
 
-// Tokens: button.size.sm | md | lg | xl`}
+// Tokens: btn-size-sm | btn-size-md | btn-size-lg | btn-size-xl`}
       />
 
       <SectionTitle title={p.hierarchy} />
@@ -127,7 +127,7 @@ export function ButtonPage() {
 <Button variant="outline-brand">Outline</Button>
 <Button variant="outline-neutral">Cancel</Button>
 
-// Maps to button.primary.* | secondary.* | outline.brand.* | outline.neutral.*`}
+// Maps to btn-primary-* | btn-secondary-* | btn-outline-brand-* | btn-neutral-*`}
       />
 
       <SectionTitle title={labels.statesTitle} description={labels.statesDesc} />
@@ -159,10 +159,10 @@ export function ButtonPage() {
 <Button variant="primary" disabled>Confirm</Button>
 
 // State tokens
-button.primary.background
-button.primary.background.hover
-button.primary.focus.ring
-button.primary.background.disabled
+btn-primary-background
+btn-primary-background-hover
+btn-primary-focus-ring
+btn-primary-background-disabled
 `}
       />
     </div>

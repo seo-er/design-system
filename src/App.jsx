@@ -2380,8 +2380,8 @@ function AdvertisingPage() {
       <ComponentSpec
         items={[
           { label: "Format", value: "PNG · JPG" },
-          { label: "Max Size", value: "1MB" },
-          { label: "AD Label", value: "필수" },
+          { label: "Max Size", value: "150KB" },
+          { label: "AD Label", value: "광고일 경우 필수" },
           { label: "Token", value: "ad-banner-*" },
         ]}
       />
@@ -3157,7 +3157,7 @@ function TabPage() {
         items={[
           { label: "Variants", value: "Default · Category · Chip" },
           { label: "Height", value: "44 – 56px" },
-          { label: "Token", value: "tab.*" },
+          { label: "Token", value: "tab-*" },
           { label: "Motion", value: "200ms ease" },
         ]}
       />
