@@ -127,9 +127,7 @@ export default function App() {
           onClick={() => navigate("home")}
           className="flex items-center gap-3 w-full text-left group"
         >
-          <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-md group-hover:shadow-lg transition-shadow">
-            <img src={faviconSrc} alt="" className="w-full h-full object-cover" />
-          </div>
+         
           <div>
             <h1 className="text-[20px] font-bold tracking-tight leading-none">
               {SYSTEM_META.name}
